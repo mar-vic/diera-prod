@@ -29,14 +29,17 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
-# Application definition
-
 SITE_ID = 1  # DjangoCMS
 X_FRAME_OPTIONS = 'SAMEORIGIN'  # DjangoCMS
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+# STATIC_ROOT = "/home/marvic/sites/diera-prod/diera/static"
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+# Application definition
+
 
 
 INSTALLED_APPS = [
