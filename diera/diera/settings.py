@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import os
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -30,16 +32,50 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 
+SITE_ID = 1  # DjangoCMS
+X_FRAME_OPTIONS = 'SAMEORIGIN'  # DjangoCMS
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+
 INSTALLED_APPS = [
+    'djangocms_admin_style',  # DjangoCMS
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'cms',  # DjangoCMS
+    'menus', # DjangoCMS
+    'treebeard', # DjangoCMS
+    'sekizai',  # DjangoCMS
+    'filer',  # DjangoCMS
+    'easy_thumbnails',  # DjangoCMS
+    'mptt',  # DjangoCMS
+    'djangocms_text_ckeditor',  # DjangoCMS
+    'djangocms_link',  # DjangoCMS
+    'djangocms_file',  # DjangoCMS
+    'djangocms_picture', #DjangoCMS
+    'djangocms_video', #DjangoCMS
+    'djangocms_googlemap', #DjangoCMS
+    'djangocms_snippet', #DjangoCMS
+    'djangocms_style',  #DjangoCMS
 ]
 
+THUMBNAIL_HIGH_RESOLUTION = True
+
+THUMBNAIL_PROCESSORS = (
+    'easy_thumbnails.processors.colorspace',
+    'easy_thumbnails.processors.autocrop',
+    'filer.thumbnail_processors.scale_and_crop_with_subject_location',
+    'easy_thumbnails.processors.filters'
+)
+
 MIDDLEWARE = [
+    'cms.middleware.utils.ApphookReloadMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -47,14 +83,23 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'cms.middleware.user.CurrentUserMiddleware',
+    'cms.middleware.page.CurrentPageMiddleware',
+    'cms.middleware.toolbar.ToolbarMiddleware',
+    'cms.middleware.language.LanguageCookieMiddleware',
 ]
 
 ROOT_URLCONF = 'diera.urls'
 
+CMS_TEMPLATES = [
+    ('home.html', 'Home page template'),
+]
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -62,6 +107,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'sekizai.context_processors.sekizai',
+                'cms.context_processors.cms_settings',
+                'django.template.context_processors.i18n',
             ],
         },
     },
@@ -113,6 +161,11 @@ USE_L10N = True
 
 USE_TZ = True
 
+# DjangoCMS settings for language mutations
+LANGUAGES = [
+    ('sk', 'Slovak'),
+    ('en-us', 'English'),
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
