@@ -88,24 +88,33 @@ def get_teasers_for_festival_events(request, festival_name, year):
 @register.simple_tag
 def get_teasers_for_all_features(request):
     """
-    Return all teasers that will be featured on homepage. This is a combination
-    of teasers of published articles and published 'featured' events.
+    Return all teasers that will be featured on homepage. There two types of
+    teasers: article teasers (ie, teasers for homepage childs) and event teasers
+    (ie, teasers for program childs).
     """
     language = request.LANGUAGE_CODE
-    # published_articles = Page.objects.filter(reverse_id='home').filter(publisher_is_draft=False)[0].get_child_pages().order_by('-publication_date')
-    homep = [page for page in Page.objects.filter(reverse_id='home').filter(publisher_is_draft=False) if page.is_published(language) and page][0]
-    programp = [page for page in Page.objects.filter(reverse_id='program').filter(publisher_is_draft=False) if page.is_published(language) and page][0]
 
-    published_articles = [page for page in homep.get_child_pages().order_by('publication_date') if page.is_published(language)]
-    published_events = [page for page in programp.get_child_pages() if page.is_published(language)]
+    # Get the home page (ie, page with reverse_id='home')
+    homep = Page.objects.filter(reverse_id='home').filter(publisher_is_draft=False).first()
+    # Ensuring that homepage does exist
+    if not homep:
+        return []
+    else:
+        # Get all childs of homepage (i.e., the articles)
+        published_articles = [page for page in homep.get_child_pages().order_by('publication_date') if page.is_published(language)]
 
-    # published_articles = [page for page in Page.objects.all().order_by('-publication_date') if page.is_published(language)]
-    # published_events = Page.objects.filter(reverse_id='program').filter(publisher_is_draft=False)[0].get_child_pages()
-
-    article_teasers = []
-    event_teasers = []
+    # Get the program page (i.e., page with reverse_id='program')
+    programp = Page.objects.filter(reverse_id='program').filter(publisher_is_draft=False).first()
+    # Ensuring that program page does exist
+    if not programp:
+        published_events = []
+    else:
+        # Get all childs of program page (i.e., the events)
+        published_events = [page for page in programp.get_child_pages() if page.is_published(language)]
 
     # Generate list of article teasers
+    article_teasers = []
+
     for article in published_articles:
         teaser = {}
 
@@ -123,6 +132,8 @@ def get_teasers_for_all_features(request):
         article_teasers.append(teaser)
 
     # Generate list of event teasers
+    event_teasers = []
+
     for event in published_events:
         teaser = {}
 
@@ -167,7 +178,7 @@ def get_teasers_for_all_features(request):
         if article_teasers:
             teasers.append(article_teasers.pop())
 
-    # While returning teasers, append append all still unpopped article teasers
+    # While returning teasers, append yet unpopped article teasers
     return teasers + article_teasers
 
 
@@ -272,7 +283,12 @@ def get_background_image_url():
     making the site with haveing no background image.
     """
     today = date.today()
-    folder = Folder.objects.get(name='background_images')
+
+    # Try to get folder with background images and fail gracefully when it does not exist.
+    try:
+        folder = Folder.objects.get(name='background_images')
+    except ObjectDoesNotExist:
+        return ''
 
     bgimage_by_flag = folder.files.filter(name='current').first()
     bgimage_by_date = folder.files.filter(name=f"{today.year}_{today.month}").first()

@@ -81,6 +81,8 @@ INSTALLED_APPS = [
     'photologue',
     'sortedm2m',
     'diera',  # My Apps
+    'page_extensions',  # My Apps
+    'wizards',  # My Apps
 ]
 
 THUMBNAIL_HIGH_RESOLUTION = True
@@ -111,7 +113,21 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'diera.urls'
 
 CMS_TEMPLATES = [
-    ('home.html', 'Home page template'),
+    # Diera (all extend base.html)
+    ('home.html', 'Home'),
+    ('program.html', 'Program'),
+    ('festivals.html', 'Festivals'),
+    ('galleries.html', 'Galleries'),
+    ('about.html', 'About'),
+    ('featured_article.html', 'Featured Article'),
+    ('event.html', 'Event'),
+    ('festival.html', 'Festival'),
+
+    # DjangoCMS defaults
+    ('fullwidth.html', 'Fullwidth'),
+    ('sidebar_left.html', 'Sidebar Left'),
+    ('sidebar_right.html', 'Sidebar Right'),
+    # ('home.html', 'Home page template'),
 ]
 
 TEMPLATES = [
@@ -190,7 +206,7 @@ USE_TZ = True
 # DjangoCMS settings for language mutations
 LANGUAGES = [
     ('sk', 'Slovak'),
-    ('en-us', 'English'),
+    ('en', 'English'),
 ]
 
 # Static files (CSS, JavaScript, Images)
