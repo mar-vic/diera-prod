@@ -91,6 +91,13 @@
 
 .grid-item {
     width: 50%;
-    min-width: 420px;
+    /* min-width: 300px; */
     float: left;
+}
+
+
+@media screen and (max-width: 768px) {
+    .grid-item {
+        width: 100%;
+    }
 }
