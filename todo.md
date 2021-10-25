@@ -8,8 +8,8 @@
 * DONE Create empty django project
 * DONE Update the remote repo with dajngo project
 * DONE Clone diera-prod on pythonanywhere
-* TODO Set-up static file serving on python anywhere
-* TODO Populate django project with files from diera dev
+* DONE Set-up static file serving on python anywhere
+* TODO Populate django project with files from diera
 
 ## Misc
 
