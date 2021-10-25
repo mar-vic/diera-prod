@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load cms_tags menu_tags %}
+{% load thumbnail %}
+
+{% block title %}{% page_attribute "page_title" %}{% endblock title %}
+
+<!-- CSS (featured article specific rules) -->
+{% block css %}
+{% load static %}
+<link href="{% static 'featured_article.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div style="padding-left: 10px; padding-right: 10px;">
+    <div id="featured-article" class="container">
+
+        <!-- IMAGE -->
+        {% with image=request.current_page.imageextension.image %}
+        {% if image %}
+        {% thumbnail image 1200x600 crop upscale as cropped_image %}
+        <img id="hero-image" src="{{ cropped_image.url }}">
+        {% endif %}
+        {% endwith %}
+
+        <!-- TITLE -->
+        <div id="featured-article-title">
+            {% page_attribute "title" %}
+        </div>
+
+        <!-- BODY -->
+        <div id="featured-article-body">
+            <div style="display:none;"
+                 {% placeholder "perex" %}
+            </div>
+	          {% placeholder "body" %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

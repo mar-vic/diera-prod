@@ -1,0 +1,128 @@
+{% load cms_tags menu_tags sekizai_tags %}
+{% load static %}
+
+{% load custom_tags %}
+
+<!doctype html>
+<html>
+    <head>
+        <title>{% block title %}Diera do Sveta{% endblock title %}</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
+        <!-- LOAD ELASTIC FONT -->
+        <style>
+         @font-face {
+             font-family: Elastik-A;
+             font-style: normal;
+             font-weight: normal;
+             src: url({% static '/fonts/Elastik-A.ttf' %}) format('truetype');
+         }
+
+         {% block background-image %}
+
+         body {
+             background-image: url('{% get_background_image_url %}');
+         }
+
+         {% endblock background-image %}
+
+        </style>
+
+        <!-- JQUERY -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+        <!-- BOOTSTRAP CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+        <!-- BOOTSTRAP JS (WITH POPPER) -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+        <!-- MASONRY JS -->
+        <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+
+        <!-- IMAGESLOADED JS -->
+        <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+
+        <!-- FONT AWESOME -->
+        <script src="https://kit.fontawesome.com/0d8827d474.js" crossorigin="anonymous"></script>
+
+        <!-- DIERA GLOBAL CSS  -->
+        <link href="{% static 'global.css' %}" rel="stylesheet">
+
+        {% block css %}{% endblock css %}
+        {% render_block "css" %}
+
+    </head>
+    <body>
+
+        <!-- CMS TOOLBAR -->
+        {% cms_toolbar %}
+
+        <!-- SITE NAVIGATION -->
+        <nav id="main-menu" class="navbar navbar-expand-xl">
+
+            <!-- BRAND -->
+            <a class="navbar-brand" href="#">
+                <img src="{% static '/images/elipsa-01.svg' %}" />
+            </a>
+
+            <!-- TOGGLER -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- MENU CONTENT -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <!-- Site pages -->
+                <div class="mr-auto ml-auto mt-0 mb-0">
+                    <ul id="pages-menu" class="navbar-nav">
+                        {% show_menu 0 0 %}
+                        <li class="nav-item">
+                            <a href="https://knihy.dieradosveta.sk/" class="nav-link">BOOKSTORE</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- SOCIALS AND LANGUAGE SWITCHER -->
+                <div class="d-flex ">
+                    <ul id="socials" class="navbar-nav my-2 my-lg-0">
+                        <li class="nav-item">
+                            <a href="#">
+                                <i class="fab fa-facebook-square"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#">
+                                <i class="fab fa-instagram-square"></i>
+                            </a>
+                        </li>
+                        <li id="language-switcher" class="nav-item">
+                            {% language_chooser %}
+                        </li>
+                    </ul>
+                </div>  <!-- END OF SOCIALS AND LAN SWITCHER -->
+
+            </div>  <!-- END OF SUPPORTED CONTENT -->
+
+        </nav>
+
+        <!-- CONTENT -->
+        <main>
+            {% block content %}{% endblock content %}
+        </main>
+
+        <!-- FOOTER -->
+        <footer id="site-footer">
+            {% static_placeholder "footer" %}
+        </footer>
+
+
+        {% block js %}{% endblock js %}
+        {% render_block "js" %}
+
+    </body>
+</html>

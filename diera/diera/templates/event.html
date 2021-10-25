@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load cms_tags menu_tags %}
+{% load custom_tags %}
+{% load thumbnail %}
+
+{% block title %}{% page_attribute "page_title" %}{% endblock title %}
+
+<!-- CSS (event specific rules) -->
+{% block css %}
+{% load static %}
+<link href="{% static 'event.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div style="padding-left: 15px; padding-right: 15px;">
+    <div id="event" class="container">
+
+        <!-- IMAGE -->
+        {% with image=request.current_page.imageextension.image %}
+        {% if image %}
+        {% thumbnail image 1200x600 crop upscale as cropped_image %}
+        <img id="hero-image" src="{{ cropped_image.url }}">
+        {% endif %}
+        {% endwith %}
+
+        <!-- EVENT SCHEDULING -->
+        {% with event_date=request.current_page.eventdataextension.date_from %}
+        <div id="event_date" class="row">
+            <div class="col pl-0" style="text-align:left;">
+                {{ event_date|date:"j.n." }}
+            </div>
+            <div class="col pr-0" style="text-align:right;">
+                {{ event_date|date:"H:i" }}
+            </div>
+        </div>
+        {% endwith %}
+
+        <!-- TITLE -->
+        <div id="event-title">
+            {% page_attribute "title" %}
+        </div>
+
+        <!-- BODY -->
+        <div id="event-body">
+            <div style="display:none">
+                {% placeholder "genre" %}
+                {% placeholder "perex" %}
+            </div>
+	          {% placeholder "body" %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

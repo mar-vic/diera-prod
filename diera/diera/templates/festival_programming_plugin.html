@@ -1,0 +1,49 @@
+{% load cms_tags menu_tags %}
+{% load custom_tags %}
+{% load thumbnail %}
+
+{% get_teasers_for_festival_events request instance.festival instance.year as festival_programming %}
+
+<div class="festival-programming">
+    {% placeholder "test" %}
+    <div class="masonry-grid mr-auto ml-auto">
+        <div class="grid-sizer"></div>
+        {% for event_teaser in festival_programming %}
+        
+        <div class="grid-item eteaser">
+
+            <!-- EVENT SCHEDULING -->
+            <div class="row eteaser-schedule">
+                <div class="col" style="text-align:left;">
+                    {{ event_teaser.from|date:"j.n." }}
+                </div>
+                <div class="col" style="text-align:right;">
+                    {{ event_teaser.from|date:"H:i" }}
+                </div>
+            </div>
+
+            <!-- TEASER IMAGE -->
+            {% if event_teaser.image %}  <!-- Checking if the extension was set -->
+            {% thumbnail event_teaser.image 600x300 crop upscale as eteaser_image %}
+            <a href="{{ event_teaser.url }}">
+                <img src="{{ eteaser_image.url }}" style="border-top:2px solid black; border-bottom:2px solid black" />
+            </a>
+            {% endif %}
+            
+            <!-- TEASER TITLE -->
+            <div class="eteaser-title">
+                <a href="{{ event_teaser.url }}">
+                    {{ event_teaser.title|upper }}
+                </a>
+            </div>
+            
+            <!-- GENRE -->
+            <div class="eteaser-genre">
+                {% show_placeholder "genre" event_teaser.page_id %}
+            </div>
+            
+        </div>
+
+        {% endfor %}
+    </div>
+</div>

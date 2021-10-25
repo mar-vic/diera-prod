@@ -1,0 +1,267 @@
+/* RULES COMMON TO ALL PAGES */
+
+body {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: Elastik-A;
+    font-size: 22px;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/* footer */
+
+
+/* MAIN MENU */
+#main-menu {
+    background-color: white;
+    font-size: 30px;
+    border-bottom : 2px solid black;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* MM: BRAND */
+.navbar-brand {
+    margin-left: 15px;
+}
+
+.navbar-brand img {
+    width: 160px;
+}
+
+/* MM: RESPONSIVE TOGGLER */
+.navbar-toggler {
+    margin-right: 15px;
+    border-radius: 0px;
+}
+
+.fa-bars {
+    font-size: 30px;
+    color: black;
+}
+
+/* MM: LINKS */
+a.nav-link {
+    padding-left: 48px !important;
+    padding-right: 48px !important;
+    margin-left: 5px;
+    margin-right: 5px;
+    color: black;
+    border-bottom: none;
+}
+
+a.nav-link:hover {
+    background-color: black !important;
+    color: white;
+}
+
+.selected a {
+    background-color: black;
+    color: white;
+}
+
+/* Progressively shrink left and right padding of nav items on smaller displays */
+@media screen and (max-width: 1800px) {
+    a.nav-link {
+        padding-left: 34px !important;
+        padding-right: 34px !important;
+    }
+}
+
+@media screen and (max-width: 1700px) {
+    a.nav-link {
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+        /* font-size: 26px !important; */
+    }
+}
+
+@media screen and (max-width: 1600px) {
+    a.nav-link {
+        padding-left: 14px !important;
+        padding-right: 14px !important;
+        /* font-size: 24px; */
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    a.nav-link {
+        padding-left: 4px !important;
+        padding-right: 4px !important;
+        font-size: 28px;
+    }
+}
+
+/* MM: SOCIAL LINKS AND LANGUAGE SWITCHER */
+#socials a {
+    text-decoration: none !important;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#socials a:hover {
+    background-color: white !important;
+}
+
+/* Font Awesome Social Icons */
+.fab {
+    padding-top: 10px;;
+    padding-bottom: 10px;;
+    padding-left: 5px;
+    padding-rigth: 5px;
+    font-size: 35px;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
+
+
+
+#language-switcher a {
+    font-size: 40px !important;
+    color: black !important;
+    font-weight: bold;
+}
+
+/* PAGE FOOTER */
+#copyright {
+    text-align: center;
+    /* margin-bottom: 10px; */
+}
+
+#copyright p {
+    margin-bottom: 10px;
+}
+
+/* ARTICLE */
+/* #article-content { */
+/*     margin-top: 30px; */
+/*     margin-bottom: 30px; */
+/* } */
+
+/* FOOTER */
+#site-footer {
+    border-top: 2px solid black;
+    background-color: white;
+    padding-top: 20px;
+    font-size: 16px;
+}
+
+#footer-left {
+
+    min-width: 440px;
+    margin-right: 80px;
+    /* max-width: 500px; */
+}
+
+#footer-contacts {
+    width: 50%;
+    height: 290px;
+}
+
+#footer-staff-contacts {
+    padding-left: 0px;
+    padding-right: 0px;
+
+}
+
+.footer-staff-contact {
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+#footer-address {
+    width: 50%;
+    height: 290px;
+}
+
+#footer-banking {
+    width: 50%;
+    height: 290px;
+}
+
+#footer-icodico {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#footer-partner {
+    width: 50%;
+    height: 290px;
+}
+
+#footer-right {
+    min-width: 440px;
+    /* margin-left: 40px; */
+    /* max-width: 500px; */
+}
+
+.footer-section-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#footer-operation {
+    margin-top:20px;
+}
+
+#site-footer a {
+    text-decoration: underline !important;
+    transition-property: all;
+    transition-duration: 0.2s;
+    transition-delay: 0s;
+    color: black;
+}
+
+#site-footer a:hover {
+    color: white;
+    text-decoration: none !important;
+    background-color: black;
+    text-decoration: none;
+    /* font-weight: bold; */
+    border-radius: 1px;
+    padding: 1px;
+}
+
+/* Responsive rules  */
+@media screen and (max-width: 1199px) {
+    #footer-left, #footer-right {
+        max-width: 650px;
+    }
+
+    #footer-left {
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    #footer-left, #footer-right {
+        max-width: 580px;
+    }
+
+    #footer-left {
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #footer-left, #footer-right {
+        max-width: 440px;
+    }
+
+    #footer-left {
+        margin-right: auto;
+        margin-left: auto;
+    }
+}

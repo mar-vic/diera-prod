@@ -1,0 +1,394 @@
+/* Style rules for the calendar app */
+
+ul {list-style-type: none;}
+
+/* Calendar container */
+#calendar {
+    padding:0px;
+    margin-top:30px;
+    margin-bottom:30px;
+}
+
+#calendar-nav {
+    margin-bottom: 2px;
+    padding-left: 13px;
+    padding-right: 13px;
+}
+
+#id_month, #id_year, #show-program-button {
+    width: 100%;
+    height: 60px;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 0px;
+    text-align: center;
+    font-size: 30px;
+}
+
+#id_month:hover, #id_year:hover, #show-program-button:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    border: 2px solid white;
+}
+
+.weekdays {
+    margin: 0;
+    padding: 10px 0;
+    background-color:#ddd;
+    text-align: center;
+}
+
+.days {
+    text-align: center;
+    background: #eee;
+}
+
+.days .row {
+    height: 200px;
+}
+
+/* Rules for event teasers */
+.days .card {
+    border-radius: 0px;
+    border: 2px solid black;
+    height: 100%
+}
+
+.days .eteaser-header {
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    border-radius: 0px;
+    background-color: black;
+    color: white;
+    height: 20%;
+}
+
+.days .eteaser-body {
+    height:80%;
+
+}
+
+.days .scrollable {
+    display: flex;
+    /* justify-content:center; */
+    align-items:center;
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    padding: 10px;
+}
+
+.days .events {
+    margin: auto;
+    max-height: 100%;
+}
+
+.days .event {
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    /* border-top: 1px solid black; */
+    /* border-bottom: 1px solid black; */
+}
+
+.days .event-title {
+}
+
+.days .event-text {
+    font-size: 12px;
+}
+
+
+/* NEW RULES */
+
+.month {
+    background-color: white;
+    padding: 15px;
+    text-align: center;
+    color: black;
+    border: 2px solid black;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 2px;
+}
+
+.month .fas {
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 24px;
+}
+
+.month a {
+    text-decoration: none;
+    color: black;
+}
+
+.month a:hover {
+    color: grey;
+}
+
+/* Make calendar cells squares with black background */
+.square {
+    background-color: white;
+    margin: 2px;
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 100%;
+    border: 2px solid black;
+}
+
+.day {
+    padding: 0;
+}
+
+.content {
+    position: absolute;
+    color: black;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 95px;
+    font-weight: bold;
+    /* border: 2px solid black; */
+}
+
+.event-anchor {
+    width: 100%;
+    height: 100%;
+}
+
+.event-anchor img {
+    width: 100%;
+    height: 100%;
+}
+
+.carousel, .carousel-inner, .carousel-item {
+    width: 100%;
+    height: 100%;
+}
+
+/* Dot indicators */
+.carousel-indicators li {
+    width: 10px;
+    height: 10px;
+    margin-left: 4px;
+    margin-right: 4px;
+    border-radius: 50%;
+}
+
+/* Rules for popover template */
+.popover {
+    border: 2px solid black;
+    border-radius: 0px;
+    font-family: Elastik-A;
+    font-size: 30px;
+}
+
+.popover-date {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.popover-time {
+    text-align: right;
+}
+
+.popover-header {
+    background-color: white;
+    border: none;
+    font-size: 30px;
+    font-weight: bold;
+    padding-bottom: 4px;
+}
+
+.pop-body {
+    font-size: 26px;
+    line-height: 1.1;
+    padding-top: 4px;
+    padding-left: 12px;
+    padding-rigth: 12px;
+    text-transform: uppercase;
+}
+
+.popover img {
+    width: 100%;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+/* Rules for smaller displays */
+
+#month-slider-sm {
+    /* text-align:center; */
+    background-color: white;
+    border: 2px solid black;
+    width:792px;
+    padding: 12px;
+    color: black;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom:2px;
+}
+
+#month-slider-sm .fas {
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 24px;
+}
+
+#month-slider-sm a {
+    text-decoration: none;
+    color: black;
+}
+
+#month-slider-sm a:hover {
+    color: grey;
+}
+
+.eteaser-sm {
+    /* width: 50%; */
+    border-radius: 0;
+    border: 2px solid black;
+    background-color: white;
+    margin: 3px;
+}
+
+.eteaser-sm-schedule {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 12px;
+    padding-right: 12px;
+    font-size: 30px;
+}
+
+.eteaser-sm img {
+    width: 100%;
+}
+
+.eteaser-sm-title {
+    font-size: 30px;
+    font-weight: bold;
+    padding-bottom: 4px;
+    padding-right: 12px;
+    padding-left: 12px;
+}
+
+.eteaser-sm-title a {
+    text-decoration: none;
+    color: black;
+}
+
+.eteaser-sm-genre {
+    font-size: 26px;
+    text-transform: uppercase;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+/* MASONRY GRID */
+.masonry-grid {
+    /* center grid items */
+    margin: 0 auto;
+}
+
+/* clear fix */
+.grid:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.grid-item {
+    width: 260px;
+    float: left;
+}
+
+#no-upcoming-container {
+    border: 2px solid black;
+    background-color: white;
+    /* height: 400px; */
+    /* margin-bottom: 40px; */
+    /* margin-left: 2px; */
+    /* margin-right: 2px; */
+}
+
+/* breakpoints for calendar for smaller displays */
+@media screen and (max-width: 1199px) {
+    #calendar-container {
+        display: none !important;
+    }
+
+    #calendar-sm {
+        display: block !important;
+    }
+
+    .grid-item {
+        width: 406px;
+    }
+
+    #calendar-nav {
+        width: 821px;
+    }
+
+    #no-upcoming-container {
+        width: 818px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    #calendar-container {
+        display: none !important;
+    }
+
+    #calendar-sm {
+        display: block !important;
+    }
+
+    .grid-item {
+        width: 303px;
+    }
+
+    #calendar-nav {
+        width: 615px;
+    }
+
+    #no-upcoming-container {
+        width: 612px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #calendar-container {
+        display: none !important;
+    }
+
+    #calendar-sm {
+        display: block !important;
+    }
+
+    .grid-item {
+        width: 400px;
+    }
+
+    #calendar-nav {
+        width: 404px;
+    }
+
+    #id_month, #id_year, #show-program-button {
+        height: 50px;
+        font-size: 18px;
+    }
+
+    #no-upcoming-container {
+        width: 401px;
+    }
+}
+
+

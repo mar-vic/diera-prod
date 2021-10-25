@@ -1,0 +1,53 @@
+{% extends "photologue/root.html" %}
+{% load i18n %}
+{% load custom_tags %}
+
+{% block css %}
+{% load static %}
+<link href="{% static 'galleries.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block title %}{% blocktrans with show_month=month|date:"F Y" %}Galleries for {{ show_month }}{% endblocktrans %}{% endblock %}
+
+{% block content %}
+
+
+<div style="padding-left: 15px; padding-right: 15px;">
+    <div id="galleries" class="container gallery">
+
+        <div class="row">
+            <div class="col-12" style="padding-right:2px;padding-left:2px;">
+                <div id="archives">
+                    <div class="row">
+                        <div class="col-md-auto" style="text-align:right;padding-left:30px;padding-right:0px;">
+                            {% translate "Archives:" %}
+                        </div>
+                        <div class="col-md-auto">
+                            <div class="row" style="padding-left:0px;padding-right:10px;">
+			                          <div class="col-auto archive">
+                                    <a href="{% url 'photologue:pl-gallery-archive-year' month.year %}">&#11180; {% blocktrans with show_month=month|date:"Y" %}{{ show_month }}{% endblocktrans %} </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col" style="text-align:right;padding-right:30px;">
+                            {% blocktrans with show_month=month|date:"M Y" %}{{ show_month }}{% endblocktrans %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+		        {% if object_list %}
+		        {% for gallery in object_list %}
+            <div class="col-6" style="padding-right:2px;padding-left:2px;">
+                {% gallery_slider gallery %}
+            </div>
+		        {% endfor %}
+		        {% else %}
+		        <p>{% trans "No galleries were found." %}</p>
+		        {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

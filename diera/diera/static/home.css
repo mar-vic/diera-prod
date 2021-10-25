@@ -1,0 +1,96 @@
+/* Rules specific to homepage elements */
+
+/* FEATURED ARTICLES AND EVENTS */
+#featured {
+    margin-bottom: 30px;
+    margin-top: 30px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#featured .card {
+    border-radius: 0px;
+    width:100%;
+    border:2px solid black;
+}
+
+#featured .card img {
+    padding: 10px;
+    width: 100%;
+}
+
+.featured-teaser-title {
+    font-size: 55px;
+    line-height: 0.9;
+    margin-bottom: 10px;
+    hyphens: none;
+}
+
+.featured-teaser-title a{
+    text-decoration: none;
+    color: #212529;
+}
+
+.featured-teaser-text {
+    font-size: 22px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.featured-teaser .card-body {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding: 10px;
+}
+
+.featured-teaser .card-footer {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding-left: 0px;
+    padding-right: 0px;
+    border-top: 2px solid black !important;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 30px;
+    line-height: 1.4;
+}
+
+.featured-teaser {
+    padding-right: 3px;
+    padding-left: 3px;
+    margin-bottom: 6px !important;
+}
+
+.featured-teaser-text a {
+    text-decoration: underline;
+    transition-property: all;
+    transition-duration: 0.2s;
+    transition-delay: 0s;
+    color: black;
+}
+
+.featured-teaser-text a:hover {
+    text-decoration: none;
+    color: white;
+    background-color: black;
+}
+
+
+/* MASONRY GRID */
+.masonry-grid {
+    /* center grid items */
+    margin: 0 auto;
+}
+
+/* clear fix */
+.grid:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.grid-item {
+    width: 50%;
+    min-width: 420px;
+    float: left;
+}

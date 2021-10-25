@@ -1,0 +1,39 @@
+#featured-article {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: white;
+    padding: 10px;
+    border: 2px solid black;
+}
+
+#hero-image {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#featured-article-title {
+    font-size: 55px;
+    line-height: 0.9;
+    text-transform: uppercase;
+    hyphens: none !important;
+    margin-bottom: 15px;
+}
+
+#featured-article-body {
+    font-size: 30px;
+    line-height: 1.1;
+}
+
+#featured-article-body a {
+    text-decoration: underline;
+    transition-property: all;
+    transition-duration: 0.2s;
+    transition-delay: 0s;
+    color: black;
+}
+
+#featured-article-body a:hover {
+    text-decoration: none;
+    color: white;
+    background-color: black;
+}

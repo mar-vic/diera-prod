@@ -1,0 +1,171 @@
+/* ABOUT US */
+#about {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: white;
+    border: 2px solid black;
+    font-size: 20px !important;
+}
+
+h1 {
+    font-size: 55px !important;
+    line-height: 0.9 !important;
+    margin-top: 10px !important;
+    margin-bottom: 15px !important;
+    text-transform: uppercase;
+}
+
+#about-content * {
+    font-size: 30px !important;
+    line-height: 1.1 !important;
+}
+
+#about-content h2 {
+    font-size: 30px !important;
+    line-height: 0.9 !important;
+    text-transform: uppercase;
+}
+
+#about-content ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    font-size: 11px;
+}
+
+#about-content li ul {
+    margin-bottom: 15px;
+    margin-left: 30px !important;
+}
+
+#about-content li ul {
+    font-size: 4px !important;
+}
+
+#about-content a {
+    text-decoration: underline;
+    transition-property: all;
+    transition-duration: 0.2s;
+    transition-delay: 0s;
+    color: black;
+}
+
+#about-content a:hover {
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    padding: 1px;
+    border-radius: 2px;
+}
+
+#about-sections {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#about-sections .col {
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-left: 0px;
+    padding-right: 0px;
+    /* border-bottom: 2px solid black; */
+    /* border-top: 2px solid black; */
+}
+
+#about-content .card {
+    border: none;
+    border-radius: 0px;
+    border-bottom: 2px solid black;
+    border-top: 2px solid black;
+    min-width: 230px;
+}
+
+#about-content .card-header {
+    background-color: white;
+    border: none;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#about-content .card-body {
+    padding-left: 0px;
+    padding-right: 0px;
+    font-size: 25px !important;
+    padding-top: 0px;
+}
+
+#about-content .card-body * {
+    font-size: 22px !important;
+    line-height: 1.2;
+}
+
+.gallery-slider {
+    padding: 0px !important;
+    margin-top: 0px !important;
+}
+
+#bookstore-img {
+    margin-top: 10px;
+    border: 1px solid black;
+}
+
+#dimensions * {
+    font-size: 10px !important;
+}
+
+#floor-plan:hover {
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+#floor-plan img {
+    margin-top: 10px;
+    background-color: white;
+}
+
+/* Rules for smaller displays */
+@media screen and (max-width: 992px) {
+    #about-content .card {
+        border: none;
+    }
+
+    #about-content .card-body * {
+        font-size: 30px !important;
+        line-height: 1.1;
+    }
+
+    #about-content .card-body h2 {
+        font-size: 35px;
+    }
+
+    .logo {
+        line-height: 0.9 !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #about-content .card {
+        border: none;
+    }
+
+    #about-content .card-body * {
+        font-size: 30px !important;
+        line-height: 1.1;
+    }
+
+    #about-content .card-body h2 {
+        font-size: 35px;
+    }
+
+    .logo {
+        margin-top: 30px;
+    }
+
+    .logo img {
+        position: relative !important;
+        transform: no !important;
+    }
+}

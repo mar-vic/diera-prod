@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% load cms_tags menu_tags %}
+{% load i18n %}
+{% load thumbnail %}
+
+<!-- CUSTOM TAGS LOAD -->
+{% load custom_tags %}
+{% load calendar_tags %}
+
+{% block title %}{% page_attribute "page_title" %}{% endblock title %}
+
+<!-- CSS (home specific rules) -->
+{% block css %}
+{% load static %}
+<link href="{% static 'home.css' %}" rel="stylesheet">
+{% endblock %}
+
+<!-- HOMEPAGE CONTENT -->
+{% block content %}
+
+<!-- Placeholder for marquee -->
+{% placeholder "content" %}
+
+<!-- Teasers for featured events and articles -->
+<div id="featured" class="container">
+
+    <div class="masonry-grid">
+
+        <div class="grid-sizer"></div>
+
+        <!-- Render all teasers -->
+        {% get_teasers_for_all_features request as teasers %}
+        {% for teaser in teasers %}
+        <div class="grid-item featured-teaser">
+            <div class="card">
+
+                <!-- TEASER IMAGE -->
+                {% if teaser.image %}  <!-- Checking if the extension was set -->
+                {% thumbnail teaser.image 600x300 crop upscale as teaser_image %}
+                <a href="{{ teaser.url }}">
+                    <img src="{{ teaser_image.url }}" />
+                </a>
+                {% endif %}
+
+                <!-- TEASER BODY -->
+                <div class="card-body">
+                    <div class="featured-teaser-title">
+                        <a href="{{ teaser.url }}">
+                            {{ teaser.title|upper }}
+                        </a>
+                    </div>
+                    <div class="featured-teaser-text">
+                        {% show_placeholder "perex" teaser.page_id %}
+                    </div>
+                </div>
+
+                <!-- TEASER FOOTER (FOR EVENTS ONLY) -->
+                {% if teaser.from %}
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col" style="text-align:left;">
+                            {{ teaser.from|date:"j.n." }}
+                        </div>
+                        <div class="col" style="text-align:right;">
+                            {{ teaser.from|date:"H:i" }}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
+
+{% block js %}
+<script>
+ /* Initialize all popovers */
+ $(function () {
+     $('.teaser-image').popover();
+ })
+
+ /* Initialize masonry grid */
+ var $grid = $('.masonry-grid').masonry({
+     itemSelector: '.grid-item',
+     percentPosition: true,
+     isFitWidth: true
+ });
+
+ /* Image loading bugfix for masonry */
+ $grid.imagesLoaded().progress(
+     function() {
+         $grid.masonry();
+ });
+</script>
+{% endblock js %}
+

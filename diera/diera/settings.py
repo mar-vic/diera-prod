@@ -35,11 +35,7 @@ ALLOWED_HOSTS = ['*']
 SITE_ID = 1  # DjangoCMS
 X_FRAME_OPTIONS = 'SAMEORIGIN'  # DjangoCMS
 
-MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-# STATIC_ROOT = "/home/marvic/sites/diera-prod/diera/static"
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # Application definition
 
@@ -67,6 +63,24 @@ INSTALLED_APPS = [
     'djangocms_googlemap', #DjangoCMS
     'djangocms_snippet', #DjangoCMS
     'djangocms_style',  #DjangoCMS
+    'djangocms_bootstrap4', #DjangoCMS
+    'djangocms_bootstrap4.contrib.bootstrap4_alerts', #DjangoCMS
+    'djangocms_bootstrap4.contrib.bootstrap4_badge', #DjangoCMS
+    'djangocms_bootstrap4.contrib.bootstrap4_card', #DjangoCMS
+    'djangocms_bootstrap4.contrib.bootstrap4_carousel', #DjangoCMS
+    'djangocms_bootstrap4.contrib.bootstrap4_collapse', #DjangoCMS
+    'djangocms_bootstrap4.contrib.bootstrap4_content', #DjangoCMS
+    'djangocms_bootstrap4.contrib.bootstrap4_grid', #DjangoCMS
+    'djangocms_bootstrap4.contrib.bootstrap4_jumbotron', #DjangoCMS
+    'djangocms_bootstrap4.contrib.bootstrap4_link', #DjangoCMS
+    'djangocms_bootstrap4.contrib.bootstrap4_listgroup', #DjangoCMS
+    'djangocms_bootstrap4.contrib.bootstrap4_media', #DjangoCMS
+    'djangocms_bootstrap4.contrib.bootstrap4_picture', #DjangoCMS
+    'djangocms_bootstrap4.contrib.bootstrap4_tabs', #DjangoCMS
+    'djangocms_bootstrap4.contrib.bootstrap4_utilities', #DjangoCMS
+    'photologue',
+    'sortedm2m',
+    'diera',  # My Apps
 ]
 
 THUMBNAIL_HIGH_RESOLUTION = True
@@ -104,17 +118,25 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, "templates")],
-        'APP_DIRS': True,
+        'APP_DIRS': False,
         'OPTIONS': {
             'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'sekizai.context_processors.sekizai',
-                'cms.context_processors.cms_settings',
                 'django.template.context_processors.i18n',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.template.context_processors.media',
+                'django.template.context_processors.csrf',
+                'django.template.context_processors.tz',
+                'sekizai.context_processors.sekizai',
+                'django.template.context_processors.static',
+                'cms.context_processors.cms_settings',
             ],
+            'loaders': [
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
+            ]
         },
     },
 ]
@@ -155,9 +177,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'sk'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Bratislava'
 
 USE_I18N = True
 
@@ -174,4 +196,12 @@ LANGUAGES = [
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+# STATIC_ROOT = "/home/marvic/sites/diera-prod/diera/static"
+
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")

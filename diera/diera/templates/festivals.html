@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load cms_tags menu_tags %}
+{% load custom_tags %}
+{% load i18n %}
+{% load thumbnail %}
+
+{% block title %}{% page_attribute "page_title" %}{% endblock title %}
+
+<!-- CSS rules specific for this page -->
+{% block css %}
+{% load static %}
+<link href="{% static 'festivals.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+	{% placeholder "content" %}
+
+<!-- Section showing the teasers for festivals -->
+<div id="festivals" class="container">
+
+
+    <div class="masonry-grid">
+
+        <div class="grid-sizer"></div>
+        {% get_festival_teasers request as festival_teasers %}
+        {% for festival_teaser in festival_teasers %}
+
+        <div class="grid-item featured-teaser">
+            <div class="card">
+
+                <!-- TEASER IMAGE -->
+                {% if festival_teaser.image %}  <!-- Checking if the extension was set -->
+                {% thumbnail festival_teaser.image 600x300 crop upscale as festival_teaser_image %}
+                <a href="{{ festival_teaser.url }}">
+                    <img src="{{ festival_teaser_image.url }}" />
+                </a>
+                {% endif %}
+
+
+                <!-- TEASER BODY -->
+                <div class="card-body">
+                    <div class="featured-teaser-title">
+                        <a href="{{ festival_teaser.url }}">
+                            {{ festival_teaser.title|upper }}
+                        </a>
+                    </div>
+                    <div class="featured-teaser-text">
+                        {% show_placeholder "perex" festival_teaser.page_id %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block js %}
+<script>
+ /* Initialize masonry grid */
+ var $grid = $('.masonry-grid').masonry({
+     itemSelector: '.grid-item',
+     percentPosition: true,
+     isFitWidth: true
+ });
+
+ /* Image loading bugfix for masonry */
+ $grid.imagesLoaded().progress(
+     function() {
+         $grid.masonry();
+ });
+</script>
+{% endblock js %}

@@ -1,0 +1,71 @@
+/* Rules specific to festivals page */
+#festivals {
+    margin-bottom: 30px;
+    margin-top: 30px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#festivals .card {
+    border-radius: 0px;
+    /* width:100%; */
+    border:2px solid black;
+}
+
+.featured-teaser {
+    padding-right: 3px;
+    padding-left: 3px;
+    margin-bottom: 6px !important;
+}
+
+.featured-teaser img {
+    width: 100%;
+    padding: 10px;
+    border-radius: 0px;
+}
+
+.featured-teaser-title {
+    font-size: 55px;
+    line-height: 0.9;
+    margin-bottom: 10px;
+    hyphens: none;
+}
+
+.featured-teaser-title a{
+    text-decoration: none;
+    color: #212529;
+}
+
+.featured-teaser-text {
+    font-size: 22px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.featured-teaser .card-body {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding: 10px;
+}
+
+/* MASONRY GRID */
+.masonry-grid {
+    /* center grid items */
+    margin: 0 auto;
+}
+
+/* clear fix */
+.grid:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.grid-item {
+    width: 50%;
+    min-width: 420px;
+    float: left;
+}
+
+
+

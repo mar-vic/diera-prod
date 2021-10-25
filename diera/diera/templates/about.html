@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load cms_tags menu_tags %}
+{% load custom_tags %}
+
+{% block title %}{% page_attribute "page_title" %}{% endblock title %}
+
+{% block css %}
+{% load static %}
+<link href="{% static 'about.css' %}" rel="stylesheet">
+<link href="{% static 'galleries.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div style="padding-left:15px; padding-right: 15px;">
+    <div id="about" class="container">
+
+        <!-- gallery of members of diera -->
+        {% meet_the_team %}
+
+        <h1>
+            {% page_attribute "title" %}
+        </h1>
+
+        <div id="about-content">
+	          {% placeholder "content" %}
+        </div>
+
+        <!-- LOGOS -->
+        <div id="logos" class="row" style="">
+            <div class="logo col-md-6 col-12" style="font-size: 20px; line-height: 0.9;">
+                {% translate "Events of the cultural center Diera do sveta are financed with the help of public resources through Fund for Supporting the Arts and supplemented by enterpreneurial activities of the civic organisation Diera do sveta (coffee shop and bookstore)" %}
+            </div>
+            <div class="logo col-md-3 col-12" style="">
+                <img class="" style="width:90%; position:absolute; top:50%; left:50%; transform: translate(-50%, -50%);" src="{% static '/images/elipsa-01.svg' %}" />
+            </div>
+            <div class="logo col-md-3 col-12" style="">
+                <img class="" style="width:90%; position:absolute; top:50%; left:50%; transform: translate(-50%, -50%);" src="{% static '/images/logo_FPU_cropped.png' %}" />
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,196 @@
+/* Rules for pages with galleries */
+#gallery-nav a {
+    padding:5px;
+    /* padding-right:5px; */
+    text-decoration: underline;
+    transition-property: all;
+    transition-duration: 0.2s;
+    transition-delay: 0s;
+    color: black;
+}
+
+#gallery-nav a:hover {
+    text-decoration: none;
+    color: white;
+    background-color: black;
+}
+
+#galleries {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#archives {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: white;
+    border: 2px solid black;
+    font-size: 26px;
+    text-transform: uppercase;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#archives .back {
+    border-left: 2px solid black;
+}
+
+.gallery-slider {
+    width: 100%;
+    padding: 5px;
+    margin-top: 4px;
+    border: 2px solid black;
+    background-color: white;
+}
+
+.next, .prev {
+    text-decoration: none;
+    font-size: 30px;
+    color: white;
+}
+
+.slider-header {
+    /* border: 2px solid black; */
+    padding-top: 20px;
+    padding-bottom: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin: 0px;
+    background-color: white;
+    font-size: 26px;
+    text-transform: uppercase;
+    line-height: 0.8;
+}
+
+.slider-body {
+    border: 1px solid black;
+}
+
+.slider-header .gallery-pub-date {
+    text-align: right;
+}
+
+.carousel-inner {
+    background-color: black;
+    padding:0px;
+}
+
+.image-container {
+    height: 400px;
+}
+
+.image-container img {
+    height: 100%;
+    display: block;
+    cursor: pointer;
+}
+
+/* RULES FOR MODAL GALLERIES  */
+.modal-content {
+  position: relative;
+  background-color: black;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.modal-gallery-title {
+    font-size: 30px;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.modal-gallery-desc {
+    font-size: 26px;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  position: absolute;
+  right: 10px;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal {
+    background-color: black;
+}
+
+.modal-dialog {
+    max-width: 100vw;
+}
+
+.modal-content {
+    /* background-color: black; */
+    color: white;
+    text-align: center;
+    border: none;
+}
+
+.modal-slider {
+    margin-top: 20px;
+    height: 75vh;
+}
+
+.modal-slider .carousel-item {
+    height: 100%;
+}
+
+.modal-slider .carousel-item img {
+    height: 75vh;
+}
+
+.carousel-item img {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.modal-indicators {
+    height: 50px;
+    position: absolute;
+    bottom: -70px;
+}
+
+.modal-indicators img {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.thumbnail {
+    opacity: 0.3;
+}
+
+.thumbnail:hover {
+    opacity: 1;
+}
+
+/* Rules for "Meet the Team" Gallery */
+.carousel-caption {
+    position: absolute;
+    bottom: -15px;
+}
+
+.carousel-caption h4 {
+    margin: 0px;
+}
+.carousel-caption p {
+    font-size: 18px;
+}
