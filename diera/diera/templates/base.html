@@ -80,7 +80,7 @@
                 <!-- Site pages -->
                 <div class="mr-auto ml-auto mt-0 mb-0">
                     <ul id="pages-menu" class="navbar-nav">
-                        {% show_menu 0 0 %}
+                        {% show_menu 0 0 0 0 "menu/menu.html" %}
                         <li class="nav-item">
                             <a href="https://knihy.dieradosveta.sk/" class="nav-link">BOOKSTORE</a>
                         </li>
@@ -101,7 +101,7 @@
                             </a>
                         </li>
                         <li id="language-switcher" class="nav-item">
-                            {% language_chooser %}
+                            {% language_chooser "menu/language_chooser.html" %}
                         </li>
                     </ul>
                 </div>  <!-- END OF SOCIALS AND LAN SWITCHER -->
