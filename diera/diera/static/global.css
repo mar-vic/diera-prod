@@ -15,9 +15,6 @@ main {
     flex: 1;
 }
 
-/* footer */
-
-
 /* MAIN MENU */
 #main-menu {
     background-color: white;
@@ -132,51 +129,40 @@ a.nav-link:hover {
     font-weight: bold;
 }
 
-/* PAGE FOOTER */
-#copyright {
-    text-align: center;
-    /* margin-bottom: 10px; */
-}
-
-#copyright p {
-    margin-bottom: 10px;
-}
-
-/* ARTICLE */
-/* #article-content { */
-/*     margin-top: 30px; */
-/*     margin-bottom: 30px; */
-/* } */
 
 /* FOOTER */
+footer {
+    width: 100%;
+}
+
 #site-footer {
     border-top: 2px solid black;
     background-color: white;
     padding-top: 20px;
     font-size: 16px;
+    width: 100%;
+}
+
+#page-footer .card {
+    padding: 0px;
+    border: none;
+}
+
+#page-footer .card-body {
+    padding: 0px;
 }
 
 #footer-left {
+    width: 50%;
+}
 
-    min-width: 440px;
-    margin-right: 80px;
-    /* max-width: 500px; */
+#footer-right {
+    width: 50%;
 }
 
 #footer-contacts {
     width: 50%;
     height: 290px;
-}
-
-#footer-staff-contacts {
-    padding-left: 0px;
-    padding-right: 0px;
-
-}
-
-.footer-staff-contact {
-    line-height: 1.2;
-    margin-bottom: 10px;
 }
 
 #footer-address {
@@ -189,29 +175,9 @@ a.nav-link:hover {
     height: 290px;
 }
 
-#footer-icodico {
-    padding-left: 0px;
-    padding-right: 0px;
-}
-
 #footer-partner {
     width: 50%;
     height: 290px;
-}
-
-#footer-right {
-    min-width: 440px;
-    /* margin-left: 40px; */
-    /* max-width: 500px; */
-}
-
-.footer-section-title {
-    font-size: 18px;
-    font-weight: bold;
-}
-
-#footer-operation {
-    margin-top:20px;
 }
 
 #site-footer a {
@@ -232,6 +198,14 @@ a.nav-link:hover {
     padding: 1px;
 }
 
+#copyright div {
+    text-align: center;
+}
+
+#copyright p {
+    margin-bottom: 10px;
+}
+
 /* Responsive rules  */
 @media screen and (max-width: 1199px) {
     #footer-left, #footer-right {
@@ -246,10 +220,10 @@ a.nav-link:hover {
 
 @media screen and (max-width: 992px) {
     #footer-left, #footer-right {
-        max-width: 580px;
+        width: 100%;
     }
 
-    #footer-left {
+    #footer-right {
         margin-right: auto;
         margin-left: auto;
     }
@@ -257,11 +231,24 @@ a.nav-link:hover {
 
 @media screen and (max-width: 768px) {
     #footer-left, #footer-right {
-        max-width: 440px;
+        width: 100%;
     }
 
-    #footer-left {
-        margin-right: auto;
-        margin-left: auto;
+    #footer-contacts, #footer-address, #footer-banking, #footer-partner {
+        width: 100%;
+        height: 100%;
+        margin-bottom: 50px;
+    }
+
+    #page-footer .card {
+        width: 50%;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    #fpu-logo {
+        width: 50%;
+        margin-left:auto;
+        margin-right:auto;
     }
 }

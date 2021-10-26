@@ -1,0 +1,203 @@
+{% load static %}
+
+<div id="page-footer" class="container">
+    <div class="container">
+
+        <!-- Contacts, address, banking and partner -->
+        <div class="row">
+
+            <!-- Left side of the footer -->
+            <div id="footer-left" class="col-auto">
+                <div class="row">
+
+                    <!-- Contacts -->
+                    <div id="footer-contacts" class="col-auto">
+                        <div class="card">
+
+                            <div class="card-body">
+
+                                <div style="margin-bottom: 20px;">
+                                    <b>CONTACTS</b>
+                                    <div class="text-muted" style="line-height:1.1;">
+                                        dieradosveta (at) gmail.com
+                                    </div>
+                                </div>
+
+                                <ul class="list-group" style="list-style: none;" >
+                                    <li class="" style="line-height:1.1; margin-bottom: 10px;">
+                                        <b>Ján Mikuš</b>
+                                        <br>
+                                        &nbsp &nbsp
+                                        +421 902 069 750
+                                    </li>
+
+                                    <li class="" style="line-height:1.1; margin-bottom: 10px;">
+                                        <b>Jana Hanzelová</b>
+                                        <br>
+                                        &nbsp &nbsp
+                                        +421 949 368 311
+                                    </li>
+
+                                    <li class="" style="line-height:1.1;margin-bottom: 10px;">
+                                        <b>Róbert Repka</b>
+                                        <br>
+                                        &nbsp &nbsp
+                                        +421 902 069 750
+                                    </li>
+
+                                    <li class="" style="line-height:1.1;margin-bottom: 10px;">
+                                        <b>Barbora Bohušová</b>
+                                        <br>
+                                        &nbsp &nbsp
+                                        +421 915 350 327
+                                    </li>
+
+                                </ul>
+
+                            </div>  <!-- /card-body -->
+
+                        </div>  <!-- /card -->
+
+                    </div>  <!-- /footer-contacts -->
+
+                    <!-- Address -->
+                    <div id="footer-address" class="col-auto">
+
+                        <!-- Operation -->
+                        <div class="row">
+                            <div class="col">
+
+                                <div class="card" style="margin-bottom: 20px;">
+
+                                    <div class="card-body">
+
+                                        <b>OPERATION</b>
+                                        <div style="line-height:1.1">
+                                            Námestie osloboditeľov 1, č.s. 61 • 0301 01, Liptovský Mikuláš • Slovakia
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>  <!-- /operation row -->
+
+                        <!-- Registered office -->
+                        <div class="row">
+
+                            <div class="col">
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <b>REGISTERED OFFICE</b>
+                                        <div style="line-height:1.1">
+                                            Diera do sveta o.z. • A. Bernoláka 42/11 • 031 01, Liptovský Mikuláš • Slovakia
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>  <!-- /registered-office row -->
+
+                    </div>  <!-- /address col -->
+
+                </div>
+
+            </div>  <!-- /left-footer col -->
+
+            <!-- Right side of the footer -->
+            <div id="footer-right" class="col-auto">
+                <div class="row">
+
+                    <div id="footer-banking" class="col-auto"> <!-- Banking -->
+
+                        <div class="row"> <!-- ICODICO -->
+
+                            <div class="col">
+
+                                <div class="card" style="margin-bottom: 20px;">
+
+                                    <div class="card-body">
+                                        <div style="line-height:1.1">
+                                            <b>IČO:</b> 423 857 76
+                                            <br>
+                                            <b>DIČ:</b> 2024 0736 01
+                                            <br>
+                                            We do not pay VAT
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>  <!-- /ICODICO -->
+
+                        <div class="row"> <!-- Bank account -->
+                            <div class="col">
+
+                                <div class="card" style="margin-bottom: 20px;">
+                                    <div class="card-body">
+                                        <span class="card-title"><b>BANK ACCOUNT</b></span>
+                                        <div style="line-height:1.1">
+                                            Bank: FIO
+                                            <br>
+                                            IBAN: <span style="font-size:11px;">SK8983300000002500592531</span>
+                                            <br>
+                                            BIC/SWIFT: FIOZSKBAXXX
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>  <!-- /bank account row -->
+
+                    </div>
+
+                    <!-- Partner -->
+                    <div id="footer-partner" class="col-auto">
+
+                        <div class="row">  <!-- dedication -->
+                            <div class="col">
+                                <div class="card" style="margin-bottom: 30px;">
+                                    <div class="card-body">
+                                        <div style="line-height:1.1">
+                                            Events of CC Diera do sveta are financed with the help of public resources through <a href="https://www.fpu.sk/sk/">Fund for Supporting the Arts</a>.
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <div id="fpu-logo">
+                                    <img id="fpu-logo" src="{% static '/images/logo_FPU_cropped.png' %}" style="width:100%">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div id="copyright" class="row">
+
+            <div class="col-12">
+                © Copyright Diera do sveta {% now "Y" %}. All rights reserved. <a href="#">GDPR</a>.
+            </div>
+
+            <div class="col-12">
+                <b>design:</b> boba  <b>dev:</b> marvic <b>tech:</b> <a href="django">djangoCMS</a>
+            </div>
+
+        </div>
+    </div>
+</div>

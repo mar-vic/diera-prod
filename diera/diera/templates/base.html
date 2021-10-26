@@ -118,8 +118,8 @@
         <!-- FOOTER -->
         <footer id="site-footer">
             {% static_placeholder "footer" %}
+            {% include "footer.html" %}
         </footer>
-
 
         {% block js %}{% endblock js %}
         {% render_block "js" %}
