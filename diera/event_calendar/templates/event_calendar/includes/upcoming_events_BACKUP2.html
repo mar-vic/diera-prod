@@ -1,0 +1,43 @@
+<div class="col-sm6 col-lg-6 mb-4">
+    <div class="card">
+        <div class="card-header text-white">
+            Upcoming Events
+        </div>
+        <div class="card-body feature-teaser-body">
+            <div class="card-text">
+                {% for eteaser in eteasers %}
+                <div class="card mb-3" >
+                    <div class="card-header">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <span>{{ eteaser.date_from|date:"j M." }}</span>
+                            </div>
+                            <div class="col-md-8" style="text-align:right;">
+                                <span>{{ eteaser.date_from|date:"H:i / l" }}</span>
+                            </div>
+                            <div class="col-md-1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-0">
+                        <div class="col-md-3 g-0 eteaser-image">
+                            <img src="{{ eteaser.image_url }}">
+                        </div>
+                        <div class="col-md-9 g-0">
+                            <div class="card-body">
+                                <a href="{{ eteaser.event_url }}">
+                                    <h4 class="card-title">{{ eteaser.event_title }}</h4>
+                                </a>
+                                {{ eteaser.text }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="card-footer">
+            <a href="">More</a>
+        </div>
+    </div>
+</div>

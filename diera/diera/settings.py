@@ -80,9 +80,10 @@ INSTALLED_APPS = [
     'djangocms_bootstrap4.contrib.bootstrap4_utilities', #DjangoCMS
     'photologue',
     'sortedm2m',
-    'diera',  # My Apps
-    'page_extensions',  # My Apps
-    'wizards',  # My Apps
+    'diera',  # Diera Apps
+    'page_extensions',  # Diera Apps
+    'event_calendar',  # Diera Apps
+    'wizards',  # Diera Apps
 ]
 
 THUMBNAIL_HIGH_RESOLUTION = True

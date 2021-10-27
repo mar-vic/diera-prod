@@ -1,0 +1,93 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-20 14:08+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n "
+">= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
+
+#: event_calendar/forms.py:9
+msgid "January"
+msgstr ""
+
+#: event_calendar/forms.py:10
+msgid "February"
+msgstr ""
+
+#: event_calendar/forms.py:11
+msgid "March"
+msgstr ""
+
+#: event_calendar/forms.py:12
+msgid "April"
+msgstr ""
+
+#: event_calendar/forms.py:13
+msgid "May"
+msgstr ""
+
+#: event_calendar/forms.py:14
+msgid "June"
+msgstr ""
+
+#: event_calendar/forms.py:15
+msgid "July"
+msgstr ""
+
+#: event_calendar/forms.py:16
+msgid "August"
+msgstr ""
+
+#: event_calendar/forms.py:17
+msgid "September"
+msgstr ""
+
+#: event_calendar/forms.py:18
+msgid "October"
+msgstr ""
+
+#: event_calendar/forms.py:19
+msgid "November"
+msgstr ""
+
+#: event_calendar/forms.py:20
+msgid "December"
+msgstr ""
+
+#: event_calendar/templates/event_calendar/calendar.html:36
+msgid "Show"
+msgstr "Zobraziť"
+
+#~ msgid "Mon"
+#~ msgstr "Po"
+
+#~ msgid "Tue"
+#~ msgstr "Ut"
+
+#~ msgid "Wed"
+#~ msgstr "St"
+
+#~ msgid "Thu"
+#~ msgstr "Št"
+
+#~ msgid "Fri"
+#~ msgstr "Pi"
+
+#~ msgid "Sat"
+#~ msgstr "So"
+
+#~ msgid "Sun"
+#~ msgstr "Ne"

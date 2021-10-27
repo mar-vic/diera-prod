@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load calendar_tags %}
+{% load cms_tags %}
+
+{% block title %}KC Diera - Program ({% month_name month %} {{ year }}){% endblock title %}
+
+{% block background-image %}
+    body {
+        background-image: url('{% get_background_image_url_for_month year month %}');
+    }
+{% endblock background-image %}
+
+{% block css %}
+{% load static %}
+<link href="{% static 'program.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div id="calendar" class="container">
+
+    <!-- Calendar navigation form -->
+    <div class="container" id="calendar-nav">
+        <form class="row" action="{% url 'event_calendar:calendar' %}" method="post">
+            {% csrf_token %}
+
+            <div class="col-4 pl-1 pr-1">
+                {{ calNavForm.month }}
+            </div>
+
+            <div class="col-4 pr-1 pl-0">
+                {{ calNavForm.year }}
+            </div>
+
+            <div class="col-4 pl-0 pr-1">
+                <input id="show-program-button" type="submit" value="{% translate 'Show' %}">
+            </div>
+        </form>
+    </div>
+
+    <!-- Events calendar -->
+    {% calendar year month %}
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+
+ /* Initialize all popovers */
+ $(function () {
+     $('.teaser-image').popover();
+ })
+
+ /* Initialize the masonry */
+ var $grid = $('.masonry-grid').masonry({
+     itemSelector: '.grid-item',
+     percentPosition: true,
+     isFitWidth: true,
+ });
+
+ /* Image loading bugfix for masonry */
+ $grid.imagesLoaded().progress(
+     function() {
+         $grid.masonry();
+ });
+
+</script>
+{% endblock js %}
+
+
+

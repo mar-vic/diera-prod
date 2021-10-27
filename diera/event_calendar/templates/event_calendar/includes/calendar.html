@@ -1,0 +1,214 @@
+{% load i18n %}
+{% load cms_tags menu_tags %}
+{% load thumbnail %}
+
+<div id="calendar-container" class="container" style="" >
+
+    <!-- DAYS GRID -->
+    <!-- Iterate through weeks of the month -->
+    {% for eteasers_for_week in eteasers_for_month %}
+    <div class="row"> <!-- A row represents a week -->
+
+        <!-- Iterate through days of the week -->
+        {% for eteasers_for_day in eteasers_for_week %}
+        <div class="col day"> <!-- A column represents a day -->
+
+            {% if eteasers_for_day.0 == 0 %}  <!-- Day is not a part of the month -->
+            <div class="square" style="display:none;">  <!-- Do not display days outside of month -->
+                <div class="content"></div>
+            </div>
+
+            {% elif eteasers_for_day.1|length == 0 %}  <!-- Day is a part of the month, but without scheduled events -->
+
+            {% now "d" as current_day %}
+            {% now "m" as current_month %}
+
+            <!-- Highlight current days without scheduled events -->
+            {% if current_day == eteasers_for_day.0|slugify and current_month == program_date|date:"m"|slugify %}
+            <div class="square" style="background-color:black;">
+                <div class="content" style="color:white">
+                    {{ eteasers_for_day.0 }}
+                </div>
+            </div>
+            {% else %}
+            <div class="square" style="">
+                <div class="content">
+                    {{ eteasers_for_day.0 }}
+                </div>
+            </div>
+            {% endif %}
+
+            {% elif eteasers_for_day.1|length == 1 %}  <!-- One event is scheduled for the day -->
+            <div class="square">
+                <div class="content">
+
+                    {% with eteaser=eteasers_for_day.1.0 %}  <!-- Select the teaser -->
+                    <a class="event-anchor" href="{{ eteaser.event_url }}">
+
+                        {% thumbnail eteaser.image 400x430 crop upscale as eteaser_image %}
+                        {% thumbnail eteaser.image 600x300 crop upscale as eteaser_image_pop %}
+                        <img class="teaser-image"
+                             id="thumb-{{ eteasers_for_day.0 }}-0"
+                             src="{{ eteaser_image.url }}"
+                             title="{{ eteaser.event_title|upper }}"
+                             data-trigger="hover"
+                             data-toggle="popover"
+                             data-template='<div class="popover" role="tooltip"><div class="row popover-date"><div class="col popover-day">{{ eteaser.date_from|date:"j. n." }}</div><div class="col popover-time">{{ eteaser.date_from|date:"H:i" }}</div></div><img src="{{ eteaser_image_pop.url }}"/><h3 class="popover-header"></h3><div class="pop-body">{% show_placeholder "genre" eteaser.page_id %}</div></div>'
+                        />
+                    </a>
+                    {% endwith %}
+
+                </div>
+            </div>
+
+            {% else %}  <!-- There are multiple events scheduled for the day -->
+            <div class="square">
+                <div class="content">
+
+                    <!-- Multiple events are shown in carousel -->
+                    <div id="carousel-{{ eteasers_for_day.0 }}" class="carousel slide carousel-fade" data-ride="carousel" data-interval="false">
+                        <div class="carousel-inner">
+
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators">
+
+                                <!-- Iterate through event teasers for the day and generate carousel indicators -->
+                                {% for eteaser in eteasers_for_day.1 %}
+
+                                {% if forloop.counter0 == 0 %}
+                                <li data-target="#carousel-{{ eteasers_for_day.0 }}" data-slide-to="{{ forloop.counter0 }}" class="active"></li>
+                                {% else %}
+                                <li data-target="#carousel-{{ eteasers_for_day.0 }}" data-slide-to="{{ forloop.counter0 }}"></li>
+                                {% endif %}
+
+                                {% endfor %}
+
+                            </ol>
+
+                            <!-- Iterate through event teasers for the day and generate carousel slides -->
+                            {% for eteaser in eteasers_for_day.1 %}
+
+                            {% if forloop.counter0 == 0 %}  <!-- First slide -->
+                            <div class="carousel-item active">
+                                <a class="event-anchor" href="{{ eteaser.event_url }}">
+
+                                    <div class="teaser-image">
+                                        {% thumbnail eteaser.image 400x430 crop upscale as eteaser_image %}
+                                        {% thumbnail eteaser.image 600x300 crop upscale as eteaser_image_pop %}
+                                        <img class="teaser-image"
+                                            id="thumb-{{ eteasers_for_day.0 }}-0"
+                                            src="{{ eteaser_image.url }}"
+                                            title="{{ eteaser.event_title|upper }}"
+                                            data-trigger="hover"
+                                            data-toggle="popover"
+                                            data-template='<div class="popover" role="tooltip"><div class="row popover-date"><div class="col popover-day">{{ eteaser.date_from|date:"j. n." }}</div><div class="col popover-time">{{ eteaser.date_from|date:"H:i" }}</div></div><img src="{{ eteaser_image_pop.url }}"/><h3 class="popover-header"></h3><div class="pop-body">{% show_placeholder "genre" eteaser.page_id %}</div></div>'
+                                        />
+                                    </div>
+
+                                </a>
+                            </div>
+
+                            {% else %}  <!-- Rest of slides -->
+                            <div class="carousel-item">
+                                <a class="event-anchor" href="{{ eteaser.event_url }}">
+
+                                    <div class="teaser-image">
+                                        {% thumbnail eteaser.image 400x430 crop upscale as eteaser_image %}
+                                        {% thumbnail eteaser.image 600x300 crop upscale as eteaser_image_pop %}
+                                        <img class="teaser-image"
+                                            id="thumb-{{ eteasers_for_day.0 }}-0"
+                                            src="{{ eteaser_image.url }}"
+                                            title="{{ eteaser.event_title|upper }}"
+                                            data-trigger="hover"
+                                            data-toggle="popover"
+                                            data-template='<div class="popover" role="tooltip"><div class="row popover-date"><div class="col popover-day">{{ eteaser.date_from|date:"j. n." }}</div><div class="col popover-time">{{ eteaser.date_from|date:"H:i" }}</div></div><img src="{{ eteaser_image_pop.url }}"/><h3 class="popover-header"></h3><div class="pop-body">{% show_placeholder "genre" eteaser.page_id %}</div></div>'
+                                        />
+                                    </div>
+
+                                </a>
+                            </div>
+                            {% endif %}
+
+                            {% endfor %}  <!-- Close tag for iterating through events of the day -->
+
+                        </div>
+
+                        <!-- Carousel controls -->
+                        <a class="carousel-control-prev" href="#carousel-{{ eteasers_for_day.0 }}" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carousel-{{ eteasers_for_day.0 }}" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>  <!-- Close carousel -->
+                </div>  <!-- Closes calendar content cell -->
+            </div>  <!-- Close the square -->
+
+            {% endif %} <!-- Close no/single/multiple events branching -->
+
+        </div> <!-- Close column branching -->
+        {% endfor %}  <!-- Close the tag for iterating through days of the week -->
+
+    </div>
+    {% endfor %}  <!-- Close the tag for iterating through weeks of the month -->
+</div>
+
+<!-- CALENDAR FOR SMALLER DISPLAYS -->
+<div id="calendar-sm" class="container" style="display:none">
+
+    <div class="masonry-grid">
+
+        <div class="grid-sizer"></div>
+
+        <!-- MASONRY GRID OF EVENT TEASERS (FOR DISPLAYS) -->
+
+
+        <!-- Show only upcoming events on smaller displays -->
+        {% for eteaser in eteasers_for_month.upcoming_eteasers %}
+        <div class="grid-item eteaser-sm">
+
+            <!-- EVENT SCHEDULING -->
+            <div class="row eteaser-sm-schedule">
+                <div class="col" style="text-align:left;">
+                    {{ eteaser.date_from|date:"j.n." }}
+                </div>
+                <div class="col" style="text-align:right;">
+                    {{ eteaser.date_from|date:"H:i" }}
+                </div>
+            </div>
+
+            <!-- TEASER IMAGE -->
+            {% if eteaser.image %}  <!-- Checking if the extension was set -->
+            {% thumbnail eteaser.image 600x300 crop upscale as eteaser_image %}
+            <a href="{{ eteaser.event_url }}" style="">
+                <img src="{{ eteaser_image.url }}" style="border-top:2px solid black; border-bottom:2px solid black" />
+            </a>
+            {% endif %}
+
+            <!-- TEASER TITLE -->
+            <div class="eteaser-sm-title">
+                <a href="{{ eteaser.event_url }}">
+                    {{ eteaser.event_title|upper }}
+                </a>
+            </div>
+
+            <!-- GENRE -->
+            <div class="eteaser-sm-genre">
+                {% show_placeholder "genre" eteaser.page_id %}
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        {% load static %}
+
+        <!-- Show fallback image when there are no upcoming events for present month -->
+
+        {% endfor %}  <!-- / upcoming events -->
+
+    </div> <!-- ENDING TAG FOR MASONRY -->
+
+</div>  <!-- ENDING TAG FOR CONTAINER FOR MASONRY -->
