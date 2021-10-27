@@ -230,24 +230,30 @@ footer {
 }
 
 @media screen and (max-width: 768px) {
+    #page-footer * {
+        font-size: 12px;
+    }
+
     #footer-left, #footer-right {
-        width: 100%;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     #footer-contacts, #footer-address, #footer-banking, #footer-partner {
         width: 100%;
         height: 100%;
-        margin-bottom: 50px;
+        margin-bottom: 30px;
     }
 
     #page-footer .card {
-        width: 50%;
+        width: 100%;
         margin-left:auto;
         margin-right:auto;
     }
 
     #fpu-logo {
-        width: 50%;
+        width: 100%;
         margin-left:auto;
         margin-right:auto;
     }
