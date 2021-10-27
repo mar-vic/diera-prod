@@ -74,7 +74,7 @@ msgstr ""
 
 #: templates/footer.html:195
 msgid "All rights reserved"
-msgstr "Všetky práva vyhradené."
+msgstr "Všetky práva vyhradené"
 
 #: templates/footer.html:199
 msgid "design"
