@@ -83,6 +83,7 @@ INSTALLED_APPS = [
     'diera',  # Diera Apps
     'page_extensions',  # Diera Apps
     'event_calendar',  # Diera Apps
+    'calendar_cms_integration',  # Diera Apps
     'wizards',  # Diera Apps
 ]
 
