@@ -24,11 +24,11 @@
         <form class="row" action="{% url 'event_calendar:calendar' %}" method="post">
             {% csrf_token %}
 
-            <div id="year-col" class="col-4 pl-1 pr-1">
+            <div id="year-select-container" class="col-4 pl-1 pr-1">
                 {{ calNavForm.month }}
             </div>
 
-            <div class="col-4 pr-1 pl-0">
+            <div id="month-select-container" class="col-4 pr-1 pl-0">
                 {{ calNavForm.year }}
             </div>
 

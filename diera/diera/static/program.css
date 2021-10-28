@@ -27,6 +27,25 @@ ul {list-style-type: none;}
     font-size: 30px;
 }
 
+/* Change the arrow in dorpdown boxes */
+#year-select-container select, #month-select-container select {
+    appearance: none;
+    /* postion: relative; */
+    /* width: 100%; */
+}
+
+#year-select-container::after, #month-select-container::after {
+    color: black;
+    content: "\25BC";
+    position: absolute;
+    top: 13px;
+    right: 20px;
+}
+
+#year-select-container:hover::after, #month-select-container:hover::after {
+    color: white;
+}
+
 #id_month:hover, #id_year:hover, #show-program-button:hover {
     background-color: black;
     color: white;
@@ -311,7 +330,7 @@ ul {list-style-type: none;}
 }
 
 #infographics-container {
-    padding:0px;
+    padding:2px;
 }
 
 #infographics-container img {
@@ -337,7 +356,7 @@ ul {list-style-type: none;}
     }
 
     #infographics-container {
-        width: 818px;
+        width: 820px;
     }
 }
 
@@ -359,7 +378,13 @@ ul {list-style-type: none;}
     }
 
     #infographics-container {
-        width: 612px;
+        width: 614px;
+    }
+
+    #year-select-container::after, #month-select-container::after {
+        font-size: 13px;
+        top: 20px;
+        right: 15px;
     }
 }
 
@@ -370,26 +395,26 @@ ul {list-style-type: none;}
 
     #calendar-sm {
         display: block !important;
-        padding-left: 8px;
-        padding-right: 8px;
+    }
+
+
+    #calendar-nav {
+        width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #calendar-sm {
+        padding-left: 0px;
+        padding-right: 0px;
     }
 
     .grid-item {
-        width: 100%;
-        margin-left: 0px;
-        margin-right: 0px;
+        width: 495px;
     }
 
-    #calendar-nav {
-        width: 100%;
-    }
-
-    #year-col {
-        padding-left: 10px !important;
-    }
-
-    #submit-col {
-        padding-right: 10px !important;
+    #infographics-container {
+        width: 499px;
     }
 
     #id_month, #id_year, #show-program-button {
@@ -397,10 +422,71 @@ ul {list-style-type: none;}
         font-size: 18px;
     }
 
+    #year-select-container::after, #month-select-container::after {
+        font-size: 13px;
+        top: 15px;
+        right: 20px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #year-select-container::after, #month-select-container::after {
+        font-size: 13px;
+        top: 15px;
+        right: 13px;
+    }
+
+    #calendar-nav {
+        width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #calendar-sm {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+
+    .grid-item {
+        width: 396px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     #infographics-container {
-        width: 100%;
-        padding-left: 8px;
-        padding-right: 8px;
+        width: 398px;
+    }
+}
+
+
+@media screen and (max-width: 400px) {
+    #year-select-container::after, #month-select-container::after {
+        font-size: 13px;
+        top: 15px;
+        right: 13px;
+    }
+
+    #calendar-nav {
+        width: 380px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #calendar-sm {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+
+    .grid-item {
+        width: 376px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #infographics-container {
+        width: 379px;
     }
 }
 
