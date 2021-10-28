@@ -311,8 +311,11 @@ ul {list-style-type: none;}
 }
 
 #infographics-container {
-    border: 2px solid black;
     padding:0px;
+}
+
+#infographics-container img {
+    border: 2px solid black;
 }
 
 /* breakpoints for calendar for smaller displays */
@@ -396,6 +399,8 @@ ul {list-style-type: none;}
 
     #infographics-container {
         width: 100%;
+        padding-left: 8px;
+        padding-right: 8px;
     }
 }
 
