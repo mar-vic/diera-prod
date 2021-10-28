@@ -310,13 +310,9 @@ ul {list-style-type: none;}
     float: left;
 }
 
-#no-upcoming-container {
+#infographics-container {
     border: 2px solid black;
-    background-color: white;
-    /* height: 400px; */
-    /* margin-bottom: 40px; */
-    /* margin-left: 2px; */
-    /* margin-right: 2px; */
+    padding:0px;
 }
 
 /* breakpoints for calendar for smaller displays */
@@ -337,7 +333,7 @@ ul {list-style-type: none;}
         width: 821px;
     }
 
-    #no-upcoming-container {
+    #infographics-container {
         width: 818px;
     }
 }
@@ -359,7 +355,7 @@ ul {list-style-type: none;}
         width: 615px;
     }
 
-    #no-upcoming-container {
+    #infographics-container {
         width: 612px;
     }
 }
@@ -386,7 +382,7 @@ ul {list-style-type: none;}
         font-size: 18px;
     }
 
-    #no-upcoming-container {
+    #infographics-container {
         width: 401px;
     }
 }

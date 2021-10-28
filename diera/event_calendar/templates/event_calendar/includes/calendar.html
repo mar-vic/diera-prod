@@ -1,8 +1,12 @@
 {% load i18n %}
 {% load cms_tags menu_tags %}
 {% load thumbnail %}
+{% load calendar_tags %}
 
-<div id="calendar-container" class="container" style="" >
+
+{% if eteasers_for_month.upcoming_eteasers|length > 0 %}
+
+<div id="calendar-container" class="container">
 
     <!-- DAYS GRID -->
     <!-- Iterate through weeks of the month -->
@@ -212,3 +216,11 @@
     </div> <!-- ENDING TAG FOR MASONRY -->
 
 </div>  <!-- ENDING TAG FOR CONTAINER FOR MASONRY -->
+
+{% else %}  <!-- Show infographics, if selected month is without programming -->
+
+<div id="infographics-container" class="container">
+    <img src="{% get_random_infographics_url program_date.year program_date.month %}" style="width:100%" >
+</div>
+
+{% endif %}

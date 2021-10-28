@@ -1,10 +1,12 @@
-from datetime import date, timedelta
+from random import randint
+from datetime import date, timedelta, datetime
 from dateutil.relativedelta import relativedelta
 import calendar as cal
 
 from django import template
 from django.core.exceptions import ObjectDoesNotExist
 
+from filer.models.filemodels import File
 from filer.models.foldermodels import Folder
 
 from event_calendar import queries
@@ -15,6 +17,45 @@ register = template.Library()
 @register.simple_tag
 def month_name(month):
     return cal.month_name[month]
+
+@register.simple_tag
+def get_random_infographics_url(year, month):
+    """
+    Return the url of image to be shown instead of the calendar for months
+    without (upcoming) programming.
+    """
+    current_year = datetime.today().year
+    current_month = datetime.today().month
+
+    if year < current_year:
+        try:
+            folder = Folder.objects.get(name='under_construction')
+        except ObjectDoesNotExist:
+            return None
+    elif year == current_year and month < current_month:
+        try:
+            folder = Folder.objects.get(name='under_construction')
+        except ObjectDoesNotExist:
+            return None
+    elif year == current_year and month == current_month:
+         try:
+            folder = Folder.objects.get(name='see_you')
+         except ObjectDoesNotExist:
+            return None
+    else:
+        try:
+            folder = Folder.objects.get(name='coming_soon')
+        except ObjectDoesNotExist:
+            return None
+
+    infographics_img_files = folder.files.all()
+    if (len(infographics_img_files) > 0):
+        rnd_infographics = infographics_img_files[
+            randint(0, len(infographics_img_files) - 1)
+        ]
+        return rnd_infographics.url
+    else:
+        return None
 
 class CalendarGrid:
     def __init__(self, year, month):
