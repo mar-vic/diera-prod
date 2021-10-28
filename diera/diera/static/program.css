@@ -367,14 +367,26 @@ ul {list-style-type: none;}
 
     #calendar-sm {
         display: block !important;
+        padding-left: 8px;
+        padding-right: 8px;
     }
 
     .grid-item {
-        width: 400px;
+        width: 100%;
+        margin-left: 0px;
+        margin-right: 0px;
     }
 
     #calendar-nav {
-        width: 404px;
+        width: 100%;
+    }
+
+    #year-col {
+        padding-left: 10px !important;
+    }
+
+    #submit-col {
+        padding-right: 10px !important;
     }
 
     #id_month, #id_year, #show-program-button {
@@ -383,7 +395,7 @@ ul {list-style-type: none;}
     }
 
     #infographics-container {
-        width: 401px;
+        width: 100%;
     }
 }
 
