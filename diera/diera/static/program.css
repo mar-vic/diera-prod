@@ -386,6 +386,7 @@ ul {list-style-type: none;}
         top: 20px;
         right: 15px;
     }
+
 }
 
 @media screen and (max-width: 768px) {
@@ -488,6 +489,41 @@ ul {list-style-type: none;}
     #infographics-container {
         width: 379px;
     }
+}
+
+@media screen and (max-width: 380px) {
+    #year-select-container::after, #month-select-container::after {
+        font-size: 10px;
+        top: 18px;
+        right: 13px;
+    }
+
+    #calendar-nav {
+        width: 360px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #calendar-sm {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+
+    .grid-item {
+        width: 356px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #infographics-container {
+        width: 356px;
+    }
+
+    #year-select-container select, #month-select-container select, #submit-container input {
+        font-size: 14px;
+    }
+
 }
 
 
