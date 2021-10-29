@@ -1,0 +1,130 @@
+{% load thumbnail %}
+
+<!-- SLIDER -->
+<div class="gallery-slider">
+    <div class="slider-body">
+        <div id="carousel-gallery-{{ gallery.id }}" class="carousel slide" style="padding:0px;" data-interval="false">
+
+            <!-- Indicators -->
+            <ol class="carousel-indicators carousel-indicator-dots">
+                <!-- First Indicator -->
+                <li data-target="#carousel-gallery-{{ gallery.id }}" data-slide-to="0" class="active"></li>
+
+                <!-- Rest of Indicators -->
+                {% for photo in gallery.public|slice:"1:" %}
+                <li data-target="#carousel-gallery-{{ gallery.id }}" data-slide-to="{{ forloop.counter }}"></li>
+                {% endfor %}
+            </ol>
+
+            <!-- Photos -->
+            <div class="carousel-inner">
+                <div class="carousel-item active" >
+                    {% with gallery.public.0 as first_photo %}
+                    <div class="image-container">
+                        {% thumbnail first_photo.image 600x400 crop upscale as first_photo_cropped %}
+                        <img src="{{ first_photo_cropped.url }}" data-target="#modal-gallery-{{ gallery.id }}" data-toggle="modal" data-whatever="0">
+                    </div>
+                    {% endwith %}
+                </div>
+                {% for photo in gallery.public|slice:"1:" %}
+                <div class="carousel-item">
+                    <div class="image-container">
+                        {% thumbnail photo.image 600x400 crop upscale as photo_cropped %}
+                        <img src="{{ photo_cropped.url }}" data-target="#modal-gallery-{{ gallery.id }}" data-toggle="modal" data-whatever="{{ forloop.counter }}">
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Prev/Next Controls -->
+            <a class="carousel-control-prev" href="#carousel-gallery-{{ gallery.id }}" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only"></span>
+            </a>
+            <a class="carousel-control-next" href="#carousel-gallery-{{ gallery.id }}" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only"></span>
+            </a>
+        </div>
+    </div>
+    <div class="row slider-header">
+        <div class="col-auto" style="padding:0px;">
+            {{ gallery.title }}
+        </div>
+        <!-- <div class="col">
+             <a href="#modal-gallery-{{ gallery.id }}" data-toggle="modal"><span class="fas fa-expand" style="padding:1px;font-size:18px;color:black;"></span></a>
+             </div> -->
+        <div class="col gallery-pub-date" style="padding:0px;">
+            {{ gallery.date_added|date:"d M" }}
+            <br>
+            {{ gallery.date_added|date:"Y" }}
+        </div>
+    </div>
+</div>
+
+<!-- Modal Gallery -->
+<div class="modal fade modal-gallery" id="modal-gallery-{{ gallery.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-gallery-title">{{ gallery.title }}</div>
+            <div class="modal-gallery-desc">{{ gallery.description }}</div>
+            <div id="modal-slider-{{ gallery.id }}" class="modal-slider carousel slide">
+
+                <!-- Photos -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active" >
+                        {% with gallery.public.0 as first_photo %}
+                            <img src="{{ first_photo.image.url }}">
+                        {% endwith %}
+                    </div>
+                    {% for photo in gallery.public|slice:"1:" %}
+                    <div class="carousel-item">
+                        {% with forloop.counter|add:"1" as current_slide %}
+                            <img src="{{ photo.image.url }}">
+                        {% endwith %}
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Prev/Next Controls -->
+                <a class="carousel-control-prev" href="#modal-slider-{{ gallery.id }}" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only"></span>
+                </a>
+                <a class="carousel-control-next" href="#modal-slider-{{ gallery.id }}" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only"></span>
+                </a>
+
+                <!-- Thumbnail Indicators -->
+                <div class="carousel-indicators modal-indicators">
+
+                    <!-- First Thumbnail -->
+                    {% with gallery.public.0 as first_photo %}
+                    <img src="{{ first_photo.get_display_url }}"
+                         data-target="#modal-slider-{{ gallery.id }}"
+                         data-slide-to="0"
+                         class="thumbnail active"
+                         aria-current="true"
+                         aria-label="Slide 1">
+                    {% endwith %}
+
+                    <!-- Rest of Thumbnails -->
+                    {% for photo in gallery.public|slice:"1:" %}
+                    <img src="{{ photo.get_display_url }}"
+                         data-target="#modal-slider-{{ gallery.id }}"
+                         data-slide-to="{{ forloop.counter }}"
+                         aria-label="Slide {{ forloop.counter|add:'1' }}"
+                         class="thumbnail">
+                    {% endfor %}
+
+                </div>
+            </div>
+
+            <!-- Close Cursor -->
+            <span class="close cursor" data-dismiss="modal">&times;</span>
+
+        </div>
+    </div>
+</div>
+

@@ -79,6 +79,7 @@ INSTALLED_APPS = [
     'djangocms_bootstrap4.contrib.bootstrap4_tabs', #DjangoCMS
     'djangocms_bootstrap4.contrib.bootstrap4_utilities', #DjangoCMS
     'photologue',
+    'photologue_cms_integration',
     'sortedm2m',
     'diera',  # Diera Apps
     'page_extensions',  # Diera Apps
@@ -223,3 +224,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+# Photologue settings
+PHOTOLOGUE_GALLERY_LATEST_LIMIT = 4

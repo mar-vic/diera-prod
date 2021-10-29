@@ -1,0 +1,119 @@
+{% load custom_tags %}
+{% load i18n %}
+<!-- SLIDER -->
+<div class="gallery-slider">
+    <div class="slider-body" style="">
+        <div id="carousel-gallery-{{ gallery.id }}" class="carousel slide" data-ride="carousel" style="padding:0px;">
+
+            <!-- Photos -->
+            <div class="carousel-inner">
+
+                <!-- Jana Hanzelova -->
+                <div class="carousel-item active" >
+                    {% get_photo_by_slug "jana-hanzelova" as first_photo %}
+                    <div class="image-container">
+                        <img src="{{ first_photo.image.url }}" style="cursor:auto">
+                    </div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h4>Jana Hanzelová</h4>
+                        <p><em>{% translate "dramaturgy" %}</em></p>
+                    </div>
+                </div>
+
+                <!-- Robert Repka -->
+                <div class="carousel-item" >
+                    {% get_photo_by_slug "robert-repka" as second_photo %}
+                    <div class="image-container">
+                        <img src="{{ second_photo.image.url }}" style="cursor:auto">
+                    </div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h4>Róbert Repka</h4>
+                        <p><em>{% translate "dramaturgy" %}</em></p>
+                    </div>
+                </div>
+
+                <!-- Jan Mikus -->
+                <div class="carousel-item" >
+                    {% get_photo_by_slug "jan-mikus" as third_photo %}
+                    <div class="image-container">
+                        <img src="{{ third_photo.image.url }}" style="cursor:auto">
+                    </div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h4>Ján Mikuš</h4>
+                        <p><em>{% translate "tech. coordination, PR, statutory representative" %}</em></p>
+                    </div>
+                </div>
+
+                <!-- Barbora Bohusova -->
+                <div class="carousel-item" >
+                    {% get_photo_by_slug "barbora-bohusova" as fourth_photo %}
+                    <div class="image-container">
+                        <img src="{{ fourth_photo.image.url }}" style="cursor:auto">
+                    </div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h4>Barbora Bohušová</h4>
+                        <p><em>{% translate "production, graphic design, coordination" %}</em></p>
+                    </div>
+                </div>
+
+                <!-- Simon Chovanec -->
+                <div class="carousel-item" >
+                    {% get_photo_by_slug "simon-chovan" as fourth_photo %}
+                    <div class="image-container">
+                        <img src="{{ fourth_photo.image.url }}" style="cursor:auto">
+                    </div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h4>Šimon Chovan</h4>
+                        <p><em>{% translate "graphic desing" %}</em></p>
+                    </div>
+                </div>
+
+                <!-- Dominik Palkovic -->
+                <div class="carousel-item" >
+                    {% get_photo_by_slug "dominik-palkovic" as fifth_photo %}
+                    <div class="image-container">
+                        <img src="{{ fifth_photo.image.url }}" style="cursor:auto">
+                    </div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h4>Dominik Palkovič</h4>
+                        <p><em>{% translate "waiter" %}</em></p>
+                    </div>
+                </div>
+
+                <!-- Barbora Moravcikova -->
+                <div class="carousel-item" >
+                    {% get_photo_by_slug "barbora-moravcikova" as sixth_photo %}
+                    <div class="image-container">
+                        <img src="{{ sixth_photo.image.url }}" style="cursor:auto">
+                    </div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h4>Barbora Moravčíková</h4>
+                        <p><em>{% translate "waitress" %}</em></p>
+                    </div>
+                </div>
+
+                <!-- Melania Gocsova -->
+                <div class="carousel-item" >
+                    {% get_photo_by_slug "melania-gocsova" as seventh_photo %}
+                    <div class="image-container">
+                        <img src="{{ seventh_photo.image.url }}" style="cursor:auto">
+                    </div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h4>Melánia Göcsová</h4>
+                        <p><em>{% translate "waitress" %}</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prev/Next Controls -->
+            <a class="carousel-control-prev" href="#carousel-gallery-{{ gallery.id }}" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only"></span>
+            </a>
+            <a class="carousel-control-next" href="#carousel-gallery-{{ gallery.id }}" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only"></span>
+            </a>
+        </div>
+    </div>
+</div>

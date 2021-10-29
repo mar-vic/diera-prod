@@ -15,6 +15,12 @@
     background-color: black;
 }
 
+#gallery-nav .active {
+    color: white !important;
+    background-color: black;
+    text-decoration: none;
+}
+
 #galleries {
     margin-top: 30px;
     margin-bottom: 30px;
