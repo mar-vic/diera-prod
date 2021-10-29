@@ -39,7 +39,7 @@
 			      {% if latest %}
 			      {% for gallery in latest %}
 
-            {% if forloop.last and not forloop.counter|divisibleby:"2" %}
+            {% if forloop.first and not latest|length|divisibleby:"2" %}
             <div class="col-12" style="padding-right:2px;padding-left:2px;">
                 {% gallery_slider gallery %}
             </div>
