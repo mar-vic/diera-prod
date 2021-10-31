@@ -25,7 +25,7 @@
 
     <div class="masonry-grid">
 
-        <div class="grid-sizer"></div>
+        <!-- <div class="grid-sizer"></div> -->
 
         <!-- Render all teasers -->
         {% get_teasers_for_all_features request as teasers %}
@@ -84,7 +84,7 @@
  /* Initialize masonry grid */
  var $grid = $('.masonry-grid').masonry({
      itemSelector: '.grid-item',
-     percentPosition: true,
+     /* percentPosition: true, */
      isFitWidth: true
  });
 

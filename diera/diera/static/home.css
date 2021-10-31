@@ -90,14 +90,29 @@
 }
 
 .grid-item {
-    width: 50%;
+    width: 500px;
     /* min-width: 300px; */
     float: left;
 }
 
-
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1199px) {
     .grid-item {
-        width: 100%;
+        width: 450px;
     }
 }
+
+@media screen and (max-width: 990px) {
+    .grid-item {
+        width: 70vw;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .grid-item {
+        width: 90vw;
+    }
+}
+
+
+
+
