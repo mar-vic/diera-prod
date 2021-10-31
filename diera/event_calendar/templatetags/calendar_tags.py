@@ -62,12 +62,14 @@ class CalendarGrid:
         self.eteasers_for_month = []
         self.upcoming_eteasers = []
 
+        scheduled_events_for_month = queries.get_scheduled_events_for_month(year, month)
+
         for monthday in cal.Calendar().itermonthdates(year, month):
             if monthday.year == year and monthday.month == month:
-                events = queries.get_published_events_for_day(year, month, monthday.day)
+                scheduled_events_for_day = scheduled_events_for_month.filter(eventdataextension__date_from__day=monthday.day)
                 eteasers_for_day = []
 
-                for event in events:
+                for event in scheduled_events_for_day:
                     eteaser = {}
 
                     eteaser['event_title'] = event.get_page_title()
@@ -81,7 +83,7 @@ class CalendarGrid:
 
                     eteasers_for_day.append(eteaser)
 
-                    if eteaser['date_from'].day > date.today().day:
+                    if eteaser['date_from'].month != date.today().month or (eteaser['date_from'].year == year and eteaser['date_from'].month == month and eteaser['date_from'].day >= date.today().day):
                         self.upcoming_eteasers.append(eteaser)
 
                 self.eteasers_for_month.append((monthday.day, eteasers_for_day))

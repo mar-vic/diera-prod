@@ -4,6 +4,14 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from cms.models import Page
 
+def get_scheduled_events_for_month(year, month):
+    program_page = Page.objects.filter(reverse_id='program').filter(publisher_is_draft=False).first()
+    return program_page.get_child_pages().filter(publisher_is_draft=False).filter(eventdataextension__date_from__year=year).filter(eventdataextension__date_from__month=month)
+
+def get_scheduled_events_for_day(year, month, day):
+    program_page = Page.objects.filter(reverse_id='program').filter(publisher_is_draft=False).first()
+    return program_page.get_child_pages().filter(publisher_is_draft=False).filter(eventdataextension__date_from__year=year).filter(eventdataextension__date_from__month=month).filter(eventdataextension__date_from__day=day)
+
 def get_all_published_events():
     # Load all published events
     events = Page.objects.filter(reverse_id='program').filter(publisher_is_draft=False)[0].get_child_pages()
@@ -28,7 +36,6 @@ def get_published_events_for_month(year, month):
     return [event for event in get_all_published_events() if
             event.eventdataextension.date_from.year == year and
             event.eventdataextension.date_from.month == month]
-
 
 def get_published_events_for_day(year, month, day):
     events = []
