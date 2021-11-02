@@ -21,3 +21,24 @@ Update: ```git pull origin main```
 $ mkvirtualenv --python=/usr/bin/python3.8 diera
 (diera)$ pip install -r requirements.txt
 ```
+
+#### Set-up the web app and WSGI file
+
+#### Set-up database
+
+In settings.py:
+
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': '<user>$<database>',
+        'USER': '<user>,
+        'PASSWORD': '<password>,
+        'HOST': '<user>.mysql.eu.pythonanywhere-services.com',
+     }
+}
+```
+
+#### Set-up static files serving
+
