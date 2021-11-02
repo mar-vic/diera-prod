@@ -6,6 +6,7 @@ six
 pytz
 python-dateutil
 whitenoise
+mysqlclient
 
 # Django related packages
 Django<3.2
