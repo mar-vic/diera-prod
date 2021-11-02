@@ -7,7 +7,7 @@ pytz
 python-dateutil
 whitenoise
 mysqlclient
-dotenv
+python-dotenv
 
 # Django related packages
 Django<3.2
