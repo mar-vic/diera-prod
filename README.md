@@ -1,13 +1,23 @@
 # diera-prod
 Website of the cultural center Diera do sveta
 
-## Deployment on PythonAnywhere
+## Set-up
 
-Follow [the
+### Deployment on PythonAnywhere
+
+Following [the
 instructions](https://help.pythonanywhere.com/pages/DeployExistingDjangoProject)
 on [PythonAnywhere help pages](https://help.pythonanywhere.com):
 
-1. Upload the code to pythonanywhere
-2. Create virtual environment and install requirements (through requirements.txt)
-3. Set-up the web app and WSGI file
-4. Set-up the database
+#### Upload the code to PythonAnywhere
+
+Init: ```git clone https://github.com/mar-vic/diera-prod.git```
+
+Update: ```git pull origin main```
+
+#### Create virtual environment and install requirements
+
+```
+$ mkvirtualenv --python=/usr/bin/python3.8 diera
+(diera)$ pip install -r requirements.txt
+```
