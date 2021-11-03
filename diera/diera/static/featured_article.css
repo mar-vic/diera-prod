@@ -38,19 +38,19 @@
     background-color: black;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
 
     #featured-article-title {
-        font-size: 20px;
+        font-size: 22px;
         line-height: 0.9;
         text-transform: uppercase;
         hyphens: none !important;
-        margin-bottom: 15px;
+        margin-bottom: 8px;
     }
 
     #featured-article-body {
-        font-size: 10px;
-        line-height: 0.9;
+        font-size: 15px;
+        line-height: 1;
 
     }
 }

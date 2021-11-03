@@ -214,6 +214,14 @@
 
 @media screen and (max-width: 400px) {
 
+    #galleries * {
+        font-size: 15px;
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+
     .image-container {
         height: 150px;
     }
@@ -222,3 +230,5 @@
         height: 100%;
     }
 }
+
+

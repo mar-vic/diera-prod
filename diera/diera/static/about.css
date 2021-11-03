@@ -169,3 +169,25 @@ h1 {
         transform: no !important;
     }
 }
+
+@media screen and (max-width: 500px) {
+
+    h1 {
+        font-size: 22px !important;
+        line-height: 0.8 !important;
+        margin-top: 5px !important;
+        margin-bottom: 8px !important;
+        text-transform: uppercase;
+    }
+
+    #about-content * {
+        font-size: 15px !important;
+        line-height: 1 !important;
+    }
+
+    #about-content h2 {
+        font-size: 15px !important;
+        line-height: 1 !important;
+        text-transform: uppercase;
+    }
+}

@@ -46,3 +46,20 @@
     font-size: 30px;
     line-height: 1.1;
 }
+
+@media screen and (max-width: 500px) {
+
+    #event-title {
+        font-size: 22px;
+        line-height: 0.8;
+        text-transform: uppercase;
+        hyphens: none !important;
+        margin-bottom: 8px;
+    }
+
+    #event-body {
+        font-size: 15px;
+        line-height: 1;
+
+    }
+}

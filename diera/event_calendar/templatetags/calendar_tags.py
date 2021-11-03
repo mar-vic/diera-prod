@@ -18,33 +18,34 @@ register = template.Library()
 def month_name(month):
     return cal.month_name[month]
 
-@register.simple_tag
-def get_random_infographics_url(year, month):
+@register.simple_tag(takes_context=True)
+def get_random_infographics_url(context, year, month):
     """
     Return the url of image to be shown instead of the calendar for months
     without (upcoming) programming.
     """
     current_year = datetime.today().year
     current_month = datetime.today().month
+    language = context['current_language']
 
     if year < current_year:
         try:
-            folder = Folder.objects.get(name='under_construction')
+            folder = Folder.objects.get(name='ig_under_construction_' + language)
         except ObjectDoesNotExist:
             return None
     elif year == current_year and month < current_month:
         try:
-            folder = Folder.objects.get(name='under_construction')
+            folder = Folder.objects.get(name='ig_under_construction_' + language)
         except ObjectDoesNotExist:
             return None
     elif year == current_year and month == current_month:
          try:
-            folder = Folder.objects.get(name='see_you')
+            folder = Folder.objects.get(name='ig_see_you_' + language)
          except ObjectDoesNotExist:
             return None
     else:
         try:
-            folder = Folder.objects.get(name='coming_soon')
+            folder = Folder.objects.get(name='ig_coming_soon_' + language)
         except ObjectDoesNotExist:
             return None
 
@@ -111,6 +112,7 @@ def calendar(context, year, month):
         "eteasers_for_month": grid,
         'program_date': program_date,
         'request': context.request,
+        'current_language': context['current_language']
     }
 
 
