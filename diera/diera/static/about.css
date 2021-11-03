@@ -197,6 +197,17 @@ h1 {
     }
 
     #about-content .card-body h2 {
-        font-size: 19px;
+        font-size: 19px !important;
+    }
+
+    #logos * {
+        font-size: 10px;
+    }
+
+    #about-sections {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
