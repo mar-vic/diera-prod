@@ -186,8 +186,17 @@ h1 {
     }
 
     #about-content h2 {
+        /* font-size: 15px !important; */
+        /* line-height: 1 !important; */
+        /* text-transform: uppercase; */
+    }
+
+    #about-content .card-body * {
         font-size: 15px !important;
-        line-height: 1 !important;
-        text-transform: uppercase;
+        line-height: 1.1;
+    }
+
+    #about-content .card-body h2 {
+        font-size: 17px;
     }
 }
