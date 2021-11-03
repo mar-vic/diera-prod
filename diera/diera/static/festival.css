@@ -152,16 +152,15 @@
 @media screen and (max-width: 500px) {
 
     #festival-title {
-        font-size: 22px;
+        font-size: 24px;
         line-height: 0.8;
         text-transform: uppercase;
         hyphens: none !important;
         margin-bottom: 8px;
     }
 
-    #festival-body {
+    #festival-body * {
         font-size: 15px;
         line-height: 1;
-
     }
 }

@@ -48,7 +48,7 @@
         margin-bottom: 8px;
     }
 
-    #featured-article-body {
+    #featured-article-body * {
         font-size: 15px;
         line-height: 1;
 
