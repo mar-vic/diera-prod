@@ -162,7 +162,10 @@ def get_background_image_url_for_month(year, month):
     making the site with haveing no background image.
     """
     today = date.today()
-    folder = Folder.objects.get(name='background_images')
+    try:
+        folder = Folder.objects.get(name='background_images')
+    except ObjectDoesNotExist:
+        return ''
 
     bgimage_by_flag = folder.files.filter(name='current').first()
     bgimage_by_date = folder.files.filter(name=f"{year}_{month}").first()
