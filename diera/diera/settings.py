@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import environ
 import os
 
 from pathlib import Path
@@ -19,23 +20,30 @@ from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+env = environ.Env()
+
+# Take environment variables from .env file
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = env.bool('DEBUG', default=False)  # False if unset in the .env file
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-load_dotenv(dotenv_path=os.path.join(BASE_DIR, '.env'))
-SECRET_KEY = os.getenv('SECRET_KEY')
+# load_dotenv(dotenv_path=os.path.join(BASE_DIR, '.env'))
+# SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = env.str('SECRET_KEY')  # Read the secret key set in the .env file
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Database
+# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+DATABASES = { 'default': env.db('DATABASE_URL') }  # Read db config set in .env file
 
 ALLOWED_HOSTS = ['*']
 
 SITE_ID = 1  # DjangoCMS
 X_FRAME_OPTIONS = 'SAMEORIGIN'  # DjangoCMS
-
-
 
 # Application definition
 
@@ -161,18 +169,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'diera.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
