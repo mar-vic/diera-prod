@@ -67,7 +67,8 @@ class CalendarGrid:
 
         for monthday in cal.Calendar().itermonthdates(year, month):
             if monthday.year == year and monthday.month == month:
-                scheduled_events_for_day = scheduled_events_for_month.filter(eventdataextension__date_from__day=monthday.day)
+                # scheduled_events_for_day = scheduled_events_for_month.filter(eventdataextension__date_from__day=monthday.day)
+                scheduled_events_for_day = [event for event in scheduled_events_for_month if event.eventdataextension.date_from.day == monthday.day]  # Somehow filtering does not work for eventdataextension.date_from.day
                 eteasers_for_day = []
 
                 for event in scheduled_events_for_day:
