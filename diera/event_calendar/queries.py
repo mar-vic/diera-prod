@@ -6,9 +6,7 @@ from cms.models import Page
 
 def get_scheduled_events_for_month(year, month):
     program_page = Page.objects.filter(reverse_id='program').filter(publisher_is_draft=False).first()
-    event_pages = program_page.get_child_pages().filter(publisher_is_draft=False)
-    return [page for page in event_pages.filter(eventdataextension__date_from__year=year) if page.eventdataextension.date_from.month == month]  # Somehow filtering does not work on eventdataextension.date_from.month
-    # return program_page.get_child_pages().filter(publisher_is_draft=False).filter(eventdataextension__date_from__year=year).filter(eventdataextension__date_from__month=month)
+    return program_page.get_child_pages().filter(publisher_is_draft=False).filter(eventdataextension__date_from__year=year).filter(eventdataextension__date_from__month=month)
 
 def get_scheduled_events_for_day(year, month, day):
     program_page = Page.objects.filter(reverse_id='program').filter(publisher_is_draft=False).first()
