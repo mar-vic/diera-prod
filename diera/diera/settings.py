@@ -35,9 +35,12 @@ DEBUG = env.bool('DEBUG', default=False)  # False if unset in the .env file
 # SECRET_KEY = os.getenv('SECRET_KEY')
 SECRET_KEY = env.str('SECRET_KEY')  # Read the secret key set in the .env file
 
-# Database
+# Database configuration
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 DATABASES = { 'default': env.db('DATABASE_URL') }  # Read db config set in .env file
+
+# Set STRICT_TRANS_TABLE option on MySQL
+DATABASES['default']['OPTIONS'] = { 'init_command': "SET sql_mode='STRICT_TRANS_TABLES'" }
 
 ALLOWED_HOSTS = ['*']
 
