@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-27 09:34+0200\n"
+"POT-Creation-Date: 2021-11-10 15:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,32 +19,41 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n "
 ">= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
 
-#: templates/about.html:32
+#: diera/templates/about.html:32
 msgid ""
 "Events of the cultural center Diera do sveta are financed with the help of "
 "public resources through Fund for Supporting the Arts and supplemented by "
 "enterpreneurial activities of the civic organisation Diera do sveta (coffee "
 "shop and bookstore)"
 msgstr ""
+"Program kultúrneho centra Diera do sveta je podporovaný z verejných zdrojov "
+"Slovenskej republiky Fondom na podporu umenia a doplnkovou podnikateľskou "
+"činnosťou o.z. Diera do sveta, ktorou je kaviareň a špecializované "
+"kníhkupectvo."
 
-#: templates/footer.html:21
+#: diera/templates/base.html:86
+msgid "BOOKSTORE"
+msgstr "KNÍHKUPECTVO"
+
+#: diera/templates/footer.html:21
 msgid "CONTACTS"
 msgstr "KONTAKTY"
 
-#: templates/footer.html:75
+#: diera/templates/footer.html:75
 msgid "OPERATION"
 msgstr "PREVÁDZKA"
 
-#: templates/footer.html:77
+#: diera/templates/footer.html:77
 msgid ""
 "Námestie osloboditeľov 1, č.s. 61 • 0301 01, Liptovský Mikuláš • Slovakia"
-msgstr "Námestie osloboditeľov 1, č.s. 61 • 0301 01, Liptovský Mikuláš • Slovensko"
+msgstr ""
+"Námestie osloboditeľov 1, č.s. 61 • 0301 01, Liptovský Mikuláš • Slovensko"
 
-#: templates/footer.html:95
+#: diera/templates/footer.html:95
 msgid "REGISTERED OFFICE"
 msgstr "SÍDLO"
 
-#: templates/footer.html:97
+#: diera/templates/footer.html:97
 msgid ""
 "Diera do sveta o.z. • A. Bernoláka 42/11 • 031 01, Liptovský Mikuláš • "
 "Slovakia"
@@ -52,107 +61,112 @@ msgstr ""
 "Diera do sveta o.z. • A. Bernoláka 42/11 • 031 01, Liptovský Mikuláš • "
 "Slovensko"
 
-#: templates/footer.html:132
+#: diera/templates/footer.html:132
 msgid "We do not pay VAT"
 msgstr "Nie sme platcami DPH"
 
-#: templates/footer.html:146
+#: diera/templates/footer.html:146
 msgid "BANK ACCOUNT"
 msgstr "BANKOVÉ SPOJENIE"
 
-#: templates/footer.html:148
+#: diera/templates/footer.html:148
 msgid "Bank"
 msgstr "Banka"
 
-#: templates/footer.html:170
+#: diera/templates/footer.html:170
+#, fuzzy
+#| msgid ""
+#| "Events of CC Diera do sveta are financed with the help of public "
+#| "resources through <a href='https://www.fpu.sk/sk/'>Fund for Supporting "
+#| "the Arts</a>."
 msgid ""
 "Events of CC Diera do sveta are financed with the help of public resources "
-"through <a href='https://www.fpu.sk/sk/'>Fund for Supporting the Arts</a>."
+"through <a href='https://www.fpu.sk/sk/'>Public Arts Fund</a>."
 msgstr ""
-"Podujatia KC Diera do sveta z verejných zdrojov podporil "
-"<a href='https://www.fpu.sk/sk/'>Fond na podporu umenia</a>."
+"Podujatia KC Diera do sveta z verejných zdrojov podporil <a href='https://"
+"www.fpu.sk/sk/'>Fond na podporu umenia</a>."
 
-#: templates/footer.html:195
+#: diera/templates/footer.html:195
 msgid "All rights reserved"
 msgstr "Všetky práva vyhradené"
 
-#: templates/footer.html:199
+#: diera/templates/footer.html:199
 msgid "design"
 msgstr "dizajn"
 
-#: templates/menu/language_chooser_dropdown.html:6
+#: diera/templates/menu/language_chooser_dropdown.html:6
 msgid "Change to language:"
-msgstr ""
+msgstr "Zmeň jazyk"
 
-#: templates/photologue/gallery_archive.html:10
+#: diera/templates/photologue/gallery_archive.html:10
 msgid "Latest photo galleries"
-msgstr ""
+msgstr "Najnovšie galérie"
 
-#: templates/photologue/gallery_archive.html:23
-#: templates/photologue/gallery_archive_month.html:23
+#: diera/templates/photologue/gallery_archive.html:23
+#: diera/templates/photologue/gallery_archive_month.html:23
 msgid "Archives:"
-msgstr ""
+msgstr "Archív"
 
-#: templates/photologue/gallery_archive.html:33
+#: diera/templates/photologue/gallery_archive.html:33
 msgid "Latest"
-msgstr ""
+msgstr "Najnovšie"
 
-#: templates/photologue/gallery_archive.html:48
+#: diera/templates/photologue/gallery_archive.html:48
 msgid "No galleries were found"
-msgstr ""
+msgstr "Nenašli sme žiadne galérie"
 
-#: templates/photologue/gallery_archive_month.html:10
+#: diera/templates/photologue/gallery_archive_month.html:10
 #, python-format
 msgid "Galleries for %(show_month)s"
 msgstr ""
 
-#: templates/photologue/gallery_archive_month.html:28
-#: templates/photologue/gallery_archive_month.html:33
+#: diera/templates/photologue/gallery_archive_month.html:28
+#: diera/templates/photologue/gallery_archive_month.html:33
 #, python-format
 msgid "%(show_month)s"
 msgstr ""
 
-#: templates/photologue/gallery_archive_month.html:46
-#: templates/photologue/gallery_archive_year.html:39
+#: diera/templates/photologue/gallery_archive_month.html:46
+#: diera/templates/photologue/gallery_archive_year.html:39
 msgid "No galleries were found."
 msgstr ""
 
-#: templates/photologue/gallery_archive_year.html:11
+#: diera/templates/photologue/gallery_archive_year.html:11
 #, python-format
 msgid "Galleries for %(show_year)s"
 msgstr ""
 
-#: templates/photologue/gallery_archive_year.html:23
+#: diera/templates/photologue/gallery_archive_year.html:23
 msgid "Latest galleries"
 msgstr ""
 
-#: templates/photologue/gallery_archive_year.html:26
+#: diera/templates/photologue/gallery_archive_year.html:26
 #, python-format
 msgid "%(show_year)s"
 msgstr ""
 
-#: templates/photologue/includes/meet_the_team.html:19
-#: templates/photologue/includes/meet_the_team.html:31
+#: diera/templates/photologue/includes/meet_the_team.html:19
+#: diera/templates/photologue/includes/meet_the_team.html:31
 msgid "dramaturgy"
-msgstr ""
+msgstr "dramaturgia"
 
-#: templates/photologue/includes/meet_the_team.html:43
+#: diera/templates/photologue/includes/meet_the_team.html:43
 msgid "tech. coordination, PR, statutory representative"
-msgstr ""
+msgstr "tech. koordinácia, PR, štatutárny zástupca"
 
-#: templates/photologue/includes/meet_the_team.html:55
+#: diera/templates/photologue/includes/meet_the_team.html:55
 msgid "production, graphic design, coordination"
-msgstr ""
+msgstr "produkcia, grafický dizajn, koordinácia"
 
-#: templates/photologue/includes/meet_the_team.html:67
+#: diera/templates/photologue/includes/meet_the_team.html:67
 msgid "graphic desing"
-msgstr ""
+msgstr "grafický dizajn"
 
-#: templates/photologue/includes/meet_the_team.html:79
+#: diera/templates/photologue/includes/meet_the_team.html:79
 msgid "waiter"
-msgstr ""
+msgstr "čašník"
 
-#: templates/photologue/includes/meet_the_team.html:91
-#: templates/photologue/includes/meet_the_team.html:103
+#: diera/templates/photologue/includes/meet_the_team.html:91
+#: diera/templates/photologue/includes/meet_the_team.html:103
 msgid "waitress"
-msgstr ""
+msgstr "čašníčka"

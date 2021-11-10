@@ -37,7 +37,9 @@ SECRET_KEY = env.str('SECRET_KEY')  # Read the secret key set in the .env file
 
 # Database configuration
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-DATABASES = { 'default': env.db('DATABASE_URL') }  # Read db config set in .env file
+
+# Read db config set in .env file
+DATABASES = { 'default': env.db('DATABASE_URL') }
 
 # Set STRICT_TRANS_TABLE option on MySQL
 DATABASES['default']['OPTIONS'] = { 'init_command': "SET sql_mode='STRICT_TRANS_TABLES'" }
@@ -50,7 +52,10 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'  # DjangoCMS
 # Application definition
 
 INSTALLED_APPS = [
-    'djangocms_admin_style',  # DjangoCMS
+    # DJANGOCMS
+    'djangocms_admin_style',  # Needs to be first
+
+    # DJANGO
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -58,44 +63,50 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'cms',  # DjangoCMS
-    'menus', # DjangoCMS
-    'treebeard', # DjangoCMS
-    'sekizai',  # DjangoCMS
-    'filer',  # DjangoCMS
-    'easy_thumbnails',  # DjangoCMS
-    'mptt',  # DjangoCMS
-    'djangocms_text_ckeditor',  # DjangoCMS
-    'djangocms_link',  # DjangoCMS
-    'djangocms_file',  # DjangoCMS
-    'djangocms_picture', #DjangoCMS
-    'djangocms_video', #DjangoCMS
-    'djangocms_googlemap', #DjangoCMS
-    'djangocms_snippet', #DjangoCMS
-    'djangocms_style',  #DjangoCMS
-    'djangocms_bootstrap4', #DjangoCMS
-    'djangocms_bootstrap4.contrib.bootstrap4_alerts', #DjangoCMS
-    'djangocms_bootstrap4.contrib.bootstrap4_badge', #DjangoCMS
-    'djangocms_bootstrap4.contrib.bootstrap4_card', #DjangoCMS
-    'djangocms_bootstrap4.contrib.bootstrap4_carousel', #DjangoCMS
-    'djangocms_bootstrap4.contrib.bootstrap4_collapse', #DjangoCMS
-    'djangocms_bootstrap4.contrib.bootstrap4_content', #DjangoCMS
-    'djangocms_bootstrap4.contrib.bootstrap4_grid', #DjangoCMS
-    'djangocms_bootstrap4.contrib.bootstrap4_jumbotron', #DjangoCMS
-    'djangocms_bootstrap4.contrib.bootstrap4_link', #DjangoCMS
-    'djangocms_bootstrap4.contrib.bootstrap4_listgroup', #DjangoCMS
-    'djangocms_bootstrap4.contrib.bootstrap4_media', #DjangoCMS
-    'djangocms_bootstrap4.contrib.bootstrap4_picture', #DjangoCMS
-    'djangocms_bootstrap4.contrib.bootstrap4_tabs', #DjangoCMS
-    'djangocms_bootstrap4.contrib.bootstrap4_utilities', #DjangoCMS
+
+    # THIRD PARTY DJANGO APPS
     'photologue',
-    'photologue_cms_integration',
     'sortedm2m',
-    'diera',  # Diera Apps
-    'page_extensions',  # Diera Apps
-    'event_calendar',  # Diera Apps
-    'calendar_cms_integration',  # Diera Apps
-    'wizards',  # Diera Apps
+    'cms',
+    'menus',
+    'treebeard',
+    'sekizai',
+    'filer',
+    'easy_thumbnails',
+    'mptt',
+
+    # DJANGOCMS
+    'djangocms_text_ckeditor',
+    'djangocms_link',
+    'djangocms_file',
+    'djangocms_picture',
+    'djangocms_video',
+    'djangocms_googlemap',
+    'djangocms_snippet',
+    'djangocms_style',
+    'djangocms_bootstrap4',
+    'djangocms_bootstrap4.contrib.bootstrap4_alerts',
+    'djangocms_bootstrap4.contrib.bootstrap4_badge',
+    'djangocms_bootstrap4.contrib.bootstrap4_card',
+    'djangocms_bootstrap4.contrib.bootstrap4_carousel',
+    'djangocms_bootstrap4.contrib.bootstrap4_collapse',
+    'djangocms_bootstrap4.contrib.bootstrap4_content',
+    'djangocms_bootstrap4.contrib.bootstrap4_grid',
+    'djangocms_bootstrap4.contrib.bootstrap4_jumbotron',
+    'djangocms_bootstrap4.contrib.bootstrap4_link',
+    'djangocms_bootstrap4.contrib.bootstrap4_listgroup',
+    'djangocms_bootstrap4.contrib.bootstrap4_media',
+    'djangocms_bootstrap4.contrib.bootstrap4_picture',
+    'djangocms_bootstrap4.contrib.bootstrap4_tabs',
+    'djangocms_bootstrap4.contrib.bootstrap4_utilities',
+
+    #DIERA APPS
+    'diera',
+    'page_extensions',
+    'event_calendar',
+    'calendar_cms_integration',
+    'wizards',
+    'photologue_cms_integration',
 ]
 
 THUMBNAIL_HIGH_RESOLUTION = True
