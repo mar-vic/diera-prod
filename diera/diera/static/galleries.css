@@ -1,23 +1,36 @@
 /* Rules for pages with galleries */
-#gallery-nav a {
-    padding:5px;
-    /* padding-right:5px; */
-    text-decoration: underline;
+.year-link-container {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.year-link-container a {
     transition-property: all;
     transition-duration: 0.2s;
     transition-delay: 0s;
     color: black;
+    text-decoration: underline;
 }
 
-#gallery-nav a:hover {
-    text-decoration: none;
-    color: white;
+.year-link-container:hover {
     background-color: black;
+    color white;
 }
 
-#gallery-nav .active {
+.year-link-container:hover a {
     color: white !important;
+}
+
+.year-link-container.active {
     background-color: black;
+}
+
+.year-link-container.active a {
+    color: white !important;
     text-decoration: none;
 }
 
@@ -35,8 +48,8 @@
 
 #archives {
     width: 100%;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    /* padding-top: 10px; */
+    /* padding-bottom: 10px; */
     background-color: white;
     border: 2px solid black;
     font-size: 26px;

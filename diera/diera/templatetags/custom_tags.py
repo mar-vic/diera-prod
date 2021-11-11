@@ -11,11 +11,16 @@ from filer.models.foldermodels import Folder
 
 register = template.Library()
 
+@register.simple_tag
+def get_years_with_galleries_added():
+    years = set()
+    for gallery in Gallery.objects.filter(is_public=True):
+        years.add(gallery.date_added.year)
+    return [str(year) for year in sorted(list(years), reverse=True)]
 
 @register.inclusion_tag('photologue/includes/gallery_slider.html')
 def gallery_slider(gallery):
     return {'gallery': gallery}
-
 
 @register.inclusion_tag('photologue/includes/gallery_slider_nh.html')
 def gallery_slider_nh(slug):

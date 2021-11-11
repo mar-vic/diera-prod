@@ -15,27 +15,29 @@
 <div style="padding-left: 15px; padding-right: 15px;">
     <div id="galleries" class="container">
 
-
         <!-- Navigation -->
         <div class="row">
             <div id="gallery-nav" class="col-12" style="padding-right:2px;padding-left:2px;">
                 <div id="archives">
                     <div class="row justify-content-center">
 
-                        <div class="col-auto" style="">
+                        <div class="col-auto year-link-container" style="">
                             <a class="" href="{% url 'photologue:pl-gallery-archive' %}">{% translate "LATEST" %}</a>
                         </div>
 
- 			                  {% for date in date_list %}
-                        <div class="col-auto" style="">
-                            {% if year|date:"Y" == date|date:"Y" %}
-                            <a class="active" href="{% url 'photologue:pl-gallery-archive-year' date.year %}">{{ date|date:"Y" }}</a>
-                            {% else %}
-                            <a href="{% url 'photologue:pl-gallery-archive-year' date.year %}">{{ date|date:"Y" }}</a>
-                            {% endif %}
+                        {% get_years_with_galleries_added as archive_years %}
 
+                        {% for archive_year in archive_years %}
+                        {% if year|date:"Y" == archive_year %}
+                        <div class="col-auto year-link-container active" style="">
+                            <a href="{% url 'photologue:pl-gallery-archive-year' archive_year %}">{{ archive_year }}</a>
                         </div>
-			                  {% endfor %}
+                        {% else %}
+                        <div class="col-auto year-link-container" style="">
+                            <a href="{% url 'photologue:pl-gallery-archive-year' archive_year %}">{{ archive_year }}</a>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
 
                     </div>
                 </div>
