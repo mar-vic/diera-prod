@@ -21,14 +21,14 @@
                     <div class="row justify-content-center">
 
                         <div class="col-auto year-link-container active">
-                            <a class="active" href="{% url 'photologue:pl-gallery-archive' %}">{% translate "LATEST" %}</a>
+                            <a class="active" href="{% url 'photologue:pli-gallery-archive' %}">{% translate "LATEST" %}</a>
                         </div>
 
                         {% get_years_with_galleries_added as years %}
 
                         {% for year in years %}
                         <div class="col-auto year-link-container">
-                            <a href="{% url 'photologue:pl-gallery-archive-year' year %}">{{ year }}</a>
+                            <a href="{% url 'photologue:pli-gallery-year-archive' year %}">{{ year }}</a>
                         </div>
                         {% endfor %}
 
