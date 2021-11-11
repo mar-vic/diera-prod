@@ -8,4 +8,5 @@ class PhotologueApphook(CMSApp):
     name = "Galleries"
 
     def get_urls(self, page=None, language=None, **kwargs):
-        return ["photologue.urls"]
+        return ["photologue_cms_integration.urls"]
+        # return ["photologue.urls"]
