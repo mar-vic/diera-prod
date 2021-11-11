@@ -217,11 +217,9 @@ footer {
         margin-right: auto;
         margin-left: auto;
     }
-}
 
-@media screen and (max-width: 1199) {
-    #socials {
-        margin-top: 20px !important;
+    #socials li {
+        margin-right: 20px;
     }
 }
 
