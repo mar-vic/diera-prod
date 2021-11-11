@@ -1,38 +1,62 @@
 {% extends "photologue/root.html" %}
 {% load i18n %}
+{% load custom_tags %}
+
+{% block css %}
+{% load static %}
+<link href="{% static 'galleries.css' %}" rel="stylesheet">
+{% endblock %}
 
 {% block title %}{% trans "Latest photo galleries" %}{% endblock %}
 
 {% block content %}
-<div class="container gallery">
-    <div class="row col-lg-12">
-        <h1 class="page-header">{% trans "Latest photo galleries" %}</h1>
-    </div>
 
-    <div class="row">
+<div style="padding-left: 15px; padding-right: 15px;">
+    <div id="galleries" class="container">
 
-		    <aside class="col-md-2">
+        <!-- Navigation -->
+        <div class="row">
+            <div id="gallery-nav" class="col-12" style="padding-right:2px;padding-left:2px;">
+                <div id="archives">
+                    <div class="row justify-content-center">
 
-			      <h4>{% trans "Filter by year" %}</h4>
-			      <ul>
-			          {% for date in date_list %}
-				        <li><a href="{% url 'photologue:pl-gallery-archive-year' date.year %}">{{ date|date:"Y" }}</a></li>
-			          {% endfor %}
-			      </ul>
+                        <div class="col-auto year-link-container active">
+                            <a class="active" href="{% url 'photologue:pl-gallery-archive' %}">{% translate "LATEST" %}</a>
+                        </div>
 
-		    </aside>
+                        {% get_years_with_galleries_added as years %}
 
-		    <main class="col-md-10">
+                        {% for year in years %}
+                        <div class="col-auto year-link-container">
+                            <a href="{% url 'photologue:pl-gallery-archive-year' year %}">{{ year }}</a>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Galleries -->
+        <div class="row">
 			      {% if latest %}
 			      {% for gallery in latest %}
-			      {% include "photologue/includes/gallery_sample.html" %}
+
+            {% if forloop.first and not latest|length|divisibleby:"2" %}
+            <div class="col-12" style="padding-right:2px;padding-left:2px;">
+                {% gallery_slider gallery %}
+            </div>
+            {% else %}
+            <div class="col-lg-6" style="padding-right:2px;padding-left:2px;">
+                {% gallery_slider gallery %}
+            </div>
+            {% endif %}
+
 			      {% endfor %}
 			      {% else %}
 			      <p>{% trans "No galleries were found" %}.</p>
 			      {% endif %}
-		    </main>
-
+        </div>
     </div>
 </div>
-
 {% endblock %}

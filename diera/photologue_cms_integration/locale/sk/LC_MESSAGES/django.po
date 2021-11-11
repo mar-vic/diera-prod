@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-10 15:10+0100\n"
+"POT-Creation-Date: 2021-11-11 15:26+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,59 +19,50 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n "
 ">= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
 
-#: photologue_cms_integration/templates/photologue/gallery_archive.html:4
-#: photologue_cms_integration/templates/photologue/gallery_archive.html:9
+#: photologue_cms_integration/templates/photologue/gallery_archive.html:10
 msgid "Latest photo galleries"
 msgstr "Najnovšie galérie"
 
-#: photologue_cms_integration/templates/photologue/gallery_archive.html:16
-msgid "Filter by year"
-msgstr ""
+#: photologue_cms_integration/templates/photologue/gallery_archive.html:24
+#: photologue_cms_integration/templates/photologue/gallery_archive_year.html:25
+msgid "LATEST"
+msgstr "NAJNOVŠIE"
 
-#: photologue_cms_integration/templates/photologue/gallery_archive.html:31
+#: photologue_cms_integration/templates/photologue/gallery_archive.html:57
 msgid "No galleries were found"
-msgstr ""
+msgstr "Žiadne galérie sa nenašli"
 
-#: photologue_cms_integration/templates/photologue/gallery_archive_day.html:4
-#: photologue_cms_integration/templates/photologue/gallery_archive_day.html:10
-#, python-format
-msgid "Galleries for %(show_day)s"
-msgstr ""
-
-#: photologue_cms_integration/templates/photologue/gallery_archive_day.html:19
-#: photologue_cms_integration/templates/photologue/gallery_archive_month.html:33
-#: photologue_cms_integration/templates/photologue/gallery_archive_year.html:32
-msgid "No galleries were found."
-msgstr ""
-
-#: photologue_cms_integration/templates/photologue/gallery_archive_day.html:23
-msgid "View all galleries for month"
-msgstr ""
-
-#: photologue_cms_integration/templates/photologue/gallery_archive_month.html:4
-#: photologue_cms_integration/templates/photologue/gallery_archive_month.html:10
-#, python-format
-msgid "Galleries for %(show_month)s"
-msgstr ""
-
-#: photologue_cms_integration/templates/photologue/gallery_archive_month.html:17
-msgid "Filter by day"
-msgstr ""
-
-#: photologue_cms_integration/templates/photologue/gallery_archive_month.html:36
-msgid "View all galleries for year"
-msgstr ""
-
-#: photologue_cms_integration/templates/photologue/gallery_archive_year.html:4
-#: photologue_cms_integration/templates/photologue/gallery_archive_year.html:9
+#: photologue_cms_integration/templates/photologue/gallery_archive_year.html:11
 #, python-format
 msgid "Galleries for %(show_year)s"
+msgstr "Fotky (%(show_year)s)"
+
+#: photologue_cms_integration/templates/photologue/gallery_archive_year.html:64
+msgid "No galleries were found."
+msgstr "Žiadne galérie sa nenašli"
+
+#: photologue_cms_integration/templates/photologue/includes/meet_the_team.html:19
+#: photologue_cms_integration/templates/photologue/includes/meet_the_team.html:31
+msgid "dramaturgy"
+msgstr "dramaturgia"
+
+#: photologue_cms_integration/templates/photologue/includes/meet_the_team.html:43
+msgid "tech. coordination, PR, statutory representative"
 msgstr ""
 
-#: photologue_cms_integration/templates/photologue/gallery_archive_year.html:16
-msgid "Filter by month"
+#: photologue_cms_integration/templates/photologue/includes/meet_the_team.html:55
+msgid "production, graphic design, coordination"
 msgstr ""
 
-#: photologue_cms_integration/templates/photologue/gallery_archive_year.html:35
-msgid "View all galleries"
+#: photologue_cms_integration/templates/photologue/includes/meet_the_team.html:67
+msgid "graphic desing"
+msgstr ""
+
+#: photologue_cms_integration/templates/photologue/includes/meet_the_team.html:79
+msgid "waiter"
+msgstr ""
+
+#: photologue_cms_integration/templates/photologue/includes/meet_the_team.html:91
+#: photologue_cms_integration/templates/photologue/includes/meet_the_team.html:103
+msgid "waitress"
 msgstr ""

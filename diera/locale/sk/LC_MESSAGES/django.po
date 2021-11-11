@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-10 15:10+0100\n"
+"POT-Creation-Date: 2021-11-11 15:26+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,77 +19,50 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n "
 ">= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
 
-#: templates/photologue/gallery_archive.html:10
+#: templates/photologue_BACKUP/gallery_archive.html:10
 msgid "Latest photo galleries"
 msgstr "Najnovšie galérie"
 
-#: templates/photologue/gallery_archive.html:23
-#: templates/photologue/gallery_archive_year.html:26
+#: templates/photologue_BACKUP/gallery_archive.html:24
+#: templates/photologue_BACKUP/gallery_archive_year.html:25
 msgid "LATEST"
-msgstr "NAJNOVŠIE"
+msgstr "NEDÁVNE"
 
-#: templates/photologue/gallery_archive.html:54
+#: templates/photologue_BACKUP/gallery_archive.html:57
 msgid "No galleries were found"
 msgstr "Žiadne galérie sa nenašli"
 
-#: templates/photologue/gallery_archive_month.html:10
-#, python-format
-msgid "Galleries for %(show_month)s"
-msgstr ""
-
-#: templates/photologue/gallery_archive_month.html:23
-msgid "Archives:"
-msgstr ""
-
-#: templates/photologue/gallery_archive_month.html:28
-#: templates/photologue/gallery_archive_month.html:33
-#, python-format
-msgid "%(show_month)s"
-msgstr ""
-
-#: templates/photologue/gallery_archive_month.html:46
-#: templates/photologue/gallery_archive_year.html:62
-#: templates/photologue/gallery_archive_year_BACKUP.html:39
-msgid "No galleries were found."
-msgstr ""
-
-#: templates/photologue/gallery_archive_year.html:11
-#: templates/photologue/gallery_archive_year_BACKUP.html:11
+#: templates/photologue_BACKUP/gallery_archive_year.html:11
 #, python-format
 msgid "Galleries for %(show_year)s"
 msgstr ""
 
-#: templates/photologue/gallery_archive_year_BACKUP.html:23
-msgid "Latest galleries"
+#: templates/photologue_BACKUP/gallery_archive_year.html:64
+msgid "No galleries were found."
 msgstr ""
 
-#: templates/photologue/gallery_archive_year_BACKUP.html:26
-#, python-format
-msgid "%(show_year)s"
-msgstr ""
-
-#: templates/photologue/includes/meet_the_team.html:19
-#: templates/photologue/includes/meet_the_team.html:31
+#: templates/photologue_BACKUP/includes/meet_the_team.html:19
+#: templates/photologue_BACKUP/includes/meet_the_team.html:31
 msgid "dramaturgy"
 msgstr "dramaturgia"
 
-#: templates/photologue/includes/meet_the_team.html:43
+#: templates/photologue_BACKUP/includes/meet_the_team.html:43
 msgid "tech. coordination, PR, statutory representative"
 msgstr "technická koordinácia, PR, štatutárny zástupca"
 
-#: templates/photologue/includes/meet_the_team.html:55
+#: templates/photologue_BACKUP/includes/meet_the_team.html:55
 msgid "production, graphic design, coordination"
 msgstr "produkcia, grafický dizajn, koordinácia"
 
-#: templates/photologue/includes/meet_the_team.html:67
+#: templates/photologue_BACKUP/includes/meet_the_team.html:67
 msgid "graphic desing"
 msgstr "grafický dizajn"
 
-#: templates/photologue/includes/meet_the_team.html:79
+#: templates/photologue_BACKUP/includes/meet_the_team.html:79
 msgid "waiter"
 msgstr "čašník"
 
-#: templates/photologue/includes/meet_the_team.html:91
-#: templates/photologue/includes/meet_the_team.html:103
+#: templates/photologue_BACKUP/includes/meet_the_team.html:91
+#: templates/photologue_BACKUP/includes/meet_the_team.html:103
 msgid "waitress"
 msgstr "čašníčka"

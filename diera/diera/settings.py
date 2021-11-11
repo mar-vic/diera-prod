@@ -50,7 +50,6 @@ SITE_ID = 1  # DjangoCMS
 X_FRAME_OPTIONS = 'SAMEORIGIN'  # DjangoCMS
 
 # Application definition
-
 INSTALLED_APPS = [
     # DJANGOCMS
     'djangocms_admin_style',  # Needs to be first
@@ -65,6 +64,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
 
     # THIRD PARTY DJANGO APPS
+    'photologue_cms_integration',  # Has to come before photologue
     'photologue',
     'sortedm2m',
     'cms',
@@ -106,7 +106,6 @@ INSTALLED_APPS = [
     'event_calendar',
     'calendar_cms_integration',
     'wizards',
-    'photologue_cms_integration',
 ]
 
 THUMBNAIL_HIGH_RESOLUTION = True
