@@ -7,7 +7,7 @@
 <link href="{% static 'galleries.css' %}" rel="stylesheet">
 {% endblock %}
 
-{% block title %}{% trans "Latest photo galleries" %}{% endblock %}
+{% block title %}{% trans "Latest photo galleries" %}{{ block.super }}{% endblock %}
 
 {% block content %}
 

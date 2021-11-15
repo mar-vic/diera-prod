@@ -8,7 +8,7 @@
 {% endblock %}
 
 
-{% block title %}{% blocktrans with show_year=year|date:"Y" %}Galleries for {{ show_year }}{% endblocktrans %}{% endblock %}
+{% block title %}{% blocktrans with show_year=year|date:"Y" %}Galleries for {{ show_year }}{% endblocktrans %}{{ block.super }}{% endblock %}
 
 {% block content %}
 

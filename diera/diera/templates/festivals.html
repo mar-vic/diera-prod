@@ -4,7 +4,7 @@
 {% load i18n %}
 {% load thumbnail %}
 
-{% block title %}{% page_attribute "page_title" %}{% endblock title %}
+{% block title %}{% page_attribute "page_title" %}{{ block.super }}{% endblock title %}
 
 <!-- CSS rules specific for this page -->
 {% block css %}
@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block content %}
-	{% placeholder "content" %}
+{% placeholder "content" %}
 
 <!-- Section showing the teasers for festivals -->
 <div id="festivals" class="container">

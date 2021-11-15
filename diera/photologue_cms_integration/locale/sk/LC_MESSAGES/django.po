@@ -21,7 +21,7 @@ msgstr ""
 
 #: photologue_cms_integration/templates/photologue/gallery_archive.html:10
 msgid "Latest photo galleries"
-msgstr "Najnovšie galérie"
+msgstr "Najnovšie galérie fotiek"
 
 #: photologue_cms_integration/templates/photologue/gallery_archive.html:24
 #: photologue_cms_integration/templates/photologue/gallery_archive_year.html:25
@@ -35,7 +35,7 @@ msgstr "Žiadne galérie sa nenašli"
 #: photologue_cms_integration/templates/photologue/gallery_archive_year.html:11
 #, python-format
 msgid "Galleries for %(show_year)s"
-msgstr "Fotky (%(show_year)s)"
+msgstr "Galérie fotiek (%(show_year)s)"
 
 #: photologue_cms_integration/templates/photologue/gallery_archive_year.html:64
 msgid "No galleries were found."

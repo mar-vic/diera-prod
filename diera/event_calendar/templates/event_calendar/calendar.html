@@ -3,7 +3,7 @@
 {% load calendar_tags %}
 {% load cms_tags %}
 
-{% block title %}KC Diera - Program ({% month_name month %} {{ year }}){% endblock title %}
+{% block title %}Program ({{ month }}. {{ year }}){{ block.super }} {% endblock title %}
 
 {% block background-image %}
     body {
