@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-11 15:26+0100\n"
+"POT-Creation-Date: 2021-11-16 13:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,9 +20,15 @@ msgstr ""
 ">= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
 
 #: diera/templates/about.html:32
+#, fuzzy
+#| msgid ""
+#| "Events of the cultural center Diera do sveta are financed with the help "
+#| "of public resources through Fund for Supporting the Arts and supplemented "
+#| "by enterpreneurial activities of the civic organisation Diera do sveta "
+#| "(coffee shop and bookstore)"
 msgid ""
 "Events of the cultural center Diera do sveta are financed with the help of "
-"public resources through Fund for Supporting the Arts and supplemented by "
+"public resources through Slovak Arts Council and supplemented by "
 "enterpreneurial activities of the civic organisation Diera do sveta (coffee "
 "shop and bookstore)"
 msgstr ""
@@ -31,7 +37,7 @@ msgstr ""
 "činnosťou o.z. Diera do sveta, ktorou je kaviareň a špecializované "
 "kníhkupectvo."
 
-#: diera/templates/base.html:86
+#: diera/templates/base.html:87
 msgid "BOOKSTORE"
 msgstr "KNÍHKUPECTVO"
 
@@ -81,7 +87,7 @@ msgstr "Banka"
 #| "the Arts</a>."
 msgid ""
 "Events of CC Diera do sveta are financed with the help of public resources "
-"through <a href='https://www.fpu.sk/sk/'>Public Arts Fund</a>."
+"through <a href='https://www.fpu.sk/sk/'>Slovak Arts Council</a>."
 msgstr ""
 "Podujatia KC Diera do sveta z verejných zdrojov podporil <a href='https://"
 "www.fpu.sk/sk/'>Fond na podporu umenia</a>."
@@ -98,75 +104,75 @@ msgstr "dizajn"
 msgid "Change to language:"
 msgstr "Zmeň jazyk"
 
-#: diera/templates/photologue/gallery_archive.html:10
+#: diera/templates/photologue_BACKUP/gallery_archive.html:10
 msgid "Latest photo galleries"
 msgstr "Najnovšie galérie"
 
-#: diera/templates/photologue/gallery_archive.html:23
-#: diera/templates/photologue/gallery_archive_month.html:23
+#: diera/templates/photologue_BACKUP/gallery_archive.html:23
+#: diera/templates/photologue_BACKUP/gallery_archive_month.html:23
 msgid "Archives:"
 msgstr "Archív"
 
-#: diera/templates/photologue/gallery_archive.html:33
+#: diera/templates/photologue_BACKUP/gallery_archive.html:33
 msgid "Latest"
 msgstr "Najnovšie"
 
-#: diera/templates/photologue/gallery_archive.html:48
+#: diera/templates/photologue_BACKUP/gallery_archive.html:48
 msgid "No galleries were found"
 msgstr "Nenašli sme žiadne galérie"
 
-#: diera/templates/photologue/gallery_archive_month.html:10
+#: diera/templates/photologue_BACKUP/gallery_archive_month.html:10
 #, python-format
 msgid "Galleries for %(show_month)s"
 msgstr ""
 
-#: diera/templates/photologue/gallery_archive_month.html:28
-#: diera/templates/photologue/gallery_archive_month.html:33
+#: diera/templates/photologue_BACKUP/gallery_archive_month.html:28
+#: diera/templates/photologue_BACKUP/gallery_archive_month.html:33
 #, python-format
 msgid "%(show_month)s"
 msgstr ""
 
-#: diera/templates/photologue/gallery_archive_month.html:46
-#: diera/templates/photologue/gallery_archive_year.html:39
+#: diera/templates/photologue_BACKUP/gallery_archive_month.html:46
+#: diera/templates/photologue_BACKUP/gallery_archive_year.html:39
 msgid "No galleries were found."
 msgstr ""
 
-#: diera/templates/photologue/gallery_archive_year.html:11
+#: diera/templates/photologue_BACKUP/gallery_archive_year.html:11
 #, python-format
 msgid "Galleries for %(show_year)s"
 msgstr ""
 
-#: diera/templates/photologue/gallery_archive_year.html:23
+#: diera/templates/photologue_BACKUP/gallery_archive_year.html:23
 msgid "Latest galleries"
 msgstr ""
 
-#: diera/templates/photologue/gallery_archive_year.html:26
+#: diera/templates/photologue_BACKUP/gallery_archive_year.html:26
 #, python-format
 msgid "%(show_year)s"
 msgstr ""
 
-#: diera/templates/photologue/includes/meet_the_team.html:19
-#: diera/templates/photologue/includes/meet_the_team.html:31
+#: diera/templates/photologue_BACKUP/includes/meet_the_team.html:19
+#: diera/templates/photologue_BACKUP/includes/meet_the_team.html:31
 msgid "dramaturgy"
 msgstr "dramaturgia"
 
-#: diera/templates/photologue/includes/meet_the_team.html:43
+#: diera/templates/photologue_BACKUP/includes/meet_the_team.html:43
 msgid "tech. coordination, PR, statutory representative"
 msgstr "tech. koordinácia, PR, štatutárny zástupca"
 
-#: diera/templates/photologue/includes/meet_the_team.html:55
+#: diera/templates/photologue_BACKUP/includes/meet_the_team.html:55
 msgid "production, graphic design, coordination"
 msgstr "produkcia, grafický dizajn, koordinácia"
 
-#: diera/templates/photologue/includes/meet_the_team.html:67
+#: diera/templates/photologue_BACKUP/includes/meet_the_team.html:67
 msgid "graphic desing"
 msgstr "grafický dizajn"
 
-#: diera/templates/photologue/includes/meet_the_team.html:79
+#: diera/templates/photologue_BACKUP/includes/meet_the_team.html:79
 msgid "waiter"
 msgstr "čašník"
 
-#: diera/templates/photologue/includes/meet_the_team.html:91
-#: diera/templates/photologue/includes/meet_the_team.html:103
+#: diera/templates/photologue_BACKUP/includes/meet_the_team.html:91
+#: diera/templates/photologue_BACKUP/includes/meet_the_team.html:103
 msgid "waitress"
 msgstr "čašníčka"
