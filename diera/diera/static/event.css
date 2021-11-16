@@ -57,10 +57,18 @@
         margin-bottom: 8px;
     }
 
-    #event-body {
-        font-size: 15px;
+    #event-body * {
+        font-size: 15px !important;
         line-height: 1;
 
+    }
+
+    #event-body h2 {
+        font-size: 20px !important;
+    }
+
+    #event-body h3 {
+        font-size: 17px !important;
     }
 
     #event-date {
