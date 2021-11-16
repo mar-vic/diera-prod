@@ -1,4 +1,5 @@
 from operator import itemgetter
+import datetime
 from datetime import date
 
 from django import template
@@ -157,8 +158,14 @@ def get_teasers_for_all_features(request):
         except ObjectDoesNotExist:
             continue
 
-        # Skip unfeatured events
+        # Skip unfeatured or passed featured events
+        delta_from = (date_from - datetime.datetime.now(datetime.timezone.utc)).days
+
         if not featured:
+            continue
+        elif delta_from < 0:
+            continue
+        elif date_to and (date_to - date.today()).days < 0:
             continue
 
         teaser['url'] = event.get_absolute_url()

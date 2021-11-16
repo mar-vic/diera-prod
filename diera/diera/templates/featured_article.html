@@ -2,7 +2,7 @@
 {% load cms_tags menu_tags %}
 {% load thumbnail %}
 
-{% block title %}{% page_attribute "page_title" %}{% endblock title %}
+{% block title %}{% page_attribute "page_title" %}{{ block.super }}{% endblock title %}
 
 <!-- CSS (featured article specific rules) -->
 {% block css %}

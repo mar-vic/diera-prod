@@ -3,7 +3,7 @@
 {% load custom_tags %}
 {% load thumbnail %}
 
-{% block title %}{% page_attribute "page_title" %}{% endblock title %}
+{% block title %}{% page_attribute "page_title" %}{{ block.super }}{% endblock title %}
 
 <!-- CSS (festival specific rules) -->
 {% block css %}
