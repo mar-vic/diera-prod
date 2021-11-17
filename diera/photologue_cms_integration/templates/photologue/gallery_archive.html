@@ -44,11 +44,11 @@
         {% for gallery in latest %}
 
         {% if forloop.first and not latest|length|divisibleby:"2" %}
-        <div class="grid-item ml-1 mr-1 full-width-gallery-slider" style="">
+        <div class="grid-item" style="">
             {% gallery_slider gallery %}
         </div>
         {% else %}
-        <div class="grid-item half-width-gallery-slider" style="">
+        <div class="grid-item" style="">
             {% gallery_slider gallery %}
         </div>
         {% endif %}
