@@ -17,22 +17,22 @@
 {% endblock %}
 
 {% block content %}
-<div id="calendar" class="container">
+<div id="calendar" class="">
 
     <!-- Calendar navigation form -->
-    <div class="container" id="calendar-nav">
+    <div id="calendar-nav">
         <form class="row" action="{% url 'event_calendar:calendar' %}" method="post">
             {% csrf_token %}
 
-            <div id="year-select-container" class="col-4 pl-1 pr-1">
+            <div id="year-select-container" class="col-4">
                 {{ calNavForm.month }}
             </div>
 
-            <div id="month-select-container" class="col-4 pr-1 pl-0">
+            <div id="month-select-container" class="col-4">
                 {{ calNavForm.year }}
             </div>
 
-            <div id="submit-container" class="col-4 pl-0 pr-1">
+            <div id="submit-container" class="col-4">
                 <input id="show-program-button" type="submit" value="{% translate 'Show' %}">
             </div>
         </form>
@@ -55,7 +55,8 @@
  /* Initialize the masonry */
  var $grid = $('.masonry-grid').masonry({
      itemSelector: '.grid-item',
-     isFitWidth: true,
+     percentPosition: true,
+     /* isFitWidth: true, */
  });
 
  /* Image loading bugfix for masonry */

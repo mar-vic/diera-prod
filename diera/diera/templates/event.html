@@ -12,10 +12,10 @@
 {% endblock %}
 
 {% block content %}
-<div style="padding-left: 15px; padding-right: 15px;">
-    <div id="event" class="container">
+<!-- <div style="padding-left: 15px; padding-right: 15px;"> -->
+    <div id="event" class="">
 
-        <!-- IMAGE -->
+        <!-- TEASER IMAGE -->
         {% with image=request.current_page.imageextension.image %}
         {% if image %}
         {% thumbnail image 1200x600 crop upscale as cropped_image %}
@@ -35,12 +35,12 @@
         </div>
         {% endwith %}
 
-        <!-- TITLE -->
+        <!-- EVENT TITLE -->
         <div id="event-title">
             {% page_attribute "title" %}
         </div>
 
-        <!-- BODY -->
+        <!-- EVENT BODY -->
         <div id="event-body">
             <div style="display:none">
                 {% placeholder "genre" %}
@@ -49,5 +49,5 @@
 	          {% placeholder "body" %}
         </div>
     </div>
-</div>
+    <!-- </div> -->
 {% endblock content %}

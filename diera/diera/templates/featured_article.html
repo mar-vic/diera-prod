@@ -11,10 +11,9 @@
 {% endblock %}
 
 {% block content %}
-<div style="padding-left: 10px; padding-right: 10px;">
-    <div id="featured-article" class="container">
+    <div id="featured-article">
 
-        <!-- IMAGE -->
+        <!-- TEASER IMAGE -->
         {% with image=request.current_page.imageextension.image %}
         {% if image %}
         {% thumbnail image 1200x600 crop upscale as cropped_image %}
@@ -22,18 +21,19 @@
         {% endif %}
         {% endwith %}
 
-        <!-- TITLE -->
+        <!-- ARTICLE TITLE -->
         <div id="featured-article-title">
             {% page_attribute "title" %}
         </div>
 
-        <!-- BODY -->
+        <!-- ARTICLE BODY (CMS PLACEHOLDERS) -->
         <div id="featured-article-body">
             <div style="display:none;"
                  {% placeholder "perex" %}
             </div>
 	          {% placeholder "body" %}
         </div>
+
     </div>
-</div>
+
 {% endblock content %}

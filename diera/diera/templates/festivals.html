@@ -16,7 +16,7 @@
 {% placeholder "content" %}
 
 <!-- Section showing the teasers for festivals -->
-<div id="festivals" class="container">
+<div id="festivals">
 
 
     <div class="masonry-grid">
@@ -62,8 +62,8 @@
  /* Initialize masonry grid */
  var $grid = $('.masonry-grid').masonry({
      itemSelector: '.grid-item',
-     /* percentPosition: true, */
-     isFitWidth: true
+     percentPosition: true,
+     /* isFitWidth: true */
  });
 
  /* Image loading bugfix for masonry */

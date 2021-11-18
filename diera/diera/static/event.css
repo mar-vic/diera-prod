@@ -4,6 +4,9 @@
     background-color: white;
     padding: 10px;
     border: 2px solid black;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #event a {
@@ -45,6 +48,12 @@
 #event-body {
     font-size: 30px;
     line-height: 1.1;
+}
+
+@media screen and (max-width: 990px) {
+    #event {
+        width: 95%;
+    }
 }
 
 @media screen and (max-width: 500px) {

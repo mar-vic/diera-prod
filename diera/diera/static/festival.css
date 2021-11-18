@@ -4,6 +4,12 @@
     background-color: white;
     padding: 10px;
     border: 2px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    /* max-width: 1200px; */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #hero-image {
@@ -149,11 +155,17 @@
     float: left;
 }
 
+@media screen and (max-width: 990px) {
+    #festival {
+        width: 95%;
+    }
+}
+
 @media screen and (max-width: 500px) {
 
     #festival-title {
         font-size: 24px;
-        line-height: 0.8;
+        line-height: 0.9;
         text-transform: uppercase;
         hyphens: none !important;
         margin-bottom: 8px;

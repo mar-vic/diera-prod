@@ -21,7 +21,7 @@
 {% placeholder "content" %}
 
 <!-- Teasers for featured events and articles -->
-<div id="featured" class="container">
+<div id="featured" class="">
 
     <div class="masonry-grid">
 
@@ -84,8 +84,8 @@
  /* Initialize masonry grid */
  var $grid = $('.masonry-grid').masonry({
      itemSelector: '.grid-item',
-     /* percentPosition: true, */
-     isFitWidth: true
+     percentPosition: true,
+     /* isFitWidth: true */
  });
 
  /* Image loading bugfix for masonry */

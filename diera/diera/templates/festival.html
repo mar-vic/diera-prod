@@ -12,9 +12,9 @@
 {% endblock %}
 
 {% block content %}
-<div style="padding-left:10px;padding-right:10px;">
-    <div id="festival" class="container">
+    <div id="festival">
 
+        <!-- TEASER IMAGE -->
         {% with image=request.current_page.imageextension.image %}
         {% if image %}
         {% thumbnail image 1200x600 crop upscale as cropped_image %}
@@ -22,17 +22,19 @@
         {% endif %}
         {% endwith %}
 
+        <!-- FESTIVAL TITLE -->
         <div id="festival-title">
             {% page_attribute "title" %}
         </div>
 
+        <!-- FESTIVAL BODY -->
         <div id="festival-body">
             <div style="display:none">
                 {% placeholder "perex" %}
             </div>
 	          {% placeholder "body" %}
         </div>
+
     </div>
-</div>
 {% endblock content %}
 

@@ -7,12 +7,15 @@ ul {list-style-type: none;}
     padding:0px;
     margin-top:30px;
     margin-bottom:30px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #calendar-nav {
     margin-bottom: 2px;
-    padding-left: 13px;
-    padding-right: 13px;
+    /* padding-left: 13px; */
+    /* padding-right: 13px; */
 }
 
 #id_month, #id_year, #show-program-button {
@@ -25,6 +28,21 @@ ul {list-style-type: none;}
     border-radius: 0px;
     text-align: center;
     font-size: 30px;
+}
+
+#year-select-container {
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+#month-select-container {
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+#submit-container {
+    padding-left: 2px;
+    padding-right: 2px;
 }
 
 /* Change the arrow in dorpdown boxes */
@@ -272,11 +290,9 @@ ul {list-style-type: none;}
 }
 
 .eteaser-sm {
-    /* width: 50%; */
     border-radius: 0;
     border: 2px solid black;
     background-color: white;
-    margin: 3px;
 }
 
 .eteaser-sm-schedule {
@@ -325,12 +341,14 @@ ul {list-style-type: none;}
 }
 
 .grid-item {
-    width: 260px;
+    width: 50%;
     float: left;
+    padding: 2px;
 }
 
 #infographics-container {
-    padding:2px;
+    /* padding:2px; */
+    width: calc(100% + 6px);
 }
 
 #infographics-container img {
@@ -339,6 +357,11 @@ ul {list-style-type: none;}
 
 /* breakpoints for calendar for smaller displays */
 @media screen and (max-width: 1199px) {
+
+    #calendar {
+        width: 80%;
+    }
+
     #calendar-container {
         display: none !important;
     }
@@ -347,16 +370,9 @@ ul {list-style-type: none;}
         display: block !important;
     }
 
-    .grid-item {
-        width: 450px;
-    }
-
     #calendar-nav {
-        width: 911px;
-    }
-
-    #infographics-container {
-        width: 911px;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 }
 
@@ -368,25 +384,6 @@ ul {list-style-type: none;}
     #calendar-sm {
         display: block !important;
     }
-
-    .grid-item {
-        width: 302px;
-    }
-
-    #calendar-nav {
-        width: 615px;
-    }
-
-    #infographics-container {
-        width: 615px;
-    }
-
-    #year-select-container::after, #month-select-container::after {
-        font-size: 13px;
-        top: 20px;
-        right: 15px;
-    }
-
 }
 
 @media screen and (max-width: 768px) {
@@ -398,21 +395,20 @@ ul {list-style-type: none;}
         display: block !important;
     }
 
-    #calendar-nav {
-        width: 500px;
-        /* width: 81vw; */
-        margin-left: auto;
-        margin-right: auto;
-    }
+    /* #calendar-nav { */
+    /*     width: 500px; */
+    /*     /\* width: 81vw; *\/ */
+    /*     margin-left: auto; */
+    /*     margin-right: auto; */
+    /* } */
 
-    #calendar-sm {
-        padding-left: 0px;
-        padding-right: 0px;
-    }
+    /* #calendar-sm { */
+    /*     padding-left: 0px; */
+    /*     padding-right: 0px; */
+    /* } */
 
     .grid-item {
-        width: 495px;
-        /* width: 81vw; */
+        width: 100%;
     }
 
     #infographics-container {
@@ -439,23 +435,23 @@ ul {list-style-type: none;}
         right: 13px;
     }
 
-    #calendar-nav {
-        width: 400px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+    /* #calendar-nav { */
+    /*     width: 400px; */
+    /*     margin-left: auto; */
+    /*     margin-right: auto; */
+    /* } */
 
-    #calendar-sm {
-        padding-left: 0px;
-        padding-right: 0px;
-    }
+    /* #calendar-sm { */
+    /*     padding-left: 0px; */
+    /*     padding-right: 0px; */
+    /* } */
 
 
-    .grid-item {
-        width: 396px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+    /* .grid-item { */
+    /*     width: 396px; */
+    /*     margin-left: auto; */
+    /*     margin-right: auto; */
+    /* } */
 
     #infographics-container {
         width: 398px;
@@ -470,23 +466,23 @@ ul {list-style-type: none;}
         right: 13px;
     }
 
-    #calendar-nav {
-        width: 380px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+    /* #calendar-nav { */
+    /*     width: 380px; */
+    /*     margin-left: auto; */
+    /*     margin-right: auto; */
+    /* } */
 
-    #calendar-sm {
-        padding-left: 0px;
-        padding-right: 0px;
-    }
+    /* #calendar-sm { */
+    /*     padding-left: 0px; */
+    /*     padding-right: 0px; */
+    /* } */
 
 
-    .grid-item {
-        width: 376px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+    /* .grid-item { */
+    /*     width: 376px; */
+    /*     margin-left: auto; */
+    /*     margin-right: auto; */
+    /* } */
 
     #infographics-container {
         width: 379px;
@@ -500,23 +496,23 @@ ul {list-style-type: none;}
         right: 13px;
     }
 
-    #calendar-nav {
-        width: 360px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+    /* #calendar-nav { */
+    /*     width: 360px; */
+    /*     margin-left: auto; */
+    /*     margin-right: auto; */
+    /* } */
 
-    #calendar-sm {
-        padding-left: 0px;
-        padding-right: 0px;
-    }
+    /* #calendar-sm { */
+    /*     padding-left: 0px; */
+    /*     padding-right: 0px; */
+    /* } */
 
 
-    .grid-item {
-        width: 356px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+    /* .grid-item { */
+    /*     width: 356px; */
+    /*     margin-left: auto; */
+    /*     margin-right: auto; */
+    /* } */
 
     #infographics-container {
         width: 356px;
@@ -535,23 +531,23 @@ ul {list-style-type: none;}
         right: 13px;
     }
 
-    #calendar-nav {
-        width: 320px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+    /* #calendar-nav { */
+    /*     width: 320px; */
+    /*     margin-left: auto; */
+    /*     margin-right: auto; */
+    /* } */
 
-    #calendar-sm {
-        padding-left: 0px;
-        padding-right: 0px;
-    }
+    /* #calendar-sm { */
+    /*     padding-left: 0px; */
+    /*     padding-right: 0px; */
+    /* } */
 
 
-    .grid-item {
-        width: 316px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+    /* .grid-item { */
+    /*     width: 316px; */
+    /*     margin-left: auto; */
+    /*     margin-right: auto; */
+    /* } */
 
     #infographics-container {
         width: 318px;

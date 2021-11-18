@@ -12,10 +12,10 @@
 
 {% block content %}
 
-<div id="galleries" class="">
+<div id="galleries">
 
     <!-- Navigation -->
-    <div id="gallery-nav" class="" style="">
+    <div id="gallery-nav">
 
                <div class="row justify-content-center">
 
@@ -49,8 +49,8 @@
 		    {% if object_list %}
 		    {% for gallery in object_list %}
 
-        {% if forloop.first and not object_list|length|divisibleby:"2" %}
-        <div class="grid-item" style="">
+        {% if forloop.first and object_list|length == 1 %}
+        <div class="grid-item full-width-gallery">
             {% gallery_slider gallery %}
         </div>
         {% else %}
@@ -74,9 +74,9 @@
  /* Initialize masonry grid */
  var $grid = $('.masonry-grid').masonry({
      itemSelector: '.grid-item',
-     /* percentPosition: true, */
-     isFitWidth: true,
-     gutter: 4
+     percentPosition: true,
+     /* isFitWidth: true, */
+     /* gutter: 4 */
  });
 
  /* Image loading bugfix for masonry */

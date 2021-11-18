@@ -4,6 +4,10 @@
     background-color: white;
     padding: 10px;
     border: 2px solid black;
+    width: 60%;
+    /* max-width: 1200px; */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #hero-image {
@@ -38,6 +42,12 @@
     background-color: black;
 }
 
+@media screen and (max-width: 990px) {
+    #featured-article {
+        width: 95%;
+    }
+}
+
 @media screen and (max-width: 500px) {
 
     #featured-article-title {
@@ -61,6 +71,4 @@
     #featured-article-body h3 {
         font-size: 17px !important;
     }
-
-
 }

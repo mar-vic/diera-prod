@@ -5,7 +5,7 @@
 
 {% if eteasers_for_month.upcoming_eteasers|length > 0 %}
 
-<div id="calendar-container" class="container">
+<div id="calendar-container">
 
     <!-- DAYS GRID -->
     <!-- Iterate through weeks of the month -->
@@ -159,50 +159,54 @@
 </div>
 
 <!-- CALENDAR FOR SMALLER DISPLAYS -->
-<div id="calendar-sm" class="container" style="display:none">
+<div id="calendar-sm" style="display:none">
 
     <div class="masonry-grid">
 
-        <div class="grid-sizer"></div>
+        <!-- <div class="grid-sizer"></div> -->
 
         <!-- MASONRY GRID OF EVENT TEASERS (FOR DISPLAYS) -->
 
 
         <!-- Show only upcoming events on smaller displays -->
         {% for eteaser in eteasers_for_month.upcoming_eteasers %}
-        <div class="grid-item eteaser-sm">
+        <div class="grid-item">
 
-            <!-- EVENT SCHEDULING -->
-            <div class="row eteaser-sm-schedule">
-                <div class="col" style="text-align:left;">
-                    {{ eteaser.date_from|date:"j.n." }}
+            <div class="eteaser-sm">
+
+                <!-- EVENT SCHEDULING -->
+                <div class="row eteaser-sm-schedule">
+                    <div class="col" style="text-align:left;">
+                        {{ eteaser.date_from|date:"j.n." }}
+                    </div>
+                    <div class="col" style="text-align:right;">
+                        {{ eteaser.date_from|date:"H:i" }}
+                    </div>
                 </div>
-                <div class="col" style="text-align:right;">
-                    {{ eteaser.date_from|date:"H:i" }}
-                </div>
-            </div>
 
-            <!-- TEASER IMAGE -->
-            {% if eteaser.image %}  <!-- Checking if the extension was set -->
-            {% thumbnail eteaser.image 600x300 crop upscale as eteaser_image %}
-            <a href="{{ eteaser.event_url }}" style="">
-                <img src="{{ eteaser_image.url }}" style="border-top:2px solid black; border-bottom:2px solid black" />
-            </a>
-            {% endif %}
-
-            <!-- TEASER TITLE -->
-            <div class="eteaser-sm-title">
-                <a href="{{ eteaser.event_url }}">
-                    {{ eteaser.event_title|upper }}
+                <!-- TEASER IMAGE -->
+                {% if eteaser.image %}  <!-- Checking if the extension was set -->
+                {% thumbnail eteaser.image 600x300 crop upscale as eteaser_image %}
+                <a href="{{ eteaser.event_url }}" style="">
+                    <img src="{{ eteaser_image.url }}" style="border-top:2px solid black; border-bottom:2px solid black" />
                 </a>
-            </div>
+                {% endif %}
 
-            <!-- GENRE -->
-            <div class="eteaser-sm-genre">
-                {% show_placeholder "genre" eteaser.page_id %}
-            </div>
+                <!-- TEASER TITLE -->
+                <div class="eteaser-sm-title">
+                    <a href="{{ eteaser.event_url }}">
+                        {{ eteaser.event_title|upper }}
+                    </a>
+                </div>
 
-        </div>
+                <!-- GENRE -->
+                <div class="eteaser-sm-genre">
+                    {% show_placeholder "genre" eteaser.page_id %}
+                </div>
+
+            </div>  <!-- /eteaser-sm -->
+
+        </div>  <!-- /grid item -->
 
         {% empty %}
 
@@ -218,8 +222,8 @@
 
 {% else %}  <!-- Show infographics, if selected month is without programming -->
 
-<div id="infographics-container" class="container">
-    <img src="{% get_random_infographics_url program_date.year program_date.month %}" style="width:100%" >
+<div id="infographics-container">
+    <img src="{% get_random_infographics_url program_date.year program_date.month %}" style="" >
 </div>
 
 {% endif %}
