@@ -108,3 +108,29 @@
         width: 95%;
     }
 }
+
+@media screen and (max-width: 500px) {
+
+    .featured-teaser-title {
+        font-size: 24px;
+        line-height: 0.9;
+        margin-bottom: 8px;
+    }
+
+    .featured-teaser-text {
+        font-size: 15px;
+        line-height: 1;
+    }
+
+    .featured-teaser .card-footer {
+        padding-top: 7px !important;
+        padding-bottom: 7px !important;
+        padding-left: 0px;
+        padding-right: 0px;
+        border-top: 2px solid black !important;
+        margin-left: 10px;
+        margin-right: 10px;
+        font-size: 18px;
+        line-height: 1.2;
+    }
+}
