@@ -6,6 +6,10 @@
     background-color: white;
     border: 2px solid black;
     font-size: 20px !important;
+    width: 60%;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 h1 {
@@ -128,6 +132,10 @@ h1 {
 
 /* Rules for smaller displays */
 @media screen and (max-width: 992px) {
+    #about {
+        width: 95%;
+    }
+
     #about-content .card {
         border: none;
     }

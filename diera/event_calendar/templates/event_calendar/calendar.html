@@ -19,25 +19,6 @@
 {% block content %}
 <div id="calendar" class="">
 
-    <!-- Calendar navigation form -->
-    <div id="calendar-nav">
-        <form class="row" action="{% url 'event_calendar:calendar' %}" method="post">
-            {% csrf_token %}
-
-            <div id="year-select-container" class="col-4">
-                {{ calNavForm.month }}
-            </div>
-
-            <div id="month-select-container" class="col-4">
-                {{ calNavForm.year }}
-            </div>
-
-            <div id="submit-container" class="col-4">
-                <input id="show-program-button" type="submit" value="{% translate 'Show' %}">
-            </div>
-        </form>
-    </div>
-
     <!-- Events calendar -->
     {% calendar year month %}
 

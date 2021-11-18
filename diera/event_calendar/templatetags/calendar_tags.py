@@ -112,7 +112,8 @@ def calendar(context, year, month):
         "eteasers_for_month": grid,
         'program_date': program_date,
         'request': context.request,
-        'current_language': context['current_language']
+        'current_language': context['current_language'],
+        'calNavForm': context['calNavForm']
     }
 
 

@@ -5,6 +5,26 @@
 
 {% if eteasers_for_month.upcoming_eteasers|length > 0 %}
 
+<!-- Calendar navigation form -->
+<div id="calendar-nav">
+    <form class="row" action="{% url 'event_calendar:calendar' %}" method="post">
+        {% csrf_token %}
+
+        <div id="year-select-container" class="col-4">
+            {{ calNavForm.month }}
+        </div>
+
+        <div id="month-select-container" class="col-4">
+            {{ calNavForm.year }}
+        </div>
+
+        <div id="submit-container" class="col-4">
+            <input id="show-program-button" type="submit" value="{% translate 'Show' %}">
+        </div>
+    </form>
+</div>
+
+
 <div id="calendar-container">
 
     <!-- DAYS GRID -->
@@ -222,7 +242,27 @@
 
 {% else %}  <!-- Show infographics, if selected month is without programming -->
 
+
 <div id="infographics-container">
+    <!-- Calendar navigation form -->
+    <div id="calendar-nav" style="padding-left:12px!important;padding-right:9px!important">
+        <form class="row" action="{% url 'event_calendar:calendar' %}" method="post">
+            {% csrf_token %}
+
+            <div id="year-select-container" class="col-4">
+                {{ calNavForm.month }}
+            </div>
+
+            <div id="month-select-container" class="col-4">
+                {{ calNavForm.year }}
+            </div>
+
+            <div id="submit-container" class="col-4">
+                <input id="show-program-button" type="submit" value="{% translate 'Show' %}">
+            </div>
+        </form>
+    </div>
+
     <img src="{% get_random_infographics_url program_date.year program_date.month %}" style="" >
 </div>
 

@@ -47,21 +47,21 @@ ul {list-style-type: none;}
 
 /* Change the arrow in dorpdown boxes */
 #year-select-container select, #month-select-container select {
-    appearance: none;
+    /* appearance: none; */
     /* postion: relative; */
     /* width: 100%; */
 }
 
 #year-select-container::after, #month-select-container::after {
-    color: black;
-    content: "\25BC";
-    position: absolute;
-    top: 13px;
-    right: 20px;
+    /* color: black; */
+    /* content: "\25BC"; */
+    /* position: absolute; */
+    /* top: 13px; */
+    /* right: 20px; */
 }
 
 #year-select-container:hover::after, #month-select-container:hover::after {
-    color: white;
+    /* color: white; */
 }
 
 #id_month:hover, #id_year:hover, #show-program-button:hover {
@@ -395,168 +395,19 @@ ul {list-style-type: none;}
         display: block !important;
     }
 
-    /* #calendar-nav { */
-    /*     width: 500px; */
-    /*     /\* width: 81vw; *\/ */
-    /*     margin-left: auto; */
-    /*     margin-right: auto; */
-    /* } */
-
-    /* #calendar-sm { */
-    /*     padding-left: 0px; */
-    /*     padding-right: 0px; */
-    /* } */
-
     .grid-item {
         width: 100%;
-    }
-
-    #infographics-container {
-        /* width: 90vw; */
-        width: 499px;
     }
 
     #id_month, #id_year, #show-program-button {
         height: 50px;
         font-size: 18px;
     }
-
-    #year-select-container::after, #month-select-container::after {
-        font-size: 13px;
-        top: 15px;
-        right: 20px;
-    }
 }
 
 @media screen and (max-width: 500px) {
-    #year-select-container::after, #month-select-container::after {
-        font-size: 13px;
-        top: 15px;
-        right: 13px;
-    }
-
-    /* #calendar-nav { */
-    /*     width: 400px; */
-    /*     margin-left: auto; */
-    /*     margin-right: auto; */
-    /* } */
-
-    /* #calendar-sm { */
-    /*     padding-left: 0px; */
-    /*     padding-right: 0px; */
-    /* } */
-
-
-    /* .grid-item { */
-    /*     width: 396px; */
-    /*     margin-left: auto; */
-    /*     margin-right: auto; */
-    /* } */
-
-    #infographics-container {
-        width: 398px;
+    #id_month, #id_year, #show-program-button {
+        height: 50px;
+        font-size: 15px;
     }
 }
-
-
-@media screen and (max-width: 400px) {
-    #year-select-container::after, #month-select-container::after {
-        font-size: 13px;
-        top: 15px;
-        right: 13px;
-    }
-
-    /* #calendar-nav { */
-    /*     width: 380px; */
-    /*     margin-left: auto; */
-    /*     margin-right: auto; */
-    /* } */
-
-    /* #calendar-sm { */
-    /*     padding-left: 0px; */
-    /*     padding-right: 0px; */
-    /* } */
-
-
-    /* .grid-item { */
-    /*     width: 376px; */
-    /*     margin-left: auto; */
-    /*     margin-right: auto; */
-    /* } */
-
-    #infographics-container {
-        width: 379px;
-    }
-}
-
-@media screen and (max-width: 380px) {
-    #year-select-container::after, #month-select-container::after {
-        font-size: 10px;
-        top: 18px;
-        right: 13px;
-    }
-
-    /* #calendar-nav { */
-    /*     width: 360px; */
-    /*     margin-left: auto; */
-    /*     margin-right: auto; */
-    /* } */
-
-    /* #calendar-sm { */
-    /*     padding-left: 0px; */
-    /*     padding-right: 0px; */
-    /* } */
-
-
-    /* .grid-item { */
-    /*     width: 356px; */
-    /*     margin-left: auto; */
-    /*     margin-right: auto; */
-    /* } */
-
-    #infographics-container {
-        width: 356px;
-    }
-
-    #year-select-container select, #month-select-container select, #submit-container input {
-        font-size: 14px;
-    }
-
-}
-
-@media screen and (max-width: 360px) {
-    #year-select-container::after, #month-select-container::after {
-        font-size: 10px;
-        top: 18px;
-        right: 13px;
-    }
-
-    /* #calendar-nav { */
-    /*     width: 320px; */
-    /*     margin-left: auto; */
-    /*     margin-right: auto; */
-    /* } */
-
-    /* #calendar-sm { */
-    /*     padding-left: 0px; */
-    /*     padding-right: 0px; */
-    /* } */
-
-
-    /* .grid-item { */
-    /*     width: 316px; */
-    /*     margin-left: auto; */
-    /*     margin-right: auto; */
-    /* } */
-
-    #infographics-container {
-        width: 318px;
-    }
-
-    #year-select-container select, #month-select-container select, #submit-container input {
-        font-size: 14px;
-    }
-
-}
-
-
