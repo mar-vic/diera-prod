@@ -122,6 +122,11 @@
         line-height: 1;
     }
 
+
+    .featured-teaser .card-body {
+        padding-bottom: 2px !important;
+    }
+
     .featured-teaser .card-footer {
         padding-top: 7px !important;
         padding-bottom: 7px !important;
