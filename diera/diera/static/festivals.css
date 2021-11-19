@@ -7,6 +7,7 @@
     margin-left: auto;
     margin-right: auto;
     width: 60%;
+    min-width: 1000px;
 }
 
 #festivals .card {
@@ -70,6 +71,10 @@
 }
 
 @media screen and (max-width: 1199px) {
+    #festivals {
+        min-width: 0px !important;
+    }
+
     .grid-item {
         width: 100%;
     }
@@ -81,20 +86,33 @@
     }
 }
 
-/* @media screen and (max-width: 1199px) { */
-/*     .grid-item { */
-/*         width: 450px; */
-/*     } */
-/* } */
+@media screen and (max-width: 768px) {
 
-/* @media screen and (max-width: 990px) { */
-/*     .grid-item { */
-/*         width: 70vw; */
-/*     } */
-/* } */
+    .featured-teaser-title {
+        font-size: 24px;
+        line-height: 0.9;
+        margin-bottom: 8px;
+    }
 
-/* @media screen and (max-width: 500px) { */
-/*     .grid-item { */
-/*         width: 96vw; */
-/*     } */
-/* } */
+    .featured-teaser-text {
+        font-size: 15px;
+        line-height: 1;
+    }
+
+
+    .featured-teaser .card-body {
+        padding-bottom: 2px !important;
+    }
+
+    .featured-teaser .card-footer {
+        padding-top: 7px !important;
+        padding-bottom: 7px !important;
+        padding-left: 0px;
+        padding-right: 0px;
+        border-top: 2px solid black !important;
+        margin-left: 10px;
+        margin-right: 10px;
+        font-size: 18px;
+        line-height: 1.2;
+    }
+}

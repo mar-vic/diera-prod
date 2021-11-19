@@ -5,6 +5,7 @@
     padding: 10px;
     border: 2px solid black;
     width: 60%;
+    min-width: 1000px;
     /* max-width: 1200px; */
     margin-left: auto;
     margin-right: auto;
@@ -42,13 +43,23 @@
     background-color: black;
 }
 
+@media screen and (max-width: 1199px) {
+    #featured-article {
+        min-width: 800px !important;
+    }
+}
+
 @media screen and (max-width: 990px) {
+    #featured-article {
+        min-width: 0px !important;
+    }
+
     #featured-article {
         width: 95%;
     }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 765px) {
 
     #featured-article-title {
         font-size: 24px;

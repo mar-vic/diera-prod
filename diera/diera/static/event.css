@@ -7,6 +7,7 @@
     width: 60%;
     margin-left: auto;
     margin-right: auto;
+    min-width: 1000px;
 }
 
 #event a {
@@ -50,17 +51,23 @@
     line-height: 1.1;
 }
 
+@media screen and (max-width: 1199px) {
+    #event {
+        min-width: 0px !important;
+    }
+}
+
 @media screen and (max-width: 990px) {
     #event {
         width: 95%;
     }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 765px) {
 
     #event-title {
         font-size: 24px;
-        line-height: 0.8;
+        line-height: 0.9;
         text-transform: uppercase;
         hyphens: none !important;
         margin-bottom: 8px;

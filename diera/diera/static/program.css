@@ -46,25 +46,6 @@ ul {list-style-type: none;}
     padding-right: 2px;
 }
 
-/* Change the arrow in dorpdown boxes */
-#year-select-container select, #month-select-container select {
-    /* appearance: none; */
-    /* postion: relative; */
-    /* width: 100%; */
-}
-
-#year-select-container::after, #month-select-container::after {
-    /* color: black; */
-    /* content: "\25BC"; */
-    /* position: absolute; */
-    /* top: 13px; */
-    /* right: 20px; */
-}
-
-#year-select-container:hover::after, #month-select-container:hover::after {
-    /* color: white; */
-}
-
 #id_month:hover, #id_year:hover, #show-program-button:hover {
     background-color: black;
     color: white;
@@ -310,7 +291,7 @@ ul {list-style-type: none;}
 
 .eteaser-sm-title {
     font-size: 30px;
-    font-weight: bold;
+    /* font-weight: bold; */
     padding-bottom: 4px;
     padding-right: 12px;
     padding-left: 12px;
@@ -410,6 +391,25 @@ ul {list-style-type: none;}
     #id_month, #id_year, #show-program-button {
         height: 50px;
         font-size: 18px;
+    }
+
+    .eteaser-sm-schedule {
+        padding-top: 3px;
+        padding-bottom: 3px;
+        padding-left: 12px;
+        padding-right: 12px;
+        font-size: 24px;
+}
+
+    .eteaser-sm-title {
+        font-size: 24px;
+        line-height: 0.8;
+        margin-top: 10px;
+    }
+
+    .eteaser-sm-genre {
+        font-size: 15px;
+        line-height: 1;
     }
 }
 
