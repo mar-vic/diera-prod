@@ -35,6 +35,10 @@ DEBUG = env.bool('DEBUG', default=False)  # False if unset in the .env file
 # SECRET_KEY = os.getenv('SECRET_KEY')
 SECRET_KEY = env.str('SECRET_KEY')  # Read the secret key set in the .env file
 
+CSRF_COOKIE_SECURE = env.bool('CSRF_COOKIE_SECURE', default=False)
+SESSION_COOKIE_SECURE = env.bool('SESSION_COOKIE_SECURE', default=False)
+SECURE_SSL_REDIRECT = env.bool('SECURE_SSL_REDIRECT', default=False)
+
 # Database configuration
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
@@ -44,7 +48,7 @@ DATABASES = { 'default': env.db('DATABASE_URL') }
 # Set STRICT_TRANS_TABLE option on MySQL
 DATABASES['default']['OPTIONS'] = { 'init_command': "SET sql_mode='STRICT_TRANS_TABLES'" }
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 
 SITE_ID = 1  # DjangoCMS
 X_FRAME_OPTIONS = 'SAMEORIGIN'  # DjangoCMS
