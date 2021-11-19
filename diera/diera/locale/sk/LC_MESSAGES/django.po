@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-16 13:49+0100\n"
+"POT-Creation-Date: 2021-11-19 16:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,6 +40,16 @@ msgstr ""
 #: diera/templates/base.html:87
 msgid "BOOKSTORE"
 msgstr "KNÍHKUPECTVO"
+
+#: diera/templates/cookie_consent.html:9
+msgid ""
+"dieradosveta.sk uses cookies to provide necessary website functionality. By "
+"continuing to use our website, you agree to our cookie usage."
+msgstr "dieradosveta.sk používa cookies na zabezpečenie jej základnej funkcionality. Používaním tejto stránky súhlasíte s ich spracovaním."
+
+#: diera/templates/cookie_consent.html:13
+msgid "Accept"
+msgstr "Súhlasím"
 
 #: diera/templates/footer.html:21
 msgid "CONTACTS"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-16 13:49+0100\n"
+"POT-Creation-Date: 2021-11-19 16:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,14 +23,10 @@ msgstr ""
 msgid "Latest photo galleries"
 msgstr "Najnovšie galérie fotiek"
 
-#: photologue_cms_integration/templates/photologue/gallery_archive.html:24
-#: photologue_cms_integration/templates/photologue/gallery_archive_year.html:25
+#: photologue_cms_integration/templates/photologue/gallery_archive.html:22
+#: photologue_cms_integration/templates/photologue/gallery_archive_year.html:23
 msgid "LATEST"
 msgstr "NAJNOVŠIE"
-
-#: photologue_cms_integration/templates/photologue/gallery_archive.html:57
-msgid "No galleries were found"
-msgstr "Žiadne galérie sa nenašli"
 
 #: photologue_cms_integration/templates/photologue/gallery_archive_year.html:11
 #, python-format
@@ -66,3 +62,6 @@ msgstr ""
 #: photologue_cms_integration/templates/photologue/includes/meet_the_team.html:103
 msgid "waitress"
 msgstr ""
+
+#~ msgid "No galleries were found"
+#~ msgstr "Žiadne galérie sa nenašli"
