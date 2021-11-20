@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-19 16:55+0100\n"
+"POT-Creation-Date: 2021-11-20 14:11+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,7 +37,11 @@ msgstr ""
 "činnosťou o.z. Diera do sveta, ktorou je kaviareň a špecializované "
 "kníhkupectvo."
 
-#: diera/templates/base.html:87
+#: diera/templates/base.html:20 diera/templates/event.html:13
+msgid "Cultural center and specialized bookstore."
+msgstr "Kultúrne centrum a špecializované kníhkupectvo."
+
+#: diera/templates/base.html:96
 msgid "BOOKSTORE"
 msgstr "KNÍHKUPECTVO"
 
@@ -45,7 +49,9 @@ msgstr "KNÍHKUPECTVO"
 msgid ""
 "dieradosveta.sk uses cookies to provide necessary website functionality. By "
 "continuing to use our website, you agree to our cookie usage."
-msgstr "dieradosveta.sk používa cookies na zabezpečenie jej základnej funkcionality. Používaním tejto stránky súhlasíte s ich spracovaním."
+msgstr ""
+"dieradosveta.sk používa cookies na zabezpečenie jej základnej funkcionality. "
+"Používaním tejto stránky súhlasíte s ich spracovaním."
 
 #: diera/templates/cookie_consent.html:13
 msgid "Accept"
