@@ -2,8 +2,25 @@
 {% load cms_tags menu_tags %}
 {% load custom_tags %}
 {% load thumbnail %}
+{% load i18n %}
 
 {% block title %}{% page_attribute "page_title" %}{{ block.super }}{% endblock title %}
+
+<!-- OPENGRAPH TAGS -->
+{% block ogtags %}
+<meta property="og:title" content="{% page_attribute 'page_title' %} | Diera do sveta" />
+<meta property="og:url" content="https://www.dieradosveta.sk" />
+<meta property="og:description" content="{% translate 'Cultural center and specialized bookstore.' %}" />
+<meta property="og:type" content="article" />
+
+{% with image=request.current_page.imageextension.image %}
+{% if image %}
+{% thumbnail image 1200x630 crop upscale as cropped_image %}
+<meta property="og:image" content="{{ cropped_image.url }}" />
+{% endif %}
+{% endwith %}
+
+{% endblock ogtags %}
 
 <!-- CSS (event specific rules) -->
 {% block css %}
