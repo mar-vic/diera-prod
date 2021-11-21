@@ -41,7 +41,7 @@
         <!-- Galleries -->
         {% if latest %}
 
-        {% for gallery in latest %}
+        {% for gallery in latest|slice:":4" %}
 
         {% if forloop.first and not latest|length|divisibleby:"2" %}
         <div class="grid-item" style="">
