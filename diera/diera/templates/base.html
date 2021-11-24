@@ -16,7 +16,7 @@
         <!-- OPENGRAPH TAGS -->
         {% block ogtags %}
         <meta property="og:title" content="Diera do sveta" />
-        <meta property="og:url" content="https://www.dieradosveta.sk" />
+        <meta property="og:url" content="{{ request.current_page.get_absolute_url }}" />
         <meta property="og:description" content="{% translate 'Cultural center and specialized bookstore.' %}" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://www.dieradosveta.sk/static/images/logo.jpg" />

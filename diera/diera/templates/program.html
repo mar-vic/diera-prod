@@ -3,6 +3,15 @@
 
 {% block title %}{{ block.super }}{% page_attribute "page_title" %}{% endblock title %}
 
+<!-- OPENGRAPH TAGS -->
+{% block ogtags %}
+<meta property="og:title" content="{% page_attribute 'page_title' %} | Diera do sveta" />
+<meta property="og:url" content="{{ request.current_page.get_absolute_url }}" />
+<meta property="og:description" content="{% translate 'Monthly programming of the CC Diera do sveta.' %}" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://www.dieradosveta.sk/static/images/logo.jpg" />
+{% endblock ogtags %}
+
 {% block css %}
 {% load static %}
 <link href="{% static 'program.css' %}" rel="stylesheet">

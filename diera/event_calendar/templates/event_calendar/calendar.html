@@ -5,6 +5,15 @@
 
 {% block title %}Program ({{ month }}-{{ year }}){{ block.super }} {% endblock title %}
 
+<!-- OPENGRAPH TAGS -->
+{% block ogtags %}
+<meta property="og:title" content="{% page_attribute 'page_title' %} | Diera do sveta" />
+<meta property="og:url" content="{{ request.current_page.get_absolute_url }}" />
+<meta property="og:description" content="{% translate 'Monthly programming of the CC Diera do sveta.' %}" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://www.dieradosveta.sk/static/images/logo.jpg" />
+{% endblock ogtags %}
+
 {% block background-image %}
     body {
         background-image: url('{% get_background_image_url_for_month year month %}');

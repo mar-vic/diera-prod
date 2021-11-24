@@ -5,6 +5,22 @@
 
 {% block title %}{% page_attribute "page_title" %}{{ block.super }}{% endblock title %}
 
+<!-- OPENGRAPH TAGS -->
+{% block ogtags %}
+<meta property="og:title" content="{% page_attribute 'page_title' %} | Diera do sveta" />
+<meta property="og:url" content="{{ request.current_page.get_absolute_url }}" />
+<meta property="og:description" content="{% placeholder 'perex'  %}" />
+<meta property="og:type" content="article" />
+
+{% with image=request.current_page.imageextension.image %}
+{% if image %}
+{% thumbnail image 1200x630 crop upscale as cropped_image %}
+<meta property="og:image" content="{{ cropped_image.url }}" />
+{% endif %}
+{% endwith %}
+
+{% endblock ogtags %}  <!-- END OGTAGS -->
+
 <!-- CSS (festival specific rules) -->
 {% block css %}
 {% load static %}

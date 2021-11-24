@@ -1,5 +1,6 @@
 {% extends "photologue/root.html" %}
 {% load i18n %}
+{% load cms_tags %}
 {% load custom_tags %}
 
 {% block css %}
@@ -8,6 +9,14 @@
 {% endblock %}
 
 {% block title %}{% trans "Latest photo galleries" %}{{ block.super }}{% endblock %}
+
+{% block ogtags %}
+<meta property="og:title" content="{% page_attribute 'page_title' %} | Diera do sveta" />
+<meta property="og:url" content="{{ request.current_page.get_absolute_url }}" />
+<meta property="og:description" content="{% translate 'Our latest photo galleries.' %}" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://www.dieradosveta.sk/static/images/logo.jpg" />
+{% endblock ogtags %}
 
 {% block content %}
 

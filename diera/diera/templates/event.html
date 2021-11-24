@@ -9,8 +9,8 @@
 <!-- OPENGRAPH TAGS -->
 {% block ogtags %}
 <meta property="og:title" content="{% page_attribute 'page_title' %} | Diera do sveta" />
-<meta property="og:url" content="https://www.dieradosveta.sk" />
-<meta property="og:description" content="{% translate 'Cultural center and specialized bookstore.' %}" />
+<meta property="og:url" content="{{ request.current_page.get_absolute_url }}" />
+<meta property="og:description" content="{% placeholder 'perex'  %}" />
 <meta property="og:type" content="article" />
 
 {% with image=request.current_page.imageextension.image %}
@@ -20,7 +20,7 @@
 {% endif %}
 {% endwith %}
 
-{% endblock ogtags %}
+{% endblock ogtags %}  <!-- END OGTAGS -->
 
 <!-- CSS (event specific rules) -->
 {% block css %}
