@@ -10,7 +10,7 @@
 {% block ogtags %}
 <meta property="og:title" content="{% page_attribute 'page_title' %} | Diera do sveta" />
 <meta property="og:url" content="{{ request.current_page.get_absolute_url }}" />
-<meta property="og:description" content="{% placeholder 'perex'  %}" />
+<!-- <meta property="og:description" content="{% placeholder 'perex'  %}" /> -->
 <meta property="og:type" content="article" />
 
 {% with image=request.current_page.imageextension.image %}
@@ -32,13 +32,22 @@
 <!-- <div style="padding-left: 15px; padding-right: 15px;"> -->
     <div id="event" class="">
 
-        <!-- TEASER IMAGE -->
-        {% with image=request.current_page.imageextension.image %}
-        {% if image %}
-        {% thumbnail image 1200x600 crop upscale as cropped_image %}
-        <img id="hero-image" src="{{ cropped_image.url }}">
-        {% endif %}
-        {% endwith %}
+        <div id="hero" style="position:relative">
+            <!-- FB EVENT LINK -->
+            <div id="fb-event-link">
+                <i class="fab fa-facebook-f">
+                    {% placeholder "Facebook event link" %}
+                </i>
+            </div>
+
+            <!-- TEASER IMAGE -->
+            {% with image=request.current_page.imageextension.image %}
+            {% if image %}
+            {% thumbnail image 1200x600 crop upscale as cropped_image %}
+            <img id="hero-image" src="{{ cropped_image.url }}">
+            {% endif %}
+            {% endwith %}
+        </div>
 
         <!-- EVENT SCHEDULING -->
         {% with event_date=request.current_page.eventdataextension.date_from %}
@@ -65,6 +74,7 @@
             </div>
 	          {% placeholder "body" %}
         </div>
+
     </div>
     <!-- </div> -->
 {% endblock content %}
