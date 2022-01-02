@@ -107,7 +107,7 @@ def get_teasers_for_all_features(request):
         return []
     else:
         # Get all childs of homepage (i.e., the articles)
-        published_articles = [page for page in homep.get_child_pages().order_by('publication_date') if page.is_published(language)]
+        published_articles = [page for page in homep.get_child_pages().order_by('-publication_date') if page.is_published(language)]
 
     # Get the program page (i.e., page with reverse_id='program')
     programp = Page.objects.filter(reverse_id='program').filter(publisher_is_draft=False).first()
