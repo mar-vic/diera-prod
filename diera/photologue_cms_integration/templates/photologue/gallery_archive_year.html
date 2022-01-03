@@ -11,7 +11,6 @@
 {% block title %}{% blocktrans with show_year=year|date:"Y" %}Galleries for {{ show_year }}{% endblocktrans %}{{ block.super }}{% endblock %}
 
 {% block ogtags %}
-<meta property="og:title" content="{% page_attribute 'page_title' %} | Diera do sveta" />
 <meta property="og:url" content="{{ request.current_page.get_absolute_url }}" />
 <meta property="og:description" content="{% translate 'Our photo galleries.' %}" />
 <meta property="og:type" content="website" />
