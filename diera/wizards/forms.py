@@ -1,3 +1,5 @@
+from datetime import datetime as dt
+
 from django import forms
 from django.core.exceptions import ValidationError
 from django.utils.translation import (
@@ -17,6 +19,7 @@ from filer.models import File
 from filer.models.foldermodels import Folder
 
 from .widgets import MonthYearSelectorWidget
+from . import queries
 
 
 class CreateArticleWizardForm(CreateCMSSubPageForm):
@@ -125,6 +128,58 @@ class CreateFestivalWizardForm(CreateCMSSubPageForm):
             message = gettext('You don\'t have the permissions required to add a page.')
             raise ValidationError(message)
         return parent_page.node if parent_page else None
+
+
+
+class CreateFestivalYearWizardForm(CreateCMSSubPageForm):
+    festival = forms.ChoiceField(choices=queries.get_festival_choices(), label='Festival', help_text='This setting associates the page with selected festival.', required=True)
+
+    def get_template(self):
+        """This sets the template for festival year page."""
+        return 'festival_year.html'
+
+    def clean(self):
+        """Set the parent page on the basis of what is selected in the 'festival' ChoiceField."""
+        super().clean()
+        new_cleaned_data = self.cleaned_data
+        parent_page_id = self.cleaned_data['festival']
+        parent_page = Page.objects.filter(id=parent_page_id).filter(publisher_is_draft=False).first()
+        new_cleaned_data['parent_node'] = parent_page.node
+        return new_cleaned_data
+
+
+    # def clean_parent_node(self):
+        # Check to see if this user has permissions to make this page. We've
+        # already checked this when producing a list of wizard entries, but this
+        # is to prevent people from possible form-hacking.
+        # if self.page and self.sub_page_form:
+            # User is adding a page which will be a direct
+            # child of the current page.
+
+
+            # Festival year 'live' under selected festival page
+            # self.is_valid()
+            # self.clean_festival()
+            # parent_page_id = self.cleaned_data['festival']
+            # parent_page = Page.objects.filter(id=parent_page_id).filter(publisher_is_draft=False).first()
+
+
+        # elif self.page and self.page.parent_page:
+            # User is adding a page which will be a right
+            # sibling to the current page.
+            # parent_page = self.page.parent_page
+        # else:
+        #     parent_page = None
+
+        # if parent_page:
+        #     has_perm = user_can_add_subpage(self.user, target=parent_page)
+        # else:
+        #     has_perm = user_can_add_page(self.user)
+
+        # if not has_perm:
+        #     message = gettext('You don\'t have the permissions required to add a page.')
+        #     raise ValidationError(message)
+        # return parent_page.node if parent_page else None
 
 
 class SetBackgroundImageWizardForm(forms.Form):

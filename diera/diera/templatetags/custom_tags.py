@@ -37,6 +37,80 @@ def get_photo_by_slug(slug):
     return Photo.objects.get(slug=slug)
 
 @register.simple_tag
+def get_teasers_for_festival_years(request):
+    """
+    Return teasers for festival year pages.
+    """
+    language = request.LANGUAGE_CODE
+
+    # Ensure that we have a festival page
+    festival_page = request.current_page
+    parent_page = festival_page.get_parent_page()
+    if not parent_page or not parent_page.reverse_id == 'festivals':
+        return []
+
+    # Get all festival year pages
+    festival_year_pages = [page for page in festival_page.get_child_pages() if page.is_published(language)]
+
+    # Generate teasers for festival year pages
+    teasers = []
+
+    for page in festival_year_pages:
+        # Ensuring that extensions were initialized
+        try:
+            teaser_image = page.imageextension.image
+        except ObjectDoesNotExist:
+            teaser_image = None
+
+        try:
+            festival_year = page.festivalyearextension.festival_year
+        except ObjectDoesNotExist:
+            continue
+
+        teasers.append(
+                {
+                    'url': page.get_absolute_url(),
+                    'title': page.get_page_title(),
+                    'page_id': page.id,
+                    'image': teaser_image,
+                    'year': festival_year,
+                }
+        )
+
+    return teasers
+
+    # while festival_year_pages:
+    #     teaser_triplet = []
+    #     for page in festival_year_pages[0:3]:
+
+    #         # Ensuring that extensions were initialized
+    #         try:
+    #             teaser_image = page.imageextension.image
+    #         except ObjectDoesNotExist:
+    #             teaser_image = None
+
+    #         try:
+    #             festival_year = page.festivalyearextension.festival_year
+    #         except ObjectDoesNotExist:
+    #             continue
+
+    #         teaser_triplet.append(
+    #             {
+    #                 'url': page.get_absolute_url(),
+    #                 'title': page.get_page_title(),
+    #                 'page_id': page.id,
+    #                 'image': teaser_image,
+    #                 'year': festival_year,
+    #             }
+    #         )
+
+    #     teasers.append(teaser_triplet)
+    #     festival_year_pages = festival_year_pages[3:]
+
+    # return teasers
+
+
+@register.simple_tag
 def get_teasers_for_festival_events(request, festival_name, year):
     """
     Return all teasers for events of a festival.
@@ -68,7 +142,7 @@ def get_teasers_for_festival_events(request, festival_name, year):
             continue
 
         # Do not create a teaser if the event is not a part of given festival
-        # or have not take the place at given year
+        # or have not taken the place at given year
         if (
                 not festival or
                 str.lower(festival_name) != str.lower(festival.get_page_title()) or
@@ -87,9 +161,15 @@ def get_teasers_for_festival_events(request, festival_name, year):
         event_teasers.append(teaser)
 
     # Sort event teasers by by their scheduling in ascending order
-    return sorted(event_teasers,
+    event_teasers = sorted(event_teasers,
                   key=lambda teaser: teaser['from'],
-                  reverse=True)
+                           reverse=False)
+    event_teasers_triplets = []
+    while event_teasers:
+        event_teasers_triplets.append(event_teasers[0:3])
+        event_teasers = event_teasers[3:]
+
+    return event_teasers_triplets
 
 @register.simple_tag
 def get_teasers_for_all_features(request):
@@ -98,6 +178,10 @@ def get_teasers_for_all_features(request):
     teasers: article teasers (ie, teasers for homepage childs) and event teasers
     (ie, teasers for program childs).
     """
+
+    # DEBUGING
+    # import pdb; pdb.set_trace()
+
     language = request.LANGUAGE_CODE
 
     # Get the home page (ie, page with reverse_id='home')
@@ -183,8 +267,66 @@ def get_teasers_for_all_features(request):
                            key=lambda teaser: teaser['from'],
                            reverse=True)
 
+    # Get festivals page (ie, page with reverse_id='festivals')
+    festivalsp = Page.objects.filter(reverse_id='festivals').filter(publisher_is_draft=False).first()
+    festival_teasers = []
+
+    # Generate teasers for festival pages and their year pages as
+    for festival_page in festivalsp.get_child_pages():
+
+        # Extension objects have to manualy set in order to exist.
+        try:
+            teaser_image = festival_page.imageextension.image
+        except ObjectDoesNotExist:
+            teaser_image = None
+
+        # Extension objects have to be manualy set in order to exist. Skip all
+        # unscheduled (and unfeatured) events
+        try:
+            featured = festival_page.featuredextension.featured
+        except ObjectDoesNotExist:
+            continue
+
+        # Append teaser if festival is featured
+        if featured:
+            festival_teasers.append(
+                {
+                    'url' : festival_page.get_absolute_url(),
+                    'title' : festival_page.get_page_title(),
+                    'image' : teaser_image,
+                    'page_id' : festival_page.id,
+                }
+            )
+
+        # Check for featured festival year pages
+        for festival_year_page in festival_page.get_child_pages():
+        # Extension objects have to manualy set in order to exist.
+            try:
+                teaser_image = festival_year_page.imageextension.image
+            except ObjectDoesNotExist:
+                teaser_image = None
+
+            # Extension objects have to be manualy set in order to exist. Skip all
+            # unscheduled (and unfeatured) events
+            try:
+                featured = festival_year_page.featuredextension.featured
+            except ObjectDoesNotExist:
+                continue
+
+            if featured:
+                festival_teasers.append(
+                    {
+                        'url' : festival_year_page.get_absolute_url(),
+                        'title' : festival_year_page.get_page_title(),
+                        'image' : teaser_image,
+                        'page_id' : festival_year_page.id,
+                    }
+                )
+
+    # First init teasers with festival teasers
+    teasers = festival_teasers
+
     # Merge event and article teasers lists in alternating order
-    teasers = []
     while(event_teasers):
         teasers.append(event_teasers.pop())
         if article_teasers:
@@ -282,7 +424,6 @@ def get_festival_programming(festival_id):
         'festival_programming': festival_programming,
         'festival_years': list(festival_programming.keys())
     }
-
 
 @register.simple_tag
 def get_background_image_url():

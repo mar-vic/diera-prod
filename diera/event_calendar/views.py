@@ -1,13 +1,19 @@
 from datetime import date
 
 from django.http import HttpResponseRedirect
+import logging
+
 from django.shortcuts import render
 
 from .forms import CalendarNavigationForm
 
+# logger = logging.getLogger(__name__)
 
 def event_calendar(request, year=date.today().year, month=date.today().month):
     """Show calendar"""
+
+    # LOGGING year and month for debug purposes
+    # logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.Sample message")
 
     # if this is a POST request we need to process the form data
     if request.method == 'POST':

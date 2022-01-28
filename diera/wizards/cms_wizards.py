@@ -6,22 +6,30 @@ from .forms import (
     CreateArticleWizardForm,
     CreateEventWizardForm,
     CreateFestivalWizardForm,
+    CreateFestivalYearWizardForm,
     SetBackgroundImageWizardForm
 )
 
 from filer.models import File
 
-
 class CreateArticleWizard(Wizard):
     pass
+
 
 
 class CreateEventWizard(Wizard):
     pass
 
 
+
 class CreateFestivalWizard(Wizard):
     pass
+
+
+
+class CreateFestivalYearWizard(Wizard):
+    pass
+
 
 
 class SetBackgroundImageWizard(Wizard):
@@ -60,6 +68,13 @@ festival_wizard = CreateFestivalWizard(
     description="Create a new Festival",
 )
 
+festival_year_wizard = CreateFestivalYearWizard(
+    title="New Festival Year",
+    weight=3,
+    form=CreateFestivalYearWizardForm,
+    description="Create a new festival year",
+)
+
 bgimage_wizard = SetBackgroundImageWizard(
     title="New Background Image",
     weight=3,
@@ -76,4 +91,5 @@ for wizard in wizard_pool.get_entries():
 wizard_pool.register(event_wizard)
 wizard_pool.register(article_wizard)
 wizard_pool.register(festival_wizard)
+wizard_pool.register(festival_year_wizard)
 wizard_pool.register(bgimage_wizard)

@@ -5,11 +5,14 @@ from cms.toolbar_pool import toolbar_pool
 from cms.extensions.toolbar import ExtensionToolbar
 from cms.utils import get_language_list
 
-from .models import ImageExtension, TeaserImageExtension, TeaserTextExtension, EventDataExtension, FeaturedExtension
-
-
-
-
+from .models import (
+    ImageExtension,
+    TeaserImageExtension,
+    TeaserTextExtension,
+    EventDataExtension,
+    FeaturedExtension,
+    FestivalYearExtension
+)
 
 @toolbar_pool.register
 class ImageExtensionToolbar(ExtensionToolbar):
@@ -17,16 +20,27 @@ class ImageExtensionToolbar(ExtensionToolbar):
 
     def populate(self):
 
+        verbose_name = None
+
         try:
             cur_page_parent = self.request.current_page.get_parent_page()
         except AttributeError:
             return
 
         if not cur_page_parent or cur_page_parent.reverse_id not in ['home', 'program', 'festivals']:
-            return
+            # Try for festival years
+            try:
+                cur_page_parent = self.request.current_page.get_parent_page().get_parent_page()
+            except AttributeError:
+                return
+
+            if not cur_page_parent or cur_page_parent.reverse_id != 'festivals':
+                return
+            else:
+                verbose_name = 'Festival Year Settings'
 
         parent_id = cur_page_parent.reverse_id
-        verbose_name = 'Article Settings' if parent_id == 'home' else 'Event Settings' if parent_id == 'program' else 'Festival Settings'
+        verbose_name = verbose_name if verbose_name else 'Article Settings' if parent_id == 'home' else 'Event Settings' if parent_id == 'program' else 'Festival Settings'
 
         menu = self.toolbar.get_or_create_menu(
             key='page_extensions_menu',
@@ -203,15 +217,25 @@ class FeaturedExtensionToolbar(ExtensionToolbar):
     model = FeaturedExtension
 
     def populate(self):
+        verbose_name = None
+
         try:
             cur_page_parent = self.request.current_page.get_parent_page()
         except AttributeError:
             return
 
-        if not cur_page_parent or cur_page_parent.reverse_id not in ['program']:
-            return
+        if not cur_page_parent or cur_page_parent.reverse_id not in ['program', 'festivals']:
+            # Try for festival years
+            try:
+                cur_page_parent = self.request.current_page.get_parent_page().get_parent_page()
+            except AttributeError:
+                return
+            if not cur_page_parent or cur_page_parent.reverse_id != 'festivals':
+                return
+            else:
+                verbose_name = 'Festival Year Settings'
 
-        verbose_name = 'Event Settings'
+        verbose_name = 'Festival Year Settings' if verbose_name else 'Event Settings' if cur_page_parent.reverse_id == 'program' else 'Festival Settings'
 
         menu = self.toolbar.get_or_create_menu(
             key='page_extensions_menu',
@@ -223,4 +247,32 @@ class FeaturedExtensionToolbar(ExtensionToolbar):
             page_extension, url = self.get_page_extension_admin()
             if url:
                 menu.add_modal_item(_('Feature'), url=url,
+                                    disabled=not self.toolbar.edit_mode_active, position=4)
+
+
+@toolbar_pool.register
+class FestivalYearExtensionToolbar(ExtensionToolbar):
+    model = FestivalYearExtension
+
+    def populate(self):
+        try:
+            cur_page_parent = self.request.current_page.get_parent_page().get_parent_page()
+        except AttributeError:
+            return
+
+        if not cur_page_parent or cur_page_parent.reverse_id not in ['festivals']:
+            return
+
+        verbose_name = 'Festival Year Settings'
+
+        menu = self.toolbar.get_or_create_menu(
+            key='page_extensions_menu',
+            verbose_name=verbose_name
+        )
+
+        if menu:
+            # retrieves the instance of the current extension (if any) and the toolbar item URL
+            page_extension, url = self.get_page_extension_admin()
+            if url:
+                menu.add_modal_item(_('Festival year'), url=url,
                                     disabled=not self.toolbar.edit_mode_active, position=4)

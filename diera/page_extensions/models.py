@@ -1,3 +1,4 @@
+from datetime import datetime as dt
 from django.db import models
 from django.core.exceptions import ValidationError
 
@@ -76,11 +77,24 @@ class EventDataExtension(PageExtension):
             raise ValidationError('Finishing date cannot precede starting date.')
 
 
+class FestivalYearExtension(PageExtension):
+    """
+    Festival year pages need to store the information about the year of the
+    festival they are supposed to represent, since the information is used to
+    generate the programming for the festival in given year.
+    """
+    class Meta:
+        verbose_name = "Festival year"
+
+    festival_year = models.DecimalField(max_digits=4, decimal_places=0, default=dt.now().year)
+
+
 # extension_pool.register(ArticleExtension)
 extension_pool.register(ImageExtension)
 extension_pool.register(TeaserImageExtension)
 extension_pool.register(EventDataExtension)
 extension_pool.register(FeaturedExtension)
+extension_pool.register(FestivalYearExtension)
 
 
 # Title Extensions (language dependent)

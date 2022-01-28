@@ -23,12 +23,14 @@
 <!-- Teasers for featured events and articles -->
 <div id="featured" class="">
 
+    {% get_teasers_for_all_features request as teasers %}
+
     <div class="masonry-grid">
 
         <!-- <div class="grid-sizer"></div> -->
 
         <!-- Render all teasers -->
-        {% get_teasers_for_all_features request as teasers %}
+
         {% for teaser in teasers %}
         <div class="grid-item featured-teaser">
             <div class="card">

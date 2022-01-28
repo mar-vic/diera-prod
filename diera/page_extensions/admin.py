@@ -4,7 +4,15 @@ from django.db.models.query import EmptyQuerySet
 from cms.extensions import PageExtensionAdmin, TitleExtensionAdmin
 from cms.models import Page
 
-from .models import ImageExtension, TeaserImageExtension, TeaserTextExtension, EventDataExtension, FeaturedExtension
+from .models import (
+    ImageExtension,
+    TeaserImageExtension,
+    TeaserTextExtension,
+    EventDataExtension,
+    FeaturedExtension,
+    FestivalYearExtension
+)
+
 
 class ImageExtensionAdmin(PageExtensionAdmin):
     pass
@@ -33,9 +41,12 @@ class EventDataExtensionAdmin(PageExtensionAdmin):
 class FeaturedExtensionAdmin(PageExtensionAdmin):
     pass
 
+class FestivalYearExtensionAdmin(PageExtensionAdmin):
+    pass
 
 admin.site.register(ImageExtension, ImageExtensionAdmin)
 admin.site.register(TeaserImageExtension, TeaserImageExtensionAdmin)
 admin.site.register(TeaserTextExtension, TeaserTextExtensionAdmin)
 admin.site.register(EventDataExtension, EventDataExtensionAdmin)
 admin.site.register(FeaturedExtension, FeaturedExtensionAdmin)
+admin.site.register(FestivalYearExtension, FestivalYearExtensionAdmin)

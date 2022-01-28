@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load cms_tags menu_tags %}
+{% load i18n %}
 {% load custom_tags %}
 {% load thumbnail %}
 
@@ -9,7 +10,6 @@
 {% block ogtags %}
 <meta property="og:title" content="{% page_attribute 'page_title' %} | Diera do sveta" />
 <meta property="og:url" content="{{ request.current_page.get_absolute_url }}" />
-<meta property="og:description" content="{% placeholder 'perex'  %}" />
 <meta property="og:type" content="article" />
 
 {% with image=request.current_page.imageextension.image %}
@@ -39,9 +39,12 @@
         {% endwith %}
 
         <!-- FESTIVAL TITLE -->
+
+        {% with parent=request.current_page.get_parent_page %}
         <div id="festival-title">
-            {% page_attribute "title" %}
+            <a href="{{ parent.get_absolute_url }}">{{ parent.get_page_title }}</a> / {% page_attribute "title" %}
         </div>
+        {% endwith %}
 
         <!-- FESTIVAL BODY -->
         <div id="festival-body">
@@ -50,6 +53,47 @@
             </div>
 	          {% placeholder "body" %}
         </div>
+
+        {% get_teasers_for_festival_years request as teasers %}
+
+        {% if teasers %}
+
+        <div id="festival-years">
+
+            <h2>{% translate "FESTIVAL YEARS" %}</h2>
+
+            <div id="festival-years-grid" class="row no-gutters">
+
+                {% for teaser in teasers %}
+                <div class="col-sm-4">
+                    <a href="{{ teaser.url }}">
+                        <div class="card teaser-card m-1">
+
+                            <!-- FESTIVAL YEAR TEASER IMAGE -->
+                            {% if teaser.image %}
+                            {% thumbnail teaser.image 600x300 crop upscale as cropped_eteaser_image %}
+                            <img class="card-img-top" style="opacity:0.6;" src="{{ cropped_eteaser_image.url }}">
+                            {% endif %}
+
+                            <div class="card-img-overlay">
+                                <div class="center">
+                                    <div id="year">
+                                        {{ teaser.year }}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+
+            </div>
+
+
+        </div>
+
+        {% endif %}
 
     </div>
 {% endblock content %}
