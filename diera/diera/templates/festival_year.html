@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% load cms_tags menu_tags %}
+{% load custom_tags %}
+{% load thumbnail %}
+
+{% block title %}{% page_attribute "page_title" %}{{ block.super }}{% endblock title %}
+
+<!-- OPENGRAPH TAGS -->
+{% block ogtags %}
+<meta property="og:title" content="{% page_attribute 'page_title' %} | Diera do sveta" />
+<meta property="og:url" content="{{ request.current_page.get_absolute_url }}" />
+<meta property="og:type" content="article" />
+
+{% with image=request.current_page.imageextension.image %}
+{% if image %}
+{% thumbnail image 1200x630 crop upscale as cropped_image %}
+<meta property="og:image" content="{{ cropped_image.url }}" />
+{% endif %}
+{% endwith %}
+
+{% endblock ogtags %}  <!-- END OGTAGS -->
+
+<!-- CSS (festival specific rules) -->
+{% block css %}
+{% load static %}
+<link href="{% static 'festival_year.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div id="festival">
+
+        <!-- TEASER IMAGE -->
+        {% with image=request.current_page.imageextension.image %}
+        {% if image %}
+        {% thumbnail image 1200x600 crop upscale as cropped_image %}
+        <img id="hero-image" src="{{ cropped_image.url }}">
+        {% endif %}
+        {% endwith %}
+
+        <!-- FESTIVAL YEAR TITLE -->
+        {% with grand_parent=request.current_page.get_parent_page.get_parent_page %}
+        {% with parent=request.current_page.get_parent_page %}
+        <div id="festival-title">
+            <a href="{{ grand_parent.get_absolute_url }}">{{ grand_parent.get_page_title }}</a> /
+            <a href="{{ parent.get_absolute_url }}">{{ parent.get_page_title }}</a> /
+            {% page_attribute "title" %}
+        </div>
+        {% endwith %}
+        {% endwith %}
+
+        <!-- FESTIVAL YEAR BODY -->
+        <div id="festival-body">
+            <div style="display:none">
+                {% placeholder "perex" %}
+            </div>
+	          {% placeholder "body" %}
+        </div>
+
+
+        <!-- FESTIVAL YEAR PROGRAMMING -->
+        {% with festival_title=request.current_page.parent_page.get_page_title %}
+        {% with festival_year=request.current_page.festivalyearextension.festival_year %}
+        {% get_teasers_for_festival_events request festival_title festival_year as teasers %}
+
+        {% if teasers %}
+        <div id="year-program">
+            <h2>PROGRAM</h2>
+
+            {% for teaser_triplet in teasers %}
+            <div class="card-group eteasers-grid">
+                {% for teaser in teaser_triplet %}
+                <div class="card teaser-card m-1">
+
+                    <!-- EVENT TEASER IMAGE -->
+                    {% if teaser.image %}
+                    {% thumbnail teaser.image 600x300 crop upscale as cropped_eteaser_image %}
+                    <a href="{{ teaser.url }}">
+                        <img class="card-img-top p-1" src="{{ cropped_eteaser_image.url }}">
+                    </a>
+                    {% endif %}
+
+                    <div class="card-body p-1">
+
+                        <!-- EVENT TITLE -->
+                        <h4 class="card-title teaser-title">
+                            <a href="{{ teaser.url }}">{{ teaser.title|upper }}</a>
+                        </h4>
+
+                        <h5 class="teaser-genre">
+                            {% show_placeholder "genre" teaser.page_id %}
+                        </h5>
+                    </div>
+
+                    <div class="card-footer teaser-footer p-0 m-1">
+                        <div class="row">
+                            <div class="col">
+                                {{ teaser.from|date:"j.m." }}
+                            </div>
+                            <div class="col" style="text-align:right;">
+                                {{ teaser.from|date:"H:i" }}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% endwith %}
+        {% endwith %}
+
+    </div>
+{% endblock content %}
+

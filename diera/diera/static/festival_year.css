@@ -1,0 +1,248 @@
+#festival {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: white;
+    padding: 10px;
+    border: 2px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    min-width: 1000px;
+    /* max-width: 1200px; */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#hero-image {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#festival-title {
+    font-size: 55px;
+    line-height: 0.9;
+    text-transform: uppercase;
+    hyphens: none !important;
+    margin-bottom: 15px;
+}
+
+#festival-title a {
+    text-decoration: underline !important;
+    transition-property: all;
+    transition-duration: 0.2s;
+    transition-delay: 0s;
+    color: black;
+}
+
+#festival-title a:hover {
+    color: white;
+    text-decoration: none !important;
+    background-color: black;
+    text-decoration: none;
+    /* font-weight: bold; */
+    /* border-radius: 1px; */
+    /* padding: 1px; */
+}
+
+#festival-body {
+    font-size: 30px !important;
+    line-height: 1.1;
+    /* margin-bottom: 20px; */
+}
+
+#festival-body .nav-tabs {
+    border: none;
+    margin-top: 20px;
+}
+
+#festival-body .nav-tabs::before {
+    content: "ROČNÍKY:";
+    /* background-color: red; */
+    padding-top: 10px;
+    padding-left: 7px;
+    padding-right: 10px;
+    font-weight: bold;
+}
+
+#festival-body .nav-link {
+    font-size: 30px !important;
+    text-decoration: underline;
+}
+
+#festival-body .nav-link.active {
+    border-radius: 0px;
+    /* border: 2px solid black; */
+    background-color: black;
+    color: white;
+    text-decoration: none;
+}
+
+#festival-body .nav-link:hover {
+    border-radius: 0px;
+    text-decoration: none;
+}
+
+.festival-year-info {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    padding-left: 5px;
+}
+
+.festival-year-info img {
+    /* padding-top: 3px; */
+    /* padding-bottom: 3px; */
+    width: 100%;
+    min-width: 300px;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+#festival-body .card {
+    border: none;
+    border-right: 2px solid black;
+    border-radius: 0px;
+}
+
+#festival-body .card-header {
+    border: none;
+    background-color: white;
+    padding: 0px;
+}
+
+.festival-programming {
+    padding: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.eteaser {
+    /* width: 50%; */
+    border-radius: 0;
+    border: 2px solid black;
+    background-color: white;
+    margin: 3px;
+}
+
+.eteaser img {
+    width: 100%;
+}
+
+.eteaser-schedule {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 12px;
+    padding-right: 12px;
+    font-size: 30px;
+}
+
+.eteaser-title {
+    margin-top: 5px;
+    font-size: 30px;
+    font-weight: bold;
+    padding-bottom: 4px;
+    padding-right: 12px;
+    padding-left: 12px;
+}
+
+.eteaser-title a {
+    text-decoration: none;
+    color: black;
+}
+
+.eteaser-genre {
+    font-size: 26px;
+    text-transform: uppercase;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+/* MASONRY GRID */
+.masonry-grid {
+    /* center grid items */
+    margin: 0 auto;
+}
+
+/* clear fix */
+.grid:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.grid-item {
+    width: 260px;
+    float: left;
+}
+
+@media screen and (max-width: 1199px) {
+    #festival {
+        min-width: 800px !important;
+    }
+}
+
+@media screen and (max-width: 990px) {
+    #festival {
+        min-width: 0px !important;
+    }
+
+    #festival {
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 765px) {
+
+    #festival-title {
+        font-size: 24px;
+        line-height: 0.9;
+        text-transform: uppercase;
+        hyphens: none !important;
+        margin-bottom: 8px;
+    }
+
+    #festival-body * {
+        font-size: 15px;
+        line-height: 1;
+    }
+
+    #festival-body h2 {
+        font-size: 20px !important;
+    }
+
+    #festival-body h3 {
+        font-size: 17px !important;
+    }
+
+    #year-program h2 {
+        font-size: 20px !important;
+    }
+
+}
+
+.eteasers-grid {
+    margin-left: -4px;
+    margin-right: -4px;
+}
+
+.teaser-card * {
+    text-transform: uppercase;
+}
+
+.teaser-card {
+    border-radius: 0px !important;
+    border: 2px solid black !important;
+}
+
+.teaser-card a {
+    color: black;
+    text-decoration: none;
+}
+
+.teaser-title, .teaser-genre p {
+    margin-bottom: 6px !important;
+}
+
+.teaser-footer {
+    background-color: white;
+    border-top: 2px solid black;
+}
