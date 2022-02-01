@@ -12,28 +12,51 @@
 {% block css %}
 {% load static %}
 <link href="{% static 'home.css' %}" rel="stylesheet">
+
+<!-- Colcade JS for teasers masonry grid -->
+<script src="https://unpkg.com/colcade@0/colcade.js"></script>
+
+<!-- Styles for Colcade masonry grid -->
+<style>
+ /* Using floats */
+ .grid-col {
+     float: left;
+     width: 100%;
+ }
+
+ .grid-item {
+     padding: 2px;
+ }
+
+ /* 1 columns by default, hide the second column */
+ .grid-col--2 { display: none; }
+
+ /* 2 columns at large size */
+ @media ( min-width: 1200px ) {
+     .grid-col { width: 50%; }
+     .grid-col--2 { display: block; } /* show column 2 */
+ }
+</style>
 {% endblock %}
 
 <!-- HOMEPAGE CONTENT -->
 {% block content %}
 
-<!-- Placeholder for marquee -->
-{% placeholder "content" %}
-
 <!-- Teasers for featured events and articles -->
-<div id="featured" class="">
+<div id="featured">
 
     {% get_teasers_for_all_features request as teasers %}
 
-    <div class="masonry-grid">
+    <div class="grid">
 
-        <!-- <div class="grid-sizer"></div> -->
+        <!-- columns -->
+        <div class="grid-col grid-col--1"></div>
+        <div class="grid-col grid-col--2"></div>
 
-        <!-- Render all teasers -->
-
+        <!-- teasers -->
         {% for teaser in teasers %}
-        <div class="grid-item featured-teaser">
-            <div class="card">
+        <div class="grid-item">
+            <div class="card ">
 
                 <!-- TEASER IMAGE -->
                 {% if teaser.image %}  <!-- Checking if the extension was set -->
@@ -72,29 +95,26 @@
             </div>
         </div>
         {% endfor %}
+
     </div>
+
 </div>
+<script>
+     // element as first argument
+     var grid = document.querySelector('.grid');
+     var colc = new Colcade( grid, {
+         columns: '.grid-col',
+         items: '.grid-item'
+     });
+
+     // selector string as first argument
+     var colc = new Colcade( '.grid', {
+         columns: '.grid-col',
+         items: '.grid-item'
+     });
+</script>
 {% endblock content %}
 
 {% block js %}
-<script>
- /* Initialize all popovers */
- $(function () {
-     $('.teaser-image').popover();
- })
-
- /* Initialize masonry grid */
- var $grid = $('.masonry-grid').masonry({
-     itemSelector: '.grid-item',
-     percentPosition: true,
-     /* isFitWidth: true */
- });
-
- /* Image loading bugfix for masonry */
- $grid.imagesLoaded().progress(
-     function() {
-         $grid.masonry();
- });
-</script>
 {% endblock js %}
 
