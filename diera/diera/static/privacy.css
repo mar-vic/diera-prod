@@ -1,0 +1,124 @@
+/* PRIVACY PROTECTION */
+#privacy-protection {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: white;
+    border: 2px solid black;
+    font-size: 20px !important;
+    width: 60%;
+    min-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#privacy-protection * {
+    font-size: 30px;
+    line-height: 1.1 !important;
+}
+
+#privacy-protection h1 {
+    font-size: 55px !important;
+    line-height: 0.9 !important;
+    margin-top: 10px !important;
+    margin-bottom: 15px !important;
+    text-transform: uppercase;
+}
+
+#privacy-protection h2 {
+    font-size: 35px !important;
+    line-height: 0.9 !important;
+    text-transform: uppercase;
+}
+
+
+#privacy-protection #hero-img {
+    margin-bottom: 20px;
+}
+
+
+#privacy-protection table, #privacy-protection td, #privacy-protection th {
+    border: 3px solid black;
+}
+
+#privacy-protection th {
+    text-align: center;
+}
+
+#privacy-protection td {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#privacy-protection td p {
+    margin-bottom: 2px;
+}
+
+#privacy-protection table {
+    width: 99% !important;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+#privacy-protection a {
+    text-decoration: underline;
+    transition-property: all;
+    transition-duration: 0.2s;
+    transition-delay: 0s;
+    color: black;
+}
+
+#privacy-protection a:hover {
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    padding: 1px;
+    border-radius: 2px;
+}
+
+/* Rules for smaller displays */
+@media screen and (max-width: 1199px) {
+    #privacy-protection {
+        min-width: 800px !important;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    #privacy-protection {
+        min-width: 0px !important;
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 500px) {
+
+
+    #privacy-protection * {
+        font-size: 15px !important;
+        line-height: 1 !important;
+    }
+
+    #privacy-protection h1 {
+        font-size: 24px !important;
+        line-height: 0.8 !important;
+        margin-top: 5px !important;
+        margin-bottom: 8px !important;
+        text-transform: uppercase;
+    }
+
+
+    #privacy-protection h2 {
+        font-size: 20px !important;
+        /* line-height: 1 !important; */
+        /* text-transform: uppercase; */
+    }
+
+    #privacy-protection h3 {
+        font-size: 17px !important;
+        /* line-height: 1 !important; */
+        /* text-transform: uppercase; */
+    }
+}

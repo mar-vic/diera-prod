@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load cms_tags menu_tags %}
+{% load custom_tags %}
+
+{% block title %}{% page_attribute "page_title" %}{{ block.super }}{% endblock title %}
+
+{% block ogtags %}
+<meta property="og:title" content="{% page_attribute 'page_title' %} | Diera do sveta" />
+<meta property="og:url" content="{{ request.current_page.get_absolute_url }}" />
+<meta property="og:description" content="{% translate 'Our mission statement.' %}" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://www.dieradosveta.sk/static/images/logo.jpg" />
+{% endblock ogtags %}
+
+{% block css %}
+{% load static %}
+<link href="{% static 'privacy.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div id="privacy-protection">
+    <div id="hero-img">
+        {% placeholder "hero image" %}
+    </div>
+    <div id="gdpr">
+        {% placeholder "gdpr" %}
+    </div>
+</div>
+{% endblock content %}

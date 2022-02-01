@@ -84,6 +84,7 @@ INSTALLED_APPS = [
     'djangocms_link',
     'djangocms_file',
     'djangocms_picture',
+    'djangocms_icon',
     'djangocms_video',
     'djangocms_googlemap',
     'djangocms_snippet',
@@ -149,6 +150,7 @@ CMS_TEMPLATES = [
     ('featured_article.html', 'Featured Article'),
     ('event.html', 'Event'),
     ('festival.html', 'Festival'),
+    ('privacy_protection.html', 'Privacy Protection'),
 
     # DjangoCMS defaults
     ('fullwidth.html', 'Fullwidth'),
@@ -239,3 +241,35 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # Photologue settings
 PHOTOLOGUE_GALLERY_LATEST_LIMIT = 4
+
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+
+#     'formatters': {
+#         'Simple_Format': {
+#             'format': '{levelname} {message}',
+#             'style': '{',
+#         }
+#     },
+
+#     'handlers': {
+#         'file': {
+#             'level': 'DEBUG',
+#             'class': 'logging.FileHandler',
+#             'filename': os.path.join(BASE_DIR, 'logs', 'debug.log'),
+#             'formatter': 'Simple_Format',
+#         },
+#         'console':{
+#             'level': 'DEBUG',
+#             'class': 'logging.StreamHandler',
+#         }
+#     },
+#     'loggers': {
+#         'django': {
+#             'handlers': ['file', 'console'],
+#             'level': 'DEBUG',
+#             # 'propagate': True,
+#         },
+#     },
+# }

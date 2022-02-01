@@ -181,6 +181,18 @@ footer {
     height: 290px;
 }
 
+#fpu-logo {
+    width: 80%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+#orange-logo {
+    width: 80%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 #site-footer a {
     text-decoration: underline !important;
     transition-property: all;

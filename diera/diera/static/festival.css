@@ -229,6 +229,22 @@
     text-transform: uppercase;
 }
 
+.teaser-card:hover {
+    background-color:black;
+}
+
+.teaser-card:hover img {
+    opacity: 0;
+}
+
+.card-img-top {
+    opacity: 0.6;
+}
+
+.card-img-top:hover {
+    display:none;
+}
+
 .teaser-card {
     border-radius: 0px !important;
     border: 2px solid black !important;

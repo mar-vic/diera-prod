@@ -34,16 +34,20 @@
 	          {% placeholder "content" %}
         </div>
 
+        <div id="dedication">
+            {% placeholder "dedication" %}
+        </div>
+
         <!-- LOGOS -->
         <div id="logos" class="row" style="">
-            <div class="logo col-md-6 col-12" style="font-size: 20px; line-height: 0.9;">
-                {% translate "Events of the cultural center Diera do sveta are financed with the help of public resources through Slovak Arts Council and supplemented by enterpreneurial activities of the civic organisation Diera do sveta (coffee shop and bookstore)" %}
+            <div class="logo col-md-4 col-12" style="">
+                <img class="" style="width:90%" src="{% static '/images/elipsa_logo_napis.svg' %}" />
             </div>
-            <div class="logo col-md-3 col-12" style="">
-                <img class="" style="width:90%; position:absolute; top:50%; left:50%; transform: translate(-50%, -50%);" src="{% static '/images/elipsa-01.svg' %}" />
+            <div class="logo col-md-4 col-12" style="">
+                <img class="" style="width:90%" src="{% static '/images/FPU_logo_modre.png' %}" />
             </div>
-            <div class="logo col-md-3 col-12" style="">
-                <img class="" style="width:90%; position:absolute; top:50%; left:50%; transform: translate(-50%, -50%);" src="{% static '/images/logo_FPU_cropped.png' %}" />
+            <div class="logo col-md-4 col-12" style="">
+                <img class="" style="width:90%;" src="{% static '/images/orange_foundation_logo.svg' %}" />
             </div>
         </div>
     </div>

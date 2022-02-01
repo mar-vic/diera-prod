@@ -59,6 +59,18 @@
     line-height: 1.4;
 }
 
+.card-column .card-footer {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding-left: 0px;
+    padding-right: 0px;
+    border-top: 2px solid black !important;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 30px;
+    line-height: 1.4;
+}
+
 .featured-teaser {
     padding-right: 3px;
     padding-left: 3px;
@@ -81,6 +93,19 @@
 
 
 /* MASONRY GRID */
+
+/* IMPLEMENTED THROUGH CARD COLUMNS */
+.card-columns {
+    column-count: 2;
+    column-gap: 6px;
+}
+
+.card-column {
+    /* margin-bottom: 0px !important; */
+    margin-bottom: 3px !important;
+    margin-top: 3px !important;
+}
+
 .masonry-grid {
     /* center grid items */
     margin: 0 auto;
@@ -123,6 +148,10 @@
 
     .grid-item {
         width: 100%;
+    }
+
+    .card-columns {
+        column-count: 1;
     }
 }
 
