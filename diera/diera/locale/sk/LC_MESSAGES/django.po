@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-22 16:28+0100\n"
+"POT-Creation-Date: 2022-01-31 18:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,11 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n "
 ">= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
 
-#: diera/templates/about.html:32
+#: diera/templates/about.html:11 diera/templates/privacy_protection.html:11
+msgid "Our mission statement."
+msgstr ""
+
+#: diera/templates/about.html:40
 msgid ""
 "Events of the cultural center Diera do sveta are financed with the help of "
 "public resources through Slovak Arts Council and supplemented by "
@@ -31,7 +35,7 @@ msgstr ""
 "činnosťou o.z. Diera do sveta, ktorou je kaviareň a špecializované "
 "kníhkupectvo."
 
-#: diera/templates/base.html:20 diera/templates/event.html:13
+#: diera/templates/base.html:20
 msgid "Cultural center and specialized bookstore."
 msgstr "Kultúrne centrum a špecializované kníhkupectvo."
 
@@ -50,6 +54,14 @@ msgstr ""
 #: diera/templates/cookie_consent.html:13
 msgid "Accept"
 msgstr "Súhlasím"
+
+#: diera/templates/festival.html:63
+msgid "FESTIVAL YEARS"
+msgstr ""
+
+#: diera/templates/festivals.html:13
+msgid "Festivals organized by the cultural center Diera do sveta."
+msgstr ""
 
 #: diera/templates/footer.html:21
 msgid "CONTACTS"
@@ -92,18 +104,33 @@ msgstr "Banka"
 #: diera/templates/footer.html:170
 msgid ""
 "Events of CC Diera do sveta are financed with the help of public resources "
-"through <a href='https://www.fpu.sk/sk/'>Slovak Arts Council</a>."
+"through <a href='https://www.fpu.sk/sk/'>Slovak Arts Council</a>. Slovak "
+"Arts Council is our main partner."
 msgstr ""
-"Podujatia KC Diera do sveta z verejných zdrojov podporil <a href='https://"
-"www.fpu.sk/sk/'>Fond na podporu umenia</a>."
+"Podujatia KC Diera do sveta z verejných zdrojov podporil <a href='https://www.fpu.sk/sk/'>Fond na podporu umenia</a>."
+" Fond na podporu umenia je naším hlavným partnerom."
 
-#: diera/templates/footer.html:195
+#: diera/templates/footer.html:191
+msgid ""
+"This project is supported by the program <a href='https://www.nadaciaorange."
+"sk/sk/aktivna-komunita-s-nadaciou-orange/'>Active Community with Orange "
+"Foundation</a>."
+msgstr ""
+"Tento projekt sa uskutočnil vďaka podpore v programe <a href='https://www."
+"nadaciaorange.sk/sk/aktivna-komunita-s-nadaciou-orange/'>Aktívna komunita s "
+"Nadáciou Orange</a>."
+
+#: diera/templates/footer.html:216
 msgid "All rights reserved"
 msgstr "Všetky práva vyhradené"
 
-#: diera/templates/footer.html:199
+#: diera/templates/footer.html:220
 msgid "design"
 msgstr "dizajn"
+
+#: diera/templates/galleries.html:9
+msgid "Photo galleries of CC Diera do sveta"
+msgstr ""
 
 #: diera/templates/menu/language_chooser_dropdown.html:6
 msgid "Change to language:"
@@ -181,3 +208,7 @@ msgstr "čašník"
 #: diera/templates/photologue_BACKUP/includes/meet_the_team.html:103
 msgid "waitress"
 msgstr "čašníčka"
+
+#: diera/templates/program.html:10
+msgid "Monthly programming of the CC Diera do sveta."
+msgstr ""
