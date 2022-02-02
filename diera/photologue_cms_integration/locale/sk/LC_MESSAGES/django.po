@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-31 18:56+0100\n"
+"POT-Creation-Date: 2022-02-02 15:15+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,35 +19,31 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n "
 ">= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
 
-#: photologue_cms_integration/templates/photologue/gallery_archive.html:11
+#: photologue_cms_integration/templates/photologue/gallery_archive.html:36
 msgid "Latest photo galleries"
 msgstr "Najnovšie galérie fotiek"
 
-#: photologue_cms_integration/templates/photologue/gallery_archive.html:15
+#: photologue_cms_integration/templates/photologue/gallery_archive.html:40
 #, fuzzy
 #| msgid "Latest photo galleries"
 msgid "Our latest photo galleries."
 msgstr "Najnovšie galérie fotiek"
 
-#: photologue_cms_integration/templates/photologue/gallery_archive.html:30
-#: photologue_cms_integration/templates/photologue/gallery_archive_year.html:30
+#: photologue_cms_integration/templates/photologue/gallery_archive.html:55
+#: photologue_cms_integration/templates/photologue/gallery_archive_year.html:55
 msgid "LATEST"
 msgstr "NAJNOVŠIE"
 
-#: photologue_cms_integration/templates/photologue/gallery_archive_year.html:11
+#: photologue_cms_integration/templates/photologue/gallery_archive_year.html:36
 #, python-format
 msgid "Galleries for %(show_year)s"
 msgstr "Galérie fotiek (%(show_year)s)"
 
-#: photologue_cms_integration/templates/photologue/gallery_archive_year.html:15
+#: photologue_cms_integration/templates/photologue/gallery_archive_year.html:40
 #, fuzzy
 #| msgid "Latest photo galleries"
 msgid "Our photo galleries."
 msgstr "Najnovšie galérie fotiek"
-
-#: photologue_cms_integration/templates/photologue/gallery_archive_year.html:71
-msgid "No galleries were found."
-msgstr "Žiadne galérie sa nenašli"
 
 #: photologue_cms_integration/templates/photologue/includes/meet_the_team.html:19
 #: photologue_cms_integration/templates/photologue/includes/meet_the_team.html:31
@@ -74,6 +70,9 @@ msgstr ""
 #: photologue_cms_integration/templates/photologue/includes/meet_the_team.html:103
 msgid "waitress"
 msgstr ""
+
+#~ msgid "No galleries were found."
+#~ msgstr "Žiadne galérie sa nenašli"
 
 #~ msgid "No galleries were found"
 #~ msgstr "Žiadne galérie sa nenašli"

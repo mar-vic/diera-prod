@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-31 18:56+0100\n"
+"POT-Creation-Date: 2022-02-02 15:15+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,23 +23,11 @@ msgstr ""
 msgid "Our mission statement."
 msgstr ""
 
-#: diera/templates/about.html:40
-msgid ""
-"Events of the cultural center Diera do sveta are financed with the help of "
-"public resources through Slovak Arts Council and supplemented by "
-"enterpreneurial activities of the civic organisation Diera do sveta (coffee "
-"shop and bookstore)"
-msgstr ""
-"Program kultúrneho centra Diera do sveta je podporovaný z verejných zdrojov "
-"Slovenskej republiky Fondom na podporu umenia a doplnkovou podnikateľskou "
-"činnosťou o.z. Diera do sveta, ktorou je kaviareň a špecializované "
-"kníhkupectvo."
-
 #: diera/templates/base.html:20
 msgid "Cultural center and specialized bookstore."
 msgstr "Kultúrne centrum a špecializované kníhkupectvo."
 
-#: diera/templates/base.html:96
+#: diera/templates/base.html:92
 msgid "BOOKSTORE"
 msgstr "KNÍHKUPECTVO"
 
@@ -57,31 +45,31 @@ msgstr "Súhlasím"
 
 #: diera/templates/festival.html:63
 msgid "FESTIVAL YEARS"
-msgstr ""
+msgstr "ROČNÍKY FESTIVALU"
 
 #: diera/templates/festivals.html:13
 msgid "Festivals organized by the cultural center Diera do sveta."
 msgstr ""
 
-#: diera/templates/footer.html:21
+#: diera/templates/footer.html:22
 msgid "CONTACTS"
 msgstr "KONTAKTY"
 
-#: diera/templates/footer.html:75
+#: diera/templates/footer.html:76
 msgid "OPERATION"
 msgstr "PREVÁDZKA"
 
-#: diera/templates/footer.html:77
+#: diera/templates/footer.html:78
 msgid ""
 "Námestie osloboditeľov 1, č.s. 61 • 0301 01, Liptovský Mikuláš • Slovakia"
 msgstr ""
 "Námestie osloboditeľov 1, č.s. 61 • 0301 01, Liptovský Mikuláš • Slovensko"
 
-#: diera/templates/footer.html:95
+#: diera/templates/footer.html:96
 msgid "REGISTERED OFFICE"
 msgstr "SÍDLO"
 
-#: diera/templates/footer.html:97
+#: diera/templates/footer.html:98
 msgid ""
 "Diera do sveta o.z. • A. Bernoláka 42/11 • 031 01, Liptovský Mikuláš • "
 "Slovakia"
@@ -89,28 +77,29 @@ msgstr ""
 "Diera do sveta o.z. • A. Bernoláka 42/11 • 031 01, Liptovský Mikuláš • "
 "Slovensko"
 
-#: diera/templates/footer.html:132
+#: diera/templates/footer.html:133
 msgid "We do not pay VAT"
 msgstr "Nie sme platcami DPH"
 
-#: diera/templates/footer.html:146
+#: diera/templates/footer.html:147
 msgid "BANK ACCOUNT"
 msgstr "BANKOVÉ SPOJENIE"
 
-#: diera/templates/footer.html:148
+#: diera/templates/footer.html:149
 msgid "Bank"
 msgstr "Banka"
 
-#: diera/templates/footer.html:170
+#: diera/templates/footer.html:171
 msgid ""
 "Events of CC Diera do sveta are financed with the help of public resources "
 "through <a href='https://www.fpu.sk/sk/'>Slovak Arts Council</a>. Slovak "
 "Arts Council is our main partner."
 msgstr ""
-"Podujatia KC Diera do sveta z verejných zdrojov podporil <a href='https://www.fpu.sk/sk/'>Fond na podporu umenia</a>."
-" Fond na podporu umenia je naším hlavným partnerom."
+"Podujatia KC Diera do sveta z verejných zdrojov podporil <a href='https://"
+"www.fpu.sk/sk/'>Fond na podporu umenia</a>. Fond na podporu umenia je naším "
+"hlavným partnerom."
 
-#: diera/templates/footer.html:191
+#: diera/templates/footer.html:192
 msgid ""
 "This project is supported by the program <a href='https://www.nadaciaorange."
 "sk/sk/aktivna-komunita-s-nadaciou-orange/'>Active Community with Orange "
@@ -120,11 +109,11 @@ msgstr ""
 "nadaciaorange.sk/sk/aktivna-komunita-s-nadaciou-orange/'>Aktívna komunita s "
 "Nadáciou Orange</a>."
 
-#: diera/templates/footer.html:216
+#: diera/templates/footer.html:217
 msgid "All rights reserved"
 msgstr "Všetky práva vyhradené"
 
-#: diera/templates/footer.html:220
+#: diera/templates/footer.html:221
 msgid "design"
 msgstr "dizajn"
 
@@ -212,3 +201,14 @@ msgstr "čašníčka"
 #: diera/templates/program.html:10
 msgid "Monthly programming of the CC Diera do sveta."
 msgstr ""
+
+#~ msgid ""
+#~ "Events of the cultural center Diera do sveta are financed with the help "
+#~ "of public resources through Slovak Arts Council and supplemented by "
+#~ "enterpreneurial activities of the civic organisation Diera do sveta "
+#~ "(coffee shop and bookstore)"
+#~ msgstr ""
+#~ "Program kultúrneho centra Diera do sveta je podporovaný z verejných "
+#~ "zdrojov Slovenskej republiky Fondom na podporu umenia a doplnkovou "
+#~ "podnikateľskou činnosťou o.z. Diera do sveta, ktorou je kaviareň a "
+#~ "špecializované kníhkupectvo."

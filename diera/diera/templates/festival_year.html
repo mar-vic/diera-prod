@@ -82,22 +82,22 @@
                     <div class="card-body p-1">
 
                         <!-- EVENT TITLE -->
-                        <h4 class="card-title teaser-title">
+                        <h3 class="card-title teaser-title">
                             <a href="{{ teaser.url }}">{{ teaser.title|upper }}</a>
-                        </h4>
+                        </h3>
 
-                        <h5 class="teaser-genre">
+                        <h4 class="teaser-genre">
                             {% show_placeholder "genre" teaser.page_id %}
-                        </h5>
+                        </h4>
                     </div>
 
                     <div class="card-footer teaser-footer p-0 m-1">
                         <div class="row">
                             <div class="col">
-                                {{ teaser.from|date:"j.m." }}
+                                <h4 class="m-0 mt-1">{{ teaser.from|date:"j.m." }}</h4>
                             </div>
                             <div class="col" style="text-align:right;">
-                                {{ teaser.from|date:"H:i" }}
+                                <h4 class="m-0 mt-1">{{ teaser.from|date:"H:i" }}</h4>
                             </div>
                         </div>
                     </div>
