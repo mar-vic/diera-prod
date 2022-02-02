@@ -84,8 +84,16 @@ class CalendarGrid:
 
                     eteasers_for_day.append(eteaser)
 
+                    # Add pairs of teasers to upcoming list
                     if eteaser['date_from'].month != date.today().month or (eteaser['date_from'].year == year and eteaser['date_from'].month == month and eteaser['date_from'].day >= date.today().day):
-                        self.upcoming_eteasers.append(eteaser)
+                        if len(self.upcoming_eteasers) > 0:
+                            last_pair = next(reversed(self.upcoming_eteasers))
+                            if len(last_pair) < 2:
+                                last_pair.append(eteaser)
+                            else:
+                                self.upcoming_eteasers.append([eteaser])
+                        else:
+                            self.upcoming_eteasers.append([eteaser])
 
                 self.eteasers_for_month.append((monthday.day, eteasers_for_day))
             else:

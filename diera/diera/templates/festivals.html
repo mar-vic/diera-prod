@@ -19,42 +19,69 @@
 {% block css %}
 {% load static %}
 <link href="{% static 'festivals.css' %}" rel="stylesheet">
+
+<!-- Colcade JS for teasers masonry grid -->
+<script src="https://unpkg.com/colcade@0/colcade.js"></script>
+
+<!-- Styles for Colcade masonry grid -->
+<style>
+ /* Using floats */
+ .grid-col {
+     float: left;
+     width: 100%;
+ }
+
+ .grid-item {
+     padding: 2px;
+ }
+
+ /* 1 columns by default, hide the second column */
+ .grid-col--2 { display: none; }
+
+ /* 2 columns at large size */
+ @media ( min-width: 1200px ) {
+     .grid-col { width: 50%; }
+     .grid-col--2 { display: block; } /* show column 2 */
+ }
+</style>
 {% endblock %}
 
 {% block content %}
-{% placeholder "content" %}
 
 <!-- Section showing the teasers for festivals -->
+
 <div id="festivals">
 
+    {% get_festival_teasers request as festival_teasers %}
 
-    <div class="masonry-grid">
+    <div class="grid">
 
-        <div class="grid-sizer"></div>
-        {% get_festival_teasers request as festival_teasers %}
-        {% for festival_teaser in festival_teasers %}
+        <!-- columns -->
+        <div class="grid-col grid-col--1"></div>
+        <div class="grid-col grid-col--2"></div>
 
-        <div class="grid-item featured-teaser">
-            <div class="card">
+        <!-- teasers -->
+        {% for teaser in festival_teasers %}
+        <div class="grid-item">
+            <div class="card featured-teaser">
 
                 <!-- TEASER IMAGE -->
-                {% if festival_teaser.image %}  <!-- Checking if the extension was set -->
-                {% thumbnail festival_teaser.image 600x300 crop upscale as festival_teaser_image %}
-                <a href="{{ festival_teaser.url }}">
-                    <img src="{{ festival_teaser_image.url }}" />
+                {% if teaser.image %}  <!-- Checking if the extension was set -->
+                {% thumbnail teaser.image 600x300 crop upscale as teaser_image %}
+                <a href="{{ teaser.url }}">
+                    <img src="{{ teaser_image.url }}" />
                 </a>
                 {% endif %}
-
 
                 <!-- TEASER BODY -->
                 <div class="card-body">
                     <div class="featured-teaser-title">
-                        <a href="{{ festival_teaser.url }}">
-                            {{ festival_teaser.title|upper }}
+                        <a href="{{ teaser.url }}">
+                            {{ teaser.title|upper }}
                         </a>
                     </div>
                     <div class="featured-teaser-text">
-                        {% show_placeholder "perex" festival_teaser.page_id %}
+                        {% show_placeholder "perex" teaser.page_id %}
                     </div>
                 </div>
             </div>
@@ -63,22 +90,21 @@
 
     </div>
 </div>
+<script>
+ // element as first argument
+ var grid = document.querySelector('.grid');
+ var colc = new Colcade( grid, {
+     columns: '.grid-col',
+     items: '.grid-item'
+ });
 
+ // selector string as first argument
+ var colc = new Colcade( '.grid', {
+     columns: '.grid-col',
+     items: '.grid-item'
+ });
+</script>
 {% endblock content %}
 
 {% block js %}
-<script>
- /* Initialize masonry grid */
- var $grid = $('.masonry-grid').masonry({
-     itemSelector: '.grid-item',
-     percentPosition: true,
-     /* isFitWidth: true */
- });
-
- /* Image loading bugfix for masonry */
- $grid.imagesLoaded().progress(
-     function() {
-         $grid.masonry();
- });
-</script>
 {% endblock js %}

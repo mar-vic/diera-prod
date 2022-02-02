@@ -272,9 +272,25 @@ ul {list-style-type: none;}
 }
 
 .eteaser-sm {
-    border-radius: 0;
+    border-radius: 0 !important;
     border: 2px solid black;
     background-color: white;
+}
+
+.card-group {
+    margin-left: -2px;
+    margin-right: -2px;
+}
+
+.eteaser-card-sm {
+    border-radius: 0 !important;
+    border: 2px solid black;
+    background-color: white;
+    margin: 4px;
+}
+
+.eteaser-card-sm img {
+    width: 100%;
 }
 
 .eteaser-sm-schedule {
@@ -403,6 +419,10 @@ ul {list-style-type: none;}
         display: block !important;
     }
 
+    .eteaser-card-sm {
+        margin-bottom: 2px !important;
+    }
+
     #calendar {
         width: 95%;
         margin-left: auto;
@@ -442,5 +462,9 @@ ul {list-style-type: none;}
     #id_month, #id_year, #show-program-button {
         height: 50px;
         font-size: 15px;
+    }
+
+    .eteaser-card-sm {
+        margin-bottom: 2px !important;
     }
 }

@@ -10,16 +10,18 @@
     min-width: 1000px;
 }
 
+#site-footer {
+    margin-top: 30px;
+}
+
 #festivals .card {
     border-radius: 0px;
-    /* width:100%; */
     border:2px solid black;
 }
 
 .featured-teaser {
     padding-right: 3px;
     padding-left: 3px;
-    margin-bottom: 6px !important;
 }
 
 .featured-teaser img {
@@ -52,31 +54,9 @@
     padding: 10px;
 }
 
-/* MASONRY GRID */
-.masonry-grid {
-    /* center grid items */
-    margin: 0 auto;
-}
-
-/* clear fix */
-.grid:after {
-    content: '';
-    display: block;
-    clear: both;
-}
-
-.grid-item {
-    width: 50%;
-    float: left;
-}
-
 @media screen and (max-width: 1199px) {
     #festivals {
         min-width: 0px !important;
-    }
-
-    .grid-item {
-        width: 100%;
     }
 }
 
@@ -98,7 +78,6 @@
         font-size: 15px;
         line-height: 1;
     }
-
 
     .featured-teaser .card-body {
         padding-bottom: 2px !important;

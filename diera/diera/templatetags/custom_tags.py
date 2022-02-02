@@ -334,6 +334,7 @@ def get_teasers_for_all_features(request):
 
     # While returning teasers, append yet unpopped article teasers
     return teasers + article_teasers
+    # return festival_teasers + event_teasers + article_teasers
 
 
 @register.simple_tag

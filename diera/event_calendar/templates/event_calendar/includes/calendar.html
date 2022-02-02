@@ -181,67 +181,54 @@
 <!-- CALENDAR FOR SMALLER DISPLAYS -->
 <div id="calendar-sm" style="display:none">
 
-    <div class="masonry-grid">
+    {% for eteaser_pair in eteasers_for_month.upcoming_eteasers %}
 
-        <!-- <div class="grid-sizer"></div> -->
+    <div class="card-group">
 
-        <!-- MASONRY GRID OF EVENT TEASERS (FOR DISPLAYS) -->
+        {% for eteaser in eteaser_pair %}
 
+        <div class="card eteaser-card-sm">
 
-        <!-- Show only upcoming events on smaller displays -->
-        {% for eteaser in eteasers_for_month.upcoming_eteasers %}
-        <div class="grid-item">
-
-            <div class="eteaser-sm">
-
-                <!-- EVENT SCHEDULING -->
-                <div class="row eteaser-sm-schedule">
-                    <div class="col" style="text-align:left;">
-                        {{ eteaser.date_from|date:"j.n." }}
+            <!-- EVENT SCHEDULING -->
+            <div class="eteaser-sm-schedule">
+                <div class="row">
+                    <div class="col">
+                        {{ eteaser.date_from|date:"j.m." }}
                     </div>
                     <div class="col" style="text-align:right;">
                         {{ eteaser.date_from|date:"H:i" }}
                     </div>
                 </div>
+            </div>
 
-                <!-- TEASER IMAGE -->
-                {% if eteaser.image %}  <!-- Checking if the extension was set -->
-                {% thumbnail eteaser.image 600x300 crop upscale as eteaser_image %}
-                <a href="{{ eteaser.event_url }}" style="">
-                    <img src="{{ eteaser_image.url }}" style="border-top:2px solid black; border-bottom:2px solid black" />
+            <!-- EVENT TEASER IMAGE -->
+            {% if eteaser.image %}
+            {% thumbnail eteaser.image 600x300 crop upscale as cropped_eteaser_image %}
+            <a href="{{ eteaser.event_url }}">
+                <img class="" style="border-top:2px solid black; border-bottom:2px solid black" src="{{ cropped_eteaser_image.url }}">
+            </a>
+            {% endif %}
+
+            <!-- EVENT TITLE -->
+            <div class="eteaser-sm-title">
+                <a href="{{ eteaser.event_url }}">
+                    {{ eteaser.event_title|upper }}
                 </a>
-                {% endif %}
+            </div>
 
-                <!-- TEASER TITLE -->
-                <div class="eteaser-sm-title">
-                    <a href="{{ eteaser.event_url }}">
-                        {{ eteaser.event_title|upper }}
-                    </a>
-                </div>
+            <!-- EVENT GENRE -->
+            <div class="eteaser-sm-genre">
+                {% show_placeholder "genre" eteaser.page_id %}
+            </div>
 
-                <!-- GENRE -->
-                <div class="eteaser-sm-genre">
-                    {% show_placeholder "genre" eteaser.page_id %}
-                </div>
-
-            </div>  <!-- /eteaser-sm -->
-
-        </div>  <!-- /grid item -->
-
-        {% empty %}
-
-        {% load static %}
-
-        <!-- Show fallback image when there are no upcoming events for present month -->
-
-        {% endfor %}  <!-- / upcoming events -->
-
-    </div> <!-- ENDING TAG FOR MASONRY -->
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
 
 </div>  <!-- ENDING TAG FOR CONTAINER FOR MASONRY -->
 
 {% else %}  <!-- Show infographics, if selected month is without programming -->
-
 
 <div id="infographics-container">
     <!-- Calendar navigation form -->

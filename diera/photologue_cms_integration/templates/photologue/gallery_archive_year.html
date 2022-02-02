@@ -5,6 +5,31 @@
 {% block css %}
 {% load static %}
 <link href="{% static 'galleries.css' %}" rel="stylesheet">
+
+<!-- Colcade JS for teasers masonry grid -->
+<script src="https://unpkg.com/colcade@0/colcade.js"></script>
+
+<!-- Styles for Colcade masonry grid -->
+<style>
+ /* Using floats */
+ .grid-col {
+     float: left;
+     width: 100%;
+ }
+
+ .grid-item {
+     padding: 2px;
+ }
+
+ /* 1 columns by default, hide the second column */
+ .grid-col--2 { display: none; }
+
+ /* 2 columns at large size */
+ @media ( min-width: 1200px ) {
+     .grid-col { width: 50%; }
+     .grid-col--2 { display: block; } /* show column 2 */
+ }
+</style>
 {% endblock %}
 
 
@@ -48,50 +73,43 @@
 
     </div>
 
-    <!-- Galleries -->
-    <div class="masonry-grid">
+    {% if object_list %}
 
-        <div class="grid-sizer"></div>
+    <div class="grid">
 
-		    {% if object_list %}
-		    {% for gallery in object_list %}
+        <!-- columns -->
+        <div class="grid-col grid-col--1"></div>
+        <div class="grid-col grid-col--2"></div>
 
-        {% if forloop.first and object_list|length == 1 %}
-        <div class="grid-item full-width-gallery">
+        <!-- galleries -->
+        {% for gallery in object_list %}
+        <div class="grid-item">
             {% gallery_slider gallery %}
         </div>
-        {% else %}
-        <div class="grid-item" style="">
-            {% gallery_slider gallery %}
-        </div>
-        {% endif %}
-
-		    {% endfor %}
-		    {% else %}
-		    <p>{% trans "No galleries were found." %}</p>
-		    {% endif %}
+        {% endfor %}
 
     </div>
-</div>
 
+    {% endif %}
+
+</div>
+<script>
+ // element as first argument
+ var grid = document.querySelector('.grid');
+ var colc = new Colcade( grid, {
+     columns: '.grid-col',
+     items: '.grid-item'
+ });
+
+ // selector string as first argument
+ var colc = new Colcade( '.grid', {
+     columns: '.grid-col',
+     items: '.grid-item'
+ });
+</script>
 {% endblock %}
 
 {% block js %}
-<script>
- /* Initialize masonry grid */
- var $grid = $('.masonry-grid').masonry({
-     itemSelector: '.grid-item',
-     percentPosition: true,
-     /* isFitWidth: true, */
-     /* gutter: 4 */
- });
-
- /* Image loading bugfix for masonry */
- $grid.imagesLoaded().progress(
-     function() {
-         $grid.masonry();
- });
-</script>
 {% endblock js %}
 
 
