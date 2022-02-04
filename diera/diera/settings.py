@@ -151,6 +151,7 @@ CMS_TEMPLATES = [
     ('event.html', 'Event'),
     ('festival.html', 'Festival'),
     ('privacy_protection.html', 'Privacy Protection'),
+    ('newsletter.html', 'Newsletter'),
 
     # DjangoCMS defaults
     ('fullwidth.html', 'Fullwidth'),

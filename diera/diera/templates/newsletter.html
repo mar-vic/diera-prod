@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load cms_tags menu_tags %}
+{% load thumbnail %}
+
+{% block title %}{% page_attribute "page_title" %}{{ block.super }}{% endblock title %}
+
+<!-- OPENGRAPH TAGS -->
+{% block ogtags %}
+<meta property="og:title" content="{% page_attribute 'page_title' %} | Diera do sveta" />
+<meta property="og:url" content="{{ request.current_page.get_absolute_url }}" />
+<!-- <meta property="og:description" content="{% placeholder 'perex'  %}" /> -->
+<meta property="og:type" content="article" />
+
+{% with image=request.current_page.imageextension.image %}
+{% if image %}
+{% thumbnail image 1200x630 crop upscale as cropped_image %}
+<meta property="og:image" content="{{ cropped_image.url }}" />
+{% endif %}
+{% endwith %}
+
+{% endblock ogtags %}  <!-- END OGTAGS -->
+
+<!-- CSS (featured article specific rules) -->
+{% block css %}
+{% load static %}
+<link href="{% static 'newsletter.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div id="featured-article">
+
+        <!-- TEASER IMAGE -->
+        {% with image=request.current_page.imageextension.image %}
+        {% if image %}
+        {% thumbnail image 1200x600 crop upscale as cropped_image %}
+        <img id="hero-image" src="{{ cropped_image.url }}">
+        {% endif %}
+        {% endwith %}
+
+        <!-- ARTICLE TITLE -->
+        <div id="featured-article-title">
+            {% page_attribute "title" %}
+        </div>
+
+        <!-- ARTICLE BODY (CMS PLACEHOLDERS) -->
+        <div id="featured-article-body">
+            <div style="display:none;">
+                 {% placeholder "perex" %}
+            </div>
+
+            <div id="newsletter-form">
+                <script>
+                 (function (w,d,s,o,f,js,fjs) {
+                     w['ecm-widget']=o;w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) };
+                     js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
+                     js.id = '2-2bb287d15897fe2f9d89c882af9a3a8b'; js.dataset.a = 'dieradosveta'; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
+                 }(window, document, 'script', 'ecmwidget', 'https://d70shl7vidtft.cloudfront.net/widget.js'));
+                </script>
+                <div id="f-2-2bb287d15897fe2f9d89c882af9a3a8b"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock content %}

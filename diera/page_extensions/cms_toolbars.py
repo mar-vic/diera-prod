@@ -28,19 +28,23 @@ class ImageExtensionToolbar(ExtensionToolbar):
             return
 
         if not cur_page_parent or cur_page_parent.reverse_id not in ['home', 'program', 'festivals']:
-            # Try for festival years
-            try:
-                cur_page_parent = self.request.current_page.get_parent_page().get_parent_page()
-            except AttributeError:
-                return
-
-            if not cur_page_parent or cur_page_parent.reverse_id != 'festivals':
-                return
+            # Check if newsletter
+            if self.request.current_page.reverse_id == 'newsletter':
+                verbose_name = 'Newsletter Settings'
+            # or festival years
             else:
-                verbose_name = 'Festival Year Settings'
+                try:
+                    cur_page_parent = self.request.current_page.get_parent_page().get_parent_page()
+                except AttributeError:
+                    return
 
-        parent_id = cur_page_parent.reverse_id
-        verbose_name = verbose_name if verbose_name else 'Article Settings' if parent_id == 'home' else 'Event Settings' if parent_id == 'program' else 'Festival Settings'
+                if not cur_page_parent or cur_page_parent.reverse_id != 'festivals':
+                    return
+                else:
+                    verbose_name = 'Festival Year Settings'
+        else:
+            parent_id = cur_page_parent.reverse_id
+            verbose_name = 'Article Settings' if parent_id == 'home' else 'Event Setting' if parent_id == 'program' else 'Festival Settings'
 
         menu = self.toolbar.get_or_create_menu(
             key='page_extensions_menu',

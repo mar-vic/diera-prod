@@ -300,7 +300,7 @@ def get_teasers_for_all_features(request):
 
         # Check for featured festival year pages
         for festival_year_page in festival_page.get_child_pages():
-        # Extension objects have to manualy set in order to exist.
+            # Extension objects have to manualy set in order to exist.
             try:
                 teaser_image = festival_year_page.imageextension.image
             except ObjectDoesNotExist:
@@ -323,6 +323,24 @@ def get_teasers_for_all_features(request):
                     }
                 )
 
+    # Create a teaser for newsletter page
+    newsletterp = Page.objects.filter(reverse_id='newsletter').filter(publisher_is_draft=False).first()
+    newsletter_teaser = None
+
+    if newsletterp:
+        # Extension objects have to manualy set in order to exist.
+        try:
+            teaser_image = newsletterp.imageextension.image
+        except ObjectDoesNotExist:
+            teaser_image = None
+
+        newsletter_teaser = {
+            'url' : newsletterp.get_absolute_url(),
+            'title' : newsletterp.get_page_title(),
+            'image' : teaser_image,
+            'page_id' : newsletterp.id,
+        }
+
     # First init teasers with festival teasers
     teasers = festival_teasers
 
@@ -332,8 +350,9 @@ def get_teasers_for_all_features(request):
         if article_teasers:
             teasers.append(article_teasers.pop())
 
-    # While returning teasers, append yet unpopped article teasers
-    return teasers + article_teasers
+
+    # While returning teasers, append yet unpopped article teasers, and, finally, a teaser for the newsletter page
+    return teasers + article_teasers + [newsletter_teaser]
     # return festival_teasers + event_teasers + article_teasers
 
 
