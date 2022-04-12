@@ -4,6 +4,8 @@ ul {list-style-type: none;}
 
 /* Calendar container */
 #calendar {
+    font-family: Elastik-A, sans-serif;
+    font-size-adjust: 0.4;
     padding:0px;
     margin-top:30px;
     margin-bottom:30px;
@@ -204,7 +206,8 @@ ul {list-style-type: none;}
 .popover {
     border: 2px solid black;
     border-radius: 0px;
-    font-family: Elastik-A;
+    font-family: Elastik-A, sans-serif;
+    font-size-adjust: 0.4;
     font-size: 30px;
 }
 
@@ -223,7 +226,7 @@ ul {list-style-type: none;}
     background-color: white;
     border: none;
     font-size: 30px;
-    font-weight: bold;
+    /* font-weight: bold; */
     padding-bottom: 4px;
 }
 
