@@ -20,6 +20,11 @@
 
 # Site 
 
+* TODO Change font size on teaser titles
+* TODO Add pagination to gallery
+* TODO Add capability to show audio and video files in gallery
+* TODO Add styling for links occuring in the bodies of pages for festival years
+* TODO Change calendar input controls for better itegration with site design 
 * TODO Create translations for:
     + 'BOOKSTORE' in main menu
     + 'LATEST' in Galleries nav
@@ -32,3 +37,5 @@
 * TODO Optimalizations:
     + TODO Consider setting up caching (probably won't be necessary) [Django Cache Framework](https://docs.djangoproject.com/en/3.2/topics/cache/)
 * TODO Redirect the dierdosveta domain
+
+# Novy Kalendar
