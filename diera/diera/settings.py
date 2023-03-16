@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env()
 env.escape_proxy = True
 
-# Take environment variables from .env file
+# Read environment variables from .env file
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -38,6 +38,8 @@ SECRET_KEY = env.str('SECRET_KEY')  # Read the secret key set in the .env file
 CSRF_COOKIE_SECURE = env.bool('CSRF_COOKIE_SECURE', default=False)
 SESSION_COOKIE_SECURE = env.bool('SESSION_COOKIE_SECURE', default=False)
 SECURE_SSL_REDIRECT = env.bool('SECURE_SSL_REDIRECT', default=False)
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 # Database configuration
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
