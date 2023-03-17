@@ -1,0 +1,58 @@
+{% load static %}
+{% load cms_tags menu_tags %}
+{% load i18n %}
+
+<nav id="main-menu" class="navbar navbar-expand-lg bg-body-tertiary">
+
+  <div class="container-fluid">
+
+    <!-- BRAND -->
+    <a class="navbar-brand pt-0 pb-0" href="/">
+      <img src="{% static '/images/DIERA_ELIPSA.svg' %}" />
+    </a>
+
+    <!-- TOGGLER -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- MENU CONTENT -->
+    <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+
+      <!-- SITE SECTIONS -->
+      <div class="mr-auto ml-auto mt-0 mb-0">
+        <ul class="navbar-nav">
+          {% show_menu 0 0 0 0 "menu/menu.html" %}
+          <li class="nav-item">
+            <a class="nav-link fs-3 fw-semibold pt-2 pb-2" href="https://knihy.dieradosveta.sk/" >{% translate "BOOKSTORE" %}</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <ul id="socials" class="navbar-nav my-2 my-lg-0">
+      <li class="nav-item">
+        <a class="fs-3" href="https://www.facebook.com/dieradosveta">
+          <i class="fab fa-facebook-square"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="fs-3" href="https://www.instagram.com/dieradosveta/">
+          <i class="fab fa-instagram-square"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="fs-3" href="https://www.youtube.com/channel/UC326HkT9w-FxK3ySvKfKxKQ">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </li>
+      <li id="language-switcher" class="nav-item mt-1">
+        {% language_chooser "menu/language_chooser.html" %}
+      </li>
+    </ul>
+
+  </div>
+
+</nav>
+
