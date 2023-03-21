@@ -1,7 +1,7 @@
 {% load i18n menu_tags %}
 
 {% if current_language == 'sk' %}
-<a class="fs-3 fw-bold" href="{% page_language_url 'en' %}">EN</a>
+<a class="fs-3" href="{% page_language_url 'en' %}">EN</a>
 {% else %}
-<a class="fs-3 fw-bold" href="{% page_language_url 'sk' %}">SK</a>
+<a class="fs-3" href="{% page_language_url 'sk' %}">SK</a>
 {% endif %}
