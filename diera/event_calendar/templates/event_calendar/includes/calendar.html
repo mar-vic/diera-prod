@@ -139,12 +139,12 @@
                                         {% thumbnail eteaser.image 400x430 crop upscale as eteaser_image %}
                                         {% thumbnail eteaser.image 600x300 crop upscale as eteaser_image_pop %}
                                         <img class="teaser-image"
-                                            id="thumb-{{ eteasers_for_day.0 }}-0"
-                                            src="{{ eteaser_image.url }}"
-                                            title="{{ eteaser.event_title|upper }}"
-                                            data-trigger="hover"
-                                            data-toggle="popover"
-                                            data-template='<div class="popover" role="tooltip"><div class="row popover-date"><div class="col popover-day">{{ eteaser.date_from|date:"j. n." }}</div><div class="col popover-time">{{ eteaser.date_from|date:"H:i" }}</div></div><img src="{{ eteaser_image_pop.url }}"/><h3 class="popover-header"></h3><div class="pop-body">{% show_placeholder "genre" eteaser.page_id %}</div></div>'
+                                             id="thumb-{{ eteasers_for_day.0 }}-0"
+                                             src="{{ eteaser_image.url }}"
+                                             title="{{ eteaser.event_title|upper }}"
+                                             data-trigger="hover"
+                                             data-toggle="popover"
+                                             data-template='<div class="popover" role="tooltip"><div class="row popover-date"><div class="col popover-day">{{ eteaser.date_from|date:"j. n." }}</div><div class="col popover-time">{{ eteaser.date_from|date:"H:i" }}</div></div><img src="{{ eteaser_image_pop.url }}"/><h3 class="popover-header"></h3><div class="pop-body">{% show_placeholder "genre" eteaser.page_id %}</div></div>'
                                         />
                                     </div>
 

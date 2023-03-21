@@ -26,7 +26,8 @@ def get_random_infographics_url(context, year, month):
     """
     current_year = datetime.today().year
     current_month = datetime.today().month
-    language = context['current_language']
+    # language = context['current_language']
+    language = 'sk'
 
     if year < current_year:
         try:
@@ -120,13 +121,14 @@ def calendar(context, year, month):
         "eteasers_for_month": grid,
         'program_date': program_date,
         'request': context.request,
-        'current_language': context['current_language'],
+        # 'current_language': context['current_language'],
+        'current_language': 'sk',
         'calNavForm': context['calNavForm']
     }
 
 
-@register.inclusion_tag('event_calendar/includes/upcoming_events.html')
-def upcoming_event_teasers(date_from=date.today(), date_to=(date.today() + timedelta(days=14))):
+@register.inclusion_tag('event_calendar/includes/upcoming_events.html', takes_context=True)
+def upcoming_event_teasers(context, date_from=date.today(), date_to=(date.today() + timedelta(days=14))):
     events = queries.get_all_published_events()
     eteasers = []
 
@@ -147,18 +149,20 @@ def upcoming_event_teasers(date_from=date.today(), date_to=(date.today() + timed
 
         # use default values for events with uninitialized teaser extension
         try:
-            eteaser['image_url'] = event.teaserimageextension.teaser_image.url
-            eteaser['text'] = event.get_title_obj().teasertextextension.teaser_text
+            eteaser['image'] = event.imageextension.image
         except ObjectDoesNotExist:
-            eteaser['image_url'] = "/media/teaser_images/default_teaser_image.jpeg"
-            eteaser['text'] = "write your teaser text through the 'Event Settings -> Teaser Text...' menu in toolbar"
+            eteaser['image'] = None
 
         eteaser['event_title'] = event.get_page_title()
         eteaser['event_url'] = event.get_absolute_url()
+        eteaser['page_id'] = event.id
 
         eteasers.append(eteaser)
 
-    return {'eteasers': eteasers}
+    return {
+        'eteasers': eteasers,
+        'request': context.request,
+    }
 
 @register.simple_tag
 def get_background_image_url_for_month(year, month):

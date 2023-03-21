@@ -461,6 +461,30 @@ ul {list-style-type: none;}
     }
 }
 
+/* UPCOMING EVENTS */
+.upcoming-eteaser {
+    text-decoration: none;
+    color black !important;
+
+}
+
+.upcoming-eteaser .card {
+    border-radius: 0px;
+    border: 2px solid black;
+    color: black;
+}
+
+.upcoming-eteaser .card-img-top {
+    border-radius: 0px;
+    border-bottom: 2px solid black;
+}
+
+.upcoming-eteaser .card-header {
+    background-color: white;
+    border-bottom: 2px solid black;
+}
+
+/* RESPONSIVE RULES */
 @media screen and (max-width: 500px) {
     #id_month, #id_year, #show-program-button {
         height: 50px;
