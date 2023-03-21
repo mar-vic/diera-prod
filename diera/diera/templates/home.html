@@ -70,7 +70,7 @@
                 <div class="card-body">
                     <div class="featured-teaser-title">
                         <a href="{{ teaser.url }}">
-                          <h1 class="fs-1 fw-bold lh-1">{{ teaser.title|upper }}</h1>
+                          <h1 class="fs-1 lh-1">{{ teaser.title|upper }}</h1>
                         </a>
                     </div>
                     <div class="featured-teaser-text fs-4">
@@ -82,10 +82,10 @@
                 {% if teaser.from %}
                 <div class="card-footer">
                     <div class="row">
-                        <div class="col fw-bold fs-3" style="text-align:left;">
+                        <div class="col fs-3" style="text-align:left;">
                             {{ teaser.from|date:"j.n." }}
                         </div>
-                        <div class="col fw-bold fs-3" style="text-align:right;">
+                        <div class="col fs-3" style="text-align:right;">
                             {{ teaser.from|date:"H:i" }}
                         </div>
                     </div>
