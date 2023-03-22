@@ -165,6 +165,26 @@ def upcoming_event_teasers(context, date_from=date.today(), date_to=(date.today(
     }
 
 @register.simple_tag
+def get_hr_time_span(date):
+    """
+    Return human readable time span.
+    """
+    # breakpoint()
+    today = datetime.today()
+    today = datetime(today.year, today.month, today.day)
+    date = datetime(date.year, date.month, date.day)
+    delta = date - today
+
+    if delta.days == 0: return 'dnes'
+    if delta.days == 1: return 'zajtra'
+    if delta.days >= 2 and delta.days <= 7: return date.strftime("%A")
+    if delta.days > 7 and delta.days <= 14: return 'o týždeň'
+    if delta.days > 14 and delta.days <= 30: return 'o 2 týždne'
+    if delta.days > 30 and delta.days <= 60: return 'o mesiac'
+
+    return None
+
+@register.simple_tag
 def get_background_image_url_for_month(year, month):
     """
     Return the url of an image to be used as site background from the

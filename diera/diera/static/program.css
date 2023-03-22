@@ -476,12 +476,12 @@ ul {list-style-type: none;}
 
 .upcoming-eteaser .card-img-top {
     border-radius: 0px;
-    border-bottom: 2px solid black;
 }
 
-.upcoming-eteaser .card-header {
+.upcoming-eteaser .card-footer {
     background-color: white;
-    border-bottom: 2px solid black;
+    border-top: 2px solid black;
+    border-radius: 0px;
 }
 
 /* RESPONSIVE RULES */
