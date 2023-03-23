@@ -45,58 +45,16 @@
 <!-- Teasers for featured events and articles -->
 <div id="featured">
 
-    {% get_teasers_for_all_features request as teasers %}
+  {% get_teasers_for_all_features request as teasers %}
 
-    <div class="grid">
-
-        <!-- columns -->
-        <div class="grid-col grid-col--1"></div>
-        <div class="grid-col grid-col--2"></div>
-
-        <!-- teasers -->
-        {% for teaser in teasers %}
-        <div class="grid-item">
-            <div class="card ">
-
-                <!-- TEASER IMAGE -->
-                {% if teaser.image %}  <!-- Checking if the extension was set -->
-                {% thumbnail teaser.image 600x300 crop upscale as teaser_image %}
-                <a href="{{ teaser.url }}">
-                    <img src="{{ teaser_image.url }}" />
-                </a>
-                {% endif %}
-
-                <!-- TEASER BODY -->
-                <div class="card-body">
-                    <div class="featured-teaser-title">
-                        <a href="{{ teaser.url }}">
-                          <h1 class="fs-1 lh-1">{{ teaser.title|upper }}</h1>
-                        </a>
-                    </div>
-                    <div class="featured-teaser-text fs-4">
-                        {% show_placeholder "perex" teaser.page_id %}
-                    </div>
-                </div>
-
-                <!-- TEASER FOOTER (FOR EVENTS ONLY) -->
-                {% if teaser.from %}
-                <div class="card-footer">
-                    <div class="row">
-                        <div class="col fs-3" style="text-align:left;">
-                            {{ teaser.from|date:"j.n." }}
-                        </div>
-                        <div class="col fs-3" style="text-align:right;">
-                            {{ teaser.from|date:"H:i" }}
-                        </div>
-                    </div>
-                </div>
-                {% endif %}
-
-            </div>
-        </div>
-        {% endfor %}
-
+  <div class="row gy-2">
+    <!-- teasers -->
+    {% for teaser in teasers %}
+    <div class="col-12">
+      {% include "partials/_teaser.html" %}
     </div>
+    {% endfor %}
+  </div>
 
 </div>
 <script>

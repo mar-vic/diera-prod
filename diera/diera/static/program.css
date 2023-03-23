@@ -474,6 +474,22 @@ ul {list-style-type: none;}
     color: black;
 }
 
+.upcoming-eteaser:hover .card {
+    background-color: black;
+    color: white;
+}
+
+.upcoming-eteaser:hover .card-subtitle * {
+    background-color: black;
+    color: white;
+}
+
+.upcoming-eteaser:hover .card-footer {
+    border-top: 2px solid white;
+    background-color: black;
+    color: white;
+}
+
 .upcoming-eteaser .card-img-top {
     border-radius: 0px;
 }

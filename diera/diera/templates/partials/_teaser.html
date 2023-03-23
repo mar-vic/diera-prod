@@ -1,0 +1,45 @@
+{% load cms_tags menu_tags %}
+{% load i18n %}
+{% load thumbnail %}
+
+<div class="card hp-teaser">
+
+  <!-- TEASER IMAGE -->
+  <div class="teaser-image">
+    {% if teaser.image %}  <!-- Checking if the extension was set -->
+    {% thumbnail teaser.image 600x200 crop upscale as teaser_image %}
+    <a href="{{ teaser.url }}">
+      <img src="{{ teaser_image.url }}" />
+    </a>
+    {% endif %}
+  </div>
+
+  <div class="card-body-and-footer">
+    <!-- TEASER BODY -->
+    <div class="card-body">
+      <div class="featured-teaser-title">
+        <a href="{{ teaser.url }}">
+          <h1 class="display-4 lh-1">{{ teaser.title|upper }}</h1>
+        </a>
+      </div>
+      <div class="featured-teaser-text fs-3">
+        {% show_placeholder "perex" teaser.page_id %}
+      </div>
+    </div>
+
+    <!-- TEASER FOOTER (FOR EVENTS ONLY) -->
+    {% if teaser.from %}
+    <div class="card-footer">
+      <div class="row">
+        <div class="col fs-3" style="text-align:left;">
+          {{ teaser.from|date:"j.n." }}
+        </div>
+        <div class="col fs-3" style="text-align:right;">
+          {{ teaser.from|date:"H:i" }}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+
+</div>
