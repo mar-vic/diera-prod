@@ -59,11 +59,22 @@
     margin-left: 10px;
     margin-right: 10px;
     line-height: 1.4;
+    width: 98%;
 }
 
-#featured .card-body-and-footer {
+#featured .card-body, #featured .card-footer {
     position: absolute;
     opacity: 0%;
+}
+
+#featured .card:hover .card-body {
+    opacity: 100%;
+    top: 0px;
+}
+
+#featured .card:hover .card-footer {
+    opacity: 100%;
+    bottom: 0px;
 }
 
 #featured .card:hover .card-body-and-footer {
@@ -89,10 +100,11 @@
 }
 
 #featured .card:hover img {
-    animation-duration: 0.3s;
-    animation-name: fade-out;
-    animation-delay: 0s;
-    animation-fill-mode: forwards;
+    opacity: 0;
+    /* animation-duration: 0.3s; */
+    /* animation-name: fade-out; */
+    /* animation-delay: 0s; */
+    /* animation-fill-mode: forwards; */
 }
 
 @keyframes fade-out {
@@ -100,7 +112,7 @@
         opacity: 1;
     }
     100% {
-        opacity: 0.3;
+        opacity: 0;
     }
 }
 
