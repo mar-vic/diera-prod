@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load cms_tags menu_tags %}
+{% load custom_tags %}
 {% load i18n %}
 {% load thumbnail %}
 
@@ -42,17 +43,23 @@
 <!-- HOMEPAGE CONTENT -->
 {% block content %}
 
+{% include "partials/_marquee.html" %}
+
 <!-- Teasers for featured events and articles -->
 <div id="featured">
 
   {% get_teasers_for_all_features request as teasers %}
 
-  <div class="row gy-2">
+  <div class="row gy-3">
     <!-- teasers -->
     {% for teaser in teasers %}
+    {% if not forloop.last %}
     <div class="col-12">
       {% include "partials/_teaser.html" %}
     </div>
+    {% else %}
+    {% include "partials/_static-teasers.html" %}
+    {% endif %}
     {% endfor %}
   </div>
 

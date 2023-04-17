@@ -1,0 +1,18 @@
+{% load static %}
+{% load cms_tags %}
+{% load custom_tags %}
+
+
+<div class="col-6">
+  <img class="w-100" style="border:2px solid black" src="{% static '/images/opening_hrs_teaser_image.png' %}">
+  <div id="openingHours">
+    {% placeholder "opening-hours" %}
+  </div>
+</div>
+
+<div class="col-6">
+  <a href="{{ teaser.url }}">
+    <img class="w-100" style="border:2px solid black" src="{% static '/images/newsletter_teaser_image.png' %}">
+  </a>
+</div>
+

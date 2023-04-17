@@ -1,4 +1,5 @@
 from datetime import datetime as dt
+import json
 
 from django import forms
 from django.core.exceptions import ValidationError
@@ -200,3 +201,18 @@ class SetBackgroundImageWizardForm(forms.Form):
 
         ffile.save()
         return ffile
+
+
+class SetOpeningHoursWizardForm(forms.Form):
+    customOpeningHoursFlag = forms.BooleanField(label='Custom hours',
+                                                help_text='Check the box if you want to set the opening hours manually',
+                                                required=False)
+    openingHours = forms.TimeField(label='Opening Hours', required=False)
+
+    def save(self):
+        with open('static/opening_hours.json', 'w+') as openingHoursFile:
+            data = {
+                'customHours': self.cleaned_data['customOpeningHoursFlag'],
+                'openingHours': self.cleaned_data['openingHours'].isoformat()
+            }
+            json.dump(data, openingHoursFile)

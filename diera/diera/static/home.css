@@ -1,5 +1,38 @@
 /* Rules specific to homepage elements */
 
+.marquee {
+    --gap: 1rem;
+    background-color: black;
+    margin-top: 30px;
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+    gap: var(--gap);
+}
+
+.marquee__content {
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    flex-shrink: 0;
+    display: flex;
+    /* justify-content: space-around; */
+    min-width: 100%;
+    gap: var(--gap);
+    animation: scroll 30s linear infinite;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(calc(-100% - var(--gap)));
+    }
+}
+
 /* FEATURED ARTICLES AND EVENTS */
 #featured {
     margin-bottom: 30px;
@@ -17,109 +50,162 @@
 }
 
 #featured .card {
-    position: relative;
+    /* position: relative; */
     border-radius: 0px;
     width: 100%;
     border: 2px solid black !important;
+}
+
+#featured .card-body {
+    padding-right: 0px;
+    padding-top: 0px;
+}
+
+#featured .card-footer {
+    padding-right: 0px;
+}
+
+.hp-teaser {
+    text-decoration: none !important;
+    color: black;
+}
+
+.article-teaser-perex p {
+    margin-bottom: 6px;
 }
 
 #featured .card img {
     width: 100%;
 }
 
+#featured .card-title {
+    color: white;
+    text-shadow: -1.3px 1.3px 0 #000, 1.3px 1.3px 0 #000, 1.3px -1.3px 0 #000, -1.3px -1.3px 0 #000;
+}
+
+#featured .card .teaser-text-container {
+    position: relative;
+}
+
+#featured .card .teaser-text-container .card-footer {
+    position: absolute;
+    bottom: -8px;
+    background-color: white;
+    border-top: none;
+    padding-bottom: 0px;
+}
+
+#featured .card .teaser-text-container .card-footer p {
+    text-transform: uppercase;
+    line-height: 1;
+    font-size: 26px;
+}
+
+#featured .schedule {
+    border-top: 2px solid black;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-top: 4px;
+}
+
+#featured .schedule .day {
+    padding-left: 0px;
+}
+
+#featured .schedule .time {
+    padding-right: 0px;
+}
+
 .featured-teaser-title {
     font-family: Elastik-A, sans-serif;
     hyphens: none;
-    color white;
 }
 
-.featured-teaser-title a {
-    text-decoration: none;
-    color: white;
-}
+/* .featured-teaser-title a { */
+/*     text-decoration: none; */
+/* } */
 
-.featured-teaser-text {
-    font-family: Elastik-A, sans-serif;
-    text-transform: uppercase;
-    color: white;
-}
+/* .featured-teaser-text { */
+/*     font-family: Elastik-A, sans-serif; */
+/*     text-transform: uppercase; */
+/* } */
 
-#featured .card-body {
-    padding-top: 10px !important;
-    padding-bottom: 10px !important;
-    padding: 10px;
-}
+/* #featured .card-body { */
+/*     padding-top: 10px !important; */
+/*     padding-bottom: 10px !important; */
+/*     padding: 10px; */
+/* } */
 
-#featured .card-footer {
-    padding-top: 10px !important;
-    padding-bottom: 10px !important;
-    padding-left: 0px;
-    padding-right: 0px;
-    border-top: 2px solid black !important;
-    margin-left: 10px;
-    margin-right: 10px;
-    line-height: 1.4;
-    width: 98%;
-}
+/* #featured .card-footer { */
+/*     padding-top: 10px !important; */
+/*     padding-bottom: 10px !important; */
+/*     padding-left: 0px; */
+/*     padding-right: 0px; */
+/*     border-top: 2px solid black !important; */
+/*     margin-left: 10px; */
+/*     margin-right: 10px; */
+/*     line-height: 1.4; */
+/*     width: 98%; */
+/* } */
 
-#featured .card-body, #featured .card-footer {
-    position: absolute;
-    opacity: 0%;
-}
+/* #featured .card-body, #featured .card-footer { */
+/*     position: absolute; */
+/*     opacity: 0%; */
+/* } */
 
-#featured .card:hover .card-body {
-    opacity: 100%;
-    top: 0px;
-}
+/* #featured .card:hover .card-body { */
+/*     opacity: 100%; */
+/*     top: 0px; */
+/* } */
 
-#featured .card:hover .card-footer {
-    opacity: 100%;
-    bottom: 0px;
-}
+/* #featured .card:hover .card-footer { */
+/*     opacity: 100%; */
+/*     bottom: 0px; */
+/* } */
 
-#featured .card:hover .card-body-and-footer {
-    animation-duration: 0.3s;
-    animation-name: slide-in;
-    animation-delay: 0s;
-    animation-fill-mode: forwards;
-}
+/* #featured .card:hover .card-body-and-footer { */
+/*     animation-duration: 0.3s; */
+/*     animation-name: slide-in; */
+/*     animation-delay: 0s; */
+/*     animation-fill-mode: forwards; */
+/* } */
 
-@keyframes slide-in {
-    0% {
-        opacity: 0;
-        bottom: -100px;
-    }
-    100% {
-        opacity: 1;
-        bottom: 0px;
-    }
-}
+/* @keyframes slide-in { */
+/*     0% { */
+/*         opacity: 0; */
+/*         bottom: -100px; */
+/*     } */
+/*     100% { */
+/*         opacity: 1; */
+/*         bottom: 0px; */
+/*     } */
+/* } */
 
-#featured .card:hover {
-    background-color: black;
-}
+/* #featured .card:hover { */
+/*     background-color: black; */
+/* } */
 
-#featured .card:hover img {
-    opacity: 0;
-    /* animation-duration: 0.3s; */
-    /* animation-name: fade-out; */
-    /* animation-delay: 0s; */
-    /* animation-fill-mode: forwards; */
-}
+/* #featured .card:hover img { */
+/*     opacity: 0; */
+/*     /\* animation-duration: 0.3s; *\/ */
+/*     /\* animation-name: fade-out; *\/ */
+/*     /\* animation-delay: 0s; *\/ */
+/*     /\* animation-fill-mode: forwards; *\/ */
+/* } */
 
-@keyframes fade-out {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
+/* @keyframes fade-out { */
+/*     0% { */
+/*         opacity: 1; */
+/*     } */
+/*     100% { */
+/*         opacity: 0; */
+/*     } */
+/* } */
 
-#featured .card:hover .card-footer {
-    border-top: 2px solid white !important;
-    color: white;
-}
+/* #featured .card:hover .card-footer { */
+/*     border-top: 2px solid white !important; */
+/*     color: white; */
+/* } */
 
 
 .card-column .card-footer {

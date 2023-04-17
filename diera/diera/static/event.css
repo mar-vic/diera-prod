@@ -4,10 +4,36 @@
     background-color: white;
     padding: 10px;
     border: 2px solid black;
+    border-radius: 0px;
     width: 60%;
     margin-left: auto;
     margin-right: auto;
     min-width: 1000px;
+}
+
+.card-body {
+    padding-top: 0px;
+    padding-right: 0px;
+}
+
+.card-title {
+    text-transform: uppercase;
+    color: white;
+    text-shadow: -1.3px 1.3px 0 #000, 1.3px 1.3px 0 #000, 1.3px -1.3px 0 #000, -1.3px -1.3px 0 #000;
+}
+
+.card-text {
+    line-height: 1.1;
+    max-height: 300px;
+    overflow: scroll;
+}
+
+.card .teaser-text-container .card-footer {
+    position: absolute;
+    bottom: 0px;
+    background-color: white;
+    border-top: none;
+    padding-bottom: 0px;
 }
 
 #event a {
@@ -16,6 +42,21 @@
     transition-duration: 0.2s;
     transition-delay: 0s;
     color: black;
+}
+
+.schedule {
+    border-top: 2px solid black;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-top: 4px;
+}
+
+.schedule .day {
+    padding-left: 0px;
+}
+
+.schedule .time {
+    padding-right: 0px;
 }
 
 #event a:hover {

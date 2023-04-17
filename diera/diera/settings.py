@@ -113,6 +113,8 @@ INSTALLED_APPS = [
     'event_calendar',
     'calendar_cms_integration',
     'wizards',
+    'archive',
+    'archive_cms_integration'
 ]
 
 THUMBNAIL_HIGH_RESOLUTION = True

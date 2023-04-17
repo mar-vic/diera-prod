@@ -1,6 +1,6 @@
-from operator import itemgetter
 import datetime
-from datetime import date
+import locale
+import json
 
 from django import template
 from django.core.exceptions import ObjectDoesNotExist
@@ -457,7 +457,7 @@ def get_background_image_url():
     4) finally, if there is no image in the folder, return empty string, thus
     making the site with haveing no background image.
     """
-    today = date.today()
+    today = datetime.date.today()
 
     # Try to get folder with background images and fail gracefully when it does not exist.
     try:
@@ -477,3 +477,74 @@ def get_background_image_url():
         return bgimage_by_uploaded.url
     else:
         return ''
+
+
+@register.simple_tag
+def get_opening_hours(request):
+    with open('static/opening_hours.json', 'r') as openingHoursFile:
+
+        # import pdb; pdb.set_trace()
+
+        language = request.LANGUAGE_CODE
+        data = json.load(openingHoursFile)
+        flag = data['customHours']
+        hours = data['openingHours']
+
+        if not flag:
+            return hours
+        else:
+            # Get the program page (i.e., page with reverse_id='program')
+            programp = Page.objects.filter(reverse_id='program').filter(publisher_is_draft=False).first()
+            # Ensuring that program page does exist
+            if not programp:
+                published_events = []
+            else:
+                # Get all childs of program page (i.e., the events)
+                published_events = [page for page in programp.get_child_pages()
+                                    if page.is_published(language) and
+                                    hasattr(page, 'eventdataextension') and
+                                    page.eventdataextension.date_from.year >= datetime.datetime.now().year and
+                                    page.eventdataextension.date_from.month >= datetime.datetime.now().month and
+                                    page.eventdataextension.date_from.day >= datetime.datetime.now().day]
+                # published_events.sort(key=lambda page: page.eventdataextension.date_from)
+
+            if published_events:
+                next_event = min(published_events, key=lambda event: event.eventdataextension.date_from)
+                return published_events[0].eventdataextension.date_from.hour
+            else:
+                return None
+
+@register.simple_tag
+def get_upcoming_event(request):
+        language = request.LANGUAGE_CODE
+
+        # import pdb; pdb.set_trace()
+
+        if language == 'sk': locale.setlocale(locale.LC_TIME, 'sk_SK.utf8')
+
+        # Get the program page (i.e., page with reverse_id='program')
+        programp = Page.objects.filter(reverse_id='program').filter(publisher_is_draft=False).first()
+        # Ensuring that program page does exist
+        if not programp:
+            published_events = []
+        else:
+            # Get all childs of program page (i.e., the events)
+            published_events = [page for page in programp.get_child_pages()
+                                if page.is_published(language) and
+                                hasattr(page, 'eventdataextension') and
+                                page.eventdataextension.date_from.year >= datetime.datetime.now().year and
+                                page.eventdataextension.date_from.month >= datetime.datetime.now().month and
+                                page.eventdataextension.date_from.day >= datetime.datetime.now().day]
+            # published_events.sort(key=lambda page: page.eventdataextension.date_from)
+
+        if published_events:
+            next_event = min(published_events, key=lambda event: event.eventdataextension.date_from)
+            return {
+                'eventName': next_event.get_page_title(),
+                'day': next_event.eventdataextension.date_from.strftime('%A'),
+                'time': next_event.eventdataextension.date_from.strftime('%H:%M')
+            }
+        else:
+            return None
+
+

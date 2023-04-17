@@ -2,42 +2,41 @@
 {% load i18n %}
 {% load thumbnail %}
 
-<div class="card hp-teaser">
-
-  <!-- TEASER IMAGE -->
-  <div class="teaser-image">
-    {% if teaser.image %}  <!-- Checking if the extension was set -->
-    {% thumbnail teaser.image 600x300 crop upscale as teaser_image %}
-    <a href="{{ teaser.url }}">
-      <img src="{{ teaser_image.url }}" />
-    </a>
-    {% endif %}
-  </div>
-
-    <!-- TEASER BODY -->
-  <div class="card-body">
-    <div class="featured-teaser-title">
-      <a href="{{ teaser.url }}">
-        <h1 class="display-2 lh-1">{{ teaser.title|upper }}</h1>
-      </a>
+<a class="hp-teaser" href="{{ teaser.url }}">
+<div class="card p-2">
+  <div class="row g-0">
+    <div class="col-md-6">
+      {% if teaser.image %}  <!-- Checking if the extension was set -->
+      {% thumbnail teaser.image 600x600 crop upscale as teaser_image %}
+        <img src="{{ teaser_image.url }}" />
+      {% endif %}
     </div>
-    <div class="featured-teaser-text fs-3 w-50">
-      {% show_placeholder "perex" teaser.page_id %}
-    </div>
-  </div>
-
-  <!-- TEASER FOOTER (FOR EVENTS ONLY) -->
-  {% if teaser.from %}
-  <div class="card-footer">
-    <div class="row">
-      <div class="col fs-3" style="text-align:left;">
-        {{ teaser.from|date:"j.n." }}
+    <div class="col-md-6 teaser-text-container">
+      <div class="card-body">
+        <h1 class="display-1 lh-1 card-title">{{ teaser.title|upper }}</h1>
       </div>
-      <div class="col fs-3" style="text-align:right;">
-        {{ teaser.from|date:"H:i" }}
+
+      <!-- TEASER FOOTER (FOR EVENTS ONLY) -->
+      <div class="card-footer">
+
+        <div class="card-text {% if not teaser.from %}article-teaser-perex{% endif %}">
+          {% show_placeholder "perex" teaser.page_id %}
+        </div>
+
+        {% if teaser.from %}
+        <div class="row schedule">
+          <div class="col fs-2 day" style="text-align:left;">
+            {{ teaser.from|date:"j.n." }}
+          </div>
+          <div class="col fs-2 time" style="text-align:right;">
+            {{ teaser.from|date:"H:i" }}
+          </div>
+        </div>
+        {% endif %}
       </div>
+
     </div>
   </div>
-  {% endif %}
-
 </div>
+</a>
+

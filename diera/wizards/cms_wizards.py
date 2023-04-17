@@ -7,7 +7,8 @@ from .forms import (
     CreateEventWizardForm,
     CreateFestivalWizardForm,
     CreateFestivalYearWizardForm,
-    SetBackgroundImageWizardForm
+    SetBackgroundImageWizardForm,
+    SetOpeningHoursWizardForm
 )
 
 from filer.models import File
@@ -47,6 +48,18 @@ class SetBackgroundImageWizard(Wizard):
         return url
 
 
+
+class SetOpeningHoursWizard(Wizard):
+    def get_success_url(self, obj, **kwargs):
+        """
+        Setting opening hours should redirect editor to the home page, since
+        this is the only place where thery are shown.
+        """
+        page = Page.objects.filter(reverse_id='home').filter(publisher_is_draft=False).first()
+        return page.get_absolute_url()
+
+
+
 event_wizard = CreateEventWizard(
     title="New Event",
     weight=0,
@@ -83,6 +96,14 @@ bgimage_wizard = SetBackgroundImageWizard(
     description="Set new background image"
 )
 
+hours_wizard = SetOpeningHoursWizard(
+    title="Opening Hours",
+    weight=3,
+    form=SetOpeningHoursWizardForm,
+    model=File,
+    description="Set opening hours"
+)
+
 # Unregister default DjangoCMS wizard
 for wizard in wizard_pool.get_entries():
     wizard_pool.unregister(wizard)
@@ -93,3 +114,4 @@ wizard_pool.register(article_wizard)
 wizard_pool.register(festival_wizard)
 wizard_pool.register(festival_year_wizard)
 wizard_pool.register(bgimage_wizard)
+wizard_pool.register(hours_wizard)
