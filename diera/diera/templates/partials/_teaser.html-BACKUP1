@@ -1,8 +1,0 @@
-{% load cms_tags menu_tags %}
-{% load i18n %}
-{% load thumbnail %}
-
-{% thumbnail teaser.image 600x200 crop upscale as teaser_image %}
-<div class="card hp-teaser" style="background-image:{{ teaser_image.url }}">
-
-</div>
