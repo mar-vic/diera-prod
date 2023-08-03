@@ -8,7 +8,7 @@
   {% for eteaser in eteasers %}
 
   <div class="col-4">
-    <a href="#" class="upcoming-eteaser">
+    <a href="{{ eteaser.event_url }}" class="upcoming-eteaser">
       <div class="card h-100 p-2 pb-0">
         {% thumbnail eteaser.image 600x300 crop upscale as eteaser_image %}
         <img class="card-img-top" src="{{ eteaser_image.url }}">

@@ -3,16 +3,25 @@
 {% load custom_tags %}
 
 
-<div class="col-6">
-  <img class="w-100" style="border:2px solid black" src="{% static '/images/opening_hrs_teaser_image.png' %}">
-  <div id="openingHours">
-    {% placeholder "opening-hours" %}
-  </div>
+<div class="col-md-6">
+  <section id="opening-hours" class="p-1 h-100">
+    <header>
+      <h2 class="display-3 lh-1 card-title pt-4 pb-4">Otváracie hodiny</h2>
+    </header>
+    <div id="hours-container" class="display-5 position-relative">
+      <div class="fs-2 fw-bold position-absolute top-50 start-50 translate-middle">{% placeholder "opening-hours" %}</div>
+    </div>
+  </section>
 </div>
 
-<div class="col-6">
-  <a href="{{ teaser.url }}">
-    <img class="w-100" style="border:2px solid black" src="{% static '/images/newsletter_teaser_image.png' %}">
-  </a>
+<div class="col-md-6">
+    <section id="news-letter-teaser" class="p-1 h-100">
+      <header>
+        <h2 class="display-3 lh-1 card-title pt-4 pb-4">Odoberaj newsletter</h2>
+      </header>
+      <div id="nl-link-container" class="position-relative">
+        <a class="fs-3 position-absolute top-50 start-50 translate-middle" href="{{ teaser.url }}">klik!</a>
+      </div>
+    </section>
 </div>
 

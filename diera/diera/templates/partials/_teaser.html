@@ -3,40 +3,37 @@
 {% load thumbnail %}
 
 <a class="hp-teaser" href="{{ teaser.url }}">
-<div class="card p-2">
-  <div class="row g-0">
-    <div class="col-md-6">
+  <article class="hp-teaser-content p-2">
+    <div class="teaser-img-container">
       {% if teaser.image %}  <!-- Checking if the extension was set -->
-      {% thumbnail teaser.image 600x600 crop upscale as teaser_image %}
-        <img src="{{ teaser_image.url }}" />
+      {% thumbnail teaser.image 600x400 crop upscale as teaser_image %}
+      <img class="wide-display" src="{{ teaser_image.url }}" />
+      {% thumbnail teaser.image 600x300 crop upscale as teaser_image_small %}
+      <img class="d-none small-display pb-2" src="{{ teaser_image_small.url }}" />
       {% endif %}
     </div>
-    <div class="col-md-6 teaser-text-container">
-      <div class="card-body">
-        <h1 class="display-1 lh-1 card-title">{{ teaser.title|upper }}</h1>
-      </div>
 
-      <!-- TEASER FOOTER (FOR EVENTS ONLY) -->
-      <div class="card-footer">
-
-        <div class="card-text {% if not teaser.from %}article-teaser-perex{% endif %}">
-          {% show_placeholder "perex" teaser.page_id %}
-        </div>
-
-        {% if teaser.from %}
-        <div class="row schedule">
-          <div class="col fs-2 day" style="text-align:left;">
-            {{ teaser.from|date:"j.n." }}
-          </div>
-          <div class="col fs-2 time" style="text-align:right;">
-            {{ teaser.from|date:"H:i" }}
-          </div>
-        </div>
-        {% endif %}
-      </div>
-
+    <div class="teaser-body-container">
+      <header class="pb-3">
+        <h2 class="display-3 lh-1">{{ teaser.title|upper }}</h2>
+      </header>
+      {% show_placeholder "perex" teaser.page_id %}
     </div>
-  </div>
-</div>
-</a>
 
+    <!-- TEASER FOOTER (FOR EVENTS ONLY) -->
+    {% if teaser.from %}
+    <footer>
+      <div class="row schedule">
+        <div class="col fs-3 day" style="text-align:left;">
+          {{ teaser.from|date:"j.n." }}
+        </div>
+        <div class="col fs-3 time" style="text-align:right;">
+          {{ teaser.from|date:"H:i" }}
+        </div>
+      </div>
+    </footer>
+    {% endif %}
+
+
+  </article>
+</a>

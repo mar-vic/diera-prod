@@ -50,7 +50,7 @@
 
   {% get_teasers_for_all_features request as teasers %}
 
-  <div class="row gy-3">
+  <div class="row gx-2 gy-2">
     <!-- teasers -->
     {% for teaser in teasers %}
     {% if not forloop.last %}
@@ -64,20 +64,6 @@
   </div>
 
 </div>
-<script>
-     // element as first argument
-     var grid = document.querySelector('.grid');
-     var colc = new Colcade( grid, {
-         columns: '.grid-col',
-         items: '.grid-item'
-     });
-
-     // selector string as first argument
-     var colc = new Colcade( '.grid', {
-         columns: '.grid-col',
-         items: '.grid-item'
-     });
-</script>
 {% endblock content %}
 
 {% block js %}
