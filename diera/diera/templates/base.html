@@ -48,17 +48,8 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
         <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
 
-        <!-- BOOTSTRAP JS (WITH POPPER) -->
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        -->
-        <!-- FONT AWESOME -->
-        <script src="https://kit.fontawesome.com/0d8827d474.js" crossorigin="anonymous"></script>
-
         <!-- DIERA GLOBAL CSS  -->
         <link href="{% static 'global.css' %}" rel="stylesheet">
-
-
 
         {% block css %}{% endblock css %}
         {% render_block "css" %}
@@ -66,29 +57,43 @@
     </head>
     <body>
 
-        <!-- CMS TOOLBAR -->
-        {% cms_toolbar %}
+      <!-- CMS TOOLBAR -->
+      {% cms_toolbar %}
 
-        <!-- SITE NAV -->
+      <!-- SITE NAV -->
+      <header>
         {% include "header.html" %}
+      </header>
 
-        <!-- CONTENT -->
-        <main>
-            {% block content %}{% endblock content %}
-        </main>
+      <!-- CONTENT -->
+      <main>
+        {% block content %}{% endblock content %}
+      </main>
 
-        <!-- FOOTER -->
-        <footer id="site-footer">
-            {% include "footer.html" %}
-        </footer>
+      <!-- FOOTER -->
+      <footer id="site-footer">
+        {% include "footer.html" %}
+      </footer>
 
-        <!-- COOKIE CONSENT POPUP -->
-        {% include "cookie_consent.html" %}
+      <!-- COOKIE CONSENT POPUP -->
+      {% include "cookie_consent.html" %}
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+      <!-- FONT AWESOME -->
+      <script src="https://kit.fontawesome.com/0d8827d474.js" crossorigin="anonymous"></script>
 
-        {% block js %}{% endblock js %}
-        {% render_block "js" %}
+      <!-- BOOTSTRAP JS -->
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+
+      <script>
+      const navLinks = document.getElementById("navLinks");
+      navLinks.addEventListener("hide.bs.collapse", function() {
+        console.log("They are collapsed!");
+      });
+      </script>
+
+      {% block js %}{% endblock js %}
+      {% render_block "js" %}
 
     </body>
 </html>

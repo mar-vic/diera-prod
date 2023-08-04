@@ -99,16 +99,17 @@ a.nav-link:hover {
 }
 
 /* MM: SOCIAL LINKS AND LANGUAGE SWITCHER */
-#socials {
+.socials-and-lang {
     flex-direction: row;
 }
-#socials a {
+.socials-and-lang a {
     text-decoration: none !important;
+    color: black;
     margin-left: 5px;
     margin-right: 5px;
 }
 
-#socials a:hover {
+.socials-and-lang a:hover {
     background-color: white !important;
 }
 
