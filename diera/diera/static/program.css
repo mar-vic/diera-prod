@@ -1,5 +1,24 @@
 /* Style rules for the calendar app */
 
+.upcoming-eteaser .card-title {
+    color: white;
+    text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+    hyphens: auto;
+}
+
+.upcoming-eteaser:hover .card-title {
+    color: black;
+    text-shadow: -1px 1px 0 white, 1px 1px 0 white, 1px -1px 0 white, -1px -1px 0 white;
+}
+
+.upcoming-eteaser img {
+    border: 2px solid white;
+}
+
+.upcoming-eteaser:hover img {
+    border: 2px solid white;
+}
+
 ul {list-style-type: none;}
 
 /* Calendar container */
@@ -465,7 +484,6 @@ ul {list-style-type: none;}
 .upcoming-eteaser {
     text-decoration: none;
     color black !important;
-
 }
 
 .upcoming-eteaser .card {
@@ -477,6 +495,7 @@ ul {list-style-type: none;}
 .upcoming-eteaser:hover .card {
     background-color: black;
     color: white;
+    border: 2px solid white;
 }
 
 .upcoming-eteaser:hover .card-subtitle * {

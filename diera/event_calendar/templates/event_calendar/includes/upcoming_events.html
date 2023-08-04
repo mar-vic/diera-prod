@@ -7,14 +7,14 @@
 
   {% for eteaser in eteasers %}
 
-  <div class="col-4">
+  <div class="col-12 col-md-6 col-lg-4">
     <a href="{{ eteaser.event_url }}" class="upcoming-eteaser">
       <div class="card h-100 p-2 pb-0">
         {% thumbnail eteaser.image 600x300 crop upscale as eteaser_image %}
         <img class="card-img-top" src="{{ eteaser_image.url }}">
         <div class="card-body p-0 mt-2">
-          <h2 class="card-title fs-2 lh-1 text-uppercase">{{ eteaser.event_title }}</h2>
-          <h3 class="card-subtitle mt-2 text-muted fs-3">
+          <h2 class="card-title fs-1 lh-1 text-uppercase">{{ eteaser.event_title }}</h2>
+          <h3 class="card-subtitle mt-2 fs-3">
             {% show_placeholder "genre" eteaser.page_id %}
           </h3>
         </div>
