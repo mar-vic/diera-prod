@@ -134,7 +134,7 @@
 .hp-teaser p {
     text-transform: uppercase !important;
     line-height: 1;
-    font-size: 26px;
+    /* font-size: 26px; */
 }
 
 .hp-teaser img {
