@@ -132,6 +132,10 @@
     hyphens: auto;
 }
 
+.hp-teaser {
+    transition: all 1s ease-out;
+}
+
 .hp-teaser p {
     text-transform: uppercase !important;
     line-height: 1;
@@ -140,6 +144,29 @@
 
 .hp-teaser img {
     width: 100%;
+    border: 2px solid white;
+}
+
+.hp-teaser * {
+    transition: all 0.5s;
+}
+
+.hp-teaser:hover article {
+    border: 2px solid white !important;
+    background-color: black;
+    color: white;
+}
+
+.hp-teaser:hover h2 {
+    color: black;
+    text-shadow: -1.3px 1.3px 0 white, 1.3px 1.3px 0 white, 1.3px -1.3px 0 white, -1.3px -1.3px 0 white;
+}
+
+.hp-teaser:hover p {
+    color: white;
+}
+
+.hp-teaser:hover img {
 }
 
 .schedule {
@@ -147,6 +174,10 @@
     margin-left: 0px;
     margin-right: 0px;
     padding-top: 4px;
+}
+
+.hp-teaser:hover .schedule {
+    border-top: 2px solid white;
 }
 
 .schedule .day {
