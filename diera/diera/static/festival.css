@@ -176,48 +176,21 @@
 }
 
 @media screen and (max-width: 1199px) {
-    #festival {
+    #festival, #festival-years {
         min-width: 800px !important;
     }
 }
 
 @media screen and (max-width: 990px) {
-    #festival {
+    #festival, #festival-years {
         min-width: 0px !important;
-    }
-
-    #festival {
         width: 95%;
     }
+
 }
 
 @media screen and (max-width: 765px) {
 
-    #festival-title {
-        font-size: 24px;
-        line-height: 0.9;
-        text-transform: uppercase;
-        hyphens: none !important;
-        margin-bottom: 8px;
-    }
-
-    #festival-body * {
-        font-size: 15px;
-        line-height: 1;
-    }
-
-    #festival-body h2 {
-        font-size: 20px !important;
-    }
-
-
-    #festival-body h3 {
-        font-size: 17px !important;
-    }
-
-    #festival-years h2 {
-        font-size: 20px !important;
-    }
 }
 
 .teaser-card * {

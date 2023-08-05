@@ -22,18 +22,33 @@
           {% show_menu 0 0 0 0 "menu/menu.html" %}
 
           <li class="d-block d-lg-none socials-and-lang">
-            <a class="fs-3" href="https://www.facebook.com/dieradosveta">
-              <i class="fab fa-facebook-square"></i>
-            </a>
-            <a class="fs-3" href="https://www.instagram.com/dieradosveta/">
-              <i class="fab fa-instagram-square"></i>
-            </a>
-            <a class="fs-3" href="https://www.youtube.com/channel/UC326HkT9w-FxK3ySvKfKxKQ">
-              <i class="fab fa-youtube"></i>
-            </a>
-            <span class="fs-3 fw-bold nav-item">
-              {% language_chooser "menu/language_chooser.html" %}
-            </span>
+            <div class="row">
+
+              <div class="col text">
+                <a class="fs-3" href="https://www.facebook.com/dieradosveta">
+                  <i class="fab fa-facebook-square"></i>
+                </a>
+              </div>
+
+              <div class="col">
+                <a class="fs-3" href="https://www.instagram.com/dieradosveta/">
+                  <i class="fab fa-instagram-square"></i>
+                </a>
+              </div>
+
+              <div class="col">
+                <a class="fs-3" href="https://www.youtube.com/channel/UC326HkT9w-FxK3ySvKfKxKQ">
+                  <i class="fab fa-youtube"></i>
+                </a>
+              </div>
+
+              <div class="col">
+                <span class="fs-3 fw-bold nav-item">
+                  {% language_chooser "menu/language_chooser.html" %}
+                </span>
+              </div>
+
+            </div>
           </li>
 
         </ul>
