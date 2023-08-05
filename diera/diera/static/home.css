@@ -147,9 +147,10 @@
     border: 2px solid white;
 }
 
-.hp-teaser * {
-    transition: all 0.5s;
-}
+/* .hp-teaser article, .hp-teaser h2, .hp-teaser p { */
+/*     transition: hover 0.3s; */
+/* } */
+
 
 .hp-teaser:hover article {
     border: 2px solid white !important;
@@ -164,9 +165,6 @@
 
 .hp-teaser:hover p {
     color: white;
-}
-
-.hp-teaser:hover img {
 }
 
 .schedule {

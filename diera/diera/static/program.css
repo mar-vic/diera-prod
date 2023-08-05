@@ -15,9 +15,9 @@
     border: 2px solid white;
 }
 
-.upcoming-eteaser * {
-    transition: all 0.5s;
-}
+/* .upcoming-eteaser * { */
+/*     transition: all 0.5s; */
+/* } */
 
 .upcoming-eteaser:hover img {
     border: 2px solid white;
