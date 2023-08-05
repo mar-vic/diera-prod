@@ -27,91 +27,82 @@
 {% endblock %}
 
 {% block content %}
-    <div id="festival">
+<div id="festival">
 
-        <!-- TEASER IMAGE -->
-        {% with image=request.current_page.imageextension.image %}
-        {% if image %}
-        {% thumbnail image 1200x600 crop upscale as cropped_image %}
-        <img id="hero-image" src="{{ cropped_image.url }}">
-        {% endif %}
-        {% endwith %}
+  <!-- TEASER IMAGE -->
+  {% with image=request.current_page.imageextension.image %}
+  {% if image %}
+  {% thumbnail image 1200x600 crop upscale as cropped_image %}
+  <img id="hero-image" class="mb-4" src="{{ cropped_image.url }}">
+  {% endif %}
+  {% endwith %}
 
-        <!-- FESTIVAL YEAR TITLE -->
-        {% with grand_parent=request.current_page.get_parent_page.get_parent_page %}
-        {% with parent=request.current_page.get_parent_page %}
-        <div id="festival-title">
-            <a href="{{ grand_parent.get_absolute_url }}">{{ grand_parent.get_page_title }}</a> /
-            <a href="{{ parent.get_absolute_url }}">{{ parent.get_page_title }}</a> /
-            {% page_attribute "title" %}
-        </div>
-        {% endwith %}
-        {% endwith %}
+  <!-- FESTIVAL YEAR TITLE -->
+  {% with grand_parent=request.current_page.get_parent_page.get_parent_page %}
+  {% with parent=request.current_page.get_parent_page %}
+  <header id="festival-title" class="display-2 lh-1 mb-1">
+    <a href="{{ parent.get_absolute_url }}">{{ parent.get_page_title }}</a> / {% page_attribute "title" %}
+  </header>
+  {% endwith %}
+  {% endwith %}
 
-        <!-- FESTIVAL YEAR BODY -->
-        <div id="festival-body">
-            <div style="display:none">
-                {% placeholder "perex" %}
-            </div>
-	          {% placeholder "body" %}
-        </div>
-
-
-        <!-- FESTIVAL YEAR PROGRAMMING -->
-        {% with festival_title=request.current_page.parent_page.get_page_title %}
-        {% with festival_year=request.current_page.festivalyearextension.festival_year %}
-        {% get_teasers_for_festival_events request festival_title festival_year as teasers %}
-
-        {% if teasers %}
-        <div id="year-program">
-            <h2>PROGRAM</h2>
-
-            {% for teaser_triplet in teasers %}
-            <div class="card-group eteasers-grid">
-                {% for teaser in teaser_triplet %}
-                <div class="card teaser-card m-1">
-
-                    <!-- EVENT TEASER IMAGE -->
-                    {% if teaser.image %}
-                    {% thumbnail teaser.image 600x300 crop upscale as cropped_eteaser_image %}
-                    <a href="{{ teaser.url }}">
-                        <img class="card-img-top p-1" src="{{ cropped_eteaser_image.url }}">
-                    </a>
-                    {% endif %}
-
-                    <div class="card-body p-1">
-
-                        <!-- EVENT TITLE -->
-                        <h3 class="card-title teaser-title">
-                            <a href="{{ teaser.url }}">{{ teaser.title|upper }}</a>
-                        </h3>
-
-                        <h4 class="teaser-genre">
-                            {% show_placeholder "genre" teaser.page_id %}
-                        </h4>
-                    </div>
-
-                    <div class="card-footer teaser-footer p-0 m-1">
-                        <div class="row">
-                            <div class="col">
-                                <h4 class="m-0 mt-1">{{ teaser.from|date:"j.m." }}</h4>
-                            </div>
-                            <div class="col" style="text-align:right;">
-                                <h4 class="m-0 mt-1">{{ teaser.from|date:"H:i" }}</h4>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                {% endfor %}
-            </div>
-            {% endfor %}
-        </div>
-        {% endif %}
-
-        {% endwith %}
-        {% endwith %}
-
+  <!-- FESTIVAL YEAR BODY -->
+  <div id="festival-body" class="fs-2 lh-sm">
+    <div style="display:none">
+      {% placeholder "perex" %}
     </div>
+	  {% placeholder "body" %}
+  </div>
+</div>
+
+<!-- FESTIVAL YEAR PROGRAMMING -->
+{% with festival_title=request.current_page.parent_page.get_page_title %}
+{% with festival_year=request.current_page.festivalyearextension.festival_year %}
+{% get_teasers_for_festival_events request festival_title festival_year as teasers %}
+
+{% if teasers %}
+<div id="year-programming" class="mt-3">
+
+  <div class="row g-2">
+    {% for teaser in teasers %}
+    <div class="col-12 col-md-6 col-lg-4">
+
+      <a href="{{ teaser.url }}">
+        <div class="card p-2 h-100">
+
+          <!-- EVENT TEASER IMAGE -->
+          {% if teaser.image %}
+          {% thumbnail teaser.image 600x300 crop upscale as cropped_eteaser_image %}
+          <img class="card-img-top mb-2" src="{{ cropped_eteaser_image.url }}">
+          {% endif %}
+
+          <div class="card-body p-0 fs-3 lh-sm">
+
+            <!-- EVENT TITLE -->
+            <header><h2 class="fs-1 lh-1 text-uppercase">{{ teaser.title|upper }}</h2></header>
+
+              {% show_placeholder "genre" teaser.page_id %}
+          </div>
+
+          <div class="card-footer fs-4 teaser-footer p-0 m-1">
+            <div class="row">
+              <div class="col">
+                <span class="m-0 mt-1">{{ teaser.from|date:"j.m." }}</span>
+              </div>
+              <div class="col" style="text-align:right;">
+                <span class="m-0 mt-1">{{ teaser.from|date:"H:i" }}</span>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+{% endwith %}
+{% endwith %}
 {% endblock content %}
 

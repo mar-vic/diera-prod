@@ -77,7 +77,7 @@ def get_teasers_for_festival_years(request):
                 }
         )
 
-    return teasers
+    return reversed(teasers)
 
     # while festival_year_pages:
     #     teaser_triplet = []
@@ -164,12 +164,12 @@ def get_teasers_for_festival_events(request, festival_name, year):
     event_teasers = sorted(event_teasers,
                   key=lambda teaser: teaser['from'],
                            reverse=False)
-    event_teasers_triplets = []
-    while event_teasers:
-        event_teasers_triplets.append(event_teasers[0:3])
-        event_teasers = event_teasers[3:]
+    # event_teasers_triplets = []
+    # while event_teasers:
+    #     event_teasers_triplets.append(event_teasers[0:3])
+    #     event_teasers = event_teasers[3:]
 
-    return event_teasers_triplets
+    return event_teasers
 
 @register.simple_tag
 def get_teasers_for_all_features(request):
