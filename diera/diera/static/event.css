@@ -116,30 +116,8 @@
 
 @media screen and (max-width: 765px) {
 
-    #event-title {
-        font-size: 24px;
-        line-height: 0.9;
-        text-transform: uppercase;
-        hyphens: none !important;
-        margin-bottom: 8px;
-    }
-
-    #event-body * {
-        font-size: 15px !important;
-        line-height: 1;
-
-    }
-
-    #event-body h2 {
-        font-size: 20px !important;
-    }
-
-    #event-body h3 {
-        font-size: 17px !important;
-    }
-
-    #event-date {
-        font-size: 15px;
-        border-bottom: 1px solid black;
+    .card-title {
+        color: black;
+        text-shadow: none;
     }
 }

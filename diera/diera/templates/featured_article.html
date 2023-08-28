@@ -27,7 +27,9 @@
 {% endblock %}
 
 {% block content %}
-    <div id="featured-article">
+<div id="featured-article" class="card p-2">
+  <div class="row g-0">
+    <div class="col">
 
         <!-- TEASER IMAGE -->
         {% with image=request.current_page.imageextension.image %}
@@ -37,19 +39,27 @@
         {% endif %}
         {% endwith %}
 
-        <!-- ARTICLE TITLE -->
-        <div id="featured-article-title">
-            {% page_attribute "title" %}
-        </div>
+    </div>
+  </div>
 
+  <div class="row">
+    <!-- ARTICLE TITLE -->
+    <div id="featured-article-title">
+      <h1 class="display-2 lh-1 card-title">{% page_attribute "title" %}</h1>
+    </div>
+  </div>
+  <div class="row">
         <!-- ARTICLE BODY (CMS PLACEHOLDERS) -->
         <div id="featured-article-body">
             <div style="display:none;">
                  {% placeholder "perex" %}
             </div>
-	          {% placeholder "body" %}
+            <div class="fs-3 card-text pt-1">
+	            {% placeholder "body" %}
+            </div>
         </div>
 
     </div>
+</div>
 
 {% endblock content %}

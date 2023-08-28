@@ -522,7 +522,7 @@ ul {list-style-type: none;}
 }
 
 /* RESPONSIVE RULES */
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 768px) {
     #id_month, #id_year, #show-program-button {
         height: 50px;
         font-size: 15px;
@@ -530,5 +530,15 @@ ul {list-style-type: none;}
 
     .eteaser-card-sm {
         margin-bottom: 2px !important;
+    }
+
+    .upcoming-eteaser .card-title {
+        color: black;
+        text-shadow: none;
+    }
+
+    .upcoming-eteaser:hover .card-title {
+        color: white;
+        text-shadow: none;
     }
 }

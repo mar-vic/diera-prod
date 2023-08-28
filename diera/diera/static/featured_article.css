@@ -9,6 +9,7 @@
     /* max-width: 1200px; */
     margin-left: auto;
     margin-right: auto;
+    border-radius: 0px;
 }
 
 #hero-image {
@@ -17,19 +18,13 @@
 }
 
 #featured-article-title {
-    font-family: Elastik-A, sans-serif;
-    font-size-adjust: 0.4;
-    font-size: 55px;
-    line-height: 0.9;
     text-transform: uppercase;
-    hyphens: none !important;
-    margin-bottom: 15px;
+    hyphens: auto;
+    color: white;
+    text-shadow: -1.3px 1.3px 0 #000, 1.3px 1.3px 0 #000, 1.3px -1.3px 0 #000, -1.3px -1.3px 0 #000;
 }
 
-#featured-article-body {
-    font-family: Elastik-A, sans-serif;
-    font-size-adjust: 0.4;
-    font-size: 30px;
+.card-text {
     line-height: 1.1;
 }
 
@@ -86,24 +81,7 @@
 @media screen and (max-width: 765px) {
 
     #featured-article-title {
-        font-size: 24px;
-        line-height: 0.9;
-        text-transform: uppercase;
-        hyphens: none !important;
-        margin-bottom: 8px;
-    }
-
-    #featured-article-body * {
-        font-size: 15px;
-        line-height: 1;
-
-    }
-
-    #featured-article-body h2 {
-        font-size: 20px !important;
-    }
-
-    #featured-article-body h3 {
-        font-size: 17px !important;
+        color: black;
+        text-shadow: none;
     }
 }

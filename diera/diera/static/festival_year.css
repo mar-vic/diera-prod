@@ -114,7 +114,25 @@
 }
 
 @media screen and (max-width: 765px) {
+    #festival-title {
+        color: black;
+        text-shadow: none;
+    }
 
+    #festival-title a {
+        color: black;
+        text-decoration-thickness: 3px;
+    }
+
+    #year-programming header {
+        color: black;
+        text-shadow: none;
+    }
+
+    #year-programming a:hover header {
+        color: white;
+        text-shadow: none;
+    }
 }
 
 

@@ -190,7 +190,10 @@
 }
 
 @media screen and (max-width: 765px) {
-
+    #festival-title {
+        color: black;
+        text-shadow: none;
+    }
 }
 
 .teaser-card * {
@@ -250,4 +253,9 @@
                  1.1px 1.1px 0 #000,
                  1.1px -1.1px 0 #000,
                  -1.1px -1.1px 0 #000;
+}
+
+/* RESPONSIVE RULES */
+@media screen and (max-width: 768px) {
+
 }
