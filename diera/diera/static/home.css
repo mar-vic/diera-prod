@@ -220,4 +220,17 @@
         padding-left: 0px !important;
     }
 
+    #featured header {
+        color: black;
+        text-shadow: none;
+    }
+
+    .hp-teaser:hover h2 {
+        color: white;
+        text-shadow: none;
+    }
+
+    #opening-hours {
+        min-height: auto;
+    }
 }

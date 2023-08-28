@@ -9,7 +9,7 @@
       {% thumbnail teaser.image 600x400 crop upscale as teaser_image %}
       <img class="wide-display" src="{{ teaser_image.url }}" />
       {% thumbnail teaser.image 600x300 crop upscale as teaser_image_small %}
-      <img class="d-none small-display pb-2" src="{{ teaser_image_small.url }}" />
+      <img class="d-none small-display mb-2" src="{{ teaser_image_small.url }}" />
       {% endif %}
     </div>
 
