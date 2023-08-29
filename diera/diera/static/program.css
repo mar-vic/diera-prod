@@ -26,7 +26,7 @@
 ul {list-style-type: none;}
 
 /* Calendar container */
-#calendar {
+#programming {
     font-family: Elastik-A, sans-serif;
     font-size-adjust: 0.4;
     padding:0px;
@@ -407,7 +407,7 @@ ul {list-style-type: none;}
 /* breakpoints for calendar for smaller displays */
 @media screen and (max-width: 1199px) {
 
-    #calendar {
+    #programming {
         width: 80%;
         min-width: 0px;
     }

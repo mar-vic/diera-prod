@@ -1,4 +1,5 @@
-import datetime
+from random import randint
+from datetime import date, datetime, timezone
 import locale
 import json
 
@@ -10,7 +11,71 @@ from photologue.models import Gallery, Photo
 from filer.models.filemodels import File
 from filer.models.foldermodels import Folder
 
+from diera import queries
+
 register = template.Library()
+
+@register.inclusion_tag('partials/_upcoming_events.html', takes_context=True)
+def upcoming_event_teasers(context):
+    events = queries.get_upcoming_events()
+    event_teasers = []
+
+    for event in events:
+        eteaser = {}
+
+        # use default values for events with uninitialized teaser extension
+        try:
+            eteaser['image'] = event.imageextension.image
+        except ObjectDoesNotExist:
+            eteaser['image'] = None
+
+        eteaser['event_title'] = event.get_page_title()
+        eteaser['event_url'] = event.get_absolute_url()
+        eteaser['page_id'] = event.id
+        eteaser['date_from'] = event.eventdataextension.date_from
+
+        event_teasers.append(eteaser)
+
+    return {
+        'eteasers': event_teasers,
+        'request': context.request,
+    }
+
+@register.simple_tag
+def get_hr_time_span(date):
+    """
+    Return human readable time span.
+    """
+    today = datetime.today()
+    today = datetime(today.year, today.month, today.day)
+    date = datetime(date.year, date.month, date.day)
+    delta = date - today
+
+    if delta.days == 0: return 'dnes'
+    if delta.days == 1: return 'zajtra'
+    if delta.days >= 2 and delta.days <= 7: return date.strftime("%A")
+    if delta.days > 7 and delta.days <= 14: return 'o týždeň'
+    if delta.days > 14 and delta.days <= 30: return 'o 2 týždne'
+    if delta.days > 30 and delta.days <= 60: return 'o mesiac'
+
+    return None
+
+@register.simple_tag(takes_context=True)
+def get_coming_soon_ig_url(context):
+    """
+    Return the url of image to be shown when there are no upcoming events"""
+    language = 'sk'
+
+    folder = Folder.objects.get(name="ig_coming_soon_" + language)
+
+    infographics_img_files = folder.files.all()
+    if (len(infographics_img_files) > 0):
+        rnd_infographics = infographics_img_files[
+            randint(0, len(infographics_img_files) - 1)
+        ]
+        return rnd_infographics.url
+    else:
+        return None
 
 @register.simple_tag
 def get_years_with_galleries_added():
@@ -243,7 +308,7 @@ def get_teasers_for_all_features(request):
             continue
 
         # Skip unfeatured or passed featured events
-        delta_from = (date_from - datetime.datetime.now(datetime.timezone.utc)).days
+        delta_from = (date_from - datetime.now(timezone.utc)).days
 
         if not featured:
             continue
@@ -457,7 +522,7 @@ def get_background_image_url():
     4) finally, if there is no image in the folder, return empty string, thus
     making the site with haveing no background image.
     """
-    today = datetime.date.today()
+    today = date.today()
 
     # Try to get folder with background images and fail gracefully when it does not exist.
     try:
@@ -503,9 +568,9 @@ def get_opening_hours(request):
                 published_events = [page for page in programp.get_child_pages()
                                     if page.is_published(language) and
                                     hasattr(page, 'eventdataextension') and
-                                    page.eventdataextension.date_from.year >= datetime.datetime.now().year and
-                                    page.eventdataextension.date_from.month >= datetime.datetime.now().month and
-                                    page.eventdataextension.date_from.day >= datetime.datetime.now().day]
+                                    page.eventdataextension.date_from.year >= datetime.now().year and
+                                    page.eventdataextension.date_from.month >= datetime.now().month and
+                                    page.eventdataextension.date_from.day >= datetime.now().day]
                 # published_events.sort(key=lambda page: page.eventdataextension.date_from)
 
             if published_events:
@@ -532,9 +597,9 @@ def get_upcoming_event(request):
             published_events = [page for page in programp.get_child_pages()
                                 if page.is_published(language) and
                                 hasattr(page, 'eventdataextension') and
-                                page.eventdataextension.date_from.year >= datetime.datetime.now().year and
-                                page.eventdataextension.date_from.month >= datetime.datetime.now().month and
-                                page.eventdataextension.date_from.day >= datetime.datetime.now().day]
+                                page.eventdataextension.date_from.year >= datetime.now().year and
+                                page.eventdataextension.date_from.month >= datetime.now().month and
+                                page.eventdataextension.date_from.day >= datetime.now().day]
             # published_events.sort(key=lambda page: page.eventdataextension.date_from)
 
         if published_events:
