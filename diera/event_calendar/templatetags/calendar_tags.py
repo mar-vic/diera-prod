@@ -59,6 +59,37 @@ def get_random_infographics_url(context, year, month):
     else:
         return None
 
+@register.simple_tag(takes_context=True)
+def get_random_programming_infographics_url(context):
+    """
+    Return the url of image to be shown instead of the calendar for months
+    without (upcoming) programming.
+    """
+    current_year = datetime.today().year
+    current_month = datetime.today().month
+    # language = context['current_language']
+    language = 'sk'
+
+    if True:
+         try:
+            folder = Folder.objects.get(name='ig_see_you_' + language)
+         except ObjectDoesNotExist:
+            return None
+    else:
+        try:
+            folder = Folder.objects.get(name='ig_coming_soon_' + language)
+        except ObjectDoesNotExist:
+            return None
+
+    infographics_img_files = folder.files.all()
+    if (len(infographics_img_files) > 0):
+        rnd_infographics = infographics_img_files[
+            randint(0, len(infographics_img_files) - 1)
+        ]
+        return rnd_infographics.url
+    else:
+        return None
+
 class CalendarGrid:
     def __init__(self, year, month):
         self.eteasers_for_month = []
