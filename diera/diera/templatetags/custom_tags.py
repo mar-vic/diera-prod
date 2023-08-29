@@ -542,9 +542,8 @@ def get_upcoming_event(request):
             return {
                 'eventName': next_event.get_page_title(),
                 'day': next_event.eventdataextension.date_from.strftime('%A'),
-                'time': next_event.eventdataextension.date_from.strftime('%H:%M')
+                'time': next_event.eventdataextension.date_from.strftime('%H:%M'),
+                'url': next_event.get_absolute_url()
             }
         else:
             return None
-
-
