@@ -16,10 +16,22 @@ def get_upcoming_events():
         """Tests whether given event is an upcoming one"""
         try:
             event_date_from = event.eventdataextension.date_from
-            if event_date_from.year >= current_year and event_date_from.month >= current_month and event_date_from.day >= current_day:
+
+            # Event is scheduled for this month in the future
+            if event_date_from.year == current_year and event_date_from.month == current_month and event_date_from.day >= current_day:
                 return True
+
+            # Event is scheduled for this year in the following months (but not current one)
+            if event_date_from.year == current_year and event_date_from.month > current_month:
+                return True
+
+            # Event is scheduled for following year
+            if event_date_from.year > current_year:
+                return True
+
+            # Otherwise the event took place in the past
             return False
-        except ObjectDoesNotExist:
+        except ObjectDoesNotExist: # Event is not scheduled yet
             return False
 
     # Remove all unscheduled or past events and sort remaining events according
@@ -27,6 +39,6 @@ def get_upcoming_events():
     upcoming_events = sorted(
         filter(lambda event: upcoming_event_p(event), all_events),
         key=lambda event: event.eventdataextension.date_from,
-        reverse=True)
+        reverse=False)
 
     return upcoming_events

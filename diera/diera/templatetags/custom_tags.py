@@ -42,23 +42,56 @@ def upcoming_event_teasers(context):
     }
 
 @register.simple_tag
-def get_hr_time_span(date):
+def get_upcoming_event(request):
+    upcoming_events = queries.get_upcoming_events();
+
+    if not upcoming_events:
+        return None
+
+    upcoming_event = upcoming_events[0]
+
+    if request.LANGUAGE_CODE == 'sk':
+        locale.setlocale(locale.LC_TIME, 'sk_SK.utf8')
+
+    return {
+        'eventName': upcoming_event.get_page_title(),
+        'day': upcoming_event.eventdataextension.date_from.strftime('%A'),
+        'time': upcoming_event.eventdataextension.date_from.strftime('%H:%M'),
+        'url': upcoming_event.get_absolute_url()
+    }
+
+@register.simple_tag
+def get_hr_time_span(request, date):
     """
     Return human readable time span.
     """
+
+    if request.LANGUAGE_CODE == 'sk':
+        locale.setlocale(locale.LC_TIME, 'sk_SK.utf8')
+
     today = datetime.today()
     today = datetime(today.year, today.month, today.day)
     date = datetime(date.year, date.month, date.day)
     delta = date - today
 
-    if delta.days == 0: return 'dnes'
-    if delta.days == 1: return 'zajtra'
-    if delta.days >= 2 and delta.days <= 7: return date.strftime("%A")
-    if delta.days > 7 and delta.days <= 14: return 'o týždeň'
-    if delta.days > 14 and delta.days <= 30: return 'o 2 týždne'
+    if delta.days == 0:
+        return 'dnes'
+
+    if delta.days == 1:
+        return 'zajtra'
+
+    if delta.days >= 2 and delta.days <= 7:
+        return date.strftime("%A")
+
+    if delta.days > 7 and delta.days <= 14:
+        return 'o týždeň'
+
+    if delta.days > 14 and delta.days <= 30:
+        return 'o 2 týždne'
+
     if delta.days > 30 and delta.days <= 60: return 'o mesiac'
 
-    return None
+    return ""
 
 @register.simple_tag(takes_context=True)
 def get_coming_soon_ig_url(context):
@@ -578,37 +611,3 @@ def get_opening_hours(request):
                 return published_events[0].eventdataextension.date_from.hour
             else:
                 return None
-
-@register.simple_tag
-def get_upcoming_event(request):
-        language = request.LANGUAGE_CODE
-
-        # import pdb; pdb.set_trace()
-
-        if language == 'sk': locale.setlocale(locale.LC_TIME, 'sk_SK.utf8')
-
-        # Get the program page (i.e., page with reverse_id='program')
-        programp = Page.objects.filter(reverse_id='program').filter(publisher_is_draft=False).first()
-        # Ensuring that program page does exist
-        if not programp:
-            published_events = []
-        else:
-            # Get all childs of program page (i.e., the events)
-            published_events = [page for page in programp.get_child_pages()
-                                if page.is_published(language) and
-                                hasattr(page, 'eventdataextension') and
-                                page.eventdataextension.date_from.year >= datetime.now().year and
-                                page.eventdataextension.date_from.month >= datetime.now().month and
-                                page.eventdataextension.date_from.day >= datetime.now().day]
-            # published_events.sort(key=lambda page: page.eventdataextension.date_from)
-
-        if published_events:
-            next_event = min(published_events, key=lambda event: event.eventdataextension.date_from)
-            return {
-                'eventName': next_event.get_page_title(),
-                'day': next_event.eventdataextension.date_from.strftime('%A'),
-                'time': next_event.eventdataextension.date_from.strftime('%H:%M'),
-                'url': next_event.get_absolute_url()
-            }
-        else:
-            return None

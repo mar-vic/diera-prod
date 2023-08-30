@@ -21,7 +21,7 @@
         </div>
         <div class="card-footer p-0">
           <div class="row pt-1 pb-1">
-            <div class="col-9 fs-3 text-uppercase">{{ eteaser.date_from|date:"j.n." }} <span class="">{% get_hr_time_span eteaser.date_from %}</span></div>
+            <div class="col-9 fs-3 text-uppercase">{{ eteaser.date_from|date:"j.n." }} {% get_hr_time_span request eteaser.date_from %}</div>
             <div class="col-3 fs-3 text-end">{{ eteaser.date_from|date:"H:i" }}</div>
           </div>
         </div>
