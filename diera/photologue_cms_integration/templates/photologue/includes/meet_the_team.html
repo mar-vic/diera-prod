@@ -2,8 +2,8 @@
 {% load i18n %}
 <!-- SLIDER -->
 <div class="gallery-slider">
-    <div class="slider-body" style="">
-        <div id="carousel-gallery-{{ gallery.id }}" class="carousel slide" data-ride="carousel" style="padding:0px;">
+    <div class="slider-body">
+        <div id="carousel-gallery-{{ gallery.id }}" class="carousel slide" data-bs-ride="carousel" style="padding:0px;">
 
             <!-- Photos -->
             <div class="carousel-inner">
@@ -94,14 +94,14 @@
             </div>
 
             <!-- Prev/Next Controls -->
-            <a class="carousel-control-prev" href="#carousel-gallery-{{ gallery.id }}" role="button" data-slide="prev">
+            <button type="button" class="carousel-control-prev" data-bs-target="#carousel-gallery-{{ gallery.id }}" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only"></span>
-            </a>
-            <a class="carousel-control-next" href="#carousel-gallery-{{ gallery.id }}" role="button" data-slide="next">
+                <span class="visually-hidden"></span>
+            </button>
+            <button type="button" class="carousel-control-next" data-bs-target="#carousel-gallery-{{ gallery.id }}" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only"></span>
-            </a>
+                <span class="visually-hidden"></span>
+            </button>
         </div>
     </div>
 </div>

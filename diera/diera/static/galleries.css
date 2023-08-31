@@ -196,6 +196,8 @@
 
 .thumbnail {
     opacity: 0.3;
+    width: auto !important;
+    height: auto !important;
 }
 
 .thumbnail:hover {
