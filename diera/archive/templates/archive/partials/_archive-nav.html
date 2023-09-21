@@ -1,14 +1,20 @@
-<ul id="archive-nav" class="nav">
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#">Program</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Foto</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Video</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Audio</a>
-  </li>
-</ul>
+<nav id="archive-nav" class="nav-fill" x-data="{ nav: true }">
+  <ul class="nav nav-tabs">
+    {% include "archive/partials/_archive-search.html" %}
+    <li class="nav-item" x-show="nav">
+      <span class="nav-link active fs-3" data-bs-toggle="tab" style="cursor:pointer" aria-current="page" hx-get="{% url 'archive:photos' 1 %}" hx-target="#archive-content">Fotky</span>
+    </li>
+    <li class="nav-item" x-show="nav">
+      <span class="nav-link fs-3" data-bs-toggle="tab" style="cursor:pointer" aria-current="page" hx-get="{% url 'archive:programming' 1 %}" hx-target="#archive-content">Program</span>
+    </li>
+    <li class="nav-item" x-show="nav">
+      <span class="nav-link fs-3" data-bs-toggle="tab" style="cursor:pointer" aria-current="page" hx-get="{% url 'archive:video' %}" hx-target="#archive-content">Video</span>
+    </li>
+    <li class="nav-item" x-show="nav">
+      <span class="nav-link fs-3" data-bs-toggle="tab" style="cursor:pointer" aria-current="page" hx-get="{% url 'archive:audio' %}" hx-target="#archive-content">Audio </span>
+    </li>
+    <li class="nav-item position-relative" x-show="nav" style="cursor:pointer" x-on:click="nav = ! nav">
+      <i class="position-absolute top-50 start-50 translate-middle fas fa-search fs-3"></i>
+    </li>
+  </ul>
+</nav>

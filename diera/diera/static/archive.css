@@ -1,6 +1,116 @@
-#archive-nav {
-    background-color: white;
-    border: 2px solid black;
+#archive-container {
     margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#archive-nav {
+    border: 2px solid black;
+}
+
+#archive-nav .nav-item {
+    background-color: white;
     text-transform: uppercase;
+}
+
+#archive-nav .nav-link {
+    color: black;
+}
+
+#archive-nav .nav-link:hover {
+    background-color: black;
+    color: white;
+    border-radius: 0px;
+}
+
+#archive-nav .nav-link.active {
+    color: white;
+    background-color: black;
+    border-radius: 0px;
+}
+
+#archive-nav .nav-item:last-child {
+    border: 1px solid white;
+}
+
+#archive-nav .nav-item:last-child:hover {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+}
+
+#archive-filter {
+    background-color: white;
+    text-transform: uppercase;
+    border: 2px solid black;
+    margin-left: initial;
+    margin-right: initial;
+}
+
+#archive-content {
+    margin-left: initial;
+    margin-right: initial;
+}
+
+.gallery {
+    border: 2px solid black;
+}
+
+/* STYLES FOR PROGRAMMING ARCHIVE */
+.event-teaser {
+    text-decoration: none;
+    color black !important;
+}
+
+.event-teaser .card {
+    border-radius: 0px;
+    border: 2px solid black;
+    color: black;
+}
+
+.event-teaser:hover .card {
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+}
+
+.event-teaser:hover .card-subtitle * {
+}
+
+.event-teaser:hover .card-footer {
+    border-top: 2px solid white;
+    background-color: black;
+    color: white;
+}
+
+.event-teaser .card-img-top {
+    border-radius: 0px;
+}
+
+.event-teaser .card-footer {
+    background-color: white;
+    border-top: 2px solid black;
+    border-radius: 0px;
+}
+
+.event-teaser .card-title {
+    color: white;
+    text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+    hyphens: auto;
+}
+
+.event-teaser:hover .card-title {
+    color: black;
+    text-shadow: -1px 1px 0 white, 1px 1px 0 white, 1px -1px 0 white, -1px -1px 0 white;
+}
+
+.event-teaser img {
+    border: 2px solid white;
+}
+
+/* .event-teaser * { */
+/*     transition: all 0.5s; */
+/* } */
+
+.event-teaser:hover img {
+    border: 2px solid white;
 }

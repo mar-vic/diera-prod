@@ -1,0 +1,26 @@
+<li class="nav-item" x-show="!nav">
+  <div class="row">
+    <div class="col-9 fs-3">
+      <input class="form-control pe-3 h-100 fs-3" type="text" placeholder="Vyhľadaj v archíve" aria-label="Archive search">
+    </div>
+    <div class="col-auto position-relative">
+      <i class="far fa-images position-absolute top-50 start-50 translate-middle pe-2"></i>
+    </div>
+    <div class="col-auto position-relative">
+      <i class="fas fas fa-calendar-alt position-absolute top-50 start-50 translate-middle"></i>
+    </div>
+    <div class="col-auto position-relative">
+      <i class="fas fa-play-circle position-absolute top-50 start-50 translate-middle"></i>
+    </div>
+    <div class="col-auto position-relative">
+      <i class="fas fa-podcast position-absolute top-50 start-50 translate-middle"></i>
+    </div>
+    <div class="col-1 fs-3 pt-2 pb-2">
+      Date
+    </div>
+    <div class="col position-relative fw-bold" x-on:click="nav = ! nav" style="cursor:pointer">
+      <span class="position-absolute top-50 start-50 translate-middle">X</span>
+    </div>
+  </div>
+</li>
+

@@ -1,0 +1,33 @@
+{% load thumbnail %}
+<div id="gallery-{{ gallery.id }}" class="carousel slide gallery">
+
+  <!-- Photos -->
+  <div class="carousel-inner">
+
+    <!-- First photo -->
+    {% with gallery.public.0 as first_photo %}
+    {% thumbnail first_photo.image 600x400 crop upscale as first_photo_cropped %}
+    <div class="carousel-item active">
+      <img src="{{ first_photo_cropped.url }}" class="d-block w-100" alt="...">
+    </div>
+    {% endwith %}
+
+    <!-- Rest of photos -->
+    {% for photo in gallery.public|slice:"1:" %}
+    {% thumbnail photo.image 600x400 crop upscale as photo_cropped %}
+    <div class="carousel-item">
+      <img src="{{ photo_cropped.url }}" class="d-block w-100" alt="...">
+    </div>
+    {% endfor %}
+
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#gallery-{{ gallery.id }}" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#gallery-{{ gallery.id }}" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

@@ -1,0 +1,24 @@
+{% load cms_tags %}
+{% load thumbnail %}
+{% load archive_tags %}
+
+<div class="feed col-12 col-md-6 col-lg-4">
+  <a href="{{ url }}" class="event-teaser">
+    <div class="card h-100 p-2 pb-0">
+      {% thumbnail image 600x300 crop upscale as teaser_image %}
+      <img class="card-img-top" src="{{ teaser_image.url }}">
+      <div class="card-body p-0 mt-2">
+        <h2 class="card-title fs-1 lh-1 text-uppercase">{{ title }}</h2>
+        <h3 class="card-subtitle mt-2 fs-3">
+          {% show_placeholder "genre" id %}
+        </h3>
+      </div>
+      <div class="card-footer p-0">
+        <div class="row pt-1 pb-1">
+          <div class="col-9 fs-3 text-uppercase">{{ date|date:"j.n. / Y" }}</div>
+          <div class="col-3 fs-3 text-end">{{ date|date:"H:i" }}</div>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>
