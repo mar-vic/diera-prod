@@ -247,6 +247,14 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 # Photologue settings
 PHOTOLOGUE_GALLERY_LATEST_LIMIT = 4
 
+# CACHING SETUP
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+        "LOCATION": "/var/tmp/django_cache",
+    }
+}
+
 # LOGGING = {
 #     'version': 1,
 #     'disable_existing_loggers': False,

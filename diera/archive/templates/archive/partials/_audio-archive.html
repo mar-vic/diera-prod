@@ -1,3 +1,28 @@
-<div id="audio-archive" class="row">
-  <div class="col-12 fs-3 text-center">Audio Archive</div>
+<div id="audio-archive">
+  {% if albums %}
+  <div class="row gy-3 gx-3">
+
+    <!-- A page of video teasers -->
+    {% for album in albums %}
+    {% include "archive/partials/_audio-teaser.html" %}
+    {% endfor %}
+
+    <!-- Infinite scroll -->
+    {% if page_obj.has_next %}
+    <div hx-target="this"
+         hx-trigger="revealed"
+         hx-swap="outerHTML"
+         hx-select=".feed"
+         hx-get="{% url 'archive:audio' page_obj.next_page_number %}"
+         class="feed col-12"
+         style="border:2px solid black; background-color:white;">
+      Načítavajú sa ďalšie podcasty
+    </div>
+    {% endif %}
+
+  </div>
+  {% else %}
+  There are no albums :(
+  {% endif %}
+
 </div>

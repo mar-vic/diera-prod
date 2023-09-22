@@ -1,4 +1,5 @@
 from django.urls import path
+from django.views.decorators.cache import cache_page
 
 from . import views
 
@@ -12,8 +13,8 @@ urlpatterns = [
 htmx_urlpatterns = [
     path("fotky/page<int:page>/", views.GalleryList.as_view(), name="photos"),
     path("program/page<int:page>/", views.EventList.as_view(), name="programming"),
-    path("video/", views.video, name="video"),
-    path("audio/", views.audio, name="audio")
+    path("video/page<int:page>/", cache_page(60 * 60 * 24)(views.VideoList.as_view()), name="video"),
+    path("audio/page<int:page>/", views.AudioList.as_view(), name="audio")
 ]
 
 urlpatterns += htmx_urlpatterns

@@ -114,3 +114,48 @@
 .event-teaser:hover img {
     border: 2px solid white;
 }
+
+
+/* STYLES FOR VIDEO ARCHIVE */
+.youtube-video-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    border: 2px solid black;
+    background-color: white;
+}
+
+.youtube-video-container::after {
+    display: block;
+    content: "";
+    padding-top: 56.25%;
+}
+
+.youtube-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* STYLES FOR AUDIO ARCHIVE */
+.bandcamp-album-container {
+}
+/* .bandcamp-album-container { */
+/*     position: relative; */
+/*     overflow: hidden; */
+/*     width: 100%; */
+/*     border: 2px solid black; */
+/*     background-color: white; */
+/* } */
+
+/* .bandcamp-album-container::after { */
+/*     display: block; */
+/*     content: ""; */
+/*     padding-top: 56.25%; */
+/* } */
+
+.bandcamp-album-container iframe {
+    background-color: white;
+}

@@ -8,10 +8,10 @@
       <span class="nav-link fs-3" data-bs-toggle="tab" style="cursor:pointer" aria-current="page" hx-get="{% url 'archive:programming' 1 %}" hx-target="#archive-content">Program</span>
     </li>
     <li class="nav-item" x-show="nav">
-      <span class="nav-link fs-3" data-bs-toggle="tab" style="cursor:pointer" aria-current="page" hx-get="{% url 'archive:video' %}" hx-target="#archive-content">Video</span>
+      <span class="nav-link fs-3" data-bs-toggle="tab" style="cursor:pointer" aria-current="page" hx-get="{% url 'archive:video' 1 %}" hx-target="#archive-content">Video</span>
     </li>
     <li class="nav-item" x-show="nav">
-      <span class="nav-link fs-3" data-bs-toggle="tab" style="cursor:pointer" aria-current="page" hx-get="{% url 'archive:audio' %}" hx-target="#archive-content">Audio </span>
+      <span class="nav-link fs-3" data-bs-toggle="tab" style="cursor:pointer" aria-current="page" hx-get="{% url 'archive:audio' 1 %}" hx-target="#archive-content">Audio </span>
     </li>
     <li class="nav-item position-relative" x-show="nav" style="cursor:pointer" x-on:click="nav = ! nav">
       <i class="position-absolute top-50 start-50 translate-middle fas fa-search fs-3"></i>
