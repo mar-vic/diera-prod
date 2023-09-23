@@ -1,6 +1,8 @@
-from datetime import date
 import json
 import requests
+
+from datetime import date
+from bs4 import BeautifulSoup
 
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -59,4 +61,29 @@ def get_all_yt_videos():
 def get_all_bandcamp_albums():
     with open("static/diera_bandcamp_albums.json", "r") as albums_json:
         return json.load(albums_json)["albums"]
+
+def scrape_all_bandcamp_albums():
+    # Create the soup object from bandcamp audio page
+    soup = BeautifulSoup(requests.get("https://dieradosveta.bandcamp.com/audio").content, "html.parser")
+
+    album_data = []
+    # Find the tags representing the albums (ie, lis with music-grid-item class)
+    album_tags = soup.find_all("li", class_="music-grid-item")
+
+    # Extract the relevant information from the tags
+    for album_tag in album_tags:
+        # Extract albums id and url and construct the values needed for embedding bandcamp player
+        album_id = album_tag.attrs["data-item-id"].split("-")[1] # album id extraction
+        src_value = f"https://bandcamp.com/EmbeddedPlayer/album={ album_id }/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" # construct the src value
+
+        href_value = f"https://dieradosveta.bandcamp.com{album_tag.find('a').attrs['href']}" # construct the href value
+
+        album_data.append({
+            "src": src_value,
+            "url": href_value,
+            "title": "Album Title"
+        })
+
+    print("Bandcamp albums were not cached :(")
+    return album_data
 
