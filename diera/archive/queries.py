@@ -1,6 +1,9 @@
 import json
 import requests
+import environ
+import os
 
+from pathlib import Path
 from datetime import date
 from bs4 import BeautifulSoup
 
@@ -29,10 +32,18 @@ def get_all_published_events():
     return list(eventlst)
 
 def get_all_yt_videos():
+    # get google api key from the .env file
+    BASE_DIR = Path(__file__).resolve().parent.parent
+    env = environ.Env()
+    env.escape_proxy = True
+    # Read environment variables from .env file
+    environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+    API_KEY = env.str("GOOGLE_API_KEY")
+
     teasers = []
 
     # Get the list of YT videos with API Request
-    response  = requests.get("https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UC326HkT9w-FxK3ySvKfKxKQ&maxResults=100&order=date&key=AIzaSyCOCuuD2WnvEUCghSyh4cB6APdKAB67be4")
+    response  = requests.get(f"https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UC326HkT9w-FxK3ySvKfKxKQ&maxResults=100&order=date&key={API_KEY}")
 
     # Generate the data for teasers
     for video in response.json()["items"]:
@@ -43,19 +54,7 @@ def get_all_yt_videos():
             teaser["id"] = video["id"]["videoId"]
             teasers.append(teaser)
 
-    # with open("static/diera_yt_videos.json", "r") as videos_json:
-    #     data = json.load(videos_json)
-    #     for video in data["items"]:
-    #         if video["id"]["kind"] == "youtube#video":
-    #             teaser = {}
-    #             teaser["title"] = video["snippet"]["title"]
-    #             teaser["description"] = video["snippet"]["description"]
-    #             teaser["id"] = video["id"]["videoId"]
-    #             teasers.append(teaser)
-
-    # return [f"video {n}" for n in range(1, 100)]
-
-    # print("Query has been run!")
+    print("Video query has been run!")
     return teasers
 
 def get_all_bandcamp_albums():
