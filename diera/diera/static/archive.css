@@ -1,4 +1,5 @@
 #archive-container {
+    width: 60%;
     margin-top: 30px;
     margin-bottom: 30px;
 }
@@ -53,6 +54,61 @@
 
 .gallery {
     border: 2px solid black;
+}
+
+/* RULES FOR PHOTO GALLERY */
+.gallery-teaser {
+    border: 2px solid black;
+    background-color: white;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.gallery-teaser img {
+    border: 2px solid black;
+}
+
+.gallery-teaser .fs-1 {
+    color: white;
+    text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+}
+
+.gallery-teaser:hover {
+    border: 2px solid white;
+    background-color: black;
+    color: white;
+}
+
+.gallery-teaser:hover img {
+    border: 2px solid white;
+}
+
+.gallery-teaser:hover .fs-1 {
+    color: black;
+    text-shadow: -1px 1px 0 white, 1px 1px 0 white, 1px -1px 0 white, -1px -1px 0 white;
+}
+
+@keyframes placeHolderShimmer {
+    0% {
+        background-position: -800px 0
+    }
+    100% {
+        background-position: 800px 0
+    }
+}
+
+.loading {
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    background-color: #f6f7f8;
+    background: linear-gradient(to right, #eeeeee 8%, #bbbbbb 18%, #eeeeee 33%);
+    /* background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(0,0,0,1) 53%, rgba(255,255,255,1) 100%); */
+    background-size: 800px 104px;
+    min-height: 400px;
+    position: relative;
 }
 
 /* STYLES FOR PROGRAMMING ARCHIVE */

@@ -1,10 +1,10 @@
 <div id="photo-archive">
   {% if galleries %}
-  <div class="row gy-3 gx-3">
+  <div class="row gy-1 gx-1">
     {% for gallery in galleries %}
     {% if gallery.public and gallery.is_public %}
-    <div class="col-lg-4 col-md-3 col-12 feed">
-      {% include "archive/partials/_photo-gallery.html" %}
+    <div class="col-md-6 col-12 feed">
+      {% include "archive/partials/_photo-gallery-teaser.html" %}
     </div>
     {% endif %}
     {% endfor %}
@@ -16,9 +16,8 @@
          hx-swap="outerHTML"
          hx-select=".feed"
          hx-get="{% url 'archive:photos' page_obj.next_page_number %}"
-         class="col-8 feed"
+         class="col-md-6 col-12 feed loading"
          style="border:2px solid black; background-color:white;">
-      Načítavajú sa ďalšie galérie
     </div>
 
     {% endif %}

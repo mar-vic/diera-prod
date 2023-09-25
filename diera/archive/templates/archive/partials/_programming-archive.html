@@ -2,7 +2,7 @@
 
 <div id="programming-archive">
   {% if events %}
-  <div class="row gy-3 gx-3">
+  <div class="row gy-1 gx-1">
 
     <!-- A page of events -->
     {% for event in events %}
@@ -16,9 +16,8 @@
          hx-swap="outerHTML"
          hx-select=".feed"
          hx-get="{% url 'archive:programming' page_obj.next_page_number %}"
-         class="feed col-12"
+         class="feed col-12 col-md-6 col-lg-4 loading"
          style="border:2px solid black; background-color:white;">
-      Načítavajú sa ďalšie programové akcie
     </div>
     {% endif %}
 

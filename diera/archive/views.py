@@ -13,14 +13,14 @@ from . import queries
 
 class IndexList(ListView):
     template_name = "archive/archive.html"
-    paginate_by = 3
+    paginate_by = 2
     model = Gallery
     context_object_name = "galleries"
 
 
 class GalleryList(ListView):
     template_name = "archive/partials/_photo-archive.html"
-    paginate_by = 3
+    paginate_by = 2
     model = Gallery
     context_object_name = "galleries"
 

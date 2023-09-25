@@ -33,6 +33,13 @@ def get_all_published_events():
     return list(eventlst)
 
 def get_all_yt_videos():
+    videos = cache.get("yt_videos")
+    if not videos:
+        cache.set("yt_videos", get_all_yt_videos_api(), 60 * 60 * 24)
+        return cache.get("yt_videos")
+    return videos
+
+def get_all_yt_videos_api():
     # get google api key from the .env file
     BASE_DIR = Path(__file__).resolve().parent.parent
     env = environ.Env()
