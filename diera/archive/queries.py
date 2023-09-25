@@ -8,6 +8,7 @@ from datetime import date
 from bs4 import BeautifulSoup
 
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.cache import cache
 
 from cms.models import Page
 
@@ -54,12 +55,15 @@ def get_all_yt_videos():
             teaser["id"] = video["id"]["videoId"]
             teasers.append(teaser)
 
-    print("Video query has been run!")
+    # print("Video query has been run!")
     return teasers
 
 def get_all_bandcamp_albums():
-    with open("static/diera_bandcamp_albums.json", "r") as albums_json:
-        return json.load(albums_json)["albums"]
+    albums = cache.get("bandcamp_albums")
+    if not albums:
+        cache.set("bandcamp_albums", scrape_all_bandcamp_albums(), 60 * 60 * 24 * 7)
+        return cache.get("bandcamp_albums")
+    return albums
 
 def scrape_all_bandcamp_albums():
     # Create the soup object from bandcamp audio page
@@ -73,16 +77,23 @@ def scrape_all_bandcamp_albums():
     for album_tag in album_tags:
         # Extract albums id and url and construct the values needed for embedding bandcamp player
         album_id = album_tag.attrs["data-item-id"].split("-")[1] # album id extraction
-        src_value = f"https://bandcamp.com/EmbeddedPlayer/album={ album_id }/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" # construct the src value
 
+        src_value = f"https://bandcamp.com/EmbeddedPlayer/album={ album_id }/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" # construct the src value
         href_value = f"https://dieradosveta.bandcamp.com{album_tag.find('a').attrs['href']}" # construct the href value
+
+        # Create the soup object from bandcamp album page (to extract title, description and release date)
+        album_soup = BeautifulSoup(requests.get(href_value).content, "html.parser")
+        # Scrape the json metadata
+        metadata = json.loads(album_soup.findAll("script", type="application/ld+json")[0].contents[0])
 
         album_data.append({
             "src": src_value,
             "url": href_value,
-            "title": "Album Title"
+            "title": metadata["name"],
+            "releaseDate": metadata["dateModified"],
+            "description": metadata["description"]
         })
 
-    print("Bandcamp albums were not cached :(")
+    # print("Scraping the albums.")
     return album_data
 

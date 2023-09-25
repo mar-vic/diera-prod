@@ -48,7 +48,7 @@ class AudioList(ListView):
     context_object_name = "albums"
 
     def get_queryset(self):
-        return queries.scrape_all_bandcamp_albums()
+        return queries.get_all_bandcamp_albums()
 
 def index(request):
     return render(request, 'archive/archive.html')
