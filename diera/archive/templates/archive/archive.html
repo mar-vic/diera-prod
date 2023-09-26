@@ -19,9 +19,10 @@
 {% endblock %}
 
 {% block content %}
-<div id="archive-container" class="container">
+<div id="archive-container" class="container" x-data="{ nav: true }">
   {% include "archive/partials/_archive-nav.html" %}
-  <div id="archive-content" class="mt-1">
+  <div id="archive-content" class="mt-1 htmx-indicator">
+    {% include "archive/partials/_loading-frames.html" %}
     {% include "archive/partials/_photo-archive.html" %}
   </div>
 </div>

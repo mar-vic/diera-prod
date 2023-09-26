@@ -111,6 +111,23 @@
     position: relative;
 }
 
+.htmx-indicator {
+    display:block;
+    opacity: 1 !important;
+}
+
+#loading-frames {
+    display: none;
+}
+
+.htmx-request #loading-frames {
+    display: block;
+}
+
+.htmx-request .swappable {
+    display: none;
+}
+
 #video-archive .loading {
     min-height: 315px;
 }
@@ -119,8 +136,9 @@
     min-height: 120px;
 }
 
-
-
+#loading-frames .loading {
+    border: 2px solid black;
+}
 
 /* STYLES FOR PROGRAMMING ARCHIVE */
 .event-teaser {
