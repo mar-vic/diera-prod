@@ -31,3 +31,5 @@ djangocms-file>=3.0,<4.0
 djangocms-picture>=3.0,<4.0
 djangocms-bootstrap4>=2.0,<3.0
 djangocms-snippet
+requests>=2.31
+beautifulsoup4>=4.12.2

@@ -111,6 +111,17 @@
     position: relative;
 }
 
+#video-archive .loading {
+    min-height: 315px;
+}
+
+#audio-archive .loading {
+    min-height: 120px;
+}
+
+
+
+
 /* STYLES FOR PROGRAMMING ARCHIVE */
 .event-teaser {
     text-decoration: none;
