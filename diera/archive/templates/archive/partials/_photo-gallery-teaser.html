@@ -1,0 +1,16 @@
+{% load thumbnail %}
+<div id="gallery-teaser-{{ gallery.id }}" class="p-2 gallery-teaser h-100">
+  <!-- First photo -->
+  {% with gallery.public.0 as first_photo %}
+  {% thumbnail first_photo.image 600x400 crop upscale as first_photo_cropped %}
+  <img src="{{ first_photo_cropped.url }}" class="d-block w-100 mb-2" alt="...">
+  {% endwith %}
+  <div class="row mb-3 gy-1 align-items-end">
+    <div class="col-12 fs-1">
+      <div>{{ gallery.title }}</div>
+    </div>
+    <div class="col-12 fs-4">
+      {{ gallery.date_added|date:"d M / Y" }}
+    </div>
+  </div>
+</div>
