@@ -4,6 +4,13 @@
     margin-bottom: 30px;
 }
 
+@media screen and (max-width: 990px) {
+    #archive-container {
+        width: 95%;
+        min-width: initial;
+    }
+}
+
 #archive-nav {
     border: 2px solid black;
 }
@@ -17,7 +24,20 @@
     color: black;
 }
 
+#archive-nav .nav-tabs {
+    border: 0px;
+}
+
+/* #archive-nav .nav-link.active i.fa-sort-up { */
+/*     position: relative; */
+/*     top: 9px; */
+/* } */
+
 #archive-nav .nav-link:hover {
+    border: unset;
+}
+
+#archive-nav .nav-link:hover:not(.no-hover-highlight) {
     background-color: black;
     color: white;
     border-radius: 0px;
@@ -29,14 +49,10 @@
     border-radius: 0px;
 }
 
-#archive-nav .nav-item:last-child {
-    border: 1px solid white;
-}
-
-#archive-nav .nav-item:last-child:hover {
-    background-color: black;
-    color: white;
-    border: 1px solid white;
+#archive-nav .form-control  {
+    border: 1px solid black;
+    border-right: 3px solid black;
+    border-radius: 0px;
 }
 
 #archive-filter {
@@ -97,17 +113,28 @@
     }
 }
 
+@keyframes tv-static {
+    from {
+        background-size: 100% 100%;
+    }
+
+    to {
+        background-size: 200% 200%;
+    }
+}
+
 .loading {
-    animation-duration: 2s;
+    animation-duration: 20s;
     animation-fill-mode: forwards;
     animation-iteration-count: infinite;
-    animation-name: placeHolderShimmer;
+    animation-name: tv-static;
     animation-timing-function: linear;
-    background-color: #f6f7f8;
-    background: linear-gradient(to right, #eeeeee 8%, #bbbbbb 18%, #eeeeee 33%);
+    /* background-color: #f6f7f8; */
+    /* background: linear-gradient(to right, #eeeeee 8%, #bbbbbb 18%, #eeeeee 33%); */
     /* background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(0,0,0,1) 53%, rgba(255,255,255,1) 100%); */
+    background-image: repeating-radial-gradient(circle at 17% 32%, white, black 0.00085px);
     background-size: 800px 104px;
-    min-height: 400px;
+    min-height: 300px;
     position: relative;
 }
 

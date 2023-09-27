@@ -1,20 +1,32 @@
 <nav id="archive-nav" class="nav-fill">
-  <ul class="nav nav-tabs">
-    {% include "archive/partials/_archive-search.html" %}
-    <li class="nav-item" x-show="nav">
-      <span class="nav-link active fs-3" data-bs-toggle="tab" style="cursor:pointer" aria-current="page" hx-get="{% url 'archive:photos' 1 %}" hx-target=".swappable"  hx-swap="outerHTML" hx-indicator="#archive-content" x-on:click="console.log('Yup, I was clicked')">Fotky</span>
-    </li>
-    <li class="nav-item" x-show="nav">
-      <span class="nav-link fs-3" data-bs-toggle="tab" style="cursor:pointer" aria-current="page" hx-get="{% url 'archive:programming' 1 %}" hx-target=".swappable" hx-swap="outerHTML" hx-indicator="#archive-content">Program</span>
-    </li>
-    <li class="nav-item" x-show="nav">
-      <span class="nav-link fs-3" data-bs-toggle="tab" style="cursor:pointer" aria-current="page" hx-get="{% url 'archive:video' 1 %}" hx-target=".swappable" hx-swap="outerHTML" hx-swap="outerHTML" hx-indicator="#archive-content">Video</span>
-    </li>
-    <li class="nav-item" x-show="nav">
-      <span class="nav-link fs-3" data-bs-toggle="tab" style="cursor:pointer" aria-current="page" hx-get="{% url 'archive:audio' 1 %}" hx-target=".swappable" hx-swap="outerHTML" hx-indicator="#archive-content">Audio </span>
-    </li>
-    <li class="nav-item position-relative" x-show="nav" style="cursor:pointer" x-on:click="nav = ! nav">
-      <i class="position-absolute top-50 start-50 translate-middle fas fa-search fs-3"></i>
-    </li>
-  </ul>
+    <ul class="nav">
+      <li class="nav-item" style="width:56%;" x-show="!nav">
+        <input class="form-control pe-2 h-100 fs-4" type="search" placeholder="Vyhľadaj v archíve" aria-label="Search">
+      </li>
+      <li class="nav-item" x-show="nav">
+        <span class="nav-link active fs-4" data-bs-toggle="tab" style="cursor:pointer" aria-current="page" hx-get="{% url 'archive:photos' 1 %}" hx-target=".swappable"  hx-swap="outerHTML" hx-indicator="#archive-content">Fotky</span>
+      </li>
+      <li class="nav-item" x-show="nav">
+        <span class="nav-link fs-4" data-bs-toggle="tab" style="cursor:pointer" aria-current="page" hx-get="{% url 'archive:programming' 1 %}" hx-target=".swappable" hx-swap="outerHTML" hx-indicator="#archive-content">Program</span>
+      </li>
+      <li class="nav-item" x-show="nav">
+        <span class="nav-link fs-4" data-bs-toggle="tab" style="cursor:pointer" aria-current="page" hx-get="{% url 'archive:video' 1 %}" hx-target=".swappable" hx-swap="outerHTML" hx-swap="outerHTML" hx-indicator="#archive-content">Video</span>
+      </li>
+      <li class="nav-item" x-show="nav">
+        <span class="nav-link fs-4" data-bs-toggle="tab" style="cursor:pointer" aria-current="page" hx-get="{% url 'archive:audio' 1 %}" hx-target=".swappable" hx-swap="outerHTML" hx-indicator="#archive-content">Audio </span>
+      </li>
+      <li class="nav-item">
+        <span class="nav-link fs-4 no-hover-highlight" data-bs-toggle="tab" aria-current="page" hx-get="" hx-target=".swappable" hx-swap="outerHTML" hx-indicator="#archive-content"><i class="fas fa-calendar-alt" style="cursor:pointer" aria-current="page"></i></span>
+      </li>
+      <li class="nav-item" x-show="nav" style="cursor:pointer; width: 10%;" x-on:click="nav=!nav">
+        <span class="nav-link fs-4" data-bs-toggle="tab" style="cursor:pointer" aria-current="page">
+          <i class="fas fa-search"></i>
+        </span>
+      </li>
+      <li class="nav-item" x-show="!nav" style="cursor:pointer; width: 10px;" x-on:click="nav=!nav">
+        <span class="nav-link fs-4" data-bs-toggle="tab" style="cursor:pointer" aria-current="page">
+          <i class="fas fa-tags"></i>
+        </span>
+      </li>
+    </ul>
 </nav>
