@@ -129,30 +129,63 @@
     animation-iteration-count: infinite;
     animation-name: tv-static;
     animation-timing-function: linear;
-    /* background-color: #f6f7f8; */
-    /* background: linear-gradient(to right, #eeeeee 8%, #bbbbbb 18%, #eeeeee 33%); */
-    /* background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(0,0,0,1) 53%, rgba(255,255,255,1) 100%); */
     background-image: repeating-radial-gradient(circle at 17% 32%, white, black 0.00085px);
     background-size: 800px 104px;
     min-height: 300px;
     position: relative;
 }
 
-.htmx-indicator {
-    display:block;
-    opacity: 1 !important;
+.static {
+    animation-duration: 20s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: tv-static;
+    animation-timing-function: linear;
+    background-image: repeating-radial-gradient(circle at 17% 32%, white, black 0.00085px);
+    background-size: 800px 104px;
+    min-height: 300px;
+    position: relative;
+    border: 2px solid black;
 }
 
-#loading-frames {
+.htmx-request.swappable {
+    opacity: 0;
+}
+
+.loading-search {
     display: none;
 }
 
-.htmx-request #loading-frames {
+.htmx-request.loading-search {
+    display: block;
+}
+
+/* .htmx-request.search-result { */
+/*     display: none; */
+/* } */
+
+#init-load-indicator, #inf-load-indicator {
+    display: none;
+}
+
+#init-load-indicator.htmx-request, #inf-load-indicator.htmx-request {
+    display: flex;
+}
+
+.loading {
+    display: none;
+}
+
+.htmx-request.loading {
     display: block;
 }
 
 .htmx-request .swappable {
     display: none;
+}
+
+#photo-archive .loading {
+    min-height: 540px;
 }
 
 #video-archive .loading {
@@ -271,3 +304,10 @@
 .bandcamp-album-container iframe {
     background-color: white;
 }
+
+/* STYLES FOR MASONRY */
+.grid-sizer, .grid-item {
+    width: 33%;
+    margin-bottom: 4px;
+}
+

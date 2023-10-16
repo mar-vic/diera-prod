@@ -40,7 +40,10 @@
          {% endblock background-image %}
         </style>
 
-         <!-- Load Alpine -->
+        <!-- Alpine Plugins -->
+        <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
+
+         <!-- Alpine Core -->
          <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
         <!-- BOOTSTRAP CSS -->
@@ -74,9 +77,16 @@
         {% include "partials/_footer.html" %}
       </footer>
 
+      <!-- HTMX -->
       <script src="https://unpkg.com/htmx.org@1.9.2"
               integrity="sha384-L6OqL9pRWyyFU3+/bjdSri+iIphTN/bvYyM37tICVyOJkWZLpP2vGn6VUEXgzg6h"
               crossorigin="anonymous"></script>
+
+      <!-- Masonry Grid by DeSandro -->
+      <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+
+      <!-- Images loaded package -->
+      <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
 
       <!-- COOKIE CONSENT POPUP -->
       {% include "partials/_cookie_consent.html" %}

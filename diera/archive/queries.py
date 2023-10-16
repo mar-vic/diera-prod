@@ -2,6 +2,8 @@ import json
 import requests
 import environ
 import os
+import itertools
+from unidecode import unidecode
 
 from pathlib import Path
 from datetime import date
@@ -9,7 +11,9 @@ from bs4 import BeautifulSoup
 
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.cache import cache
+from django.db.models import Q
 
+from photologue.models import Gallery
 from cms.models import Page
 
 def get_all_published_events():
@@ -31,6 +35,41 @@ def get_all_published_events():
                       reverse=True)
 
     return list(eventlst)
+
+def query_published_events(query, date=None):
+    def query_filter(page):
+        # get normalized page title (ie., without accents and in lowercase)
+        title = unidecode(page.get_page_title()).lower()
+
+        #  Exclude events with uninitialized extensions
+        try:
+            extension = page.eventdataextension
+            extension = page.imageextension
+        except ObjectDoesNotExist:
+            return False
+
+        # returns the result fo comparison
+        return query in title
+
+    events = Page.objects.filter(reverse_id='program').filter(publisher_is_draft=False)[0].get_child_pages()
+
+    events =[(1, {"title": page.get_page_title(),
+                  "image": page.imageextension.image,
+                  "url": page.get_absolute_url(),
+                  "id": page.id,
+                  "date": page.eventdataextension.date_from})
+              for page in list(filter(query_filter, events))]
+
+    return events
+
+def query_galleries(query, date=None):
+    galleries = [(0, {"title": gallery.title,
+                      "date": gallery.date_added,
+                      "photos": gallery.public()
+                      })
+                 for gallery in Gallery.objects.filter(is_public__exact=True).filter(title__icontains=query)]
+
+    return galleries
 
 def get_all_yt_videos():
     videos = cache.get("yt_videos")
@@ -64,6 +103,14 @@ def get_all_yt_videos_api():
 
     # print("Video query has been run!")
     return teasers
+
+def query_yt_videos(query, date=None):
+    def query_filter(video):
+        # Get normalized tiel and description
+        title = unidecode(video["title"]).lower()
+        description = unidecode(video["description"]).lower()
+        return query in title or query in description
+    return [(2, video) for video in list(filter(query_filter, get_all_yt_videos()))]
 
 def get_all_bandcamp_albums():
     albums = cache.get("bandcamp_albums")
@@ -103,4 +150,62 @@ def scrape_all_bandcamp_albums():
 
     # print("Scraping the albums.")
     return album_data
+
+def query_bandcamp_albums(query, date=None):
+    def query_filter(album):
+        title = unidecode(album["title"]).lower()
+        description = unidecode(album["description"]).lower()
+        return query in title or query in description
+    return [(3, album) for album in list(filter(query_filter, get_all_bandcamp_albums()))]
+
+def get_all_content():
+    print("loading galleries ...")
+    galleries = [(0, {"title": gallery.title,
+                      "date": gallery.date_added,
+                      "photos": gallery.public()
+                      })
+                 for gallery in Gallery.objects.filter(is_public__exact=True)]
+    print("loading events ...")
+    events = [(1, {"title": event.get_page_title(),
+                   "date": event.eventdataextension.date_from,
+                   "url": event.get_absolute_url(),
+                   "id": event.id,
+                   "image": event.imageextension.image
+                   })
+              for event in get_all_published_events()]
+    print("loading videos ...")
+    videos = [(2, video) for video in get_all_yt_videos()]
+    print("loading audio ...")
+    audio = [(3, audio) for audio in get_all_bandcamp_albums()]
+
+    # breakpoint()
+
+    # return {
+    #     "galleries": galleries,
+    #     "events": events,
+    #     "videos": videos,
+    #     "audio": audio
+    # }
+
+    return list(itertools.chain(galleries, events, videos, audio))
+
+def query_content(query):
+    print("querying galleries ...")
+    galleries = query_galleries(query)
+
+    print("querying events ...")
+    events = query_published_events(query)
+
+    print("Qerying YT videos ...")
+    videos = query_yt_videos(query)
+
+    print("Querying BandCamp albums")
+    albums = query_bandcamp_albums(query)
+
+    # breakpoint()
+
+    return list(itertools.chain(galleries, events, videos, albums))
+
+
+
 

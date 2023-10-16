@@ -5,7 +5,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 register = template.Library()
 
-@register.inclusion_tag('archive/partials/_event-teaser.html', takes_context=True)
+@register.inclusion_tag('archive/partials/teasers/_event-teaser.html', takes_context=True)
 def event_teaser(context):
     return {
         "title": context["event"].get_page_title(),
@@ -15,4 +15,3 @@ def event_teaser(context):
         "image": context["event"].imageextension.image,
         "request": context["request"]
     }
-

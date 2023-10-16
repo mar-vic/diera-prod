@@ -19,10 +19,22 @@
 {% endblock %}
 
 {% block content %}
-<div id="archive-container" class="container" x-data="{ nav: true }">
+<div id="archive-container" class="container h-100" x-data="{ nav: true, activeCategory: 'fotky' }">
   {% include "archive/partials/_archive-nav.html" %}
-  <div id="archive-content" class="mt-1 htmx-indicator">
-    {% include "archive/partials/_loading-frames.html" %}
+  <div id="archive-content" class="mt-1">
+
+    <div id="init-load-indicator" class="row gx-1">
+      <div class="p2 col-md-4 col-12">
+        <div class="static"></div>
+      </div>
+      <div class="p2 col-md-4 col-12">
+        <div class="static"></div>
+      </div>
+      <div class="p2 col-md-4 col-12">
+        <div class="static"></div>
+      </div>
+    </div>
+
     {% include "archive/partials/_photo-archive.html" %}
   </div>
 </div>

@@ -1,0 +1,56 @@
+{% load cms_tags %}
+{% load thumbnail %}
+{% load archive_tags %}
+
+{% if result.0 == 0 %}
+<div id="gallery-teaser-{{ result.1.id }}" class="p-2 gallery-teaser grid-item search-result">
+  <!-- First photo -->
+  {% with result.1.photos.0 as first_photo %}
+  {% thumbnail first_photo.image 600x400 crop upscale as first_photo_cropped %}
+  <img src="{{ first_photo_cropped.url }}" class="d-block w-100 mb-2" alt="...">
+  {% endwith %}
+  <div class="row mb-3 gy-1 align-items-end">
+    <div class="col-12 fs-2">
+      <div>{{ result.1.title }}</div>
+    </div>
+    <div class="col-12 fs-5">
+      {{ result.1.date|date:"d M / Y" }}
+    </div>
+  </div>
+</div>
+{% elif result.0 == 1 %}
+<a href="{{ result.1.url }}" class="event-teaser grid-item search-result">
+  <div class="card h-100 p-2 pb-0">
+    {% thumbnail result.1.image 600x300 crop upscale as teaser_image %}
+    <img class="card-img-top" src="{{ teaser_image.url }}">
+    <div class="card-body p-0 mt-2">
+      <h2 class="card-title fs-1 lh-1 text-uppercase">{{ result.1.title }}</h2>
+      <h3 class="card-subtitle mt-2 fs-3">
+        {% show_placeholder "genre" result.1.id %}
+      </h3>
+    </div>
+    <div class="card-footer p-0">
+      <div class="row pt-1 pb-1">
+        <div class="col-9 fs-3 text-uppercase">{{ result.1.date|date:"j.n. / Y" }}</div>
+        <div class="col-3 fs-3 text-end">{{ result.1.date|date:"H:i" }}</div>
+      </div>
+    </div>
+  </div>
+</a>
+{% elif result.0 == 2 %}
+<div class="youtube-video-container grid-item search-result">
+  <iframe
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/{{ result.1.id }}"
+    frameborder="0"
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+    class="p-1"
+  ></iframe>
+</div>
+{% elif result.0 == 3 %}
+<div class="bandcamp-album-container grid-item">
+  <iframe style="border: 2px solid black; width: 100%; height: 130px;" class="p-1" src="{{ result.1.src }}" seamless><a href="{{ result.1.url }}">{{ result.1.title }}</a></iframe>
+</div>
+{% endif %}

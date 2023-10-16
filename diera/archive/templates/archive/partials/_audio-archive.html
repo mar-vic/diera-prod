@@ -1,10 +1,10 @@
-<div id="audio-archive" class="swappable htmx-indicator">
+<div id="audio-archive" class="swappable">
   {% if albums %}
   <div class="row gy-1 gx-1">
 
     <!-- A page of video teasers -->
     {% for album in albums %}
-    {% include "archive/partials/_audio-teaser.html" %}
+    {% include "archive/partials/teasers/_audio-teaser.html" %}
     {% endfor %}
 
     <!-- Infinite scroll -->

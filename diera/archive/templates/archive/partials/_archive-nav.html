@@ -1,30 +1,109 @@
 <nav id="archive-nav" class="nav-fill">
     <ul class="nav">
       <li class="nav-item" style="width:56%;" x-show="!nav">
-        <input class="form-control pe-2 h-100 fs-4" type="search" placeholder="Vyhľadaj v archíve" aria-label="Search">
+        <input
+          id="searchInput"
+          hx-trigger="keyup changed delay:500ms"
+          hx-target=".swappable"
+          hx-swap="outerHTML"
+          hx-get="{% url 'archive:search-results' page=1 %}"
+          hx-indicator=".loading-search, .search-result"
+          name="q"
+          x-ref="searchInput"
+          x-trap="!nav"
+          type="text"
+          placeholder="Vyhľadaj v archíve ..."
+          class="form-control pe-2 h-100 fs-4"
+          aria-label="Search"
+        >
       </li>
       <li class="nav-item" x-show="nav">
-        <span class="nav-link active fs-4" data-bs-toggle="tab" style="cursor:pointer" aria-current="page" hx-get="{% url 'archive:photos' 1 %}" hx-target=".swappable"  hx-swap="outerHTML" hx-indicator="#archive-content">Fotky</span>
+        <span class="nav-link fs-4"
+              style="cursor:pointer"
+              aria-current="page"
+              hx-get="{% url 'archive:photos' 1 %}"
+              hx-target=".swappable"
+              hx-swap="outerHTML"
+              hx-indicator="#init-load-inicator, .swappable"
+              x-on:click="activeCategory='fotky'"
+              :class="activeCategory=='fotky' ? 'active' : ''"
+        >
+
+          Fotky
+        </span>
       </li>
       <li class="nav-item" x-show="nav">
-        <span class="nav-link fs-4" data-bs-toggle="tab" style="cursor:pointer" aria-current="page" hx-get="{% url 'archive:programming' 1 %}" hx-target=".swappable" hx-swap="outerHTML" hx-indicator="#archive-content">Program</span>
+        <span class="nav-link fs-4"
+              style="cursor:pointer"
+              aria-current="page"
+              hx-get="{% url 'archive:programming' 1 %}"
+              hx-target=".swappable"
+              hx-swap="outerHTML"
+              hx-indicator="#init-load-indicator, .swappable"
+              x-on:click="activeCategory='program'"
+              :class="activeCategory=='program' ? 'active' : ''"
+        >
+          Program
+        </span>
       </li>
       <li class="nav-item" x-show="nav">
-        <span class="nav-link fs-4" data-bs-toggle="tab" style="cursor:pointer" aria-current="page" hx-get="{% url 'archive:video' 1 %}" hx-target=".swappable" hx-swap="outerHTML" hx-swap="outerHTML" hx-indicator="#archive-content">Video</span>
+        <span class="nav-link fs-4"
+              style="cursor:pointer"
+              aria-current="page"
+              hx-get="{% url 'archive:video' 1 %}"
+              hx-target=".swappable"
+              hx-swap="outerHTML"
+              hx-indicator="#init-load-indicator, .swappable"
+              x-on:click="activeCategory='video'"
+              :class="activeCategory=='video' ? 'active' : ''"
+        >
+          Video
+        </span>
       </li>
       <li class="nav-item" x-show="nav">
-        <span class="nav-link fs-4" data-bs-toggle="tab" style="cursor:pointer" aria-current="page" hx-get="{% url 'archive:audio' 1 %}" hx-target=".swappable" hx-swap="outerHTML" hx-indicator="#archive-content">Audio </span>
+        <span class="nav-link fs-4"
+              style="cursor:pointer"
+              aria-current="page"
+              hx-get="{% url 'archive:audio' 1 %}"
+              hx-target=".swappable"
+              hx-swap="outerHTML"
+              hx-indicator="#init-load-indicator, .swappable"
+              x-on:click="activeCategory='audio'"
+              :class="activeCategory=='audio' ? 'active' : ''"
+        >
+          Audio
+        </span>
       </li>
       <li class="nav-item">
-        <span class="nav-link fs-4 no-hover-highlight" data-bs-toggle="tab" aria-current="page" hx-get="" hx-target=".swappable" hx-swap="outerHTML" hx-indicator="#archive-content"><i class="fas fa-calendar-alt" style="cursor:pointer" aria-current="page"></i></span>
+        <span class="nav-link fs-4 no-hover-highlight"
+              aria-current="page"
+              hx-get=""
+              hx-target=""
+              hx-swap=""
+              hx-indicator="#init-load-indicator, .swappable">
+          <i class="fas fa-calendar-alt" style="cursor:pointer" aria-current="page"></i>
+        </span>
       </li>
-      <li class="nav-item" x-show="nav" style="cursor:pointer; width: 10%;" x-on:click="nav=!nav">
-        <span class="nav-link fs-4" data-bs-toggle="tab" style="cursor:pointer" aria-current="page">
+      <li class="nav-item" x-show="nav" style="cursor:pointer; width: 10%;" x-on:click="nav=!nav;">
+        <span class="nav-link fs-4"
+              style="cursor:pointer"
+              aria-current="page"
+              hx-get="{% url 'archive:search-results' page=0 %}"
+              hx-target=".swappable"
+              hx-swap="outerHTML"
+        >
           <i class="fas fa-search"></i>
         </span>
       </li>
-      <li class="nav-item" x-show="!nav" style="cursor:pointer; width: 10px;" x-on:click="nav=!nav">
-        <span class="nav-link fs-4" data-bs-toggle="tab" style="cursor:pointer" aria-current="page">
+      <li class="nav-item" x-show="!nav" style="cursor:pointer; width: 10px;" x-on:click="nav=!nav;activeCategory='fotky';$refs.searchInput.value=''">
+        <span class="nav-link fs-4"
+              style="cursor:pointer"
+              aria-current="page"
+              hx-target=".swappable"
+              hx-get="{% url 'archive:photos' page=1 %}"
+              hx-swap="outerHTML"
+              hx-indicator="#init-load-indicator, .swappable"
+        >
           <i class="fas fa-tags"></i>
         </span>
       </li>
