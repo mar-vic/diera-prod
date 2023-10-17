@@ -1,4 +1,6 @@
-<nav id="archive-nav" class="nav-fill">
+<nav id="archive-nav"
+     class="nav-fill"
+     :class="(searchInputIsEmpty && !nav) ? 'input-empty' : ''">
     <ul class="nav">
       <li class="nav-item" style="width:56%;" x-show="!nav">
         <input
@@ -11,6 +13,7 @@
           name="q"
           x-ref="searchInput"
           x-trap="!nav"
+          @keyup="$refs.searchInput.value ? searchInputIsEmpty=false : searchInputIsEmpty=true"
           type="text"
           placeholder="Vyhľadaj v archíve ..."
           class="form-control pe-2 h-100 fs-4"

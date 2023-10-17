@@ -84,7 +84,7 @@
     border: 2px solid black;
 }
 
-.gallery-teaser .fs-1 {
+.gallery-teaser .fs-1, .gallery-teaser .fs-2 {
     color: white;
     text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
 }
@@ -99,7 +99,7 @@
     border: 2px solid white;
 }
 
-.gallery-teaser:hover .fs-1 {
+.gallery-teaser:hover .fs-1, .gallery-teaser:hover .fs-2 {
     color: black;
     text-shadow: -1px 1px 0 white, 1px 1px 0 white, 1px -1px 0 white, -1px -1px 0 white;
 }
@@ -275,6 +275,15 @@
 
 .bandcamp-album-container iframe {
     background-color: white;
+}
+
+/* STYLES FOR ARCHIVAL SEARCH */
+.input-empty {
+    margin-top: 200px;
+}
+
+.input-empty * {
+    font-size: 35px !important;
 }
 
 /* STYLES FOR MASONRY */
