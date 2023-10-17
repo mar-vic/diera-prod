@@ -7,7 +7,7 @@
           hx-target=".swappable"
           hx-swap="outerHTML"
           hx-get="{% url 'archive:search-results' page=1 %}"
-          hx-indicator=".loading-search, .search-result"
+          hx-indicator="#init-load-indicator, .search-result"
           name="q"
           x-ref="searchInput"
           x-trap="!nav"

@@ -160,9 +160,9 @@
     display: block;
 }
 
-/* .htmx-request.search-result { */
-/*     display: none; */
-/* } */
+.search-result.htmx-request {
+    display: none !important;
+}
 
 #init-load-indicator, #inf-load-indicator {
     display: none;
@@ -170,34 +170,6 @@
 
 #init-load-indicator.htmx-request, #inf-load-indicator.htmx-request {
     display: flex;
-}
-
-.loading {
-    display: none;
-}
-
-.htmx-request.loading {
-    display: block;
-}
-
-.htmx-request .swappable {
-    display: none;
-}
-
-#photo-archive .loading {
-    min-height: 540px;
-}
-
-#video-archive .loading {
-    min-height: 315px;
-}
-
-#audio-archive .loading {
-    min-height: 120px;
-}
-
-#loading-frames .loading {
-    border: 2px solid black;
 }
 
 /* STYLES FOR PROGRAMMING ARCHIVE */
