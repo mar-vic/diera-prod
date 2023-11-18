@@ -8,31 +8,43 @@
             <!-- Photos -->
             <div class="carousel-inner">
 
-                <!-- Jana Hanzelova -->
+                <!-- Jana Mikus Hanzelova (dramaturgia) -->
                 <div class="carousel-item active" >
-                    {% get_photo_by_slug "jana-hanzelova" as first_photo %}
+                    {% get_photo_by_slug "jana-mikus-hanzelova" as first_photo %}
                     <div class="image-container">
                         <img src="{{ first_photo.image.url }}" style="cursor:auto">
                     </div>
                     <div class="carousel-caption d-none d-md-block">
                         <h4>Jana Hanzelová</h4>
-                        <p><em>{% translate "dramaturgy" %}</em></p>
+                        <p><em>{% translate "dramaturgia" %}</em></p>
                     </div>
                 </div>
 
-                <!-- Jan Mikus -->
+                <!-- Jan Hanzel Mikus (koordinacia projektu) -->
                 <div class="carousel-item" >
-                    {% get_photo_by_slug "jan-mikus" as third_photo %}
+                    {% get_photo_by_slug "jan-hanzel-mikus" as second_photo %}
                     <div class="image-container">
-                        <img src="{{ third_photo.image.url }}" style="cursor:auto">
+                        <img src="{{ second_photo.image.url }}" style="cursor:auto">
                     </div>
                     <div class="carousel-caption d-none d-md-block">
-                        <h4>Ján Mikuš</h4>
-                        <p><em>{% translate "tech. coordination, PR, statutory representative" %}</em></p>
+                        <h4>Ján Hanzel Mikuš</h4>
+                        <p><em>{% translate "koordinácia projektu" %}</em></p>
                     </div>
                 </div>
 
-                <!-- Barbora Bohusova -->
+                <!-- Natalia Kudnisova (produkcia) -->
+                <div class="carousel-item" >
+                  {% get_photo_by_slug "natalia-kundisova" as third_photo %}
+                  <div class="image-container">
+                    <img src="{{ third_photo.image.url }}" style="cursor:auto">
+                  </div>
+                  <div class="carousel-caption d-none d-md-block">
+                    <h4>Natália Kundisova</h4>
+                    <p><em>{% translate "produkcia" %}</em></p>
+                  </div>
+                </div>
+
+                <!-- Barbora Bohusova (grafcky dziajn, social media) -->
                 <div class="carousel-item" >
                     {% get_photo_by_slug "barbora-bohusova" as fourth_photo %}
                     <div class="image-container">
@@ -40,56 +52,67 @@
                     </div>
                     <div class="carousel-caption d-none d-md-block">
                         <h4>Barbora Bohušová</h4>
-                        <p><em>{% translate "production, graphic design, coordination" %}</em></p>
+                        <p><em>{% translate "grafický dizajn, social media" %}</em></p>
                     </div>
                 </div>
 
-                <!-- Simon Chovanec -->
+                <!-- Matej Zofcin (hudobna dramaturgia) -->
                 <div class="carousel-item" >
-                    {% get_photo_by_slug "simon-chovan" as fourth_photo %}
-                    <div class="image-container">
-                        <img src="{{ fourth_photo.image.url }}" style="cursor:auto">
-                    </div>
-                    <div class="carousel-caption d-none d-md-block">
-                        <h4>Šimon Chovan</h4>
-                        <p><em>{% translate "graphic desing" %}</em></p>
-                    </div>
-                </div>
-
-                <!-- Dominik Palkovic -->
-                <div class="carousel-item" >
-                    {% get_photo_by_slug "dominik-palkovic" as fifth_photo %}
+                    {% get_photo_by_slug "matej-zofcin" as fifth_photo %}
                     <div class="image-container">
                         <img src="{{ fifth_photo.image.url }}" style="cursor:auto">
                     </div>
                     <div class="carousel-caption d-none d-md-block">
-                        <h4>Dominik Palkovič</h4>
-                        <p><em>{% translate "waiter" %}</em></p>
+                        <h4>Matej Žofčín</h4>
+                        <p><em>{% translate "hudobná dramaturgia" %}</em></p>
                     </div>
                 </div>
 
-                <!-- Barbora Moravcikova -->
+                <!-- Stanislav Stofcik (technika, zvuk)  -->
                 <div class="carousel-item" >
-                    {% get_photo_by_slug "barbora-moravcikova" as sixth_photo %}
+                    {% get_photo_by_slug "stanislav-stofcik" as sixth_photo %}
                     <div class="image-container">
                         <img src="{{ sixth_photo.image.url }}" style="cursor:auto">
                     </div>
                     <div class="carousel-caption d-none d-md-block">
-                        <h4>Barbora Moravčíková</h4>
-                        <p><em>{% translate "waitress" %}</em></p>
+                        <h4>Stanisla Štofčík</h4>
+                        <p><em>{% translate "technika, zvuk" %}</em></p>
                     </div>
                 </div>
 
-                <!-- Melania Gocsova -->
+                <!-- Andrea Kapráliková (aktivity s ukrajinskou komunitou) -->
                 <div class="carousel-item" >
-                    {% get_photo_by_slug "melania-gocsova" as seventh_photo %}
+                    {% get_photo_by_slug "andrea-kapralikova" as seventh_photo %}
                     <div class="image-container">
-                        <img src="{{ seventh_photo.image.url }}" style="cursor:auto">
+                        <img src="{{ sixth_photo.image.url }}" style="cursor:auto">
                     </div>
                     <div class="carousel-caption d-none d-md-block">
-                        <h4>Melánia Göcsová</h4>
-                        <p><em>{% translate "waitress" %}</em></p>
+                        <h4>Andrea Kapráliková</h4>
+                        <p><em>{% translate "aktivity s ukrajinskou komunitou" %}</em></p>
                     </div>
+                </div>
+
+                <!-- Jozef Kosik (zvuk) -->
+                <div class="carousel-item" >
+                    {% get_photo_by_slug "jozef-kosik" as eight_photo %}
+                    <div class="image-container">
+                        <img src="{{ eight_photo.image.url }}" style="cursor:auto">
+                    </div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h4>Jozef Kosik</h4>
+                        <p><em>{% translate "zvuk" %}</em></p>
+                    </div>
+                </div>
+
+                <!-- Jasna Mikušová -->
+                <div class="carousel-item" >
+                  {% get_photo_by_slug "jasna-mikusova" as ninth_photo %}
+                  <div class="image-container">
+                    <img src="{{ ninth_photo.image.url }}" style="cursor:auto">
+                  </div>
+                  <div class="carousel-caption d-none d-md-block">
+                    <h4>Jasna Mikušová</h4>
+                  </div>
                 </div>
             </div>
 
