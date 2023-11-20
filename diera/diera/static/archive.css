@@ -292,3 +292,12 @@
     margin-bottom: 4px;
 }
 
+/* STYLE FOR FILTER */
+.filter-active {
+    background-color: black !important;
+}
+
+.filter-active .nav-link {
+    color: white !important;
+}
+

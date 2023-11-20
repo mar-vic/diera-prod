@@ -26,6 +26,8 @@
   <div class="static loading-search grid-item"></div>
 </div>
 
+{% block js %}
+{{ super }}
 <script>
 /* First init of masonry */
 var grid = document.querySelector('.grid');
@@ -76,3 +78,4 @@ document.body.addEventListener('htmx:load', function(evt) {
   });
 });
 </script>
+{% endblock %}

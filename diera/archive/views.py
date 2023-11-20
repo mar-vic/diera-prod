@@ -1,4 +1,7 @@
 from urllib.parse import urlparse
+from datetime import datetime
+import calendar
+import pytz
 
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -31,8 +34,22 @@ class GalleryList(ListView):
     context_object_name = "galleries"
 
     def get_queryset(self):
+        year = self.kwargs.get("year")
+        month = self.kwargs.get("month")
+
         # breakpoint()
-        return Gallery.objects.filter(is_public__exact=True)
+
+        if year and month:
+            days_in_month = calendar.monthrange(int(year), int(month))[1]
+            upper_bound = datetime(int(year), int(month), days_in_month, 23, 59, 59, 999, tzinfo=pytz.UTC)
+            lower_bound = datetime(int(year), int(month), 1, 1, 1, 1, 1, tzinfo=pytz.UTC)
+            return Gallery.objects.filter(is_public__exact=True).filter(date_added__lte=upper_bound).filter(date_added__gte=lower_bound)
+        elif year and not month:
+            upper_bound = datetime(int(year), 12, 31, 23, 59, 59, 999999, tzinfo=pytz.UTC)
+            lower_bound = datetime(int(year), 1, 1, 1, 1, 1, 1, tzinfo=pytz.UTC)
+            return Gallery.objects.filter(is_public__exact=True).filter(date_added__lte=upper_bound).filter(date_added__gte=lower_bound)
+        else:
+            return Gallery.objects.filter(is_public__exact=True)
 
 
 class EventList(ListView):
