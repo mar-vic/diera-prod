@@ -1,0 +1,22 @@
+<div class="modal fade" id="dateFilterDialogue" tabindex="-1" aria-labelledby="dateFilterModalDialogue" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="dateFilterModalDialogue">Nastav dátum</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="date-filter"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zavrieť</button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          @click="dateFilterIsSet=true;$refs.pickedDateDisplay.innerText=datePicker.format('M / YYYY');URL='/archiv/' + activeCategory + '/' + datePicker.format('YYYY') + '/' + datePicker.format('M') + '/page1/';">
+          Uložiť
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

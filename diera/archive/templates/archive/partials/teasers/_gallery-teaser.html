@@ -1,0 +1,91 @@
+{% load thumbnail %}
+
+<!-- GALLERY TEASER -->
+<div
+  id="gallery-teaser-{{ gallery.id }}"
+  data-bs-toggle="modal"
+  data-bs-target="#modal-gallery-{{ gallery.id }}"
+  class="p-2 gallery-teaser h-100"
+  style="cursor:pointer;"
+>
+  <!-- First photo -->
+  {% with gallery.public.0 as first_photo %}
+  {% thumbnail first_photo.image 600x400 crop upscale as first_photo_cropped %}
+  <img src="{{ first_photo_cropped.url }}" class="d-block w-100 mb-2" alt="...">
+  {% endwith %}
+  <div class="row mb-3 gy-1 align-items-end">
+    <div class="col-12 fs-1">
+      <div>{{ gallery.title }}</div>
+    </div>
+    <div class="col-12 fs-4">
+      {{ gallery.date_added|date:"d M / Y" }}
+    </div>
+
+  </div>
+</div>
+
+<div x-data="{ fullscreen: false }" class="modal fade" id="modal-gallery-{{ gallery.id }}" tabindex="-1" aria-labelledby="modalGallery{{ gallery.id }}" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable" :class="fullscreen ? 'modal-fullscreen' : ''">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title fs-1 me-auto" id="modalGallery{{ gallery.id }}">{{ gallery.title }}</h2>
+        <i class="fs-4 fas fa-expand" x-show="!fullscreen" @click="fullscreen = true" style="cursor:pointer;"></i>
+        <i class="fs-4 fas fa-compress" x-show="fullscreen" @click="fullscreen = false" style="cursor:pointer; color:white;"></i>
+        <i @click="fullscreen = false;" data-bs-dismiss="modal" aria-label="Close" class="fs-3 ms-3 fas fa-times" style="cursor:pointer;"></i>
+      </div>
+      <div class="modal-body">
+
+        <div class="container-fluid p-0">
+
+          <div class="row gx-1 gy-1" x-show="!fullscreen">
+            {% for photo in gallery.public %}
+            {% thumbnail photo.image 600x400 crop upscale as photo_cropped %}
+            <div class="col-4">
+              <img @click="fullscreen = true"
+                   src="{{ photo_cropped.url }}"
+                   class="w-100 thumbnail"
+                   alt="..."
+                   data-bs-target="#carousel-gallery-{{ gallery.id }}"
+                   data-bs-slide-to="{{ forloop.counter0 }}"
+                   style="cursor:pointer;"
+              >
+            </div>
+            {% endfor %}
+          </div>
+
+          <!-- Carousel gallery (to be shown on fullscreen) -->
+          <div id="carousel-gallery-{{ gallery.id }}" class="carousel slide" x-show="fullscreen">
+            <div class="carousel-inner">
+
+              <!-- First photo in carousel -->
+              <div class="carousel-item active">
+                <img src="{{ gallery.public.0.image.url }}" class="ms-auto me-auto d-block full-size" alt="...">
+              </div>
+
+              <!-- Rest of photos -->
+              {% for photo in gallery.public|slice:"1:" %}
+              <div class="carousel-item">
+                <img src="{{ photo.image.url }}" class="ms-auto me-auto d-block full-size" alt="...">
+              </div>
+              {% endfor %}
+            </div>
+
+            <!-- Carousel controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel-gallery-{{ gallery.id }}" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel-gallery-{{ gallery.id }}" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
