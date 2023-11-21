@@ -13,6 +13,7 @@ htmx_urlpatterns = [
     path("fotky/page<int:page>/", views.GalleryList.as_view(), name="photos"),
     path("fotky/<int:year>/page<int:page>/", views.GalleryList.as_view(), name="photos"),
     path("fotky/<int:year>/<int:month>/page<int:page>/", views.GalleryList.as_view(), name="photos"),
+    path("galeria/<int:gallery>/page<int:page>/", views.PhotoList.as_view(), name="gallery"),
     path("program/page<int:page>/", views.EventList.as_view(), name="programming"),
     path("video/page<int:page>/", views.VideoList.as_view(), name="video"),
     path("audio/page<int:page>/", views.AudioList.as_view(), name="audio"),

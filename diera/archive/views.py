@@ -13,6 +13,7 @@ from django.views.decorators.cache import cache_page
 from cms.models import Page
 
 from photologue.models import Gallery
+from photologue.models import Photo
 
 from . import queries
 
@@ -51,6 +52,14 @@ class GalleryList(ListView):
         else:
             return Gallery.objects.filter(is_public__exact=True)
 
+class PhotoList(ListView):
+    template_name = "archive/partials/_gallery-photos.html"
+    paginate_by = 6
+    model = Photo
+    context_object_name = "gallery_photos"
+
+    def get_queryset(self):
+        return Photo.objects.all()
 
 class EventList(ListView):
     template_name = "archive/partials/_programming-archive.html"

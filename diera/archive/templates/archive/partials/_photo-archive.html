@@ -1,12 +1,12 @@
 <div id="photo-archive" class="swappable">
   {% if page_obj %}
+
   <div class="row gx-1 mt-1 mb-1 gallery-page">
     {% for gallery in page_obj %}
     <div class="col-md-6 col-12 gallery-container">
-      {% include "archive/partials/teasers/_photo-gallery-teaser.html" %}
+      {% include "archive/partials/teasers/_gallery-teaser.html" %}
     </div>
     {% endfor %}
-
   </div>
 
   <!-- Inifinite scroll -->

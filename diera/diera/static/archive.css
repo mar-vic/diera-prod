@@ -301,3 +301,54 @@
     color: white !important;
 }
 
+/* STYLES FOR MODAL GALLERIES */
+.modal-dialog .modal-content {
+    border: 1px solid black;
+    border-radius: 0px;
+}
+
+.modal-dialog.modal-fullscreen .modal-content {
+    background-color: black;
+}
+
+.modal-dialog.modal-fullscreen img {
+    border: 1px solid white;
+}
+
+.modal-dialog.modal-fullscreen .modal-title {
+    text-transform: uppercase;
+    color: black;
+    text-shadow: -1px 1px 0 white, 1px 1px 0 white, 1px -1px 0 white, -1px -1px 0 white;
+}
+
+.modal-dialog.modal-fullscreen .fa-times {
+    color: white;
+}
+
+.modal-dialog img {
+    border: 1px solid black;
+}
+
+.modal-dialog img.thumbnail {
+    cursor: pointer;
+}
+
+.modal-dialog img.thumbnail:hover {
+}
+
+.modal-dialog img.full-size {
+    height: 85vh;
+}
+
+.modal-title {
+    text-transform: uppercase;
+    color: white;
+    text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+}
+
+.modal-header {
+    border: none;
+}
+
+
+
