@@ -135,6 +135,10 @@
     position: relative;
 }
 
+#audio-archive .loading {
+    min-height: 110px;
+}
+
 .static {
     animation-duration: 20s;
     animation-fill-mode: forwards;
