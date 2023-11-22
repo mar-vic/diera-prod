@@ -2,6 +2,7 @@ import json
 import requests
 import environ
 import os
+import pickle
 import itertools
 from unidecode import unidecode
 
@@ -114,8 +115,12 @@ def query_yt_videos(query, date=None):
 
 def get_all_bandcamp_albums():
     albums = cache.get("bandcamp_albums")
-    if not albums:
-        cache.set("bandcamp_albums", scrape_all_bandcamp_albums(), 60 * 60 * 24 * 7)
+    if not None:
+        if Path("albums.pkl").is_file():
+            with open("albums.pkl", "rb") as f:
+                cache.set("bandcamp_albums", pickle.load(f))
+        else:
+            cache.set("bandcamp_albums", scrape_all_bandcamp_albums(), 60 * 60 * 24 * 7)
         return cache.get("bandcamp_albums")
     return albums
 
