@@ -12,6 +12,9 @@ urlpatterns = [
     path("sitemap.xml", sitemap, {"sitemaps": {"cmspages": CMSSitemap}}),
 ]
 
+urlpatterns += [
+    path("photologue/", include("photologue.urls", namespace="photologue"))
+]
 
 urlpatterns += i18n_patterns(path("admin/", admin.site.urls), path("", include("cms.urls")), prefix_default_language=False)
 
