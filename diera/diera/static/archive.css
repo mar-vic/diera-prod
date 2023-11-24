@@ -28,11 +28,6 @@
     border: 0px;
 }
 
-/* #archive-nav .nav-link.active i.fa-sort-up { */
-/*     position: relative; */
-/*     top: 9px; */
-/* } */
-
 #archive-nav .nav-link:hover {
     border: unset;
 }
@@ -66,6 +61,19 @@
 #archive-content {
     margin-left: initial;
     margin-right: initial;
+}
+
+@media screen and (max-width: 990px) {
+    #archive-container {
+        width: 95%;
+        min-width: initial;
+    }
+}
+
+@media screen and (max-width: 519px) {
+    #archive-nav .nav-link {
+        font-size: 10px;
+    }
 }
 
 .gallery {
