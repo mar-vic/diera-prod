@@ -15,7 +15,8 @@ from diera import queries
 
 register = template.Library()
 
-@register.inclusion_tag('partials/_upcoming_events.html', takes_context=True)
+
+@register.inclusion_tag("partials/_upcoming_events.html", takes_context=True)
 def upcoming_event_teasers(context):
     events = queries.get_upcoming_events()
     event_teasers = []
@@ -25,40 +26,46 @@ def upcoming_event_teasers(context):
 
         # use default values for events with uninitialized teaser extension
         try:
-            eteaser['image'] = event.imageextension.image
+            eteaser["image"] = event.imageextension.image
         except ObjectDoesNotExist:
-            eteaser['image'] = None
+            eteaser["image"] = None
 
-        eteaser['event_title'] = event.get_page_title()
-        eteaser['event_url'] = event.get_absolute_url()
-        eteaser['page_id'] = event.id
-        eteaser['date_from'] = event.eventdataextension.date_from
+        eteaser["event_title"] = event.get_page_title()
+        eteaser["event_url"] = event.get_absolute_url()
+        eteaser["page_id"] = event.id
+        eteaser["date_from"] = event.eventdataextension.date_from
 
         event_teasers.append(eteaser)
 
     return {
-        'eteasers': event_teasers,
-        'request': context.request,
+        "eteasers": event_teasers,
+        "request": context.request,
     }
+
 
 @register.simple_tag
 def get_upcoming_event(request):
-    upcoming_events = queries.get_upcoming_events();
+    # breakpoint()
+    upcoming_events = queries.get_upcoming_events()
 
     if not upcoming_events:
         return None
 
     upcoming_event = upcoming_events[0]
 
-    if request.LANGUAGE_CODE == 'sk':
-        locale.setlocale(locale.LC_TIME, 'sk_SK.utf8')
+    if request.LANGUAGE_CODE == "sk":
+        locale.setlocale(locale.LC_TIME, "sk_SK.utf8")
+
+    print("Getting Upcoming Event")
 
     return {
-        'eventName': upcoming_event.get_page_title(),
-        'day': upcoming_event.eventdataextension.date_from.strftime('%A'),
-        'time': upcoming_event.eventdataextension.date_from.strftime('%H:%M'),
-        'url': upcoming_event.get_absolute_url()
+        "eventName": upcoming_event.get_page_title(),
+        "day": upcoming_event.eventdataextension.date_from.strftime("%A"),
+        "time": upcoming_event.eventdataextension.date_from.strftime("%H:%M"),
+        "from": upcoming_event.eventdataextension.date_from,
+        "url": upcoming_event.get_absolute_url(),
     }
+
 
 @register.simple_tag
 def get_hr_time_span(request, date):
@@ -66,8 +73,8 @@ def get_hr_time_span(request, date):
     Return human readable time span.
     """
 
-    if request.LANGUAGE_CODE == 'sk':
-        locale.setlocale(locale.LC_TIME, 'sk_SK.utf8')
+    if request.LANGUAGE_CODE == "sk":
+        locale.setlocale(locale.LC_TIME, "sk_SK.utf8")
 
     today = datetime.today()
     today = datetime(today.year, today.month, today.day)
@@ -75,40 +82,43 @@ def get_hr_time_span(request, date):
     delta = date - today
 
     if delta.days == 0:
-        return 'dnes'
+        return "dnes"
 
     if delta.days == 1:
-        return 'zajtra'
+        return "zajtra"
 
     if delta.days >= 2 and delta.days <= 7:
         return date.strftime("%A")
 
     if delta.days > 7 and delta.days <= 14:
-        return 'o týždeň'
+        return "o týždeň"
 
     if delta.days > 14 and delta.days <= 30:
-        return 'o 2 týždne'
+        return "o 2 týždne"
 
-    if delta.days > 30 and delta.days <= 60: return 'o mesiac'
+    if delta.days > 30 and delta.days <= 60:
+        return "o mesiac"
 
     return ""
+
 
 @register.simple_tag(takes_context=True)
 def get_coming_soon_ig_url(context):
     """
     Return the url of image to be shown when there are no upcoming events"""
-    language = 'sk'
+    language = "sk"
 
     folder = Folder.objects.get(name="ig_coming_soon_" + language)
 
     infographics_img_files = folder.files.all()
-    if (len(infographics_img_files) > 0):
+    if len(infographics_img_files) > 0:
         rnd_infographics = infographics_img_files[
             randint(0, len(infographics_img_files) - 1)
         ]
         return rnd_infographics.url
     else:
         return None
+
 
 @register.simple_tag
 def get_years_with_galleries_added():
@@ -117,22 +127,27 @@ def get_years_with_galleries_added():
         years.add(gallery.date_added.year)
     return [str(year) for year in sorted(list(years), reverse=True)]
 
-@register.inclusion_tag('photologue/includes/gallery_slider.html')
-def gallery_slider(gallery):
-    return {'gallery': gallery}
 
-@register.inclusion_tag('photologue/includes/gallery_slider_nh.html')
+@register.inclusion_tag("photologue/includes/gallery_slider.html")
+def gallery_slider(gallery):
+    return {"gallery": gallery}
+
+
+@register.inclusion_tag("photologue/includes/gallery_slider_nh.html")
 def gallery_slider_nh(slug):
     gallery = Gallery.objects.filter(slug=slug).first()
-    return {'gallery': gallery}
+    return {"gallery": gallery}
 
-@register.inclusion_tag('photologue/includes/meet_the_team.html')
+
+@register.inclusion_tag("photologue/includes/meet_the_team.html")
 def meet_the_team():
     return
+
 
 @register.simple_tag
 def get_photo_by_slug(slug):
     return Photo.objects.get(slug=slug)
+
 
 @register.simple_tag
 def get_teasers_for_festival_years(request):
@@ -144,11 +159,13 @@ def get_teasers_for_festival_years(request):
     # Ensure that we have a festival page
     festival_page = request.current_page
     parent_page = festival_page.get_parent_page()
-    if not parent_page or not parent_page.reverse_id == 'festivals':
+    if not parent_page or not parent_page.reverse_id == "festivals":
         return []
 
     # Get all festival year pages
-    festival_year_pages = [page for page in festival_page.get_child_pages() if page.is_published(language)]
+    festival_year_pages = [
+        page for page in festival_page.get_child_pages() if page.is_published(language)
+    ]
 
     # Generate teasers for festival year pages
     teasers = []
@@ -166,13 +183,13 @@ def get_teasers_for_festival_years(request):
             continue
 
         teasers.append(
-                {
-                    'url': page.get_absolute_url(),
-                    'title': page.get_page_title(),
-                    'page_id': page.id,
-                    'image': teaser_image,
-                    'year': festival_year,
-                }
+            {
+                "url": page.get_absolute_url(),
+                "title": page.get_page_title(),
+                "page_id": page.id,
+                "image": teaser_image,
+                "year": festival_year,
+            }
         )
 
     return reversed(teasers)
@@ -216,8 +233,16 @@ def get_teasers_for_festival_events(request, festival_name, year):
     language = request.LANGUAGE_CODE
 
     # Get all published events
-    programp = [page for page in Page.objects.filter(reverse_id='program').filter(publisher_is_draft=False) if page.is_published(language) and page][0]
-    published_events = [page for page in programp.get_child_pages() if page.is_published(language)]
+    programp = [
+        page
+        for page in Page.objects.filter(reverse_id="program").filter(
+            publisher_is_draft=False
+        )
+        if page.is_published(language) and page
+    ][0]
+    published_events = [
+        page for page in programp.get_child_pages() if page.is_published(language)
+    ]
 
     # Generate list of event teasers
     event_teasers = []
@@ -242,32 +267,33 @@ def get_teasers_for_festival_events(request, festival_name, year):
         # Do not create a teaser if the event is not a part of given festival
         # or have not taken the place at given year
         if (
-                not festival or
-                str.lower(festival_name) != str.lower(festival.get_page_title()) or
-                date_from.year != year
+            not festival
+            or str.lower(festival_name) != str.lower(festival.get_page_title())
+            or date_from.year != year
         ):
             continue
 
-        teaser['url'] = event.get_absolute_url()
-        teaser['title'] = event.get_page_title()
-        teaser['page_id'] = event.id
-        teaser['image'] = teaser_image
-        teaser['from'] = date_from
-        teaser['to'] = date_to
-        teaser['festival'] = festival
+        teaser["url"] = event.get_absolute_url()
+        teaser["title"] = event.get_page_title()
+        teaser["page_id"] = event.id
+        teaser["image"] = teaser_image
+        teaser["from"] = date_from
+        teaser["to"] = date_to
+        teaser["festival"] = festival
 
         event_teasers.append(teaser)
 
     # Sort event teasers by by their scheduling in ascending order
-    event_teasers = sorted(event_teasers,
-                  key=lambda teaser: teaser['from'],
-                           reverse=False)
+    event_teasers = sorted(
+        event_teasers, key=lambda teaser: teaser["from"], reverse=False
+    )
     # event_teasers_triplets = []
     # while event_teasers:
     #     event_teasers_triplets.append(event_teasers[0:3])
     #     event_teasers = event_teasers[3:]
 
     return event_teasers
+
 
 @register.simple_tag
 def get_teasers_for_all_features(request):
@@ -283,22 +309,34 @@ def get_teasers_for_all_features(request):
     language = request.LANGUAGE_CODE
 
     # Get the home page (ie, page with reverse_id='home')
-    homep = Page.objects.filter(reverse_id='home').filter(publisher_is_draft=False).first()
+    homep = (
+        Page.objects.filter(reverse_id="home").filter(publisher_is_draft=False).first()
+    )
     # Ensuring that homepage does exist
     if not homep:
         return []
     else:
         # Get all childs of homepage (i.e., the articles)
-        published_articles = [page for page in homep.get_child_pages().order_by('-publication_date') if page.is_published(language)]
+        published_articles = [
+            page
+            for page in homep.get_child_pages().order_by("-publication_date")
+            if page.is_published(language)
+        ]
 
     # Get the program page (i.e., page with reverse_id='program')
-    programp = Page.objects.filter(reverse_id='program').filter(publisher_is_draft=False).first()
+    programp = (
+        Page.objects.filter(reverse_id="program")
+        .filter(publisher_is_draft=False)
+        .first()
+    )
     # Ensuring that program page does exist
     if not programp:
         published_events = []
     else:
         # Get all childs of program page (i.e., the events)
-        published_events = [page for page in programp.get_child_pages() if page.is_published(language)]
+        published_events = [
+            page for page in programp.get_child_pages() if page.is_published(language)
+        ]
 
     # Generate list of article teasers
     article_teasers = []
@@ -312,10 +350,10 @@ def get_teasers_for_all_features(request):
         except ObjectDoesNotExist:
             teaser_image = None
 
-        teaser['url'] = article.get_absolute_url()
-        teaser['title'] = article.get_page_title()
-        teaser['image'] = teaser_image
-        teaser['page_id'] = article.id
+        teaser["url"] = article.get_absolute_url()
+        teaser["title"] = article.get_page_title()
+        teaser["image"] = teaser_image
+        teaser["page_id"] = article.id
 
         article_teasers.append(teaser)
 
@@ -350,23 +388,29 @@ def get_teasers_for_all_features(request):
         elif date_to and (date_to - date.today()).days < 0:
             continue
 
-        teaser['url'] = event.get_absolute_url()
-        teaser['title'] = event.get_page_title()
-        teaser['page_id'] = event.id
-        teaser['image'] = teaser_image
-        teaser['from'] = date_from
-        teaser['to'] = date_to
-        teaser['festival'] = festival
+        # breakpoint()
+
+        teaser["url"] = event.get_absolute_url()
+        teaser["title"] = event.get_page_title()
+        teaser["page_id"] = event.id
+        teaser["image"] = teaser_image
+        teaser["from"] = date_from
+        teaser["to"] = date_to
+        teaser["festival"] = festival
 
         event_teasers.append(teaser)
 
     # Sort event teasers by their scheduling in ascending order
-    event_teasers = sorted(event_teasers,
-                           key=lambda teaser: teaser['from'],
-                           reverse=True)
+    event_teasers = sorted(
+        event_teasers, key=lambda teaser: teaser["from"], reverse=True
+    )
 
     # Get festivals page (ie, page with reverse_id='festivals')
-    festivalsp = Page.objects.filter(reverse_id='festivals').filter(publisher_is_draft=False).first()
+    festivalsp = (
+        Page.objects.filter(reverse_id="festivals")
+        .filter(publisher_is_draft=False)
+        .first()
+    )
     festival_teasers = []
 
     # Generate teasers for festival pages and their year pages as
@@ -389,10 +433,10 @@ def get_teasers_for_all_features(request):
         if featured:
             festival_teasers.append(
                 {
-                    'url' : festival_page.get_absolute_url(),
-                    'title' : festival_page.get_page_title(),
-                    'image' : teaser_image,
-                    'page_id' : festival_page.id,
+                    "url": festival_page.get_absolute_url(),
+                    "title": festival_page.get_page_title(),
+                    "image": teaser_image,
+                    "page_id": festival_page.id,
                 }
             )
 
@@ -414,18 +458,22 @@ def get_teasers_for_all_features(request):
             if featured:
                 festival_teasers.append(
                     {
-                        'url' : festival_year_page.get_absolute_url(),
-                        'title' : festival_year_page.get_page_title(),
-                        'image' : teaser_image,
-                        'page_id' : festival_year_page.id,
+                        "url": festival_year_page.get_absolute_url(),
+                        "title": festival_year_page.get_page_title(),
+                        "image": teaser_image,
+                        "page_id": festival_year_page.id,
                     }
                 )
 
     # Create a teaser for newsletter page
-    newsletterp = Page.objects.filter(reverse_id='newsletter').filter(publisher_is_draft=False).first()
+    newsletterp = (
+        Page.objects.filter(reverse_id="newsletter")
+        .filter(publisher_is_draft=False)
+        .first()
+    )
     newsletter_teaser = []
 
-    if newsletterp and language == 'sk':
+    if newsletterp and language == "sk":
         # Extension objects have to manualy set in order to exist.
         try:
             teaser_image = newsletterp.imageextension.image
@@ -434,10 +482,10 @@ def get_teasers_for_all_features(request):
 
         newsletter_teaser = [
             {
-                'url' : newsletterp.get_absolute_url(),
-                'title' : newsletterp.get_page_title(),
-                'image' : teaser_image,
-                'page_id' : newsletterp.id,
+                "url": newsletterp.get_absolute_url(),
+                "title": newsletterp.get_page_title(),
+                "image": teaser_image,
+                "page_id": newsletterp.id,
             }
         ]
 
@@ -445,22 +493,32 @@ def get_teasers_for_all_features(request):
     teasers = festival_teasers
 
     # Merge event and article teasers lists in alternating order
-    while(event_teasers):
+    while event_teasers:
         teasers.append(event_teasers.pop())
         if article_teasers:
             teasers.append(article_teasers.pop())
 
+    # breakpoint()
 
     # While returning teasers, append yet unpopped article teasers, and, finally, a teaser for the newsletter page
     return teasers + article_teasers + newsletter_teaser
-    # return festival_teasers + event_teasers + article_teasers
 
 
 @register.simple_tag
 def get_festival_teasers(request):
     language = request.LANGUAGE_CODE
-    homep = [page for page in Page.objects.filter(reverse_id='festivals').filter(publisher_is_draft=False) if page.is_published(language) and page][0]
-    festivals = [page for page in homep.get_child_pages().order_by('publication_date') if page.is_published(language)]
+    homep = [
+        page
+        for page in Page.objects.filter(reverse_id="festivals").filter(
+            publisher_is_draft=False
+        )
+        if page.is_published(language) and page
+    ][0]
+    festivals = [
+        page
+        for page in homep.get_child_pages().order_by("publication_date")
+        if page.is_published(language)
+    ]
     teasers = []
 
     for festival in festivals:
@@ -478,15 +536,16 @@ def get_festival_teasers(request):
         except ObjectDoesNotExist:
             teaser_text = "<b>Write your teaser text through the 'Festival Settings -> Teaser Text...' menu in toolbar.</b>"
 
-        teaser['url'] = festival.get_absolute_url()
-        teaser['title'] = festival.get_page_title()
-        teaser['text'] = teaser_text
-        teaser['image'] = teaser_image
-        teaser['page_id'] = festival.id
+        teaser["url"] = festival.get_absolute_url()
+        teaser["title"] = festival.get_page_title()
+        teaser["text"] = teaser_text
+        teaser["image"] = teaser_image
+        teaser["page_id"] = festival.id
 
         teasers.append(teaser)
 
     return teasers
+
 
 @register.simple_tag
 def get_scheduling_for_page(page):
@@ -496,7 +555,8 @@ def get_scheduling_for_page(page):
     except ObjectDoesNotExist:
         return None
 
-    return {'date_from': date_from, 'date_to': date_to}
+    return {"date_from": date_from, "date_to": date_to}
+
 
 @register.simple_tag
 def get_festival_years():
@@ -507,6 +567,7 @@ def get_festival_years():
 
     return [2021, 2020, 2019]
 
+
 @register.simple_tag
 def get_festival_programming(festival_id):
     """
@@ -514,10 +575,16 @@ def get_festival_programming(festival_id):
     """
 
     # Select the parent page of all event pages
-    programming_page = Page.objects.filter(reverse_id='program').filter(publisher_is_draft=False).first()
+    programming_page = (
+        Page.objects.filter(reverse_id="program")
+        .filter(publisher_is_draft=False)
+        .first()
+    )
 
     # Select all event pages
-    all_event_pages = programming_page.get_child_pages().filter(publisher_is_draft=False)
+    all_event_pages = programming_page.get_child_pages().filter(
+        publisher_is_draft=False
+    )
 
     # Select all event pages flagged as part the festival and populate the keys in programming dictionary
     festival_event_pages = []
@@ -532,7 +599,7 @@ def get_festival_programming(festival_id):
     festival_event_pages = sorted(
         festival_event_pages,
         key=lambda event_page: event_page.eventdataextension.date_from,
-        reverse=True
+        reverse=True,
     )
 
     # Generate the values in programming dictionary
@@ -541,9 +608,10 @@ def get_festival_programming(festival_id):
         festival_programming[event_date].append(event_page)
 
     return {
-        'festival_programming': festival_programming,
-        'festival_years': list(festival_programming.keys())
+        "festival_programming": festival_programming,
+        "festival_years": list(festival_programming.keys()),
     }
+
 
 @register.simple_tag
 def get_background_image_url():
@@ -559,13 +627,13 @@ def get_background_image_url():
 
     # Try to get folder with background images and fail gracefully when it does not exist.
     try:
-        folder = Folder.objects.get(name='background_images')
+        folder = Folder.objects.get(name="background_images")
     except ObjectDoesNotExist:
-        return ''
+        return ""
 
-    bgimage_by_flag = folder.files.filter(name='current').first()
+    bgimage_by_flag = folder.files.filter(name="current").first()
     bgimage_by_date = folder.files.filter(name=f"{today.year}_{today.month}").first()
-    bgimage_by_uploaded = folder.files.order_by('-uploaded_at').first()
+    bgimage_by_uploaded = folder.files.order_by("-uploaded_at").first()
 
     if bgimage_by_flag:
         return bgimage_by_flag.url
@@ -574,40 +642,50 @@ def get_background_image_url():
     elif bgimage_by_uploaded:
         return bgimage_by_uploaded.url
     else:
-        return ''
+        return ""
 
 
 @register.simple_tag
 def get_opening_hours(request):
-    with open('static/opening_hours.json', 'r') as openingHoursFile:
+    with open("static/opening_hours.json", "r") as openingHoursFile:
 
         # import pdb; pdb.set_trace()
 
         language = request.LANGUAGE_CODE
         data = json.load(openingHoursFile)
-        flag = data['customHours']
-        hours = data['openingHours']
+        flag = data["customHours"]
+        hours = data["openingHours"]
 
         if not flag:
             return hours
         else:
             # Get the program page (i.e., page with reverse_id='program')
-            programp = Page.objects.filter(reverse_id='program').filter(publisher_is_draft=False).first()
+            programp = (
+                Page.objects.filter(reverse_id="program")
+                .filter(publisher_is_draft=False)
+                .first()
+            )
             # Ensuring that program page does exist
             if not programp:
                 published_events = []
             else:
                 # Get all childs of program page (i.e., the events)
-                published_events = [page for page in programp.get_child_pages()
-                                    if page.is_published(language) and
-                                    hasattr(page, 'eventdataextension') and
-                                    page.eventdataextension.date_from.year >= datetime.now().year and
-                                    page.eventdataextension.date_from.month >= datetime.now().month and
-                                    page.eventdataextension.date_from.day >= datetime.now().day]
+                published_events = [
+                    page
+                    for page in programp.get_child_pages()
+                    if page.is_published(language)
+                    and hasattr(page, "eventdataextension")
+                    and page.eventdataextension.date_from.year >= datetime.now().year
+                    and page.eventdataextension.date_from.month >= datetime.now().month
+                    and page.eventdataextension.date_from.day >= datetime.now().day
+                ]
                 # published_events.sort(key=lambda page: page.eventdataextension.date_from)
 
             if published_events:
-                next_event = min(published_events, key=lambda event: event.eventdataextension.date_from)
+                next_event = min(
+                    published_events,
+                    key=lambda event: event.eventdataextension.date_from,
+                )
                 return published_events[0].eventdataextension.date_from.hour
             else:
                 return None

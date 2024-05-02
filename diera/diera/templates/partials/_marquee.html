@@ -9,18 +9,18 @@
 <a  href="{{ upcoming_event.url }}" class="marquee" style="text-decoration:none">
 
   <div class="marquee__content">
-    <span class="fs-2">next event → {{ upcoming_event.eventName }} → {{ upcoming_event.day }} {{ upcoming_event.time }} →</span>
-    <span class="fs-2">next event → {{ upcoming_event.eventName }} → {{ upcoming_event.day }} {{ upcoming_event.time }} →</span>
-    <span class="fs-2">next event → {{ upcoming_event.eventName }} → {{ upcoming_event.day }} {{ upcoming_event.time }} →</span>
-    <span class="fs-2">next event → {{ upcoming_event.eventName }} → {{ upcoming_event.day }} {{ upcoming_event.time }} →</span>
+    <span class="fs-2">next event → {{ upcoming_event.eventName }} → {{ upcoming_event.day }} {{ upcoming_event.from|date:"H.i." }} →</span>
+    <span class="fs-2">next event → {{ upcoming_event.eventName }} → {{ upcoming_event.day }} {{ upcoming_event.from|date:"H.i." }} →</span>
+    <span class="fs-2">next event → {{ upcoming_event.eventName }} → {{ upcoming_event.day }} {{ upcoming_event.from|date:"H.i." }} →</span>
+    <span class="fs-2">next event → {{ upcoming_event.eventName }} → {{ upcoming_event.day }} {{ upcoming_event.from|date:"H.i." }} →</span>
   </div>
 
   <!-- Mirrors the content above -->
   <div class="marquee__content" aria-hidden="true">
-    <span class="fs-2">next event → {{ upcoming_event.eventName }} → {{ upcoming_event.day }} {{ upcoming_event.time }} →</span>
-    <span class="fs-2">next event → {{ upcoming_event.eventName }} → {{ upcoming_event.day }} {{ upcoming_event.time }} →</span>
-    <span class="fs-2">next event → {{ upcoming_event.eventName }} → {{ upcoming_event.day }} {{ upcoming_event.time }} →</span>
-    <span class="fs-2">next event → {{ upcoming_event.eventName }} → {{ upcoming_event.day }} {{ upcoming_event.time }} →</span>
+    <span class="fs-2">next event → {{ upcoming_event.eventName }} → {{ upcoming_event.day }} {{ upcoming_event.from|date:"H.i." }} →</span>
+    <span class="fs-2">next event → {{ upcoming_event.eventName }} → {{ upcoming_event.day }} {{ upcoming_event.from|date:"H.i." }} →</span>
+    <span class="fs-2">next event → {{ upcoming_event.eventName }} → {{ upcoming_event.day }} {{ upcoming_event.from|date:"H.i." }} →</span>
+    <span class="fs-2">next event → {{ upcoming_event.eventName }} → {{ upcoming_event.day }} {{ upcoming_event.from|date:"H.i." }} →</span>
   </div>
 
 </a>
